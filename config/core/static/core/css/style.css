@@ -1,0 +1,86 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fc;
+    color: #2c3e50;
+}
+
+
+header {
+    padding: 0;
+}
+
+
+/* Навигация */
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+
+.nav-link {
+    transition: 0.3s;
+}
+
+
+.nav-link:hover {
+    opacity: 0.8;
+}
+
+
+/* Главный экран */
+
+.hero-section {
+    background: linear-gradient(
+        135deg,
+        #eef5ff,
+        #ffffff
+    );
+
+    border-radius: 20px;
+}
+
+
+.hero-section h1 {
+    color: #243b64;
+}
+
+
+/* Кнопки */
+
+.btn-primary {
+    background-color: #4a6cf7;
+    border-color: #4a6cf7;
+}
+
+
+.btn-primary:hover {
+    background-color: #3957d6;
+    border-color: #3957d6;
+}
+
+
+/* Карточки */
+
+.card {
+    border: none;
+    border-radius: 18px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+
+/* Footer */
+
+footer {
+    text-align: center;
+    padding: 25px;
+    background-color: #eef1f5;
+    margin-top: 40px;
+}

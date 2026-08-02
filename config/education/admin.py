@@ -1,7 +1,11 @@
 from django.contrib import admin
 
-from .models import TeacherProfile, StudentProfile, Lesson
+from .models import TeacherProfile, StudentProfile, Lesson, Subject, TeachingAssignment, Performance, PerformanceComment
 
+
+@admin.register(Subject)
+class SubjectAdmin(admin.ModelAdmin):
+    list_display = ("name", "slug")
 
 @admin.register(TeacherProfile)
 class TeacherProfileAdmin(admin.ModelAdmin):
@@ -19,7 +23,6 @@ class TeacherProfileAdmin(admin.ModelAdmin):
 class StudentProfileAdmin(admin.ModelAdmin):
     list_display = (
         "user",
-        "teacher",
         "age",
         "level",
     )
@@ -33,7 +36,7 @@ class StudentProfileAdmin(admin.ModelAdmin):
 class LessonAdmin(admin.ModelAdmin):
     list_display = (
         "student",
-        "teacher",
+        "assignment",
         "date",
         "instrument",
         "piece",
@@ -43,3 +46,21 @@ class LessonAdmin(admin.ModelAdmin):
         "date",
         "instrument",
     )
+
+
+@admin.register(TeachingAssignment)
+class TeachingAssignmentAdmin(admin.ModelAdmin):
+    list_display = ("teacher", "student", "subject", "is_active", "created_at")
+    list_filter = ("subject", "is_active")
+
+
+@admin.register(Performance)
+class PerformanceAdmin(admin.ModelAdmin):
+    list_display = ("assignment", "piece", "score", "created_at")
+    list_filter = ("score", "piece")
+
+
+@admin.register(PerformanceComment)
+class PerformanceCommentAdmin(admin.ModelAdmin):
+    list_display = ("performance", "teacher", "created_at")
+    list_filter = ("teacher",)

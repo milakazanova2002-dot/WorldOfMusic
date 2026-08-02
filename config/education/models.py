@@ -3,6 +3,7 @@ from accounts.models import User
 from music.models import Instrument
 
 
+
 class TeacherProfile(models.Model):
     user = models.OneToOneField(
         User,
@@ -44,15 +45,6 @@ class StudentProfile(models.Model):
         verbose_name="Пользователь"
     )
 
-    teacher = models.ForeignKey(
-        TeacherProfile,
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        related_name="students",
-        verbose_name="Педагог"
-    )
-
     age = models.PositiveIntegerField(
         null=True,
         blank=True,
@@ -80,12 +72,6 @@ class StudentProfile(models.Model):
 
 
 class Lesson(models.Model):
-    teacher = models.ForeignKey(
-        TeacherProfile,
-        on_delete=models.CASCADE,
-        related_name="lessons",
-        verbose_name="Педагог"
-    )
 
     student = models.ForeignKey(
         StudentProfile,
@@ -124,6 +110,15 @@ class Lesson(models.Model):
         verbose_name="Комментарий педагога"
     )
 
+    assignment = models.ForeignKey(
+        "education.TeachingAssignment",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="lessons",
+        verbose_name="Назначение"
+    )
+
     class Meta:
             verbose_name = "Урок"
             verbose_name_plural = "Занятия"
@@ -131,3 +126,151 @@ class Lesson(models.Model):
 
     def __str__(self):
         return f"{self.student} — {self.date.strftime('%d.%m.%Y')}"
+
+
+class Subject(models.Model):
+    name = models.CharField(
+        max_length=100,
+        verbose_name="Предмет"
+    )
+
+    slug = models.SlugField(
+        max_length=100,
+        unique=True,
+        verbose_name="URL-имя"
+    )
+
+    class Meta:
+        verbose_name = "Предмет"
+        verbose_name_plural = "Предметы"
+
+    def __str__(self):
+        return self.name
+
+
+class TeachingAssignment(models.Model):
+    teacher = models.ForeignKey(
+        TeacherProfile,
+        on_delete=models.CASCADE,
+        related_name="assignments",
+        verbose_name="Педагог"
+    )
+
+    student = models.ForeignKey(
+        StudentProfile,
+        on_delete=models.CASCADE,
+        related_name="assignments",
+        verbose_name="Ученик"
+    )
+
+    subject = models.ForeignKey(
+        Subject,
+        on_delete=models.CASCADE,
+        related_name="assignments",
+        verbose_name="Предмет"
+    )
+
+    is_active = models.BooleanField(
+        default=True,
+        verbose_name="Активно"
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name="Создано"
+    )
+
+    updated_at = models.DateTimeField(
+        auto_now=True,
+        verbose_name="Обновлено"
+    )
+
+    class Meta:
+        verbose_name = "Назначение педагога"
+        verbose_name_plural = "Назначения педагогов"
+
+    def __str__(self):
+        return f"{self.teacher} → {self.student} ({self.subject})"
+
+
+class Performance(models.Model):
+    assignment = models.ForeignKey(
+        TeachingAssignment,
+        on_delete=models.CASCADE,
+        related_name="performances",
+        verbose_name="Назначение"
+    )
+
+    piece = models.ForeignKey(
+        "music.MusicalPiece",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="performances",
+        verbose_name="Произведение"
+    )
+
+    video = models.FileField(
+        upload_to="performances/videos/",
+        null=True,
+        blank=True,
+        verbose_name="Видео исполнения"
+    )
+
+    materials = models.ManyToManyField(
+        "music.MusicMaterial",
+        blank=True,
+        related_name="performances",
+        verbose_name="Материалы исполнения"
+    )
+    
+    score = models.PositiveIntegerField(
+        null=True,
+        blank=True,
+        verbose_name="Оценка"
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name="Создано"
+    )
+
+    class Meta:
+        verbose_name = "Исполнение"
+        verbose_name_plural = "Исполнения"
+
+    def __str__(self):
+        return f"Исполнение: {self.assignment.student} — {self.piece}"
+
+
+class PerformanceComment(models.Model):
+    performance = models.ForeignKey(
+        Performance,
+        on_delete=models.CASCADE,
+        related_name="comments",
+        verbose_name="Исполнение"
+    )
+
+    teacher = models.ForeignKey(
+        TeacherProfile,
+        on_delete=models.CASCADE,
+        verbose_name="Педагог"
+    )
+
+    text = models.TextField(
+        verbose_name="Комментарий"
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name="Создано"
+    )
+
+    class Meta:
+        verbose_name = "Комментарий к исполнению"
+        verbose_name_plural = "Комментарии к исполнениям"
+
+    def __str__(self):
+        return f"Комментарий от {self.teacher}"
+
+

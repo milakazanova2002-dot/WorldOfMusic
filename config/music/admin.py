@@ -4,6 +4,7 @@ from .models import (
     Instrument,
     Genre,
     Composer,
+    MusicMaterial,
     MusicalPiece,
 )
 
@@ -41,3 +42,9 @@ class MusicalPieceAdmin(admin.ModelAdmin):
         "genre",
         "instruments",
     )
+
+
+@admin.register(MusicMaterial)
+class MusicMaterialAdmin(admin.ModelAdmin):
+    list_display = ("piece", "type", "description", "created_at")
+    list_filter = ("type", "piece")

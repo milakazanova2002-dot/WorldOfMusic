@@ -1,0 +1,24 @@
+<h2>Исполнения</h2>
+
+{% if performances %}
+    <ul>
+        {% for p in performances %}
+            <li>
+                <strong>{{ p.piece }}</strong><br>
+                Ученик: {{ p.assignment.student.user.get_full_name }}<br>
+                Педагог: {{ p.assignment.teacher.user.get_full_name }}<br>
+                Оценка: {{ p.score }}<br>
+                Дата: {{ p.created_at|date:"d.m.Y" }}<br>
+
+                {% if p.video %}
+                    <video width="300" controls>
+                        <source src="{{ p.video.url }}" type="video/mp4">
+                    </video>
+                {% endif %}
+            </li>
+            <hr>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Исполнений пока нет.</p>
+{% endif %}

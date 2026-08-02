@@ -1,0 +1,47 @@
+<h2>Материалы к произведению: {{ piece.title }}</h2>
+
+{% if materials %}
+    <ul>
+        {% for m in materials %}
+            <li>
+                <strong>{{ m.get_type_display }}</strong> — {{ m.description }}
+
+                {% if m.file %}
+                    <br>
+                    <a href="{{ m.file.url }}" download>Скачать файл</a>
+
+                    {% if m.type == "video" %}
+                        <video width="300" controls>
+                            <source src="{{ m.file.url }}" type="video/mp4">
+                        </video>
+                    {% endif %}
+
+                    {% if m.type == "audio" %}
+                        <audio controls>
+                            <source src="{{ m.file.url }}" type="audio/mpeg">
+                        </audio>
+                    {% endif %}
+
+                    {% if m.type == "image" %}
+                        <br>
+                        <img src="{{ m.file.url }}" width="300">
+                    {% endif %}
+                {% endif %}
+
+                {% if m.url %}
+                    <br>
+                    <a href="{{ m.url }}" target="_blank">Открыть ссылку</a>
+                {% endif %}
+                
+                <br>
+                <a href="{% url 'material_delete' m.id %}" style="color:red;">
+                    Удалить
+                </a>
+
+            </li>
+            <hr>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Материалов пока нет.</p>
+{% endif %}

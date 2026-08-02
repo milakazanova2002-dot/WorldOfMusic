@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Исполнение: {{ performance.piece.title }}</h2>
+
+<p><strong>Ученик:</strong> {{ performance.assignment.student.user.get_full_name }}</p>
+<p><strong>Педагог:</strong> {{ performance.assignment.teacher.user.get_full_name }}</p>
+
+<p><strong>Оценка:</strong> {{ performance.score }}</p>
+<p><strong>Дата:</strong> {{ performance.created_at|date:"d.m.Y" }}</p>
+
+<hr>
+
+<h3>Видео исполнения</h3>
+{% if performance.video %}
+    <video width="400" controls>
+        <source src="{{ performance.video.url }}" type="video/mp4">
+    </video>
+{% else %}
+    <p>Видео отсутствует.</p>
+{% endif %}
+
+<hr>
+
+<h3>Материалы произведения</h3>
+{% if performance.piece.materials.exists %}
+    <ul>
+        {% for m in performance.piece.materials.all %}
+            <li>
+                <strong>{{ m.get_type_display }}</strong> — {{ m.description }}
+
+                {% if m.file %}
+                    <a href="{{ m.file.url }}" download>Скачать</a>
+                {% endif %}
+
+                {% if m.url %}
+                    <a href="{{ m.url }}" target="_blank">Открыть</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Материалов пока нет.</p>
+{% endif %}
+
+<hr>
+
+<h3>Материалы исполнения</h3>
+{% if performance.materials.exists %}
+    <ul>
+        {% for m in performance.materials.all %}
+            <li>
+                <strong>{{ m.get_type_display }}</strong> — {{ m.description }}
+
+                {% if m.file %}
+                    <a href="{{ m.file.url }}" download>Скачать</a>
+                {% endif %}
+
+                {% if m.url %}
+                    <a href="{{ m.url }}" target="_blank">Открыть</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Материалов пока нет.</p>
+{% endif %}
+
+<div class="actions">
+    <a href="{% url 'performance_materials' performance.id %}">Добавить материалы к исполнению</a><br>
+    <a href="{% url 'performance_edit' performance.id %}">Редактировать исполнение</a><br>
+    <button id="deleteBtn" class="delete-open-btn">Удалить исполнение</button>
+</div>
+
+<div id="deleteModal" class="modal-overlay">
+    <div class="modal-window">
+        <h3>Удалить исполнение?</h3>
+        <p>Вы уверены, что хотите удалить это исполнение?</p>
+
+        <form method="post" action="{% url 'performance_delete' performance.id %}">
+            {% csrf_token %}
+            <button type="submit" class="modal-confirm-btn">Удалить</button>
+            <button type="button" id="cancelBtn" class="modal-cancel-btn">Отмена</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    const modal = document.getElementById("deleteModal");
+    const deleteBtn = document.getElementById("deleteBtn");
+    const cancelBtn = document.getElementById("cancelBtn");
+
+    deleteBtn.onclick = () => {
+        modal.style.display = "flex";
+    };
+
+    cancelBtn.onclick = () => {
+        modal.style.display = "none";
+    };
+
+    window.onclick = (e) => {
+        if (e.target === modal) {
+            modal.style.display = "none";
+        }
+    };
+</script>
+
+{% endblock %}

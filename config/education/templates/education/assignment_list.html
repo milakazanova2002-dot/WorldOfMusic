@@ -1,0 +1,21 @@
+<h2>Мои назначения</h2>
+
+{% if assignments %}
+    <ul>
+        {% for a in assignments %}
+            <li>
+                <strong>{{ a.subject.name }}</strong><br>
+
+                Педагог: {{ a.teacher.user.get_full_name }}<br>
+                Ученик: {{ a.student.user.get_full_name }}<br>
+
+                <a href="{% url 'lesson_create' a.id %}">
+                    Создать урок
+                </a>
+            </li>
+            <hr>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Назначений пока нет.</p>
+{% endif %}

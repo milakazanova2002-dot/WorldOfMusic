@@ -103,3 +103,56 @@ class MusicalPiece(models.Model):
         
     def __str__(self):
         return self.title
+
+
+class MusicMaterial(models.Model):
+    class MaterialType(models.TextChoices):
+        VIDEO = "video", "Видео"
+        AUDIO = "audio", "Аудио"
+        SHEET = "sheet", "Ноты (PDF)"
+        IMAGE = "image", "Изображение нот"
+        LINK = "link", "Ссылка"
+
+    piece = models.ForeignKey(
+        "music.MusicalPiece",
+        on_delete=models.CASCADE,
+        related_name="materials",
+        verbose_name="Произведение"
+    )
+
+    type = models.CharField(
+        max_length=20,
+        choices=MaterialType.choices,
+        verbose_name="Тип материала"
+    )
+
+    file = models.FileField(
+        upload_to="materials/",
+        null=True,
+        blank=True,
+        verbose_name="Файл"
+    )
+
+    url = models.URLField(
+        null=True,
+        blank=True,
+        verbose_name="Ссылка"
+    )
+
+    description = models.CharField(
+        max_length=255,
+        blank=True,
+        verbose_name="Описание"
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name="Создано"
+    )
+
+    class Meta:
+        verbose_name = "Материал к произведению"
+        verbose_name_plural = "Материалы к произведениям"
+
+    def __str__(self):
+        return f"{self.piece.title} — {self.get_type_display()}"

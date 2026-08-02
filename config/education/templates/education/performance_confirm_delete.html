@@ -1,0 +1,9 @@
+<h2>Удалить исполнение</h2>
+
+<p>Вы уверены, что хотите удалить исполнение <strong>{{ object.piece.title }}</strong>?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" style="color:red;">Удалить</button>
+    <a href="{% url 'performance_detail' object.id %}">Отмена</a>
+</form>

@@ -1,0 +1,37 @@
+<h2>{{ piece.title }}</h2>
+
+<p>Композитор: {{ piece.composer }}</p>
+<p>Жанр: {{ piece.genre }}</p>
+<p>Уровень: {{ piece.level }}</p>
+
+<a href="{% url 'material_list' piece.id %}">
+    Материалы к произведению
+</a>
+
+<a href="{% url 'material_add' piece.id %}">
+    Добавить материал
+</a>
+
+<hr>
+
+<h3>Описание</h3>
+<p>{{ piece.description }}</p>
+
+<hr>
+
+<h3>Материалы</h3>
+{% for m in piece.materials.all %}
+    <div>
+        <strong>{{ m.get_type_display }}</strong>: {{ m.description }}
+
+        {% if m.file %}
+            <a href="{{ m.file.url }}" download>Скачать</a>
+        {% endif %}
+
+        {% if m.url %}
+            <a href="{{ m.url }}" target="_blank">Открыть</a>
+        {% endif %}
+    </div>
+{% empty %}
+    <p>Материалов пока нет.</p>
+{% endfor %}

@@ -3,21 +3,9 @@ from django.db import models
 
 
 class User(AbstractUser):
-    """
-    Пользователь сайта WOM.
-    """
-
-    class Role(models.TextChoices):
-        TEACHER = "teacher", "Педагог"
-        STUDENT = "student", "Ученик"
-        PARENT = "parent", "Родитель"
-
-    role = models.CharField(
-        max_length=20,
-        choices=Role.choices,
-        default=Role.STUDENT,
-        verbose_name="Роль"
-    )
+    email_verified = models.BooleanField(default=False)
+    
+    is_approved = models.BooleanField(default=False)
 
     avatar = models.ImageField(
         upload_to="avatars/",

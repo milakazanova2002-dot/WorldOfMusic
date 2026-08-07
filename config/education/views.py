@@ -2,13 +2,17 @@ from django.http import HttpResponseForbidden
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 
 from .forms import AssignmentForm, PerformanceCommentForm, PerformanceMaterialForm
 from .models import Lesson, Performance, TeachingAssignment
+from accounts.mixins import TeacherRequiredMixin, StudentRequiredMixin, teacher_required
 
 
-class LessonListView(ListView):
+
+class LessonListView(LoginRequiredMixin, ListView):
     model = Lesson
     template_name = "education/lesson_list.html"
     context_object_name = "lessons"
@@ -30,7 +34,7 @@ class LessonListView(ListView):
 
         return Lesson.objects.none()
 
-class LessonCreateView(CreateView):
+class LessonCreateView(LoginRequiredMixin, TeacherRequiredMixin, CreateView):
     model = Lesson
     fields = ["date", "instrument", "piece", "homework", "comment"]
     template_name = "education/lesson_form.html"
@@ -51,18 +55,18 @@ class LessonCreateView(CreateView):
         return reverse_lazy("lesson_list")
 
 
-class AssignmentListView(ListView):
+class AssignmentListView(LoginRequiredMixin, ListView):
     model = TeachingAssignment
     template_name = "education/assignment_list.html"
     context_object_name = "assignments"
 
-class AssignmentDetailView(DetailView):
+class AssignmentDetailView(LoginRequiredMixin, DetailView):
     model = TeachingAssignment
     template_name = "education/assignment_detail.html"
     context_object_name = "assignment"
 
 
-class AssignmentCreateView(CreateView):
+class AssignmentCreateView(LoginRequiredMixin, TeacherRequiredMixin, CreateView):
     model = TeachingAssignment
     form_class = AssignmentForm
     template_name = "education/assignment_form.html"
@@ -70,13 +74,13 @@ class AssignmentCreateView(CreateView):
     def get_success_url(self):
         return reverse("assignment_detail", args=[self.object.pk])
 
-class AssignmentDeleteView(DeleteView):
+class AssignmentDeleteView(LoginRequiredMixin, TeacherRequiredMixin, DeleteView):
     model = TeachingAssignment
     template_name = "education/assignment_confirm_delete.html"
     success_url = reverse_lazy("assignment_list")
 
 
-class PerformanceListView(ListView):
+class PerformanceListView(LoginRequiredMixin, ListView):
     model = Performance
     template_name = "education/performance_list.html"
     context_object_name = "performances"
@@ -104,7 +108,7 @@ class PerformanceListView(ListView):
         return Performance.objects.none()
 
 
-class PerformanceCreateView(CreateView):
+class PerformanceCreateView(LoginRequiredMixin, TeacherRequiredMixin, CreateView):
     model = Performance
     fields = ["piece", "video", "score"]
     template_name = "education/performance_form.html"
@@ -124,7 +128,7 @@ class PerformanceCreateView(CreateView):
         return reverse_lazy("performance_list")
 
 
-class PerformanceMaterialUpdateView(UpdateView):
+class PerformanceMaterialUpdateView(LoginRequiredMixin, TeacherRequiredMixin, UpdateView):
     model = Performance
     form_class = PerformanceMaterialForm
     template_name = "education/performance_material_form.html"
@@ -133,13 +137,13 @@ class PerformanceMaterialUpdateView(UpdateView):
         return reverse_lazy("performance_detail", kwargs={"pk": self.object.id})
 
 
-class PerformanceDetailView(DetailView):
+class PerformanceDetailView(LoginRequiredMixin, DetailView):
     model = Performance
     template_name = "education/performance_detail.html"
     context_object_name = "performance"
 
 
-class PerformanceUpdateView(UpdateView):
+class PerformanceUpdateView(LoginRequiredMixin, TeacherRequiredMixin, UpdateView):
     model = Performance
     fields = ["piece", "video", "score"]
     template_name = "education/performance_form.html"
@@ -148,7 +152,7 @@ class PerformanceUpdateView(UpdateView):
         return reverse_lazy("performance_detail", kwargs={"pk": self.object.id})
 
 
-class PerformanceDeleteView(DeleteView):
+class PerformanceDeleteView(LoginRequiredMixin, TeacherRequiredMixin, DeleteView):
     model = Performance
     template_name = "education/performance_confirm_delete.html"
 
@@ -156,6 +160,8 @@ class PerformanceDeleteView(DeleteView):
         return reverse_lazy("performance_list")
 
 
+@login_required
+@teacher_required
 def add_performance_comment(request, pk):
     performance = get_object_or_404(Performance, pk=pk)
 
@@ -164,13 +170,7 @@ def add_performance_comment(request, pk):
         if form.is_valid():
             comment = form.save(commit=False)
             comment.performance = performance
-
-            # Только педагог может писать комментарии
-            if hasattr(request.user, "teacher_profile"):
-                comment.author = request.user.teacher_profile
-            else:
-                return HttpResponseForbidden("Только педагог может оставлять комментарии.")
-
+            comment.author = request.user.teacher_profile
             comment.save()
             return redirect("performance_detail", pk=pk)
     else:
@@ -181,6 +181,7 @@ def add_performance_comment(request, pk):
         "education/performance_comment_form.html",
         {"form": form, "performance": performance}
     )
+
 
 
 

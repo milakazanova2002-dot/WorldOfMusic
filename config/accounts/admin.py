@@ -1,18 +1,16 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-
 from .models import User
-
 
 @admin.register(User)
 class CustomUserAdmin(UserAdmin):
-
     fieldsets = UserAdmin.fieldsets + (
         (
             "Дополнительно",
             {
                 "fields": (
-                    "role",
+                    "email_verified",
+                    "is_approved",
                     "avatar",
                 )
             }
@@ -24,7 +22,8 @@ class CustomUserAdmin(UserAdmin):
             "Дополнительно",
             {
                 "fields": (
-                    "role",
+                    "email_verified",
+                    "is_approved",
                     "avatar",
                 )
             }
@@ -34,6 +33,8 @@ class CustomUserAdmin(UserAdmin):
     list_display = (
         "username",
         "email",
-        "role",
+        "is_approved",
         "is_staff",
     )
+
+    list_filter = ("is_approved",)

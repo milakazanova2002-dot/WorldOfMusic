@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Performance, PerformanceComment, TeachingAssignment
+from .models import LessonMaterial, Performance, PerformanceComment, TeachingAssignment
 
 
 class PerformanceMaterialForm(forms.ModelForm):
@@ -25,3 +25,9 @@ class PerformanceCommentForm(forms.ModelForm):
         widgets = {
             "text": forms.Textarea(attrs={"rows": 3})
         }
+
+
+class LessonMaterialForm(forms.ModelForm):
+    class Meta:
+        model = LessonMaterial
+        fields = ["title", "file"]

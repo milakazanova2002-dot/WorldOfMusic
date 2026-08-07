@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Профиль ученика: {{ student.user.username }}</h2>
+
+<h3>Инструмент</h3>
+<p>{{ student.instrument }}</p>
+
+<h3>Педагог</h3>
+{% for assignment in assignments %}
+    <p>{{ assignment.teacher.user.username }}</p>
+{% empty %}
+    <p>Педагог не назначен.</p>
+{% endfor %}
+
+<h3>Уроки</h3>
+<ul>
+    {% for lesson in lessons %}
+        <li>{{ lesson.date }} — {{ lesson.piece }}</li>
+    {% empty %}
+        <li>Уроков пока нет.</li>
+    {% endfor %}
+</ul>
+
+<h3>Исполнения</h3>
+<ul>
+    {% for perf in performances %}
+        <li>{{ perf.piece }} — {{ perf.created_at }}</li>
+    {% empty %}
+        <li>Исполнений пока нет.</li>
+    {% endfor %}
+</ul>
+
+{% if request.user.teacher_profile %}
+    <a href="{% url 'lesson_create' assignment_id=assignments.first.id %}">
+        Добавить урок
+    </a>
+{% endif %}
+
+{% if request.user.student_profile and request.user.student_profile.id == student.id %}
+    <a href="{% url 'performance_create' assignment_id=assignments.first.id %}">
+        Добавить исполнение
+    </a>
+{% endif %}
+
+{% endblock %}

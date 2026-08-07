@@ -274,3 +274,11 @@ class PerformanceComment(models.Model):
         return f"Комментарий от {self.teacher}"
 
 
+class LessonMaterial(models.Model):
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, related_name="materials")
+    title = models.CharField(max_length=255)
+    file = models.FileField(upload_to="lesson_materials/")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.title} ({self.lesson})"

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Профиль педагога: {{ teacher.user.username }}</h2>
+
+<h3>Ученики</h3>
+<ul>
+    {% for student in students %}
+        <li>{{ student.user.username }}</li>
+    {% empty %}
+        <liУченики пока не назначены.</li>
+    {% endfor %}
+</ul>
+
+<h3>Назначения</h3>
+<ul>
+    {% for assignment in assignments %}
+        <li>{{ assignment.instrument }} — {{ assignment.student.user.username }}</li>
+    {% empty %}
+        <li>Назначений пока нет.</li>
+    {% endfor %}
+</ul>
+
+<h3>Уроки</h3>
+<ul>
+    {% for lesson in lessons %}
+        <li>{{ lesson.date }} — {{ lesson.piece }}</li>
+    {% empty %}
+        <li>Уроков пока нет.</li>
+    {% endfor %}
+</ul>
+
+<h3>Исполнения учеников</h3>
+<ul>
+    {% for perf in performances %}
+        <li>{{ perf.piece }} — {{ perf.assignment.student.user.username }}</li>
+    {% empty %}
+        <li>Исполнений пока нет.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

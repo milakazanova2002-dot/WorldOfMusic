@@ -105,19 +105,24 @@
     };
 </script>
 
-<h3>Комментарии</h3>
+<hr>
+
+<h3>Комментарии педагога</h3>
 
 <ul>
     {% for c in performance.comments.all %}
         <li>
-            <strong>{{ c.author }}:</strong> {{ c.text }} <br>
-            <small>{{ c.created_at }}</small>
+            <strong>{{ c.teacher.user.get_full_name }}</strong> ({{ c.created_at|date:"d.m.Y H:i" }}):
+            <br>
+            {{ c.text }}
         </li>
     {% empty %}
         <p>Комментариев пока нет.</p>
     {% endfor %}
 </ul>
 
-<a href="{% url 'performance_comment' performance.pk %}">Добавить комментарий</a>
+{% if request.user.teacher_profile and performance.assignment.teacher == request.user.teacher_profile %}
+    <a href="{% url 'performance_comment_add' performance.id %}">Добавить комментарий</a>
+{% endif %}
 
 {% endblock %}

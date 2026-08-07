@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Урок от {{ lesson.date }}</h2>
+
+<h3>Произведение</h3>
+<p>{{ lesson.piece }}</p>
+
+<h3>Инструмент</h3>
+<p>{{ lesson.instrument }}</p>
+
+<h3>Домашнее задание</h3>
+<p>{{ lesson.homework|linebreaks }}</p>
+
+<h3>Комментарий педагога</h3>
+<p>{{ lesson.comment|linebreaks }}</p>
+
+<h3>Исполнения ученика</h3>
+<ul>
+    {% for perf in lesson.assignment.performance_set.all %}
+        <li>
+            <a href="{% url 'performance_detail' perf.id %}">
+                {{ perf.piece }} — {{ perf.created_at }}
+            </a>
+        </li>
+    {% empty %}
+        <li>Пока нет исполнений.</li>
+    {% endfor %}
+</ul>
+
+<h3>Материалы урока</h3>
+<ul>
+    {% for material in lesson.materials.all %}
+        <li>
+            <a href="{{ material.file.url }}" download>
+                {{ material.title }}
+            </a>
+            ({{ material.created_at }})
+        </li>
+    {% empty %}
+        <li>Материалов пока нет.</li>
+    {% endfor %}
+</ul>
+
+{% if request.user.teacher_profile and lesson.assignment.teacher == request.user.teacher_profile %}
+    <a href="{% url 'lesson_material_add' lesson.id %}">Добавить материал</a>
+{% endif %}
+
+{% if request.user.teacher_profile and lesson.assignment.teacher == request.user.teacher_profile %}
+    <a href="{% url 'lesson_update' lesson.id %}">Редактировать урок</a>
+    <a href="{% url 'lesson_delete' lesson.id %}">Удалить урок</a>
+{% endif %}
+
+{% endblock %}

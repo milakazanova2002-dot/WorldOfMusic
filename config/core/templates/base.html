@@ -58,11 +58,13 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        Войти
-                    </a>
-                </li>
+                {% if request.user.is_authenticated %}
+                    <a href="{% url 'logout' %}">Выйти</a>
+
+                {% else %}
+                    <a href="{% url 'login' %}">Войти</a>
+                {% endif %}
+
 
             </ul>
 

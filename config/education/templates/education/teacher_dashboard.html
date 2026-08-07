@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Личный кабинет педагога</h2>
+
+<h3>Ваши ученики</h3>
+<ul>
+    {% for student in students %}
+        <li>{{ student.user.username }}</li>
+    {% empty %}
+        <li>У вас пока нет учеников.</li>
+    {% endfor %}
+</ul>
+
+<h3>Назначения</h3>
+<ul>
+    {% for assignment in assignments %}
+        <li>{{ assignment.instrument }} — {{ assignment.student.user.username }}</li>
+    {% empty %}
+        <li>Назначений пока нет.</li>
+    {% endfor %}
+</ul>
+
+<h3>Последние уроки</h3>
+<ul>
+    {% for lesson in lessons %}
+        <li>{{ lesson.date }} — {{ lesson.piece }}</li>
+    {% empty %}
+        <li>Уроков пока нет.</li>
+    {% endfor %}
+</ul>
+
+<h3>Последние исполнения учеников</h3>
+<ul>
+    {% for perf in performances %}
+        <li>{{ perf.piece }} — {{ perf.student.user.username }}</li>
+    {% empty %}
+        <li>Исполнений пока нет.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

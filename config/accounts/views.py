@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 
 from .forms import StudentRegistrationForm, TeacherRegistrationForm
 
@@ -12,25 +13,33 @@ class UserLoginView(LoginView):
     def form_valid(self, form):
         user = form.get_user()
 
-        # Если пользователь педагог и не одобрен
+        # Если педагог не одобрен
         if hasattr(user, "teacher_profile") and not user.is_approved:
             return redirect("pending_approval")
 
+        # Педагог
+        if hasattr(user, "teacher_profile"):
+            return redirect("teacher_dashboard")
 
-        return super().form_valid(form)
+        # Ученик
+        if hasattr(user, "student_profile"):
+            return redirect("student_dashboard")
+
+        # Гость (в будущем родитель)
+        return redirect("/")
 
 
 class UserLogoutView(LogoutView):
-    template_name = "accounts/logout.html"
-
+    # template_name = "accounts/logout.html"
+    next_page = "login"
 
 def student_register(request):
     if request.method == "POST":
         form = StudentRegistrationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)  # автоматический вход
-            return redirect("/")  # или куда нужно
+            login(request, user)  
+            return redirect("student_dashboard")  
     else:
         form = StudentRegistrationForm()
 
@@ -57,3 +66,23 @@ def teacher_register(request):
 
 def pending_approval(request):
     return render(request, "accounts/pending_approval.html")
+
+
+@login_required
+def role_redirect(request):
+    user = request.user
+
+    # Не одобренный педагог
+    if hasattr(user, "teacher_profile") and not user.is_approved:
+        return redirect("pending_approval")
+
+    # Педагог
+    if hasattr(user, "teacher_profile"):
+        return redirect("teacher_dashboard")
+
+    # Ученик
+    if hasattr(user, "student_profile"):
+        return redirect("student_dashboard")
+
+    # Гость (в будущем родитель)
+    return redirect("/")

@@ -1,6 +1,9 @@
 from django.urls import path
 
 from .views import (
+    AssignmentCreateView,
+    AssignmentDeleteView,
+    AssignmentDetailView,
     AssignmentListView,
     LessonListView,
     LessonCreateView,
@@ -10,10 +13,15 @@ from .views import (
     PerformanceCreateView,
     PerformanceMaterialUpdateView,
     PerformanceUpdateView,
+    add_performance_comment,
 )
 
 urlpatterns = [
     path("assignments/", AssignmentListView.as_view(), name="assignment_list"),
+    path("assignments/create/", AssignmentCreateView.as_view(), name="assignment_create"),
+    path("assignments/<int:pk>/", AssignmentDetailView.as_view(), name="assignment_detail"),
+    path("assignments/<int:pk>/delete/", AssignmentDeleteView.as_view(), name="assignment_delete"),
+
     path("lessons/", LessonListView.as_view(), name="lesson_list"),
     path("lessons/create/<int:assignment_id>/", LessonCreateView.as_view(), name="lesson_create"),
 
@@ -23,4 +31,5 @@ urlpatterns = [
     path("performances/<int:pk>/materials/", PerformanceMaterialUpdateView.as_view(), name="performance_materials"),
     path("performances/<int:pk>/edit/", PerformanceUpdateView.as_view(), name="performance_edit"),
     path("performances/<int:pk>/delete/", PerformanceDeleteView.as_view(), name="performance_delete"),
+    path("performance/<int:pk>/comment/", add_performance_comment, name="performance_comment"),
 ]

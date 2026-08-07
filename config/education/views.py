@@ -1,9 +1,10 @@
+from django.http import HttpResponseForbidden
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
-from django.shortcuts import get_object_or_404
-from django.urls import reverse_lazy
+from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse, reverse_lazy
 
 
-from .forms import PerformanceMaterialForm
+from .forms import AssignmentForm, PerformanceCommentForm, PerformanceMaterialForm
 from .models import Lesson, Performance, TeachingAssignment
 
 
@@ -55,24 +56,24 @@ class AssignmentListView(ListView):
     template_name = "education/assignment_list.html"
     context_object_name = "assignments"
 
-    def get_queryset(self):
-        user = self.request.user
+class AssignmentDetailView(DetailView):
+    model = TeachingAssignment
+    template_name = "education/assignment_detail.html"
+    context_object_name = "assignment"
 
-        # Если педагог
-        if hasattr(user, "teacher_profile"):
-            return TeachingAssignment.objects.filter(
-                teacher=user.teacher_profile,
-                is_active=True
-            )
 
-        # Если ученик
-        if hasattr(user, "student_profile"):
-            return TeachingAssignment.objects.filter(
-                student=user.student_profile,
-                is_active=True
-            )
+class AssignmentCreateView(CreateView):
+    model = TeachingAssignment
+    form_class = AssignmentForm
+    template_name = "education/assignment_form.html"
 
-        return TeachingAssignment.objects.none()
+    def get_success_url(self):
+        return reverse("assignment_detail", args=[self.object.pk])
+
+class AssignmentDeleteView(DeleteView):
+    model = TeachingAssignment
+    template_name = "education/assignment_confirm_delete.html"
+    success_url = reverse_lazy("assignment_list")
 
 
 class PerformanceListView(ListView):
@@ -83,19 +84,25 @@ class PerformanceListView(ListView):
     def get_queryset(self):
         user = self.request.user
 
-        # Если педагог
+        # Админ видит всё
+        if user.is_superuser:
+            return Performance.objects.all().order_by("-created_at")
+
+        # Педагог
         if hasattr(user, "teacher_profile"):
             return Performance.objects.filter(
                 assignment__teacher=user.teacher_profile
             ).order_by("-created_at")
 
-        # Если ученик
+        # Ученик
         if hasattr(user, "student_profile"):
             return Performance.objects.filter(
                 assignment__student=user.student_profile
             ).order_by("-created_at")
 
+        # Остальные — ничего
         return Performance.objects.none()
+
 
 class PerformanceCreateView(CreateView):
     model = Performance
@@ -147,5 +154,34 @@ class PerformanceDeleteView(DeleteView):
 
     def get_success_url(self):
         return reverse_lazy("performance_list")
+
+
+def add_performance_comment(request, pk):
+    performance = get_object_or_404(Performance, pk=pk)
+
+    if request.method == "POST":
+        form = PerformanceCommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.performance = performance
+
+            # Только педагог может писать комментарии
+            if hasattr(request.user, "teacher_profile"):
+                comment.author = request.user.teacher_profile
+            else:
+                return HttpResponseForbidden("Только педагог может оставлять комментарии.")
+
+            comment.save()
+            return redirect("performance_detail", pk=pk)
+    else:
+        form = PerformanceCommentForm()
+
+    return render(
+        request,
+        "education/performance_comment_form.html",
+        {"form": form, "performance": performance}
+    )
+
+
 
 

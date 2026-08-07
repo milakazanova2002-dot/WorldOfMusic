@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Назначение №{{ assignment.pk }}</h2>
+
+<p><strong>Педагог:</strong> {{ assignment.teacher }}</p>
+<p><strong>Ученик:</strong> {{ assignment.student }}</p>
+<p><strong>Предмет:</strong> {{ assignment.subject }}</p>
+
+<p><strong>Создано:</strong> {{ assignment.created_at }}</p>
+<p><strong>Обновлено:</strong> {{ assignment.updated_at }}</p>
+
+<hr>
+
+<a href="{% url 'assignment_delete' assignment.pk %}">Удалить назначение</a>
+{% endblock %}

@@ -105,4 +105,19 @@
     };
 </script>
 
+<h3>Комментарии</h3>
+
+<ul>
+    {% for c in performance.comments.all %}
+        <li>
+            <strong>{{ c.author }}:</strong> {{ c.text }} <br>
+            <small>{{ c.created_at }}</small>
+        </li>
+    {% empty %}
+        <p>Комментариев пока нет.</p>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'performance_comment' performance.pk %}">Добавить комментарий</a>
+
 {% endblock %}

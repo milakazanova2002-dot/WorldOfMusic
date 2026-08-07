@@ -1,24 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
 <h2>Исполнения</h2>
 
-{% if performances %}
-    <ul>
-        {% for p in performances %}
-            <li>
-                <strong>{{ p.piece }}</strong><br>
-                Ученик: {{ p.assignment.student.user.get_full_name }}<br>
-                Педагог: {{ p.assignment.teacher.user.get_full_name }}<br>
-                Оценка: {{ p.score }}<br>
-                Дата: {{ p.created_at|date:"d.m.Y" }}<br>
+<ul>
+    {% for p in performances %}
+        <li>
+            <a href="{% url 'performance_detail' p.pk %}">
+                Исполнение №{{ p.pk }} — {{ p.assignment.student }} ({{ p.assignment.subject }})
+            </a>
+        </li>
+    {% endfor %}
+</ul>
 
-                {% if p.video %}
-                    <video width="300" controls>
-                        <source src="{{ p.video.url }}" type="video/mp4">
-                    </video>
-                {% endif %}
-            </li>
-            <hr>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>Исполнений пока нет.</p>
-{% endif %}
+{% endblock %}

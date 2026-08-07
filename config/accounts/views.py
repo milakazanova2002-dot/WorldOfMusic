@@ -1,18 +1,21 @@
 from django.contrib import messages
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LogoutView
+from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import never_cache
 
 from .forms import StudentRegistrationForm, TeacherRegistrationForm
 
-
+@method_decorator(never_cache, name="dispatch")
 class UserLoginView(LoginView):
     template_name = "accounts/login.html"
 
     def form_valid(self, form):
         user = form.get_user()
-
+        login(self.request, user)  #!!!!!!!!!!!
         # Если педагог не одобрен
         if hasattr(user, "teacher_profile") and not user.is_approved:
             return redirect("pending_approval")
@@ -28,10 +31,10 @@ class UserLoginView(LoginView):
         # Гость (в будущем родитель)
         return redirect("/")
 
-
+@method_decorator(never_cache, name="dispatch")
 class UserLogoutView(LogoutView):
-    # template_name = "accounts/logout.html"
-    next_page = "login"
+    template_name = "accounts/logout.html"
+
 
 def student_register(request):
     if request.method == "POST":

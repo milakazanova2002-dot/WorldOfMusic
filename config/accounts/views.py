@@ -15,7 +15,7 @@ class UserLoginView(LoginView):
 
     def form_valid(self, form):
         user = form.get_user()
-        login(self.request, user)  #!!!!!!!!!!!
+        login(self.request, user)  #  создает новую сессию
         # Если педагог не одобрен
         if hasattr(user, "teacher_profile") and not user.is_approved:
             return redirect("pending_approval")

@@ -200,6 +200,13 @@ class AssignmentListView(LoginRequiredMixin, ListView):
     template_name = "education/assignment_list.html"
     context_object_name = "assignments"
 
+    def get_queryset(self): 
+        user = self.request.user
+        if hasattr(user, "teacher_profile"):
+            return TeachingAssignment.objects.filter(teacher=user.teacher_profile)
+        return TeachingAssignment.objects.none()
+
+
 class AssignmentDetailView(LoginRequiredMixin, DetailView):
     model = TeachingAssignment
     template_name = "education/assignment_detail.html"
@@ -209,10 +216,22 @@ class AssignmentDetailView(LoginRequiredMixin, DetailView):
 class AssignmentCreateView(LoginRequiredMixin, TeacherRequiredMixin, CreateView):
     model = TeachingAssignment
     form_class = AssignmentForm
+    success_url = reverse_lazy("teachingassignment_list")
+
+    def form_valid(self, form):
+        form.instance.teacher = self.request.user.teacher_profile
+        return super().form_valid(form)
+
+
+class AssignmentUpdateView(LoginRequiredMixin, TeacherRequiredMixin, UpdateView):
+    model = TeachingAssignment
+    form_class = AssignmentForm
     template_name = "education/assignment_form.html"
 
     def get_success_url(self):
         return reverse("assignment_detail", args=[self.object.pk])
+
+
 
 class AssignmentDeleteView(LoginRequiredMixin, TeacherRequiredMixin, DeleteView):
     model = TeachingAssignment
@@ -271,7 +290,7 @@ class PerformanceDetailView(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["comments"] = performance.comments.all().order_by("-created_at")
+        context["comments"] = self.object.comments.all().order_by("-created_at")  #!!!!
         return context
 
 
@@ -302,12 +321,6 @@ class PerformanceMaterialUpdateView(LoginRequiredMixin, TeacherRequiredMixin, Up
 
     def get_success_url(self):
         return reverse_lazy("performance_detail", kwargs={"pk": self.object.id})
-
-
-class PerformanceDetailView(LoginRequiredMixin, DetailView):
-    model = Performance
-    template_name = "education/performance_detail.html"
-    context_object_name = "performance"
 
 
 class PerformanceCommentCreateView(LoginRequiredMixin, TeacherRequiredMixin, CreateView):

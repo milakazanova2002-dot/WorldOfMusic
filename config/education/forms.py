@@ -15,7 +15,7 @@ class PerformanceMaterialForm(forms.ModelForm):
 class AssignmentForm(forms.ModelForm):
     class Meta:
         model = TeachingAssignment
-        fields = ["teacher", "student", "subject"]
+        fields = ["student", "subject"]
 
 
 class PerformanceCommentForm(forms.ModelForm):

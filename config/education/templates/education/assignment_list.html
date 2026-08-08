@@ -1,17 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Назначения</h2>
+<h2>Мои назначения</h2>
+
+<a href="{% url 'assignment_create' %}">Создать новое назначение</a>
 
 <ul>
     {% for a in assignments %}
         <li>
-            <a href="{% url 'assignment_detail' a.pk %}">
-                {{ a.teacher }} → {{ a.student }} ({{ a.subject }})
-            </a>
+            {{ a.student }} — {{ a.subject }}
+            <a href="{% url 'assignment_edit' a.pk %}">Редактировать</a>
+            <a href="{% url 'assignment_delete' a.pk %}">Удалить</a>
         </li>
     {% endfor %}
 </ul>
 
-<a href="{% url 'assignment_create' %}">Создать назначение</a>
 {% endblock %}

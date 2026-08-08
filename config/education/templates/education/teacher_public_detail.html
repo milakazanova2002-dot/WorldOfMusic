@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}{{ teacher.user.get_full_name|default:teacher.user.username }} — World Of Music{% endblock %}
+
+{% block content %}
+<h2>{{ teacher.user.get_full_name|default:teacher.user.username }}</h2>
+
+<p><strong>Опыт работы:</strong> {{ teacher.experience_years }} лет</p>
+
+<p>
+    <strong>Инструменты:</strong>
+    {% for i in teacher.instruments.all %}{{ i.name }}{% if not forloop.last %}, {% endif %}{% empty %}—{% endfor %}
+</p>
+
+{% if teacher.bio %}
+    <hr>
+    <h3>О себе</h3>
+    <p>{{ teacher.bio }}</p>
+{% endif %}
+{% endblock %}

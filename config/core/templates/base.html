@@ -41,22 +41,24 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{% url 'piece_list' %}">
                         Библиотека
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{% url 'teacher_public_list' %}">
                         Педагоги
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        Ученики
-                    </a>
-                </li>
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'role_redirect' %}">
+                            Мой кабинет
+                        </a>
+                    </li>
+                {% endif %}
 
                 {% if request.user.is_authenticated %}
                     <form method="post" action="{% url 'logout' %}">

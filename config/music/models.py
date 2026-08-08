@@ -1,7 +1,5 @@
 from django.db import models
 
-# Create your models here.from django.db import models
-
 
 class Instrument(models.Model):
     name = models.CharField(
@@ -143,6 +141,12 @@ class MusicMaterial(models.Model):
         max_length=255,
         blank=True,
         verbose_name="Описание"
+    )
+
+    is_public = models.BooleanField(
+        default=True,
+        verbose_name="Общедоступно",
+        help_text="Если выключено — материал видят только педагоги и прикреплённые ученики"
     )
 
     created_at = models.DateTimeField(

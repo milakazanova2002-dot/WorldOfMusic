@@ -1,28 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}{{ piece.title }} — World Of Music{% endblock %}
+
+{% block content %}
 <h2>{{ piece.title }}</h2>
 
-<p>Композитор: {{ piece.composer }}</p>
-<p>Жанр: {{ piece.genre }}</p>
-<p>Уровень: {{ piece.level }}</p>
+<p><strong>Композитор:</strong> {{ piece.composer }}</p>
 
-<a href="{% url 'material_list' piece.id %}">
-    Материалы к произведению
-</a>
+<p>
+    <strong>Жанры:</strong>
+    {% for g in piece.genre.all %}{{ g.name }}{% if not forloop.last %}, {% endif %}{% empty %}—{% endfor %}
+</p>
 
-<a href="{% url 'material_add' piece.id %}">
-    Добавить материал
-</a>
+<p>
+    <strong>Инструменты:</strong>
+    {% for i in piece.instruments.all %}{{ i.name }}{% if not forloop.last %}, {% endif %}{% empty %}—{% endfor %}
+</p>
+
+{% if piece.year_created %}
+    <p><strong>Год создания:</strong> {{ piece.year_created }}</p>
+{% endif %}
+
+{% if piece.description %}
+    <hr>
+    <h3>Описание</h3>
+    <p>{{ piece.description }}</p>
+{% endif %}
 
 <hr>
-
-<h3>Описание</h3>
-<p>{{ piece.description }}</p>
-
-<hr>
-
 <h3>Материалы</h3>
-{% for m in piece.materials.all %}
-    <div>
+
+{% for m in materials %}
+    <div class="mb-2">
         <strong>{{ m.get_type_display }}</strong>: {{ m.description }}
+        {% if not m.is_public %}
+            <span class="badge bg-warning text-dark">приватно</span>
+        {% endif %}
 
         {% if m.file %}
             <a href="{{ m.file.url }}" download>Скачать</a>
@@ -35,3 +48,14 @@
 {% empty %}
     <p>Материалов пока нет.</p>
 {% endfor %}
+
+{% if not has_private_access %}
+    <p class="text-muted"><small>Часть материалов доступна только педагогам и ученикам, изучающим это произведение.</small></p>
+{% endif %}
+
+{% if request.user.is_authenticated and request.user.teacher_profile %}
+    <a href="{% url 'material_add' piece.id %}" class="btn btn-outline-secondary btn-sm">
+        Добавить материал
+    </a>
+{% endif %}
+{% endblock %}

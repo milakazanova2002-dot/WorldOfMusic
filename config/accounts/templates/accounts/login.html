@@ -19,4 +19,9 @@
     <button type="submit">Войти</button>
 </form>
 
+<hr>
+<p>Ещё нет аккаунта?</p>
+<a href="{% url 'student_register' %}">Регистрация ученика</a> ·
+<a href="{% url 'teacher_register' %}">Регистрация педагога</a>
+
 {% endblock %}

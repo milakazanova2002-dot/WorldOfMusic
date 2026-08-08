@@ -12,6 +12,26 @@ from accounts.mixins import TeacherRequiredMixin, StudentRequiredMixin, teacher_
 
 
 
+class TeacherPublicListView(ListView):
+    """Публичный список педагогов — доступен без авторизации."""
+    model = TeacherProfile
+    template_name = "education/teacher_public_list.html"
+    context_object_name = "teachers"
+
+    def get_queryset(self):
+        return TeacherProfile.objects.filter(user__is_approved=True).select_related("user")
+
+
+class TeacherPublicDetailView(DetailView):
+    """Публичная страница педагога — только общедоступные данные, без списка учеников."""
+    model = TeacherProfile
+    template_name = "education/teacher_public_detail.html"
+    context_object_name = "teacher"
+
+    def get_queryset(self):
+        return TeacherProfile.objects.filter(user__is_approved=True)
+
+
 class StudentDetailView(LoginRequiredMixin, DetailView):
     model = StudentProfile
     template_name = "education/student_detail.html"
@@ -216,7 +236,8 @@ class AssignmentDetailView(LoginRequiredMixin, DetailView):
 class AssignmentCreateView(LoginRequiredMixin, TeacherRequiredMixin, CreateView):
     model = TeachingAssignment
     form_class = AssignmentForm
-    success_url = reverse_lazy("teachingassignment_list")
+    template_name = "education/assignment_form.html"
+    success_url = reverse_lazy("assignment_list")
 
     def form_valid(self, form):
         form.instance.teacher = self.request.user.teacher_profile
@@ -276,6 +297,10 @@ class PerformanceDetailView(LoginRequiredMixin, DetailView):
         user = request.user
         performance = self.get_object()
 
+        # Админ видит всё
+        if user.is_superuser:
+            return super().dispatch(request, *args, **kwargs)
+
         # Ученик может смотреть только свои исполнения
         if hasattr(user, "student_profile"):
             if performance.assignment.student == user.student_profile:
@@ -290,7 +315,7 @@ class PerformanceDetailView(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["comments"] = self.object.comments.all().order_by("-created_at")  #!!!!
+        context["comments"] = self.object.comments.all().order_by("-created_at")
         return context
 
 
@@ -415,7 +440,7 @@ def add_performance_comment(request, pk):
         if form.is_valid():
             comment = form.save(commit=False)
             comment.performance = performance
-            comment.author = request.user.teacher_profile
+            comment.teacher = request.user.teacher_profile
             comment.save()
             return redirect("performance_detail", pk=pk)
     else:

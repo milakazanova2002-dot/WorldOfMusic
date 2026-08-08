@@ -23,10 +23,15 @@ from .views import (
     StudentDetailView,
     TeacherDashboardView,
     TeacherDetailView,
+    TeacherPublicListView,
+    TeacherPublicDetailView,
     add_performance_comment,
 )
 
 urlpatterns = [
+    path("teachers/", TeacherPublicListView.as_view(), name="teacher_public_list"),
+    path("teachers/<int:pk>/", TeacherPublicDetailView.as_view(), name="teacher_public_detail"),
+
     path("student/<int:pk>/", StudentDetailView.as_view(), name="student_detail"),
 
     path("teacher/<int:pk>/", TeacherDetailView.as_view(), name="teacher_detail"),

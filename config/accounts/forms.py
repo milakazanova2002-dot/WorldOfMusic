@@ -32,3 +32,11 @@ class TeacherRegistrationForm(UserCreationForm):
         user.save()
 
         return user
+
+
+class GuestRegistrationForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ("username", "email")
+    # save() не переопределяем — профиль ему не нужен,
+    # роль "гость" определяется отсутствием StudentProfile/TeacherProfile

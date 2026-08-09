@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
 
-from .forms import StudentRegistrationForm, TeacherRegistrationForm
+from .forms import GuestRegistrationForm, StudentRegistrationForm, TeacherRegistrationForm
 
 @method_decorator(never_cache, name="dispatch")
 class UserLoginView(LoginView):
@@ -48,6 +48,17 @@ def student_register(request):
 
     return render(request, "accounts/student_register.html", {"form": form})
 
+def guest_register(request):
+    if request.method == "POST":
+        form = GuestRegistrationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect("/")
+    else:
+        form = GuestRegistrationForm()
+
+    return render(request, "accounts/guest_register.html", {"form": form})
 
 def teacher_register(request):
     if request.method == "POST":

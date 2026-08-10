@@ -1,0 +1,1342 @@
+[
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2026-07-31T21:54:05.402Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "1",
+    "object_repr": "Пианино",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2026-07-31T21:54:24.554Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "Барабаны",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2026-07-31T21:54:38.789Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "1",
+    "object_repr": "Классика",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2026-07-31T21:55:06.115Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "2",
+    "object_repr": "Оперная музыка",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2026-07-31T21:55:17.108Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "3",
+    "object_repr": "Эстрада",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2026-07-31T21:55:34.017Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "4",
+    "object_repr": "Народная",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2026-07-31T21:56:05.648Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "1",
+    "object_repr": "Людвиг ван Бетховен",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2026-07-31T21:58:47.079Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "1",
+    "object_repr": "Лунная соната",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2026-07-31T22:20:44.240Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "2",
+    "object_repr": "teacher_test",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2026-07-31T22:28:47.660Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "3",
+    "object_repr": "student_test",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2026-07-31T22:29:44.862Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "1",
+    "object_repr": "Ученик: student_test",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0412\\u043e\\u0437\\u0440\\u0430\\u0441\\u0442\", \"\\u0418\\u043d\\u0441\\u0442\\u0440\\u0443\\u043c\\u0435\\u043d\\u0442\\u044b\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2026-07-31T22:35:07.662Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "1",
+    "object_repr": "Ученик: student_test",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u0435\\u0434\\u0430\\u0433\\u043e\\u0433\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2026-07-31T23:01:10.896Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "3",
+    "object_repr": "Вокал",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2026-07-31T23:02:19.394Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "2",
+    "object_repr": "Матфей Блантер",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2026-07-31T23:03:17.067Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "2",
+    "object_repr": "Катюша",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2026-07-31T23:03:50.330Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "1",
+    "object_repr": "Ученик: student_test — 28.08.2026",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2026-08-02T17:25:58.795Z",
+    "user": 1,
+    "content_type": 14,
+    "object_id": "1",
+    "object_repr": "Вокал",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2026-08-02T17:26:04.088Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "1",
+    "object_repr": "Педагог: teacher_test → Ученик: student_test (Вокал)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2026-08-02T19:02:40.065Z",
+    "user": 1,
+    "content_type": 16,
+    "object_id": "1",
+    "object_repr": "Исполнение: Ученик: student_test — Лунная соната",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2026-08-02T19:03:31.272Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "1",
+    "object_repr": "Лунная соната — Изображение нот",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 21,
+  "fields": {
+    "action_time": "2026-08-02T19:03:35.566Z",
+    "user": 1,
+    "content_type": 16,
+    "object_id": "2",
+    "object_repr": "Исполнение: Ученик: student_test — Катюша",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 22,
+  "fields": {
+    "action_time": "2026-08-02T21:20:16.817Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "4",
+    "object_repr": "admin2",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 23,
+  "fields": {
+    "action_time": "2026-08-02T21:21:22.992Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "4",
+    "object_repr": "admin2",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 24,
+  "fields": {
+    "action_time": "2026-08-02T21:21:38.513Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "4",
+    "object_repr": "admin2",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0420\\u043e\\u043b\\u044c\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 25,
+  "fields": {
+    "action_time": "2026-08-02T21:21:48.570Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "4",
+    "object_repr": "admin2",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0420\\u043e\\u043b\\u044c\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 26,
+  "fields": {
+    "action_time": "2026-08-02T21:22:38.030Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "5",
+    "object_repr": "Teacher_2",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 27,
+  "fields": {
+    "action_time": "2026-08-02T21:22:56.949Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "5",
+    "object_repr": "Teacher_2",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 28,
+  "fields": {
+    "action_time": "2026-08-02T21:23:15.634Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "Ученик: student_test — 30.09.2026",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 29,
+  "fields": {
+    "action_time": "2026-08-02T21:23:35.419Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "1",
+    "object_repr": "Ученик: student_test — 28.08.2026",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u0418\\u043d\\u0441\\u0442\\u0440\\u0443\\u043c\\u0435\\u043d\\u0442\", \"\\u041f\\u0440\\u043e\\u0438\\u0437\\u0432\\u0435\\u0434\\u0435\\u043d\\u0438\\u0435\", \"\\u041d\\u0430\\u0437\\u043d\\u0430\\u0447\\u0435\\u043d\\u0438\\u0435\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 30,
+  "fields": {
+    "action_time": "2026-08-02T21:25:15.780Z",
+    "user": 1,
+    "content_type": 14,
+    "object_id": "2",
+    "object_repr": "Фортепиано",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 31,
+  "fields": {
+    "action_time": "2026-08-02T21:25:18.284Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "2",
+    "object_repr": "Педагог: Teacher 2 → Ученик: Student 2 (Фортепиано)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 32,
+  "fields": {
+    "action_time": "2026-08-02T21:25:29.763Z",
+    "user": 1,
+    "content_type": 16,
+    "object_id": "3",
+    "object_repr": "Исполнение: Ученик: Student 2 — Лунная соната",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 33,
+  "fields": {
+    "action_time": "2026-08-02T21:25:52.018Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "3",
+    "object_repr": "Педагог: teacher_test → Ученик: Student 2 (Вокал)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 34,
+  "fields": {
+    "action_time": "2026-08-02T21:26:03.513Z",
+    "user": 1,
+    "content_type": 16,
+    "object_id": "4",
+    "object_repr": "Исполнение: Ученик: Student 2 — Катюша",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 35,
+  "fields": {
+    "action_time": "2026-08-02T21:26:41.884Z",
+    "user": 1,
+    "content_type": 17,
+    "object_id": "1",
+    "object_repr": "Комментарий от Педагог: teacher_test",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 36,
+  "fields": {
+    "action_time": "2026-08-02T21:27:47.746Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "4",
+    "object_repr": "Педагог: student_test",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 37,
+  "fields": {
+    "action_time": "2026-08-02T21:28:14.619Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "4",
+    "object_repr": "Педагог: teacher_test → Ученик: student_test (Вокал)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 38,
+  "fields": {
+    "action_time": "2026-08-02T21:35:07.937Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "2",
+    "object_repr": "Лунная соната — Изображение нот",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 39,
+  "fields": {
+    "action_time": "2026-08-02T21:36:44.491Z",
+    "user": 1,
+    "content_type": 16,
+    "object_id": "4",
+    "object_repr": "Исполнение: Ученик: Student 2 — Катюша",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041c\\u0430\\u0442\\u0435\\u0440\\u0438\\u0430\\u043b\\u044b \\u0438\\u0441\\u043f\\u043e\\u043b\\u043d\\u0435\\u043d\\u0438\\u044f\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 40,
+  "fields": {
+    "action_time": "2026-08-02T21:36:46.734Z",
+    "user": 1,
+    "content_type": 16,
+    "object_id": "4",
+    "object_repr": "Исполнение: Ученик: Student 2 — Катюша",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 41,
+  "fields": {
+    "action_time": "2026-08-02T21:46:45.045Z",
+    "user": 1,
+    "content_type": 16,
+    "object_id": "4",
+    "object_repr": "Исполнение: Ученик: Student 2 — Катюша",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 42,
+  "fields": {
+    "action_time": "2026-08-02T21:46:58.294Z",
+    "user": 1,
+    "content_type": 16,
+    "object_id": "5",
+    "object_repr": "Исполнение: Ученик: Student 2 — Лунная соната",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 43,
+  "fields": {
+    "action_time": "2026-08-02T21:47:06.496Z",
+    "user": 1,
+    "content_type": 16,
+    "object_id": "5",
+    "object_repr": "Исполнение: Ученик: Student 2 — Лунная соната",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 44,
+  "fields": {
+    "action_time": "2026-08-02T21:47:10.232Z",
+    "user": 1,
+    "content_type": 16,
+    "object_id": "5",
+    "object_repr": "Исполнение: Ученик: Student 2 — Лунная соната",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 45,
+  "fields": {
+    "action_time": "2026-08-07T15:28:05.182Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "6",
+    "object_repr": "Milana",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 46,
+  "fields": {
+    "action_time": "2026-08-07T15:28:30.532Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "6",
+    "object_repr": "Milana",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 47,
+  "fields": {
+    "action_time": "2026-08-07T15:34:58.539Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "6",
+    "object_repr": "Педагог: Милана Казанова",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 48,
+  "fields": {
+    "action_time": "2026-08-07T15:35:16.419Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "7",
+    "object_repr": "Педагог: Милана Казанова",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 49,
+  "fields": {
+    "action_time": "2026-08-07T15:35:43.427Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "5",
+    "object_repr": "Ученик: Милана Казанова",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 50,
+  "fields": {
+    "action_time": "2026-08-07T15:35:43.427Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "3",
+    "object_repr": "Ученик: Teacher 2",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 51,
+  "fields": {
+    "action_time": "2026-08-07T15:35:43.427Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "2",
+    "object_repr": "Ученик: Student 2",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 52,
+  "fields": {
+    "action_time": "2026-08-07T15:35:59.431Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "4",
+    "object_repr": "Педагог: student_test",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 53,
+  "fields": {
+    "action_time": "2026-08-07T15:36:39.033Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "7",
+    "object_repr": "Mareta",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 54,
+  "fields": {
+    "action_time": "2026-08-07T15:36:52.691Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "7",
+    "object_repr": "Mareta",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"First name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 55,
+  "fields": {
+    "action_time": "2026-08-07T15:37:17.304Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "8",
+    "object_repr": "Педагог: Марета",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 56,
+  "fields": {
+    "action_time": "2026-08-07T19:05:56.366Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "6",
+    "object_repr": "Milana",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 57,
+  "fields": {
+    "action_time": "2026-08-07T19:56:46.443Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "8",
+    "object_repr": "Alena",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"password\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 58,
+  "fields": {
+    "action_time": "2026-08-07T19:56:59.393Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "8",
+    "object_repr": "Alena",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 59,
+  "fields": {
+    "action_time": "2026-08-07T20:30:53.048Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "8",
+    "object_repr": "Alena",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"password\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 60,
+  "fields": {
+    "action_time": "2026-08-08T15:49:25.302Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "5",
+    "object_repr": "Teacher_2",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Is approved\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 61,
+  "fields": {
+    "action_time": "2026-08-08T16:11:25.587Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "11",
+    "object_repr": "Arsen",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Is approved\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 62,
+  "fields": {
+    "action_time": "2026-08-08T16:58:32.167Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "11",
+    "object_repr": "Arsen",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$64BpRIOFCf41kr6655pBmU$cAVIrHTBiPrCy+eIfDt2slDfzQEJ1GfKDQUtmL5XZCc=",
+    "last_login": "2026-08-08T16:11:07.516Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "mikazanova2002@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-07-31T21:24:18.520Z",
+    "email_verified": false,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$l8m6HV6jGV5ljCNG9u9nkf$xZs5O/YQaTxxevQoD8L70tMXZcoetIcqd6KHZMXQFrk=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "teacher_test",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-07-31T22:20:43.593Z",
+    "email_verified": false,
+    "is_approved": false,
+    "avatar": "avatars/притчи_соломона_35-6.jpg",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$GbgoOqHiTDc6cfOA9eDHO8$qw6ipZuLr/BrHCAORrGZgf4GwnRHrumU2iH3rm9o7yg=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "student_test",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-07-31T22:28:47.071Z",
+    "email_verified": false,
+    "is_approved": false,
+    "avatar": "avatars/Псалтирь.jpg",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$ZlJkTksAAk7NAEsahNFeR2$nRozo/I/uTHB0Se2N4zaNAzbWlPEBKwshyQZbakwSe8=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "admin2",
+    "first_name": "Student",
+    "last_name": "2",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-02T21:20:16Z",
+    "email_verified": false,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$iuJlA7hfQL9pVukCmGZvYN$UxF53qSRZP6W+1m4KJf/PN+DiBCkAQGP9rPsM7H1TRU=",
+    "last_login": "2026-08-08T15:50:07.124Z",
+    "is_superuser": false,
+    "username": "Teacher_2",
+    "first_name": "Teacher",
+    "last_name": "2",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-02T21:22:37Z",
+    "email_verified": false,
+    "is_approved": true,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$k6yImD2vkGonKdI1A8GQDn$XAO8RGeg9N19p3xXvizo9+taZv3PB3I3GszVNnqB7iw=",
+    "last_login": "2026-08-07T22:19:36.693Z",
+    "is_superuser": false,
+    "username": "Milana",
+    "first_name": "Милана",
+    "last_name": "Казанова",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-07T15:28:04Z",
+    "email_verified": false,
+    "is_approved": true,
+    "avatar": "avatars/IMG_2524.jpeg",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$24oSfhwR9u8Ywx8fUiUY92$Sz7yvGHMxVnrXYfDPsh7MpBzXF0+0e355kPfbWA0abY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "Mareta",
+    "first_name": "Марета",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-07T15:36:38Z",
+    "email_verified": false,
+    "is_approved": true,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 8,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$0UHMy1xoWKz8buMw67oT0j$xOVhwpe3Av0eQtGBl6fbcTCWtxFVfCOiZ43k92gyp0M=",
+    "last_login": "2026-08-07T22:08:05.351Z",
+    "is_superuser": false,
+    "username": "Alena",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-07T15:49:18Z",
+    "email_verified": false,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 9,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$S5qozEUgqdY8MUX6YKoLOr$KRfC7ORHyopH3EnLLoZK7H/htlobbhjxi6NvEzQ4nvs=",
+    "last_login": "2026-08-07T18:47:26.776Z",
+    "is_superuser": false,
+    "username": "Alina",
+    "first_name": "",
+    "last_name": "",
+    "email": "alina@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-07T18:44:54.748Z",
+    "email_verified": false,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 10,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$Kuvb7BTNrkmbTlXpC9y7Hn$z32rKFJnJXwJ9W/3brVIlV5tqs1XPARrVOVTmWTTRKU=",
+    "last_login": "2026-08-08T16:09:33.122Z",
+    "is_superuser": false,
+    "username": "Adelina",
+    "first_name": "",
+    "last_name": "",
+    "email": "adelina@mail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-08T16:09:32.367Z",
+    "email_verified": false,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 11,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$4DGhPu3AR8INubeeq0vDV7$bijuLkIUyh6DE/8ZNNolRzu3t5Xf62MbKSP3bnF0bqU=",
+    "last_login": "2026-08-08T16:59:22.581Z",
+    "is_superuser": false,
+    "username": "Arsen",
+    "first_name": "",
+    "last_name": "",
+    "email": "arsen@mail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-08T16:10:17Z",
+    "email_verified": false,
+    "is_approved": true,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 12,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$4AwGP961tj6DHs93q7V7vu$3TdbpoFwRq5DD92sn1zJgK0fVh5U8tFAEyLItJnks2Y=",
+    "last_login": "2026-08-09T17:10:27.856Z",
+    "is_superuser": false,
+    "username": "Zara",
+    "first_name": "",
+    "last_name": "",
+    "email": "zara@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-09T17:10:26.902Z",
+    "email_verified": false,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "education.teacherprofile",
+  "pk": 1,
+  "fields": {
+    "user": 2,
+    "bio": "",
+    "experience_years": 0,
+    "instruments": []
+  }
+},
+{
+  "model": "education.teacherprofile",
+  "pk": 2,
+  "fields": {
+    "user": 4,
+    "bio": "",
+    "experience_years": 0,
+    "instruments": []
+  }
+},
+{
+  "model": "education.teacherprofile",
+  "pk": 3,
+  "fields": {
+    "user": 5,
+    "bio": "",
+    "experience_years": 0,
+    "instruments": []
+  }
+},
+{
+  "model": "education.teacherprofile",
+  "pk": 5,
+  "fields": {
+    "user": 1,
+    "bio": "",
+    "experience_years": 0,
+    "instruments": []
+  }
+},
+{
+  "model": "education.teacherprofile",
+  "pk": 7,
+  "fields": {
+    "user": 6,
+    "bio": "",
+    "experience_years": 4,
+    "instruments": [
+      3
+    ]
+  }
+},
+{
+  "model": "education.teacherprofile",
+  "pk": 8,
+  "fields": {
+    "user": 7,
+    "bio": "",
+    "experience_years": 0,
+    "instruments": [
+      1
+    ]
+  }
+},
+{
+  "model": "education.teacherprofile",
+  "pk": 9,
+  "fields": {
+    "user": 11,
+    "bio": "",
+    "experience_years": 0,
+    "instruments": []
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 1,
+  "fields": {
+    "user": 3,
+    "age": 13,
+    "level": "",
+    "instruments": [
+      1
+    ]
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 4,
+  "fields": {
+    "user": 1,
+    "age": null,
+    "level": "",
+    "instruments": []
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 6,
+  "fields": {
+    "user": 8,
+    "age": null,
+    "level": "",
+    "instruments": []
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 7,
+  "fields": {
+    "user": 9,
+    "age": null,
+    "level": "",
+    "instruments": []
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 8,
+  "fields": {
+    "user": 10,
+    "age": null,
+    "level": "",
+    "instruments": []
+  }
+},
+{
+  "model": "education.subject",
+  "pk": 1,
+  "fields": {
+    "name": "Вокал",
+    "slug": "vocal"
+  }
+},
+{
+  "model": "education.subject",
+  "pk": 2,
+  "fields": {
+    "name": "Фортепиано",
+    "slug": "fortepiano"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 6,
+  "fields": {
+    "teacher": 1,
+    "student": 1,
+    "subject": 2,
+    "is_active": true,
+    "created_at": "2026-08-07T13:56:03.694Z",
+    "updated_at": "2026-08-07T13:56:03.694Z"
+  }
+},
+{
+  "model": "music.instrument",
+  "pk": 1,
+  "fields": {
+    "name": "Пианино",
+    "description": "Клавишный музыкальный инструмент"
+  }
+},
+{
+  "model": "music.instrument",
+  "pk": 2,
+  "fields": {
+    "name": "Барабаны",
+    "description": "Ударный инструмент"
+  }
+},
+{
+  "model": "music.instrument",
+  "pk": 3,
+  "fields": {
+    "name": "Вокал",
+    "description": ""
+  }
+},
+{
+  "model": "music.genre",
+  "pk": 1,
+  "fields": {
+    "name": "Классика"
+  }
+},
+{
+  "model": "music.genre",
+  "pk": 2,
+  "fields": {
+    "name": "Оперная музыка"
+  }
+},
+{
+  "model": "music.genre",
+  "pk": 3,
+  "fields": {
+    "name": "Эстрада"
+  }
+},
+{
+  "model": "music.genre",
+  "pk": 4,
+  "fields": {
+    "name": "Народная"
+  }
+},
+{
+  "model": "music.composer",
+  "pk": 1,
+  "fields": {
+    "first_name": "Людвиг",
+    "last_name": "ван Бетховен",
+    "biography": "Немецкий композитор и пианист"
+  }
+},
+{
+  "model": "music.composer",
+  "pk": 2,
+  "fields": {
+    "first_name": "Матфей",
+    "last_name": "Блантер",
+    "biography": "Выдающийся советский композитор-песенник, народный артист СССР, Герой Социалистического Труда и лауреат Сталинской премии второй степени. Его творчество стало неотъемлемой частью культурного кода Советского Союза и Великой Отечественной войны."
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 1,
+  "fields": {
+    "title": "Лунная соната",
+    "composer": 1,
+    "year_created": 1801,
+    "description": "Это Соната для фортепиано № 14 до-диез минор, опус 27, № 2 Людвига ван Бетховена. Композитор работал над ней в 1800–1801 годах, а опубликовали сонату в 1802 году. \r\nru.ruwiki.ru +1\r\n\r\nИстория создания\r\nБетховен посвятил сонату графине Джульетте Гвиччарди — юной аристократке, которой он давал уроки музыки. В тот период композитор был в неё влюблён и мечтал о браке. Лето 1801 года они провели вместе в имении родственников Джульетты, и это время стало для Бетховена счастливым. \r\nskillbox.ru +3\r\n\r\nНо счастье оказалось недолгим. Уже в начале 1802 года Джульетта отдала предпочтение другому — композитору Венцелю Роберту фон Галленбергу, а в 1803 году вышла за него замуж. Для Бетховена это стало тяжёлым ударом. Параллельно с этим у композитора прогрессировала глухота. Все эти переживания — тоска от неразделённой любви, отчаяние, борьба с недугом — нашли отражение в музыке сонаты.",
+    "genre": [
+      1
+    ],
+    "instruments": [
+      1
+    ]
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 2,
+  "fields": {
+    "title": "Катюша",
+    "composer": 2,
+    "year_created": null,
+    "description": "",
+    "genre": [
+      3
+    ],
+    "instruments": [
+      3
+    ]
+  }
+},
+{
+  "model": "music.musicmaterial",
+  "pk": 1,
+  "fields": {
+    "piece": 1,
+    "type": "image",
+    "file": "materials/притчи_соломона_35-6.jpg",
+    "url": null,
+    "description": "",
+    "is_public": true,
+    "created_at": "2026-08-02T19:03:31.270Z"
+  }
+},
+{
+  "model": "music.musicmaterial",
+  "pk": 2,
+  "fields": {
+    "piece": 1,
+    "type": "image",
+    "file": "materials/матфея_633.webp",
+    "url": null,
+    "description": "",
+    "is_public": true,
+    "created_at": "2026-08-02T21:35:07.936Z"
+  }
+}
+]

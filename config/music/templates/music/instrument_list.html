@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Инструменты — World Of Music{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Инструменты</h2>
+        <a href="{% url 'music:instrument_create' %}" class="btn btn-primary">Добавить</a>
+    </div>
+
+    {% if instruments %}
+        <div class="list-group">
+            {% for inst in instruments %}
+            <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="mb-1">{{ inst.name }}</h5>
+                    {% if inst.description %}
+                        <small class="text-muted">{{ inst.description|truncatewords:20 }}</small>
+                    {% endif %}
+                </div>
+                <div class="btn-group btn-group-sm">
+                    <a href="{% url 'music:instrument_edit' inst.pk %}" class="btn btn-outline-primary">Ред.</a>
+                    <a href="{% url 'music:instrument_delete' inst.pk %}" class="btn btn-outline-danger">Удал.</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-muted">Инструментов пока нет.</p>
+    {% endif %}
+</div>
+{% endblock %}

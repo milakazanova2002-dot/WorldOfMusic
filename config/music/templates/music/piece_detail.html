@@ -54,7 +54,7 @@
 {% endif %}
 
 {% if request.user.is_authenticated and request.user.teacher_profile %}
-    <a href="{% url 'material_add' piece.id %}" class="btn btn-outline-secondary btn-sm">
+    <a href="{% url 'music:material_add' piece.id %}" class="btn btn-outline-secondary btn-sm">
         Добавить материал
     </a>
 {% endif %}

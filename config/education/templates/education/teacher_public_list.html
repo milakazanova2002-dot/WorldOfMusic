@@ -18,7 +18,7 @@
                                 <span class="badge bg-secondary">{{ i.name }}</span>
                             {% endfor %}
                         </p>
-                        <a href="{% url 'teacher_public_detail' teacher.pk %}" class="btn btn-outline-primary btn-sm">
+                        <a href="{% url 'education:teacher_public_detail' teacher.pk %}" class="btn btn-outline-primary btn-sm">
                             Профиль
                         </a>
                     </div>

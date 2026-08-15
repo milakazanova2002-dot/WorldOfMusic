@@ -6,7 +6,7 @@
 <ul>
     {% for p in performances %}
         <li>
-            <a href="{% url 'performance_detail' p.pk %}">
+            <a href="{% url 'education:performance_detail' p.pk %}">
                 Исполнение №{{ p.pk }} — {{ p.assignment.student }} ({{ p.assignment.subject }})
             </a>
         </li>

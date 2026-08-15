@@ -21,8 +21,8 @@
 
 <hr>
 <p>Ещё нет аккаунта?</p>
-<a href="{% url 'student_register' %}">Регистрация ученика</a> ·
-<a href="{% url 'teacher_register' %}">Регистрация педагога</a> ·
-<a href="{% url 'guest_register' %}">Регистрация родителя/гостя</a>
+<a href="{% url 'accounts:student_register' %}">Регистрация ученика</a> ·
+<a href="{% url 'accounts:teacher_register' %}">Регистрация педагога</a> ·
+<a href="{% url 'accounts:guest_register' %}">Регистрация родителя/гостя</a>
 
 {% endblock %}

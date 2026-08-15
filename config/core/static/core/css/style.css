@@ -86,62 +86,113 @@ footer {
 }
 
 
-/* ===== Модальное окно удаления Performance ===== */
+/* ===== Аватарка пользователя в хедере ===== */
 
-.modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.45);
-    backdrop-filter: blur(3px);
-    justify-content: center;
+.user-badge {
+    display: flex;
     align-items: center;
-    animation: fadeIn 0.25s ease;
-}
-
-.modal-window {
-    background: #fff;
-    padding: 25px;
-    width: 320px;
+    gap: 8px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.85);
+    transition: 0.3s;
+    padding: 6px 12px;
     border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    animation: slideUp 0.25s ease;
-    text-align: center;
 }
 
-.modal-confirm-btn,
-.modal-cancel-btn {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
+.user-badge:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #4a6cf7;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-name {
     font-size: 14px;
-    margin: 10px 5px 0;
+    font-weight: 500;
 }
 
-.modal-confirm-btn {
-    background: #e0e0e0;
+/* ===== Адаптивность ===== */
+
+/* Планшеты */
+@media (max-width: 991px) {
+    .user-avatar {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+
+    .user-name {
+        font-size: 13px;
+    }
+
+    .navbar-collapse {
+        background: #212529;
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 10px;
+    }
+
+    .card {
+        margin-bottom: 15px;
+    }
 }
 
-.modal-cancel-btn {
-    background: #f5f5f5;
+/* Мобильные */
+@media (max-width: 576px) {
+    .user-badge {
+        padding: 4px 8px;
+    }
+
+    .user-avatar {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+    }
+
+    .user-name {
+        font-size: 12px;
+    }
+
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .display-1 {
+        font-size: 3rem;
+    }
+
+    .btn-lg {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+
+    .card-body {
+        padding: 15px;
+    }
 }
 
-.delete-open-btn {
-    background: transparent;
-    border: none;
-    color: #555;
-    cursor: pointer;
-    font-size: 15px;
-    text-decoration: underline;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes slideUp {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+/* Десктоп */
+@media (min-width: 992px) {
+    .user-badge {
+        padding: 8px 14px;
+    }
 }

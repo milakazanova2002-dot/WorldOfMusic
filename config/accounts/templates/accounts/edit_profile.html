@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}Редактировать профиль — World Of Music{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Редактировать профиль</h2>
+
+    <div class="row mt-3">
+        <!-- Основные данные -->
+        <div class="col-md-6">
+            <div class="card p-3 shadow-sm">
+                <h5>Основные данные</h5>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    {% for field in form %}
+                    <div class="mb-3">
+                        <label class="form-label">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}
+                            <div class="text-danger small">{{ field.errors|join:", " }}</div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Профиль педагога / ученика -->
+        <div class="col-md-6">
+            {% if user.teacher_profile %}
+            <div class="card p-3 shadow-sm">
+                <h5>Профиль педагога</h5>
+                <form method="post" action="{% url 'accounts:teacher_profile_edit' %}">
+                    {% csrf_token %}
+
+                    {% for field in teacher_form %}
+                    <div class="mb-3">
+                        <label class="form-label">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}
+                            <div class="text-danger small">{{ field.errors|join:", " }}</div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                </form>
+            </div>
+            {% elif user.student_profile %}
+            <div class="card p-3 shadow-sm">
+                <h5>Профиль ученика</h5>
+                <form method="post" action="{% url 'accounts:student_profile_edit' %}">
+                    {% csrf_token %}
+
+                    {% for field in student_form %}
+                    <div class="mb-3">
+                        <label class="form-label">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}
+                            <div class="text-danger small">{{ field.errors|join:", " }}</div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                </form>
+            </div>
+            {% else %}
+            <div class="card p-3 shadow-sm">
+                <p class="text-muted">Профиль не определён.</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

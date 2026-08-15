@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}{% if form.instance.pk %}Редактировать{% else %}Добавить{% endif %} произведение — World Of Music{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>{% if form.instance.pk %}Редактировать{% else %}Добавить{% endif %} произведение</h2>
+
+    <form method="post" class="card p-4 mt-3 shadow-sm">
+        {% csrf_token %}
+
+        {% for field in form %}
+        <div class="mb-3">
+            <label class="form-label fw-bold">{{ field.label }}</label>
+            {{ field }}
+            {% if field.errors %}
+                <div class="text-danger small">{{ field.errors|join:", " }}</div>
+            {% endif %}
+        </div>
+        {% endfor %}
+
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-primary">
+                {% if form.instance.pk %}Сохранить{% else %}Создать{% endif %}
+            </button>
+            <a href="{% url 'music:piece_list' %}" class="btn btn-secondary">Отмена</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

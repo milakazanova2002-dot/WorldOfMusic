@@ -28,6 +28,8 @@ from .views import (
     add_performance_comment,
 )
 
+app_name = "education"
+
 urlpatterns = [
     path("teachers/", TeacherPublicListView.as_view(), name="teacher_public_list"),
     path("teachers/<int:pk>/", TeacherPublicDetailView.as_view(), name="teacher_public_detail"),

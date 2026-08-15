@@ -32,13 +32,13 @@
 </ul>
 
 {% if request.user.teacher_profile %}
-    <a href="{% url 'lesson_create' assignment_id=assignments.first.id %}">
+    <a href="{% url 'education:lesson_create' assignment_id=assignments.first.id %}">
         Добавить урок
     </a>
 {% endif %}
 
 {% if request.user.student_profile and request.user.student_profile.id == student.id %}
-    <a href="{% url 'performance_create' assignment_id=assignments.first.id %}">
+    <a href="{% url 'education:performance_create' assignment_id=assignments.first.id %}">
         Добавить исполнение
     </a>
 {% endif %}

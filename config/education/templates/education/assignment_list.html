@@ -3,14 +3,14 @@
 {% block content %}
 <h2>Мои назначения</h2>
 
-<a href="{% url 'assignment_create' %}">Создать новое назначение</a>
+<a href="{% url 'education:assignment_create' %}">Создать новое назначение</a>
 
 <ul>
     {% for a in assignments %}
         <li>
             {{ a.student }} — {{ a.subject }}
-            <a href="{% url 'assignment_edit' a.pk %}">Редактировать</a>
-            <a href="{% url 'assignment_delete' a.pk %}">Удалить</a>
+            <a href="{% url 'education:assignment_edit' a.pk %}">Редактировать</a>
+            <a href="{% url 'education:assignment_delete' a.pk %}">Удалить</a>
         </li>
     {% endfor %}
 </ul>

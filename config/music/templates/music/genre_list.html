@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Жанры — World Of Music{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Жанры</h2>
+        <a href="{% url 'music:genre_create' %}" class="btn btn-primary">Добавить</a>
+    </div>
+
+    {% if genres %}
+        <div class="list-group">
+            {% for genre in genres %}
+            <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                <h5 class="mb-1">{{ genre.name }}</h5>
+                <div class="btn-group btn-group-sm">
+                    <a href="{% url 'music:genre_edit' genre.pk %}" class="btn btn-outline-primary">Ред.</a>
+                    <a href="{% url 'music:genre_delete' genre.pk %}" class="btn btn-outline-danger">Удал.</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-muted">Жанров пока нет.</p>
+    {% endif %}
+</div>
+{% endblock %}

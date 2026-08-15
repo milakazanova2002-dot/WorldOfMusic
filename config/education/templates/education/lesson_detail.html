@@ -19,7 +19,7 @@
 <ul>
     {% for perf in lesson.assignment.performance_set.all %}
         <li>
-            <a href="{% url 'performance_detail' perf.id %}">
+            <a href="{% url 'education:performance_detail' perf.id %}">
                 {{ perf.piece }} — {{ perf.created_at }}
             </a>
         </li>
@@ -43,12 +43,12 @@
 </ul>
 
 {% if request.user.teacher_profile and lesson.assignment.teacher == request.user.teacher_profile %}
-    <a href="{% url 'lesson_material_add' lesson.id %}">Добавить материал</a>
+    <a href="{% url 'education:lesson_material_add' lesson.id %}">Добавить материал</a>
 {% endif %}
 
 {% if request.user.teacher_profile and lesson.assignment.teacher == request.user.teacher_profile %}
-    <a href="{% url 'lesson_update' lesson.id %}">Редактировать урок</a>
-    <a href="{% url 'lesson_delete' lesson.id %}">Удалить урок</a>
+    <a href="{% url 'education:lesson_update' lesson.id %}">Редактировать урок</a>
+    <a href="{% url 'education:lesson_delete' lesson.id %}">Удалить урок</a>
 {% endif %}
 
 {% endblock %}

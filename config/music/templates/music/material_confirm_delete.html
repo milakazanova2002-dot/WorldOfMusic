@@ -5,5 +5,5 @@
 <form method="post">
     {% csrf_token %}
     <button type="submit">Удалить</button>
-    <a href="{% url 'material_list' object.piece.id %}">Отмена</a>
+    <a href="{% url 'music:material_list' object.piece.id %}">Отмена</a>
 </form>

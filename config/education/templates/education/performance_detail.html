@@ -67,8 +67,8 @@
 {% endif %}
 
 <div class="actions">
-    <a href="{% url 'performance_materials' performance.id %}">Добавить материалы к исполнению</a><br>
-    <a href="{% url 'performance_edit' performance.id %}">Редактировать исполнение</a><br>
+    <a href="{% url 'education:performance_materials' performance.id %}">Добавить материалы к исполнению</a><br>
+    <a href="{% url 'education:performance_edit' performance.id %}">Редактировать исполнение</a><br>
     <button id="deleteBtn" class="delete-open-btn">Удалить исполнение</button>
 </div>
 
@@ -77,7 +77,7 @@
         <h3>Удалить исполнение?</h3>
         <p>Вы уверены, что хотите удалить это исполнение?</p>
 
-        <form method="post" action="{% url 'performance_delete' performance.id %}">
+        <form method="post" action="{% url 'education:performance_delete' performance.id %}">
             {% csrf_token %}
             <button type="submit" class="modal-confirm-btn">Удалить</button>
             <button type="button" id="cancelBtn" class="modal-cancel-btn">Отмена</button>
@@ -122,7 +122,7 @@
 </ul>
 
 {% if request.user.teacher_profile and performance.assignment.teacher == request.user.teacher_profile %}
-    <a href="{% url 'performance_comment_add' performance.id %}">Добавить комментарий</a>
+    <a href="{% url 'education:performance_comment_add' performance.id %}">Добавить комментарий</a>
 {% endif %}
 
 {% endblock %}

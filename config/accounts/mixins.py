@@ -10,16 +10,16 @@ class TeacherRequiredMixin:
 
         # Не авторизован
         if not user.is_authenticated:
-            return redirect("login")
+            return redirect("accounts:login")
 
         # Нет профиля педагога
         if not hasattr(user, "teacher_profile"):
             messages.error(request, "Доступ только для педагогов.")
-            return redirect("login")
+            return redirect("accounts:login")
 
         # Педагог не одобрен
         if not user.is_approved:
-            return redirect("pending_approval")
+            return redirect("accounts:pending_approval")
 
         return super().dispatch(request, *args, **kwargs)
 
@@ -29,11 +29,11 @@ class StudentRequiredMixin:
         user = request.user
 
         if not user.is_authenticated:
-            return redirect("login")
+            return redirect("accounts:login")
 
         if not hasattr(user, "student_profile"):
             messages.error(request, "Доступ только для учеников.")
-            return redirect("login")
+            return redirect("accounts:login")
 
         return super().dispatch(request, *args, **kwargs)
 

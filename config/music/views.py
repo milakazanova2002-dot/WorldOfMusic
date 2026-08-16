@@ -128,14 +128,14 @@ class MusicalPieceUpdateView(LoginRequiredMixin, UpdateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy("piece_detail", kwargs={"pk": self.object.pk})
+        return reverse_lazy("music:piece_detail", kwargs={"pk": self.object.pk})
 
 
 class MusicalPieceDeleteView(LoginRequiredMixin, DeleteView):
     """Удаление произведения."""
     model = MusicalPiece
     template_name = "music/piece_confirm_delete.html"
-    success_url = reverse_lazy("piece_list")
+    success_url = reverse_lazy("music:piece_list")
 
     def dispatch(self, request, *args, **kwargs):
         if not hasattr(request.user, "teacher_profile"):
@@ -161,7 +161,7 @@ class ComposerCreateView(LoginRequiredMixin, CreateView):
     model = Composer
     fields = ["first_name", "last_name", "biography"]
     template_name = "music/composer_form.html"
-    success_url = reverse_lazy("composer_list")
+    success_url = reverse_lazy("music:composer_list")
 
     def form_valid(self, form):
         messages.success(self.request, "Композитор добавлен!")
@@ -172,7 +172,7 @@ class ComposerUpdateView(LoginRequiredMixin, UpdateView):
     model = Composer
     fields = ["first_name", "last_name", "biography"]
     template_name = "music/composer_form.html"
-    success_url = reverse_lazy("composer_list")
+    success_url = reverse_lazy("music:composer_list")
 
     def form_valid(self, form):
         messages.success(self.request, "Композитор обновлён!")
@@ -182,7 +182,7 @@ class ComposerUpdateView(LoginRequiredMixin, UpdateView):
 class ComposerDeleteView(LoginRequiredMixin, DeleteView):
     model = Composer
     template_name = "music/composer_confirm_delete.html"
-    success_url = reverse_lazy("composer_list")
+    success_url = reverse_lazy("music:composer_list")
 
     def form_valid(self, form):
         messages.success(self.request, "Композитор удалён.")
@@ -199,7 +199,7 @@ class GenreCreateView(LoginRequiredMixin, CreateView):
     model = Genre
     fields = ["name"]
     template_name = "music/genre_form.html"
-    success_url = reverse_lazy("genre_list")
+    success_url = reverse_lazy("music:genre_list")
 
     def form_valid(self, form):
         messages.success(self.request, "Жанр добавлен!")
@@ -210,7 +210,7 @@ class GenreUpdateView(LoginRequiredMixin, UpdateView):
     model = Genre
     fields = ["name"]
     template_name = "music/genre_form.html"
-    success_url = reverse_lazy("genre_list")
+    success_url = reverse_lazy("music:genre_list")
 
     def form_valid(self, form):
         messages.success(self.request, "Жанр обновлён!")
@@ -220,7 +220,7 @@ class GenreUpdateView(LoginRequiredMixin, UpdateView):
 class GenreDeleteView(LoginRequiredMixin, DeleteView):
     model = Genre
     template_name = "music/genre_confirm_delete.html"
-    success_url = reverse_lazy("genre_list")
+    success_url = reverse_lazy("music:genre_list")
 
     def form_valid(self, form):
         messages.success(self.request, "Жанр удалён.")
@@ -237,7 +237,7 @@ class InstrumentCreateView(LoginRequiredMixin, CreateView):
     model = Instrument
     fields = ["name", "description"]
     template_name = "music/instrument_form.html"
-    success_url = reverse_lazy("instrument_list")
+    success_url = reverse_lazy("music:instrument_list")
 
     def form_valid(self, form):
         messages.success(self.request, "Инструмент добавлен!")
@@ -248,7 +248,7 @@ class InstrumentUpdateView(LoginRequiredMixin, UpdateView):
     model = Instrument
     fields = ["name", "description"]
     template_name = "music/instrument_form.html"
-    success_url = reverse_lazy("instrument_list")
+    success_url = reverse_lazy("music:instrument_list")
 
     def form_valid(self, form):
         messages.success(self.request, "Инструмент обновлён!")
@@ -258,7 +258,7 @@ class InstrumentUpdateView(LoginRequiredMixin, UpdateView):
 class InstrumentDeleteView(LoginRequiredMixin, DeleteView):
     model = Instrument
     template_name = "music/instrument_confirm_delete.html"
-    success_url = reverse_lazy("instrument_list")
+    success_url = reverse_lazy("music:instrument_list")
 
     def form_valid(self, form):
         messages.success(self.request, "Инструмент удалён.")

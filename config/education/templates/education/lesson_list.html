@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Мои уроки</h2>
+
+<ul>
+    {% for lesson in lessons %}
+        <li>
+            {{ lesson.date }} — {{ lesson.assignment.student }}
+            <a href="{% url 'education:lesson_detail' lesson.pk %}">Подробнее</a>
+        </li>
+    {% empty %}
+        <li>Уроков пока нет.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

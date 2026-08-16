@@ -178,7 +178,7 @@ class LessonCreateView(LoginRequiredMixin, TeacherRequiredMixin, CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy("lesson_list")
+        return reverse_lazy("education:lesson_list")
 
 
 class LessonUpdateView(LoginRequiredMixin, TeacherRequiredMixin, UpdateView):
@@ -187,7 +187,7 @@ class LessonUpdateView(LoginRequiredMixin, TeacherRequiredMixin, UpdateView):
     template_name = "education/lesson_form.html"
 
     def get_success_url(self):
-        return reverse_lazy("lesson_detail", kwargs={"pk": self.object.id})
+        return reverse_lazy("education:lesson_detail", kwargs={"pk": self.object.id})
 
 
 class LessonDeleteView(LoginRequiredMixin, TeacherRequiredMixin, DeleteView):
@@ -195,7 +195,7 @@ class LessonDeleteView(LoginRequiredMixin, TeacherRequiredMixin, DeleteView):
     template_name = "education/lesson_confirm_delete.html"
 
     def get_success_url(self):
-        return reverse_lazy("lesson_list")
+        return reverse_lazy("education:lesson_list")
 
 
 class LessonMaterialCreateView(LoginRequiredMixin, TeacherRequiredMixin, CreateView):
@@ -212,7 +212,7 @@ class LessonMaterialCreateView(LoginRequiredMixin, TeacherRequiredMixin, CreateV
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy("lesson_detail", kwargs={"pk": self.lesson.id})
+        return reverse_lazy("education:lesson_detail", kwargs={"pk": self.lesson.id})
 
 
 class AssignmentListView(LoginRequiredMixin, ListView):
@@ -237,7 +237,7 @@ class AssignmentCreateView(LoginRequiredMixin, TeacherRequiredMixin, CreateView)
     model = TeachingAssignment
     form_class = AssignmentForm
     template_name = "education/assignment_form.html"
-    success_url = reverse_lazy("assignment_list")
+    success_url = reverse_lazy("education:assignment_list")
 
     def form_valid(self, form):
         form.instance.teacher = self.request.user.teacher_profile
@@ -250,14 +250,14 @@ class AssignmentUpdateView(LoginRequiredMixin, TeacherRequiredMixin, UpdateView)
     template_name = "education/assignment_form.html"
 
     def get_success_url(self):
-        return reverse("assignment_detail", args=[self.object.pk])
+        return reverse("education:assignment_detail", args=[self.object.pk])
 
 
 
 class AssignmentDeleteView(LoginRequiredMixin, TeacherRequiredMixin, DeleteView):
     model = TeachingAssignment
     template_name = "education/assignment_confirm_delete.html"
-    success_url = reverse_lazy("assignment_list")
+    success_url = reverse_lazy("education:assignment_list")
 
 
 class PerformanceListView(LoginRequiredMixin, ListView):
@@ -336,7 +336,7 @@ class PerformanceCreateView(LoginRequiredMixin, TeacherRequiredMixin, CreateView
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy("performance_list")
+        return reverse_lazy("education:performance_list")
 
 
 class PerformanceMaterialUpdateView(LoginRequiredMixin, TeacherRequiredMixin, UpdateView):
@@ -345,7 +345,7 @@ class PerformanceMaterialUpdateView(LoginRequiredMixin, TeacherRequiredMixin, Up
     template_name = "education/performance_material_form.html"
 
     def get_success_url(self):
-        return reverse_lazy("performance_detail", kwargs={"pk": self.object.id})
+        return reverse_lazy("education:performance_detail", kwargs={"pk": self.object.id})
 
 
 class PerformanceCommentCreateView(LoginRequiredMixin, TeacherRequiredMixin, CreateView):
@@ -363,7 +363,7 @@ class PerformanceCommentCreateView(LoginRequiredMixin, TeacherRequiredMixin, Cre
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy("performance_detail", kwargs={"pk": self.performance.id})
+        return reverse_lazy("education:performance_detail", kwargs={"pk": self.performance.id})
 
 
 class PerformanceUpdateView(LoginRequiredMixin, TeacherRequiredMixin, UpdateView):
@@ -372,7 +372,7 @@ class PerformanceUpdateView(LoginRequiredMixin, TeacherRequiredMixin, UpdateView
     template_name = "education/performance_form.html"
 
     def get_success_url(self):
-        return reverse_lazy("performance_detail", kwargs={"pk": self.object.id})
+        return reverse_lazy("education:performance_detail", kwargs={"pk": self.object.id})
 
 
 class PerformanceDeleteView(LoginRequiredMixin, TeacherRequiredMixin, DeleteView):
@@ -380,7 +380,7 @@ class PerformanceDeleteView(LoginRequiredMixin, TeacherRequiredMixin, DeleteView
     template_name = "education/performance_confirm_delete.html"
 
     def get_success_url(self):
-        return reverse_lazy("performance_list")
+        return reverse_lazy("education:performance_list")
 
 
 class StudentDashboardView(LoginRequiredMixin, StudentRequiredMixin, TemplateView):
@@ -442,7 +442,7 @@ def add_performance_comment(request, pk):
             comment.performance = performance
             comment.teacher = request.user.teacher_profile
             comment.save()
-            return redirect("performance_detail", pk=pk)
+            return redirect("education:performance_detail", pk=pk)
     else:
         form = PerformanceCommentForm()
 

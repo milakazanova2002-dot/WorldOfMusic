@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Удалить урок?</h2>
+
+<p>Вы уверены, что хотите удалить урок от {{ object.date }}?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Удалить</button>
+</form>
+
+<a href="{% url 'education:lesson_detail' object.pk %}">Отмена</a>
+{% endblock %}

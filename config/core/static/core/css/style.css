@@ -196,3 +196,45 @@ footer {
         padding: 8px 14px;
     }
 }
+
+
+/* ===== Карточки произведений ===== */
+
+.piece-card {
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.piece-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.piece-cover {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.cover-placeholder {
+    font-size: 64px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+    .piece-cover {
+        height: 150px;
+    }
+
+    .cover-placeholder {
+        font-size: 48px;
+    }
+}

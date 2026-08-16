@@ -3,76 +3,108 @@
 {% block title %}Библиотека произведений — World Of Music{% endblock %}
 
 {% block content %}
-<h2>Библиотека произведений</h2>
+<div class="container mt-4">
+    <h1 class="mb-4">🎵 Библиотека произведений</h1>
 
-<form method="get" class="row g-2 mb-4">
-    <div class="col-auto">
-        <input type="text" name="q" value="{{ request.GET.q }}" class="form-control" placeholder="Поиск по названию">
+    <!-- Поиск и фильтры -->
+    <div class="card p-3 mb-4 shadow-sm">
+        <form method="get" class="row g-2">
+            <div class="col-md-4">
+                <input type="text" name="q" value="{{ request.GET.q }}" class="form-control" placeholder="Поиск по названию...">
+            </div>
+
+            <div class="col-md-3">
+                <select name="genre" class="form-select">
+                    <option value="">Все жанры</option>
+                    {% for genre in genres %}
+                        <option value="{{ genre.id }}" {% if request.GET.genre == genre.id|stringformat:"s" %}selected{% endif %}>
+                            {{ genre.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <select name="instrument" class="form-select">
+                    <option value="">Все инструменты</option>
+                    {% for instrument in instruments %}
+                        <option value="{{ instrument.id }}" {% if request.GET.instrument == instrument.id|stringformat:"s" %}selected{% endif %}>
+                            {{ instrument.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary w-100">🔍 Найти</button>
+            </div>
+        </form>
     </div>
 
-    <div class="col-auto">
-        <select name="genre" class="form-select">
-            <option value="">Все жанры</option>
-            {% for genre in genres %}
-                <option value="{{ genre.id }}" {% if request.GET.genre == genre.id|stringformat:"s" %}selected{% endif %}>
-                    {{ genre.name }}
-                </option>
-            {% endfor %}
-        </select>
-    </div>
+    <!-- Сетка произведений -->
+    {% if pieces %}
+        <div class="row">
+            {% for piece in pieces %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 piece-card shadow-sm">
+                        <!-- Обложка или градиент -->
+                        <div class="piece-cover" style="{% if piece.cover %}background-image: url('{{ piece.cover.url }}');{% else %}{{ piece.get_gradient_class }}{% endif %}">
+                            {% if not piece.cover %}
+                                <span class="cover-placeholder">
+                                    {% if piece.composer %}{{ piece.composer.first_name|first|upper }}{% endif %}
+                                </span>
+                            {% endif %}
+                        </div>
 
-    <div class="col-auto">
-        <select name="instrument" class="form-select">
-            <option value="">Все инструменты</option>
-            {% for instrument in instruments %}
-                <option value="{{ instrument.id }}" {% if request.GET.instrument == instrument.id|stringformat:"s" %}selected{% endif %}>
-                    {{ instrument.name }}
-                </option>
-            {% endfor %}
-        </select>
-    </div>
-
-    <div class="col-auto">
-        <button type="submit" class="btn btn-primary">Найти</button>
-    </div>
-</form>
-
-{% if pieces %}
-    <div class="row">
-        {% for piece in pieces %}
-            <div class="col-md-4 mb-3">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ piece.title }}</h5>
-                        <p class="card-text text-muted">{{ piece.composer }}</p>
-                        <p class="card-text">
-                            {% for g in piece.genre.all %}
-                                <span class="badge bg-secondary">{{ g.name }}</span>
-                            {% endfor %}
-                        </p>
-                        <a href="{% url 'music:piece_detail' piece.pk %}" class="btn btn-outline-primary btn-sm">
-                            Подробнее
-                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ piece.title }}</h5>
+                            <p class="card-text text-muted">
+                                {% if piece.composer %}{{ piece.composer }}{% endif %}
+                            </p>
+                            <p class="card-text">
+                                {% for g in piece.genre.all %}
+                                    <span class="badge bg-{{ g.get_badge_class }}">{{ g.name }}</span>
+                                {% endfor %}
+                            </p>
+                            <a href="{% url 'music:piece_detail' piece.pk %}" class="btn btn-outline-primary btn-sm w-100">
+                                Подробнее
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
-    </div>
+            {% endfor %}
+        </div>
 
-    {% if is_paginated %}
-        <nav>
-            <ul class="pagination">
+        <!-- Пагинация -->
+        {% if is_paginated %}
+        <nav class="mt-4">
+            <ul class="pagination justify-content-center">
                 {% if page_obj.has_previous %}
-                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Назад</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">← Назад</a>
+                    </li>
                 {% endif %}
-                <li class="page-item disabled"><span class="page-link">{{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</span></li>
+
+                <li class="page-item disabled">
+                    <span class="page-link">Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</span>
+                </li>
+
                 {% if page_obj.has_next %}
-                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Далее</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">Далее →</a>
+                    </li>
                 {% endif %}
             </ul>
         </nav>
+        {% endif %}
+
+    {% else %}
+        <div class="text-center py-5">
+            <p class="text-muted fs-5">Пока нет произведений</p>
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'music:piece_create' %}" class="btn btn-primary">Добавить первое</a>
+            {% endif %}
+        </div>
     {% endif %}
-{% else %}
-    <p>Произведений пока нет.</p>
-{% endif %}
+</div>
 {% endblock %}

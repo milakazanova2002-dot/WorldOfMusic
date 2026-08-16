@@ -63,6 +63,13 @@ class MusicalPiece(models.Model):
         verbose_name="Название"
     )
 
+    cover = models.ImageField(
+        upload_to="pieces_covers/",
+        blank=True,
+        null=True,
+        verbose_name="Обложка"
+    )
+
     composer = models.ForeignKey(
         Composer,
         on_delete=models.CASCADE,
@@ -98,9 +105,44 @@ class MusicalPiece(models.Model):
     class Meta:
         verbose_name = "Музыкальное произведение"
         verbose_name_plural = "Музыкальные произведения"
+
+
+    def get_gradient_class(self):
+        """Возвращает CSS-строку для градиента на основе жанра."""
+        genres = list(self.genre.all())
+        if not genres:
+            return 'background: linear-gradient(135deg, #667eea, #764ba2);'
+
+        # Разные цвета для разных жанров
+        gradient_map = {
+            'Классика': 'linear-gradient(135deg, #667eea, #764ba2)',
+            'Романс': 'linear-gradient(135deg, #f093fb, #f5576c)',
+            'Народная': 'linear-gradient(135deg, #4facfe, #00f2fe)',
+            'Оперная': 'linear-gradient(135deg, #fa709a, #fee140)',
+            'Хоровая': 'linear-gradient(135deg, #a18cd1, #fbc2eb)',
+        }
+
+        genre_name = genres[0].name
+        gradient = gradient_map.get(genre_name, 'linear-gradient(135deg, #667eea, #764ba2)')
+        return f'background: {gradient};'
+
+    def get_badge_class(self):
+        """Возвращает класс Bootstrap для бейджа."""
+        badge_map = {
+            'Классика': 'primary',
+            'Романс': 'danger',
+            'Народная': 'success',
+            'Оперная': 'warning',
+            'Хоровая': 'info',
+        }
+        genres = list(self.genre.all())
+        if not genres:
+            return 'secondary'
+        return badge_map.get(genres[0].name, 'secondary')
         
     def __str__(self):
         return self.title
+    
 
 
 class MusicMaterial(models.Model):

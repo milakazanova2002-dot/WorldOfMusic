@@ -33,15 +33,18 @@ class ComposerAdmin(admin.ModelAdmin):
 
 @admin.register(MusicalPiece)
 class MusicalPieceAdmin(admin.ModelAdmin):
+
     list_display = (
         "title",
         "composer",
+        "cover",
     )
 
     filter_horizontal = (
         "genre",
         "instruments",
     )
+
 
 
 @admin.register(MusicMaterial)

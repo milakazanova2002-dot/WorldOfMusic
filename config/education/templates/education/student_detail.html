@@ -1,46 +1,98 @@
 {% extends "base.html" %}
 
+{% block title %}{{ student.user.get_full_name|default:student.user.username }} — World Of Music{% endblock %}
+
 {% block content %}
-<h2>Профиль ученика: {{ student.user.username }}</h2>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-sm p-4">
+                <!-- Аватарка -->
+                <div class="text-center mb-3">
+                    <div class="profile-avatar mx-auto">
+                        {% if student.user.avatar %}
+                            <img src="{{ student.user.avatar.url }}" alt="Аватар">
+                        {% else %}
+                            {{ student.user.first_name|default:""|first|upper }}{{ student.user.last_name|default:""|first|upper }}
+                        {% endif %}
+                    </div>
+                    <h2 class="mt-3">{{ student.user.get_full_name|default:student.user.username }}</h2>
+                </div>
 
-<h3>Инструмент</h3>
-<p>{{ student.instrument }}</p>
+                <hr>
 
-<h3>Педагог</h3>
-{% for assignment in assignments %}
-    <p>{{ assignment.teacher.user.username }}</p>
-{% empty %}
-    <p>Педагог не назначен.</p>
-{% endfor %}
+                <!-- Возраст и уровень -->
+                {% if student.age %}
+                <p><strong>Возраст:</strong> {{ student.age }} лет</p>
+                {% endif %}
+                {% if student.level %}
+                <p><strong>Уровень:</strong> {{ student.level }}</p>
+                {% endif %}
 
-<h3>Уроки</h3>
-<ul>
-    {% for lesson in lessons %}
-        <li>{{ lesson.date }} — {{ lesson.piece }}</li>
-    {% empty %}
-        <li>Уроков пока нет.</li>
-    {% endfor %}
-</ul>
+                <!-- Инструменты -->
+                {% if student.instruments.all %}
+                <p>
+                    <strong>Инструменты:</strong><br>
+                    {% for i in student.instruments.all %}
+                        <span class="badge bg-secondary me-1">{{ i.name }}</span>
+                    {% endfor %}
+                </p>
+                {% endif %}
 
-<h3>Исполнения</h3>
-<ul>
-    {% for perf in performances %}
-        <li>{{ perf.piece }} — {{ perf.created_at }}</li>
-    {% empty %}
-        <li>Исполнений пока нет.</li>
-    {% endfor %}
-</ul>
+                <!-- Педагог -->
+                <h5>Педагог</h5>
+                {% for assignment in assignments %}
+                <p class="text-muted">
+                    <a href="{% url 'education:teacher_public_detail' assignment.teacher.id %}" class="text-decoration-none">
+                        👨‍🏫 {{ assignment.teacher.user.get_full_name|default:assignment.teacher.user.username }}
+                    </a>
+                </p>
+                {% empty %}
+                <p class="text-muted">Педагог не назначен.</p>
+                {% endfor %}
 
-{% if request.user.teacher_profile %}
-    <a href="{% url 'education:lesson_create' assignment_id=assignments.first.id %}">
-        Добавить урок
-    </a>
-{% endif %}
+                <!-- Уроки -->
+                <h5>Уроки</h5>
+                {% if lessons %}
+                    <ul>
+                        {% for lesson in lessons %}
+                        <li>{{ lesson.date|date:"d.m.Y" }} — {{ lesson.piece|default:"—" }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="text-muted">Уроков пока нет.</p>
+                {% endif %}
 
-{% if request.user.student_profile and request.user.student_profile.id == student.id %}
-    <a href="{% url 'education:performance_create' assignment_id=assignments.first.id %}">
-        Добавить исполнение
-    </a>
-{% endif %}
+                <!-- Исполнения -->
+                <h5>Исполнения</h5>
+                {% if performances %}
+                    <ul>
+                        {% for perf in performances %}
+                        <li>{{ perf.piece|default:"—" }} — {{ perf.score|default:"Без оценки" }} ⭐</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="text-muted">Исполнений пока нет.</p>
+                {% endif %}
 
+                <!-- Кнопки действий -->
+                <div class="d-flex gap-2 mt-3">
+                    {% if request.user.teacher_profile and assignments.first %}
+                        <a href="{% url 'education:lesson_create' assignment_id=assignments.first.id %}" class="btn btn-primary btn-sm">
+                            ➕ Добавить урок
+                        </a>
+                    {% endif %}
+                    {% if request.user.student_profile and request.user.student_profile.id == student.id and assignments.first %}
+                        <a href="{% url 'education:performance_create' assignment_id=assignments.first.id %}" class="btn btn-success btn-sm">
+                            🎤 Добавить исполнение
+                        </a>
+                    {% endif %}
+                    {% if request.user.is_authenticated and request.user.student_profile.id == student.id %}
+                        <a href="{% url 'accounts:profile_edit' %}" class="btn btn-outline-primary btn-sm ms-auto">Настройки</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

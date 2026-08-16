@@ -1,92 +1,167 @@
+/* ===== Глобальные стили ===== */
+
+:root {
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --primary-light: #818cf8;
+    --secondary: #ec4899;
+    --gradient-1: linear-gradient(135deg, #6366f1, #8b5cf6);
+    --gradient-2: linear-gradient(135deg, #ec4899, #f43f5e);
+    --gradient-3: linear-gradient(135deg, #06b6d4, #3b82f6);
+    --text-dark: #1e293b;
+    --text-muted: #64748b;
+    --bg-light: #f8fafc;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.12);
+    --radius: 16px;
+}
+
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fc;
-    color: #2c3e50;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
 }
 
+/* ===== Навигация ===== */
 
-header {
-    padding: 0;
+.navbar {
+    background: rgba(30, 41, 59, 0.95) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-sm);
+    padding: 12px 0;
 }
-
-
-/* Навигация */
 
 .navbar-brand {
-    font-weight: bold;
-    font-size: 1.4rem;
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: -0.5px;
 }
-
 
 .nav-link {
-    transition: 0.3s;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 8px 16px !important;
+    border-radius: 8px;
+    transition: all 0.2s ease;
 }
-
 
 .nav-link:hover {
-    opacity: 0.8;
+    background: rgba(255, 255, 255, 0.1);
 }
 
-
-/* Главный экран */
-
-.hero-section {
-    background: linear-gradient(
-        135deg,
-        #eef5ff,
-        #ffffff
-    );
-
-    border-radius: 20px;
-}
-
-
-.hero-section h1 {
-    color: #243b64;
-}
-
-
-/* Кнопки */
+/* ===== Кнопки ===== */
 
 .btn-primary {
-    background-color: #4a6cf7;
-    border-color: #4a6cf7;
+    background: var(--gradient-1);
+    border: none;
+    font-weight: 600;
+    padding: 10px 24px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
 }
-
 
 .btn-primary:hover {
-    background-color: #3957d6;
-    border-color: #3957d6;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
 }
 
+.btn-outline-primary {
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    font-weight: 600;
+    border-radius: 10px;
+}
 
-/* Карточки */
+.btn-outline-primary:hover {
+    background: var(--primary);
+    color: #fff;
+}
+
+/* ===== Карточки ===== */
 
 .card {
     border: none;
-    border-radius: 18px;
-    transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
 }
-
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
 }
 
+/* ===== Hero-секция (главный экран) ===== */
 
-/* Footer */
-
-footer {
-    text-align: center;
-    padding: 25px;
-    background-color: #eef1f5;
-    margin-top: 40px;
+.hero-section {
+    background: var(--gradient-1);
+    border-radius: 24px;
+    padding: 60px 40px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
 }
 
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 500px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
 
-/* ===== Аватарка пользователя в хедере ===== */
+.hero-section h1 {
+    font-weight: 800;
+    font-size: 2.5rem;
+    letter-spacing: -1px;
+    position: relative;
+}
+
+.hero-section .lead {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    position: relative;
+}
+
+/* ===== Секции ===== */
+
+section.py-5 {
+    padding: 60px 0;
+}
+
+.bg-light {
+    background: #fff !important;
+}
+
+/* ===== Аватарка пользователя ===== */
+
+.user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--gradient-1);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 .user-badge {
     display: flex;
@@ -104,99 +179,45 @@ footer {
     background: rgba(255, 255, 255, 0.1);
 }
 
-.user-avatar {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: #4a6cf7;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 16px;
-    overflow: hidden;
-    flex-shrink: 0;
-}
-
-.user-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.user-name {
-    font-size: 14px;
-    font-weight: 500;
-}
-
 /* ===== Адаптивность ===== */
 
-/* Планшеты */
-@media (max-width: 991px) {
-    .user-avatar {
-        width: 32px;
-        height: 32px;
-        font-size: 14px;
-    }
-
-    .user-name {
-        font-size: 13px;
-    }
-
-    .navbar-collapse {
-        background: #212529;
-        padding: 15px;
-        border-radius: 8px;
-        margin-top: 10px;
-    }
-
-    .card {
-        margin-bottom: 15px;
-    }
-}
-
-/* Мобильные */
-@media (max-width: 576px) {
-    .user-badge {
-        padding: 4px 8px;
-    }
-
-    .user-avatar {
-        width: 28px;
-        height: 28px;
-        font-size: 12px;
-    }
-
-    .user-name {
-        font-size: 12px;
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 40px 20px;
     }
 
     .hero-section h1 {
         font-size: 2rem;
     }
 
-    .display-1 {
-        font-size: 3rem;
-    }
-
-    .btn-lg {
-        font-size: 0.9rem;
-        padding: 8px 16px;
-    }
-
-    .card-body {
-        padding: 15px;
+    .card {
+        margin-bottom: 16px;
     }
 }
 
-/* Десктоп */
-@media (min-width: 992px) {
-    .user-badge {
-        padding: 8px 14px;
-    }
+/* ===== Аватарки на страницах профилей ===== */
+
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 42px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    border: 4px solid #fff;
 }
 
+.profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 /* ===== Карточки произведений ===== */
 
@@ -205,6 +226,7 @@ footer {
     border-radius: 16px;
     overflow: hidden;
     transition: transform 0.3s, box-shadow 0.3s;
+    background: #fff;
 }
 
 .piece-card:hover {
@@ -229,7 +251,14 @@ footer {
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-@media (max-width: 768px) {
+/* Адаптивность для мобильных */
+@media (max-width: 576px) {
+    .profile-avatar {
+        width: 90px;
+        height: 90px;
+        font-size: 32px;
+    }
+
     .piece-cover {
         height: 150px;
     }
@@ -237,4 +266,158 @@ footer {
     .cover-placeholder {
         font-size: 48px;
     }
+}
+
+
+/* ===== Hero-секция на всю ширину ===== */
+
+.hero-fullwidth {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    max-height: 900px;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    z-index: 0;
+}
+
+.hero-overlay {
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.85), rgba(139, 92, 246, 0.85));
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 60px 0;
+}
+
+.hero-title {
+    font-weight: 800;
+    font-size: 3.5rem;
+    letter-spacing: -2px;
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hero-subtitle {
+    font-size: 1.4rem;
+    color: #fff;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .hero-fullwidth {
+        height: auto;
+        min-height: 500px;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+}
+
+
+/* ===== Хедер поверх фона ===== */
+
+.site-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 15px 0;
+}
+
+.site-header .navbar {
+    background: transparent !important;
+}
+
+/* Навигация */
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #fff;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9) !important;
+    transition: 0.3s;
+}
+
+.nav-link:hover {
+    color: #fff !important;
+}
+
+
+/* ===== Аватарка в хедере ===== */
+
+.user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #4a6cf7;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.85);
+    transition: 0.3s;
+    padding: 6px 12px;
+    border-radius: 12px;
+}
+
+.user-badge:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.user-name {
+    font-size: 14px;
+    font-weight: 500;
 }

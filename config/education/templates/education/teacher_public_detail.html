@@ -12,6 +12,8 @@
                     <div class="profile-avatar mx-auto">
                         {% if teacher.user.avatar %}
                             <img src="{{ teacher.user.avatar.url }}" alt="Аватар">
+                        {% elif teacher.user.username == 'teacher_ivanova' %}
+                            <img src="{% static 'core/photos/ivanova.avif' %}" alt="Иванова">
                         {% else %}
                             {{ teacher.user.first_name|default:""|first|upper }}{{ teacher.user.last_name|default:""|first|upper }}
                         {% endif %}

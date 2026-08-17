@@ -6,20 +6,64 @@
 <div class="container mt-4">
     <h2>{% if form.instance.pk %}Редактировать{% else %}Добавить{% endif %} произведение</h2>
 
-    <form method="post" class="card p-4 mt-3 shadow-sm">
+    {# enctype обязателен — иначе файлы (обложка, ноты, аудио, видео) не дойдут до сервера #}
+    <form method="post" enctype="multipart/form-data" class="card p-4 mt-3 shadow-sm">
         {% csrf_token %}
 
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+        {% endif %}
+
+        <h5 class="mb-3">Основное</h5>
         {% for field in form %}
-        <div class="mb-3">
-            <label class="form-label fw-bold">{{ field.label }}</label>
-            {{ field }}
-            {% if field.errors %}
-                <div class="text-danger small">{{ field.errors|join:", " }}</div>
+            {% if field.name == "title" or field.name == "composer_name" or field.name == "cover" or field.name == "year_created" or field.name == "description" %}
+                <div class="mb-3">
+                    <label class="form-label fw-bold">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.help_text %}<div class="form-text">{{ field.help_text }}</div>{% endif %}
+                    {% if field.errors %}<div class="text-danger small">{{ field.errors|join:", " }}</div>{% endif %}
+                </div>
             {% endif %}
-        </div>
         {% endfor %}
 
-        <div class="d-flex gap-2">
+        <hr>
+        <h5 class="mb-3">Жанры</h5>
+        <div class="mb-3">
+            <label class="form-label fw-bold">{{ form.genre.label }}</label>
+            {{ form.genre }}
+        </div>
+        <div class="mb-3">
+            <label class="form-label fw-bold">{{ form.new_genres.label }}</label>
+            {{ form.new_genres }}
+            <div class="form-text">{{ form.new_genres.help_text }}</div>
+        </div>
+
+        <hr>
+        <h5 class="mb-3">Инструменты</h5>
+        <div class="mb-3">
+            {{ form.instruments }}
+        </div>
+        <div class="mb-3">
+            <label class="form-label fw-bold">{{ form.new_instruments.label }}</label>
+            {{ form.new_instruments }}
+            <div class="form-text">{{ form.new_instruments.help_text }}</div>
+        </div>
+
+        <hr>
+        <h5 class="mb-3">Материалы</h5>
+        <p class="text-muted small">Можно добавить сразу, а можно позже — все поля необязательны.</p>
+
+        {% for field in form %}
+            {% if field.name == "sheet_file" or field.name == "minus_file" or field.name == "plus_file" or field.name == "video_file" or field.name == "video_url" %}
+                <div class="mb-3">
+                    <label class="form-label fw-bold">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}<div class="text-danger small">{{ field.errors|join:", " }}</div>{% endif %}
+                </div>
+            {% endif %}
+        {% endfor %}
+
+        <div class="d-flex gap-2 mt-4">
             <button type="submit" class="btn btn-primary">
                 {% if form.instance.pk %}Сохранить{% else %}Создать{% endif %}
             </button>

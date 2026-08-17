@@ -1,14 +1,46 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
 from accounts.models import User
 from education.models import StudentProfile, TeacherProfile
 
 
+# ---------- Оформление форм ----------
+
+
+class StyledFormMixin:
+    """Убирает длинные стандартные подсказки Django (про условия пароля и т.п.)
+    и добавляет bootstrap-класс form-control всем полям."""
+
+    placeholders = {}
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for name, field in self.fields.items():
+            field.help_text = ""
+            field.widget.attrs["class"] = "form-control"
+            if name in self.placeholders:
+                field.widget.attrs["placeholder"] = self.placeholders[name]
+
+
+class StyledAuthenticationForm(StyledFormMixin, AuthenticationForm):
+    placeholders = {
+        "username": "Ваш логин",
+        "password": "Пароль",
+    }
+
+
 # ---------- Регистрация ----------
 
 
-class StudentRegistrationForm(UserCreationForm):
+class StudentRegistrationForm(StyledFormMixin, UserCreationForm):
+    placeholders = {
+        "username": "Придумайте логин",
+        "email": "you@example.com",
+        "password1": "Придумайте пароль",
+        "password2": "Повторите пароль",
+    }
+
     class Meta:
         model = User
         fields = ("username", "email")
@@ -19,7 +51,14 @@ class StudentRegistrationForm(UserCreationForm):
         return user
 
 
-class TeacherRegistrationForm(UserCreationForm):
+class TeacherRegistrationForm(StyledFormMixin, UserCreationForm):
+    placeholders = {
+        "username": "Придумайте логин",
+        "email": "you@example.com",
+        "password1": "Придумайте пароль",
+        "password2": "Повторите пароль",
+    }
+
     class Meta:
         model = User
         fields = ("username", "email")
@@ -31,7 +70,14 @@ class TeacherRegistrationForm(UserCreationForm):
         return user
 
 
-class GuestRegistrationForm(UserCreationForm):
+class GuestRegistrationForm(StyledFormMixin, UserCreationForm):
+    placeholders = {
+        "username": "Придумайте логин",
+        "email": "you@example.com",
+        "password1": "Придумайте пароль",
+        "password2": "Повторите пароль",
+    }
+
     class Meta:
         model = User
         fields = ("username", "email")

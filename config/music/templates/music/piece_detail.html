@@ -3,7 +3,15 @@
 {% block title %}{{ piece.title }} — World Of Music{% endblock %}
 
 {% block content %}
-<h2>{{ piece.title }}</h2>
+<div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+    <h2>{{ piece.title }}</h2>
+    {% if request.user.is_authenticated and request.user.teacher_profile %}
+        <div class="d-flex gap-2">
+            <a href="{% url 'music:piece_edit' piece.pk %}" class="btn btn-outline-secondary btn-sm">Редактировать произведение</a>
+            <a href="{% url 'music:piece_delete' piece.pk %}" class="btn btn-outline-danger btn-sm">Удалить произведение</a>
+        </div>
+    {% endif %}
+</div>
 
 <p><strong>Композитор:</strong> {{ piece.composer }}</p>
 
@@ -31,18 +39,25 @@
 <h3>Материалы</h3>
 
 {% for m in materials %}
-    <div class="mb-2">
-        <strong>{{ m.get_type_display }}</strong>: {{ m.description }}
-        {% if not m.is_public %}
-            <span class="badge bg-warning text-dark">приватно</span>
-        {% endif %}
+    <div class="mb-2 d-flex align-items-center flex-wrap gap-2">
+        <div>
+            <strong>{{ m.get_type_display }}</strong>: {{ m.description }}
+            {% if not m.is_public %}
+                <span class="badge bg-warning text-dark">приватно</span>
+            {% endif %}
 
-        {% if m.file %}
-            <a href="{{ m.file.url }}" download>Скачать</a>
-        {% endif %}
+            {% if m.file %}
+                <a href="{{ m.file.url }}" download>Скачать</a>
+            {% endif %}
 
-        {% if m.url %}
-            <a href="{{ m.url }}" target="_blank">Открыть</a>
+            {% if m.url %}
+                <a href="{{ m.url }}" target="_blank">Открыть</a>
+            {% endif %}
+        </div>
+
+        {% if request.user.is_authenticated and request.user.teacher_profile %}
+            <a href="{% url 'music:material_edit' m.pk %}" class="btn btn-outline-secondary btn-sm">Изменить</a>
+            <a href="{% url 'music:material_delete' m.pk %}" class="btn btn-outline-danger btn-sm">Удалить</a>
         {% endif %}
     </div>
 {% empty %}

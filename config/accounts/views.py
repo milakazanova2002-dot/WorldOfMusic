@@ -13,6 +13,7 @@ from django.views.decorators.cache import never_cache
 from .forms import (
     GuestRegistrationForm,
     StudentRegistrationForm,
+    StyledAuthenticationForm,
     TeacherRegistrationForm,
     UserProfileForm,
     TeacherProfileForm,
@@ -24,6 +25,7 @@ from education.models import TeacherProfile, StudentProfile
 @method_decorator(never_cache, name="dispatch")
 class UserLoginView(LoginView):
     template_name = "accounts/login.html"
+    authentication_form = StyledAuthenticationForm
 
     def form_valid(self, form):
         user = form.get_user()

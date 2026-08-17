@@ -11,7 +11,16 @@
             <div class="col-md-4 mb-3">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h5 class="card-title">{{ teacher.user.get_full_name|default:teacher.user.username }}</h5>
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                            <div class="user-avatar avatar-list" style="width:44px; height:44px; font-size:16px;">
+                                {% if teacher.user.avatar %}
+                                    <img src="{{ teacher.user.avatar.url }}" alt="Аватар">
+                                {% else %}
+                                    {{ teacher.user.first_name|default:""|first|upper }}{{ teacher.user.last_name|default:""|first|upper }}
+                                {% endif %}
+                            </div>
+                            <h5 class="card-title mb-0">{{ teacher.user.get_full_name|default:teacher.user.username }}</h5>
+                        </div>
                         <p class="card-text text-muted">Опыт: {{ teacher.experience_years }} лет</p>
                         <p class="card-text">
                             {% for i in teacher.instruments.all %}

@@ -4,9 +4,20 @@
 <h2>Личный кабинет педагога</h2>
 
 <h3>Ваши ученики</h3>
-<ul>
+<ul class="list-unstyled">
     {% for student in students %}
-        <li>{{ student.user.username }}</li>
+        <li class="d-flex align-items-center gap-2 mb-2">
+            <div class="user-avatar avatar-list" style="width:36px; height:36px; font-size:13px;">
+                {% if student.user.avatar %}
+                    <img src="{{ student.user.avatar.url }}" alt="Аватар">
+                {% else %}
+                    {{ student.user.first_name|default:""|first|upper }}{{ student.user.last_name|default:""|first|upper }}
+                {% endif %}
+            </div>
+            <a href="{% url 'education:student_detail' student.pk %}" class="text-decoration-none text-dark">
+                {{ student.user.get_full_name|default:student.user.username }}
+            </a>
+        </li>
     {% empty %}
         <li>У вас пока нет учеников.</li>
     {% endfor %}

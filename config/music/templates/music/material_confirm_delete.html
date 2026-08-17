@@ -1,9 +1,20 @@
-<h2>Удалить материал</h2>
+{% extends "base.html" %}
 
-<p>Вы уверены, что хотите удалить материал: <strong>{{ object.description }}</strong>?</p>
+{% block title %}Удалить материал{% endblock %}
 
-<form method="post">
-    {% csrf_token %}
-    <button type="submit">Удалить</button>
-    <a href="{% url 'music:material_list' object.piece.id %}">Отмена</a>
-</form>
+{% block content %}
+<div class="container mt-4">
+    <div class="card p-4 shadow-sm">
+        <h2>Удалить материал?</h2>
+        <p>Вы уверены, что хотите удалить материал «{{ object.get_type_display }}{% if object.description %} — {{ object.description }}{% endif %}»?</p>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-danger">Удалить</button>
+                <a href="{% url 'music:piece_detail' object.piece.pk %}" class="btn btn-secondary">Отмена</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

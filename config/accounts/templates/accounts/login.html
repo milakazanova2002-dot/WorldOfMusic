@@ -1,28 +1,35 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Вход</h2>
+<div class="auth-wrapper">
+    <div class="auth-card">
+        <div class="auth-icon">🎵</div>
+        <h2>Вход</h2>
+        <p class="auth-subtitle">Рады видеть вас снова</p>
 
-<form method="post">
-    {% csrf_token %}
+        <form method="post">
+            {% csrf_token %}
 
-    {% if form.non_field_errors %}
-        <div class="alert alert-danger">
-            {% for error in form.non_field_errors %}
-                {{ error }}
-            {% endfor %}
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger">
+                    {% for error in form.non_field_errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            {% include "accounts/_form_fields.html" %}
+
+            <input type="hidden" name="next" value="{{ next }}">
+            <button type="submit" class="btn btn-primary">Войти</button>
+        </form>
+
+        <p class="auth-switch mb-2">Ещё нет аккаунта?</p>
+        <div class="auth-roles">
+            <a href="{% url 'accounts:student_register' %}">Я ученик</a>
+            <a href="{% url 'accounts:teacher_register' %}">Я педагог</a>
+            <a href="{% url 'accounts:guest_register' %}">Я родитель</a>
         </div>
-    {% endif %}
-
-    {{ form.as_p }}
-    <input type="hidden" name="next" value="{{ next }}">
-    <button type="submit">Войти</button>
-</form>
-
-<hr>
-<p>Ещё нет аккаунта?</p>
-<a href="{% url 'accounts:student_register' %}">Регистрация ученика</a> ·
-<a href="{% url 'accounts:teacher_register' %}">Регистрация педагога</a> ·
-<a href="{% url 'accounts:guest_register' %}">Регистрация родителя/гостя</a>
-
+    </div>
+</div>
 {% endblock %}

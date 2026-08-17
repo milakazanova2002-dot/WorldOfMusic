@@ -1,14 +1,25 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Регистрация педагога</h2>
+<div class="auth-wrapper">
+    <div class="auth-card">
+        <div class="auth-icon">🎓</div>
+        <h2>Регистрация педагога</h2>
+        <p class="auth-subtitle">Заявку рассмотрит администратор перед тем, как открыть доступ</p>
 
-<p>После регистрации ваша заявка будет отправлена администратору.</p>
+        <form method="post">
+            {% csrf_token %}
+            {% include "accounts/_form_fields.html" %}
+            <button type="submit" class="btn btn-primary">Отправить заявку</button>
+        </form>
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Отправить заявку</button>
-</form>
-
+        <p class="auth-switch">
+            Уже есть аккаунт? <a href="{% url 'accounts:login' %}">Войти</a>
+        </p>
+        <div class="auth-roles">
+            <a href="{% url 'accounts:student_register' %}">Я ученик</a>
+            <a href="{% url 'accounts:guest_register' %}">Я родитель</a>
+        </div>
+    </div>
+</div>
 {% endblock %}

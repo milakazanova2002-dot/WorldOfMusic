@@ -51,7 +51,7 @@
                         <div class="piece-cover" style="{% if piece.cover %}background-image: url('{{ piece.cover.url }}');{% else %}{{ piece.get_gradient_class }}{% endif %}">
                             {% if not piece.cover %}
                                 <span class="cover-placeholder">
-                                    {% if piece.composer %}{{ piece.composer.first_name|first|upper }}{% endif %}
+                                    {{ piece.title|first|upper }}
                                 </span>
                             {% endif %}
                         </div>

@@ -11,7 +11,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 
 from .models import Composer, Genre, Instrument, MusicalPiece, MusicMaterial
-from .forms import MusicalPieceForm
+from .forms import MusicalPieceForm, MusicMaterialForm
 
 
 class MusicalPieceListView(ListView):
@@ -107,6 +107,9 @@ class MusicalPieceCreateView(LoginRequiredMixin, CreateView):
         messages.success(self.request, "Произведение успешно создано!")
         return super().form_valid(form)
 
+    def get_success_url(self):
+        return reverse_lazy("music:piece_detail", kwargs={"pk": self.object.pk})
+
 
 class MusicalPieceUpdateView(LoginRequiredMixin, UpdateView):
     """Редактирование произведения — только для педагогов."""
@@ -146,6 +149,76 @@ class MusicalPieceDeleteView(LoginRequiredMixin, DeleteView):
     def form_valid(self, form):
         messages.success(self.request, "Произведение удалено.")
         return super().form_valid(form)
+
+
+class MusicMaterialCreateView(LoginRequiredMixin, CreateView):
+    """Добавление материала (нот, аудио, видео) к уже существующему произведению."""
+    model = MusicMaterial
+    form_class = MusicMaterialForm
+    template_name = "music/material_form.html"
+
+    def dispatch(self, request, *args, **kwargs):
+        if not hasattr(request.user, "teacher_profile"):
+            messages.error(request, "Только педагоги могут добавлять материалы.")
+            return redirect("home")
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["piece"] = get_object_or_404(MusicalPiece, pk=self.kwargs["pk"])
+        return context
+
+    def form_valid(self, form):
+        form.instance.piece = get_object_or_404(MusicalPiece, pk=self.kwargs["pk"])
+        messages.success(self.request, "Материал добавлен!")
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy("music:piece_detail", kwargs={"pk": self.kwargs["pk"]})
+
+
+class MusicMaterialUpdateView(LoginRequiredMixin, UpdateView):
+    """Редактирование материала, привязанного к произведению."""
+    model = MusicMaterial
+    form_class = MusicMaterialForm
+    template_name = "music/material_form.html"
+
+    def dispatch(self, request, *args, **kwargs):
+        if not hasattr(request.user, "teacher_profile"):
+            messages.error(request, "Только педагоги могут редактировать материалы.")
+            return redirect("home")
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["piece"] = self.object.piece
+        return context
+
+    def form_valid(self, form):
+        messages.success(self.request, "Материал обновлён!")
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy("music:piece_detail", kwargs={"pk": self.object.piece.pk})
+
+
+class MusicMaterialDeleteView(LoginRequiredMixin, DeleteView):
+    """Удаление материала, привязанного к произведению."""
+    model = MusicMaterial
+    template_name = "music/material_confirm_delete.html"
+
+    def dispatch(self, request, *args, **kwargs):
+        if not hasattr(request.user, "teacher_profile"):
+            messages.error(request, "Только педагоги могут удалять материалы.")
+            return redirect("home")
+        return super().dispatch(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        messages.success(self.request, "Материал удалён.")
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy("music:piece_detail", kwargs={"pk": self.object.piece.pk})
 
 
 # ---------- Справочники ----------

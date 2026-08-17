@@ -25,31 +25,118 @@ body {
     line-height: 1.6;
 }
 
-/* ===== Навигация ===== */
+/* ===== Навигация (хедер) ===== */
 
 .navbar {
-    background: rgba(30, 41, 59, 0.95) !important;
+    background: linear-gradient(100deg, #2b2f36 0%, #3d424b 50%, #4f555f 100%) !important;
     backdrop-filter: blur(10px);
-    box-shadow: var(--shadow-sm);
-    padding: 12px 0;
+    box-shadow: 0 2px 20px rgba(10, 12, 15, 0.35);
+    padding: 14px 0;
 }
 
+/* Логотип + название */
 .navbar-brand {
-    font-weight: 700;
-    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 1.55rem;
     letter-spacing: -0.5px;
+    color: #fff !important;
+}
+
+.brand-logo {
+    height: 44px;
+    width: auto;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+}
+
+.brand-text {
+    background: linear-gradient(90deg, #fff, #e8e8ea);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3));
 }
 
 .nav-link {
-    font-weight: 500;
-    font-size: 0.95rem;
+    font-weight: 600;
+    font-size: 1.02rem;
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
     padding: 8px 16px !important;
     border-radius: 8px;
     transition: all 0.2s ease;
 }
 
 .nav-link:hover {
-    background: rgba(255, 255, 255, 0.1);
+    color: #fff !important;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* ===== Бейдж пользователя в хедере ===== */
+
+.user-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.9);
+    transition: 0.2s;
+    padding: 6px 14px 6px 6px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.user-badge:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.user-name {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.user-role {
+    font-size: 11px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+/* Аватарка-кружок: используется и в хедере, и в списках педагогов/учеников */
+.user-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6366f1, #ec4899);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Уменьшенная версия аватарки для карточек в списках (не в хедере) */
+.user-avatar.avatar-list {
+    border-color: #fff;
+    box-shadow: var(--shadow-sm);
 }
 
 /* ===== Кнопки ===== */
@@ -137,46 +224,6 @@ section.py-5 {
 
 .bg-light {
     background: #fff !important;
-}
-
-/* ===== Аватарка пользователя ===== */
-
-.user-avatar {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: var(--gradient-1);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 14px;
-    overflow: hidden;
-    flex-shrink: 0;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-.user-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.user-badge {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    color: rgba(255, 255, 255, 0.85);
-    transition: 0.3s;
-    padding: 6px 12px;
-    border-radius: 12px;
-}
-
-.user-badge:hover {
-    color: #fff;
-    background: rgba(255, 255, 255, 0.1);
 }
 
 /* ===== Адаптивность ===== */
@@ -344,80 +391,112 @@ section.py-5 {
 }
 
 
-/* ===== Хедер поверх фона ===== */
+/* ===== Страницы входа и регистрации ===== */
 
-.site-header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100;
-    padding: 15px 0;
-}
-
-.site-header .navbar {
-    background: transparent !important;
-}
-
-/* Навигация */
-.navbar-brand {
-    font-weight: 700;
-    font-size: 1.3rem;
-    color: #fff;
-}
-
-.nav-link {
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.9) !important;
-    transition: 0.3s;
-}
-
-.nav-link:hover {
-    color: #fff !important;
-}
-
-
-/* ===== Аватарка в хедере ===== */
-
-.user-avatar {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: #4a6cf7;
-    color: #fff;
+.auth-wrapper {
+    min-height: calc(100vh - 160px);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
-    font-size: 14px;
-    overflow: hidden;
-    flex-shrink: 0;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 40px 16px;
 }
 
-.user-avatar img {
+.auth-card {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    max-width: 440px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    padding: 44px 40px;
 }
 
-.user-badge {
+.auth-card .auth-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--gradient-1);
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: center;
+    font-size: 26px;
+    margin: 0 auto 16px;
+}
+
+.auth-card h2 {
+    text-align: center;
+    font-weight: 800;
+    margin-bottom: 4px;
+}
+
+.auth-card .auth-subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 28px;
+    font-size: 0.95rem;
+}
+
+.auth-card .form-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+}
+
+.auth-card .form-control {
+    border-radius: 10px;
+    padding: 10px 14px;
+    border: 1.5px solid #e2e8f0;
+}
+
+.auth-card .form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.auth-card .btn-primary {
+    width: 100%;
+    margin-top: 8px;
+    padding: 12px;
+    font-size: 1rem;
+}
+
+.auth-switch {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.auth-switch a {
+    color: var(--primary);
+    font-weight: 600;
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.85);
-    transition: 0.3s;
-    padding: 6px 12px;
-    border-radius: 12px;
 }
 
-.user-badge:hover {
-    color: #fff;
-    background: rgba(255, 255, 255, 0.1);
+.auth-switch a:hover {
+    text-decoration: underline;
 }
 
-.user-name {
-    font-size: 14px;
+.auth-roles {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 6px;
+}
+
+.auth-roles a {
+    font-size: 0.85rem;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: var(--bg-light);
+    color: var(--text-dark);
+    text-decoration: none;
     font-weight: 500;
+    transition: 0.2s;
+}
+
+.auth-roles a.active,
+.auth-roles a:hover {
+    background: var(--primary);
+    color: #fff;
 }

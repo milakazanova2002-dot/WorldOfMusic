@@ -1,4 +1,37 @@
 from django.db import models
+from django.conf import settings
+
+
+class Favorite(models.Model):
+    """Избранное произведение пользователя (педагога или ученика)."""
+
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="favorites",
+        verbose_name="Пользователь"
+    )
+
+    piece = models.ForeignKey(
+        "MusicalPiece",
+        on_delete=models.CASCADE,
+        related_name="favorited_by",
+        verbose_name="Произведение"
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name="Добавлено"
+    )
+
+    class Meta:
+        verbose_name = "Избранное произведение"
+        verbose_name_plural = "Избранные произведения"
+        unique_together = ("user", "piece")
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        return f"{self.user} ★ {self.piece}"
 
 
 class Instrument(models.Model):

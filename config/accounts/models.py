@@ -4,7 +4,13 @@ from django.db import models
 
 class User(AbstractUser):
     email_verified = models.BooleanField(default=False)
-    
+
+    patronymic = models.CharField(
+        max_length=150,
+        blank=True,
+        verbose_name="Отчество",
+    )
+
     is_approved = models.BooleanField(default=False)
 
     avatar = models.ImageField(

@@ -28,6 +28,13 @@ class TeacherProfile(models.Model):
         verbose_name="Инструменты"
     )
 
+    subjects = models.ManyToManyField(
+        "Subject",
+        blank=True,
+        related_name="teachers",
+        verbose_name="Предметы"
+    )
+
     class Meta:
             verbose_name = "Профиль педагога"
             verbose_name_plural = "Профили педагогов"

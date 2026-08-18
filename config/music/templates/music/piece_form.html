@@ -30,7 +30,16 @@
         <h5 class="mb-3">Жанры</h5>
         <div class="mb-3">
             <label class="form-label fw-bold">{{ form.genre.label }}</label>
-            {{ form.genre }}
+            <div class="dropdown">
+                <button type="button" class="btn btn-outline-secondary dropdown-toggle w-100 text-start"
+                        data-bs-toggle="dropdown" data-bs-auto-close="outside"
+                        id="genreDropdownToggle" data-placeholder="Выберите жанры...">
+                    Выберите жанры...
+                </button>
+                <div class="dropdown-menu p-3 multi-select-panel" aria-labelledby="genreDropdownToggle">
+                    {{ form.genre }}
+                </div>
+            </div>
         </div>
         <div class="mb-3">
             <label class="form-label fw-bold">{{ form.new_genres.label }}</label>
@@ -41,7 +50,17 @@
         <hr>
         <h5 class="mb-3">Инструменты</h5>
         <div class="mb-3">
-            {{ form.instruments }}
+            <label class="form-label fw-bold">{{ form.instruments.label }}</label>
+            <div class="dropdown">
+                <button type="button" class="btn btn-outline-secondary dropdown-toggle w-100 text-start"
+                        data-bs-toggle="dropdown" data-bs-auto-close="outside"
+                        id="instrumentDropdownToggle" data-placeholder="Выберите инструменты...">
+                    Выберите инструменты...
+                </button>
+                <div class="dropdown-menu p-3 multi-select-panel" aria-labelledby="instrumentDropdownToggle">
+                    {{ form.instruments }}
+                </div>
+            </div>
         </div>
         <div class="mb-3">
             <label class="form-label fw-bold">{{ form.new_instruments.label }}</label>
@@ -71,4 +90,32 @@
         </div>
     </form>
 </div>
+
+<script>
+// Обновляет текст на кнопке выпадающей панели: сколько пунктов отмечено
+function setupMultiSelectDropdown(toggleId) {
+    const button = document.getElementById(toggleId);
+    if (!button) return;
+    const panel = button.nextElementSibling;
+    const checkboxes = panel.querySelectorAll('input[type="checkbox"]');
+    const placeholder = button.dataset.placeholder;
+
+    function updateLabel() {
+        const checkedLabels = [];
+        checkboxes.forEach(cb => {
+            if (cb.checked) {
+                const label = panel.querySelector('label[for="' + cb.id + '"]');
+                checkedLabels.push(label ? label.textContent.trim() : cb.value);
+            }
+        });
+        button.textContent = checkedLabels.length ? checkedLabels.join(', ') : placeholder;
+    }
+
+    checkboxes.forEach(cb => cb.addEventListener('change', updateLabel));
+    updateLabel();
+}
+
+setupMultiSelectDropdown('genreDropdownToggle');
+setupMultiSelectDropdown('instrumentDropdownToggle');
+</script>
 {% endblock %}

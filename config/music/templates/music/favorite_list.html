@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Избранное — World Of Music{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">★ Избранные произведения</h1>
+
+{% for piece in pieces %}
+    <div class="card p-3 mb-3 shadow-sm">
+        <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+            <div>
+                <h4><a href="{% url 'music:piece_detail' piece.pk %}" class="text-decoration-none">{{ piece.title }}</a></h4>
+                <p class="text-muted mb-1">{{ piece.composer }}</p>
+                {% for g in piece.genre.all %}
+                    <span class="badge bg-secondary me-1">{{ g.name }}</span>
+                {% endfor %}
+            </div>
+            <form method="post" action="{% url 'music:favorite_toggle' piece.pk %}">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{% url 'music:favorite_list' %}">
+                <button type="submit" class="btn btn-outline-danger btn-sm">Убрать из избранного</button>
+            </form>
+        </div>
+
+        {% include "music/_piece_player.html" with materials=piece.materials.all %}
+    </div>
+{% empty %}
+    <p class="text-muted">Пока пусто. Откройте любое произведение в каталоге и нажмите «В избранное» — оно появится здесь.</p>
+    <a href="{% url 'music:piece_list' %}" class="btn btn-primary">Перейти в каталог</a>
+{% endfor %}
+{% endblock %}

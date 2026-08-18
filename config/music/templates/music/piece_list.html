@@ -4,7 +4,12 @@
 
 {% block content %}
 <div class="container mt-4">
-    <h1 class="mb-4">🎵 Библиотека произведений</h1>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="mb-0">🎵 Библиотека произведений</h1>
+    {% if request.user.is_authenticated and request.user.teacher_profile %}
+        <a href="{% url 'music:piece_create' %}" class="btn btn-primary">Добавить произведение</a>
+    {% endif %}
+</div>
 
     <!-- Поиск и фильтры -->
     <div class="card p-3 mb-4 shadow-sm">

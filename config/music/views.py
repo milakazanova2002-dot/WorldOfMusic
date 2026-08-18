@@ -1,16 +1,18 @@
 from django.urls import reverse_lazy
+from django.db.models import Prefetch
 from django.views.generic import (
     CreateView,
     DeleteView,
     DetailView,
     ListView,
     UpdateView,
+    View,
 )
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 
-from .models import Composer, Genre, Instrument, MusicalPiece, MusicMaterial
+from .models import Composer, Favorite, Genre, Instrument, MusicalPiece, MusicMaterial
 from .forms import MusicalPieceForm, MusicMaterialForm
 
 
@@ -84,6 +86,15 @@ class MusicalPieceDetailView(DetailView):
             context["materials"] = piece.materials.all()
         else:
             context["materials"] = piece.materials.filter(is_public=True)
+
+        playable_types = [MusicMaterial.MaterialType.VIDEO, MusicMaterial.MaterialType.AUDIO,
+                           MusicMaterial.MaterialType.PLUS, MusicMaterial.MaterialType.MINUS]
+        context["has_playable_media"] = any(
+            m.file and m.type in playable_types for m in context["materials"]
+        )
+
+        if user.is_authenticated:
+            context["is_favorited"] = Favorite.objects.filter(user=user, piece=piece).exists()
 
         return context
 
@@ -224,13 +235,23 @@ class MusicMaterialDeleteView(LoginRequiredMixin, DeleteView):
 # ---------- Справочники ----------
 
 
-class ComposerListView(LoginRequiredMixin, ListView):
+class TeacherOnlyMixin:
+    """Разрешает доступ только педагогам — используется в CRUD справочников."""
+
+    def dispatch(self, request, *args, **kwargs):
+        if not hasattr(request.user, "teacher_profile"):
+            messages.error(request, "Эта страница доступна только педагогам.")
+            return redirect("home")
+        return super().dispatch(request, *args, **kwargs)
+
+
+class ComposerListView(TeacherOnlyMixin, LoginRequiredMixin, ListView):
     model = Composer
     template_name = "music/composer_list.html"
     context_object_name = "composers"
 
 
-class ComposerCreateView(LoginRequiredMixin, CreateView):
+class ComposerCreateView(TeacherOnlyMixin, LoginRequiredMixin, CreateView):
     model = Composer
     fields = ["first_name", "last_name", "biography"]
     template_name = "music/composer_form.html"
@@ -241,7 +262,7 @@ class ComposerCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class ComposerUpdateView(LoginRequiredMixin, UpdateView):
+class ComposerUpdateView(TeacherOnlyMixin, LoginRequiredMixin, UpdateView):
     model = Composer
     fields = ["first_name", "last_name", "biography"]
     template_name = "music/composer_form.html"
@@ -252,7 +273,7 @@ class ComposerUpdateView(LoginRequiredMixin, UpdateView):
         return super().form_valid(form)
 
 
-class ComposerDeleteView(LoginRequiredMixin, DeleteView):
+class ComposerDeleteView(TeacherOnlyMixin, LoginRequiredMixin, DeleteView):
     model = Composer
     template_name = "music/composer_confirm_delete.html"
     success_url = reverse_lazy("music:composer_list")
@@ -262,13 +283,13 @@ class ComposerDeleteView(LoginRequiredMixin, DeleteView):
         return super().form_valid(form)
 
 
-class GenreListView(LoginRequiredMixin, ListView):
+class GenreListView(TeacherOnlyMixin, LoginRequiredMixin, ListView):
     model = Genre
     template_name = "music/genre_list.html"
     context_object_name = "genres"
 
 
-class GenreCreateView(LoginRequiredMixin, CreateView):
+class GenreCreateView(TeacherOnlyMixin, LoginRequiredMixin, CreateView):
     model = Genre
     fields = ["name"]
     template_name = "music/genre_form.html"
@@ -279,7 +300,7 @@ class GenreCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class GenreUpdateView(LoginRequiredMixin, UpdateView):
+class GenreUpdateView(TeacherOnlyMixin, LoginRequiredMixin, UpdateView):
     model = Genre
     fields = ["name"]
     template_name = "music/genre_form.html"
@@ -290,7 +311,7 @@ class GenreUpdateView(LoginRequiredMixin, UpdateView):
         return super().form_valid(form)
 
 
-class GenreDeleteView(LoginRequiredMixin, DeleteView):
+class GenreDeleteView(TeacherOnlyMixin, LoginRequiredMixin, DeleteView):
     model = Genre
     template_name = "music/genre_confirm_delete.html"
     success_url = reverse_lazy("music:genre_list")
@@ -300,13 +321,13 @@ class GenreDeleteView(LoginRequiredMixin, DeleteView):
         return super().form_valid(form)
 
 
-class InstrumentListView(LoginRequiredMixin, ListView):
+class InstrumentListView(TeacherOnlyMixin, LoginRequiredMixin, ListView):
     model = Instrument
     template_name = "music/instrument_list.html"
     context_object_name = "instruments"
 
 
-class InstrumentCreateView(LoginRequiredMixin, CreateView):
+class InstrumentCreateView(TeacherOnlyMixin, LoginRequiredMixin, CreateView):
     model = Instrument
     fields = ["name", "description"]
     template_name = "music/instrument_form.html"
@@ -317,7 +338,7 @@ class InstrumentCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class InstrumentUpdateView(LoginRequiredMixin, UpdateView):
+class InstrumentUpdateView(TeacherOnlyMixin, LoginRequiredMixin, UpdateView):
     model = Instrument
     fields = ["name", "description"]
     template_name = "music/instrument_form.html"
@@ -328,7 +349,7 @@ class InstrumentUpdateView(LoginRequiredMixin, UpdateView):
         return super().form_valid(form)
 
 
-class InstrumentDeleteView(LoginRequiredMixin, DeleteView):
+class InstrumentDeleteView(TeacherOnlyMixin, LoginRequiredMixin, DeleteView):
     model = Instrument
     template_name = "music/instrument_confirm_delete.html"
     success_url = reverse_lazy("music:instrument_list")
@@ -356,3 +377,40 @@ class AboutView(ListView):
         context["total_composers"] = Composer.objects.count()
         context["total_genres"] = Genre.objects.count()
         return context
+
+
+# ---------- Избранное ----------
+
+
+class FavoriteListView(LoginRequiredMixin, ListView):
+    """Список избранных произведений текущего пользователя (педагога или ученика).
+    В плеере показываются только публичные материалы — полная проверка прав
+    (как на странице произведения) для целого списка была бы слишком тяжёлой."""
+    template_name = "music/favorite_list.html"
+    context_object_name = "pieces"
+
+    def get_queryset(self):
+        piece_ids = Favorite.objects.filter(user=self.request.user).values_list("piece_id", flat=True)
+        public_materials = MusicMaterial.objects.filter(is_public=True)
+        return (
+            MusicalPiece.objects.filter(id__in=piece_ids)
+            .select_related("composer")
+            .prefetch_related("genre", Prefetch("materials", queryset=public_materials))
+        )
+
+
+class FavoriteToggleView(LoginRequiredMixin, View):
+    """Добавляет/убирает произведение из избранного и возвращает туда, откуда пришли."""
+
+    def post(self, request, pk):
+        piece = get_object_or_404(MusicalPiece, pk=pk)
+        favorite, created = Favorite.objects.get_or_create(user=request.user, piece=piece)
+
+        if not created:
+            favorite.delete()
+            messages.info(request, "Убрано из избранного.")
+        else:
+            messages.success(request, "Добавлено в избранное!")
+
+        next_url = request.POST.get("next") or reverse_lazy("music:piece_detail", kwargs={"pk": pk})
+        return redirect(next_url)

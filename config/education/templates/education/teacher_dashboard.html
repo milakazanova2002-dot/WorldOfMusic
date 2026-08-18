@@ -3,8 +3,11 @@
 {% block content %}
 <h2>Личный кабинет педагога</h2>
 
-<h3>Ваши ученики</h3>
-<ul class="list-unstyled">
+<div class="d-flex justify-content-between align-items-center">
+    <h3 class="mb-0">Ваши ученики</h3>
+    <a href="{% url 'education:assignment_create' %}" class="btn btn-primary btn-sm">Прикрепить ученика</a>
+</div>
+<ul class="list-unstyled mt-2">
     {% for student in students %}
         <li class="d-flex align-items-center gap-2 mb-2">
             <div class="user-avatar avatar-list" style="width:36px; height:36px; font-size:13px;">
@@ -26,7 +29,11 @@
 <h3>Назначения</h3>
 <ul>
     {% for assignment in assignments %}
-        <li>{{ assignment.instrument }} — {{ assignment.student.user.username }}</li>
+        <li>
+            <a href="{% url 'education:assignment_detail' assignment.pk %}">
+                {{ assignment.subject }} — {{ assignment.student.user.get_full_name|default:assignment.student.user.username }}
+            </a>
+        </li>
     {% empty %}
         <li>Назначений пока нет.</li>
     {% endfor %}
@@ -35,7 +42,12 @@
 <h3>Последние уроки</h3>
 <ul>
     {% for lesson in lessons %}
-        <li>{{ lesson.date }} — {{ lesson.piece }}</li>
+        <li>
+            <a href="{% url 'education:lesson_detail' lesson.pk %}">{{ lesson.date|date:"d.m.Y" }}</a>
+            {% if lesson.piece %}
+                — <a href="{% url 'music:piece_detail' lesson.piece.pk %}">{{ lesson.piece.title }}</a>
+            {% endif %}
+        </li>
     {% empty %}
         <li>Уроков пока нет.</li>
     {% endfor %}
@@ -44,7 +56,12 @@
 <h3>Последние исполнения учеников</h3>
 <ul>
     {% for perf in performances %}
-        <li>{{ perf.piece }} — {{ perf.student.user.username }}</li>
+        <li>
+            <a href="{% url 'education:performance_detail' perf.pk %}">
+                {% if perf.piece %}{{ perf.piece.title }}{% else %}Исполнение №{{ perf.pk }}{% endif %}
+            </a>
+            — {{ perf.assignment.student.user.get_full_name|default:perf.assignment.student.user.username }}
+        </li>
     {% empty %}
         <li>Исполнений пока нет.</li>
     {% endfor %}

@@ -5,12 +5,23 @@
 {% block content %}
 <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
     <h2>{{ piece.title }}</h2>
-    {% if request.user.is_authenticated and request.user.teacher_profile %}
-        <div class="d-flex gap-2">
+    <div class="d-flex gap-2">
+        {% if request.user.is_authenticated %}
+            <form method="post" action="{% url 'music:favorite_toggle' piece.pk %}">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.path }}">
+                {% if is_favorited %}
+                    <button type="submit" class="btn btn-warning btn-sm">★ В избранном</button>
+                {% else %}
+                    <button type="submit" class="btn btn-outline-warning btn-sm">☆ В избранное</button>
+                {% endif %}
+            </form>
+        {% endif %}
+        {% if request.user.is_authenticated and request.user.teacher_profile %}
             <a href="{% url 'music:piece_edit' piece.pk %}" class="btn btn-outline-secondary btn-sm">Редактировать произведение</a>
             <a href="{% url 'music:piece_delete' piece.pk %}" class="btn btn-outline-danger btn-sm">Удалить произведение</a>
-        </div>
-    {% endif %}
+        {% endif %}
+    </div>
 </div>
 
 <p><strong>Композитор:</strong> {{ piece.composer }}</p>
@@ -33,6 +44,12 @@
     <hr>
     <h3>Описание</h3>
     <p>{{ piece.description }}</p>
+{% endif %}
+
+{% if has_playable_media %}
+<hr>
+<h3>Слушать</h3>
+{% include "music/_piece_player.html" with materials=materials %}
 {% endif %}
 
 <hr>

@@ -1,8 +1,9 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.utils.text import slugify
 
 from accounts.models import User
-from education.models import StudentProfile, TeacherProfile
+from education.models import StudentProfile, Subject, TeacherProfile
 
 
 # ---------- Оформление форм ----------
@@ -34,16 +35,23 @@ class StyledAuthenticationForm(StyledFormMixin, AuthenticationForm):
 
 
 class StudentRegistrationForm(StyledFormMixin, UserCreationForm):
+    # Имя и фамилию просим у всех — чтобы на сайте везде было видно человека,
+    # а не логин.
+    first_name = forms.CharField(label="Имя", max_length=150, required=True)
+    last_name = forms.CharField(label="Фамилия", max_length=150, required=True)
+
     placeholders = {
         "username": "Придумайте логин",
         "email": "you@example.com",
+        "first_name": "Имя",
+        "last_name": "Фамилия",
         "password1": "Придумайте пароль",
         "password2": "Повторите пароль",
     }
 
     class Meta:
         model = User
-        fields = ("username", "email")
+        fields = ("username", "email", "first_name", "last_name")
 
     def save(self, commit=True):
         user = super().save(commit)
@@ -52,16 +60,25 @@ class StudentRegistrationForm(StyledFormMixin, UserCreationForm):
 
 
 class TeacherRegistrationForm(StyledFormMixin, UserCreationForm):
+    # У педагогов дополнительно обязательно отчество — чтобы ученики
+    # могли увидеть его в профиле и правильно обращаться.
+    first_name = forms.CharField(label="Имя", max_length=150, required=True)
+    last_name = forms.CharField(label="Фамилия", max_length=150, required=True)
+    patronymic = forms.CharField(label="Отчество", max_length=150, required=True)
+
     placeholders = {
         "username": "Придумайте логин",
         "email": "you@example.com",
+        "first_name": "Имя",
+        "last_name": "Фамилия",
+        "patronymic": "Отчество",
         "password1": "Придумайте пароль",
         "password2": "Повторите пароль",
     }
 
     class Meta:
         model = User
-        fields = ("username", "email")
+        fields = ("username", "email", "first_name", "last_name", "patronymic")
 
     def save(self, commit=True):
         user = super().save(commit)
@@ -92,10 +109,11 @@ class UserProfileForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ("first_name", "last_name", "email", "avatar")
+        fields = ("first_name", "last_name", "patronymic", "email", "avatar")
         widgets = {
             "first_name": forms.TextInput(attrs={"class": "form-control"}),
             "last_name": forms.TextInput(attrs={"class": "form-control"}),
+            "patronymic": forms.TextInput(attrs={"class": "form-control"}),
             "email": forms.EmailInput(attrs={"class": "form-control"}),
             "avatar": forms.ClearableFileInput(attrs={"class": "form-control"}),
         }
@@ -104,13 +122,40 @@ class UserProfileForm(forms.ModelForm):
 class TeacherProfileForm(forms.ModelForm):
     """Форма редактирования профиля педагога."""
 
+    # Предметы можно выбрать чекбоксами (поле subjects ниже) ИЛИ вписать новые через запятую.
+    new_subjects = forms.CharField(
+        label="Новые предметы",
+        required=False,
+        widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "Например: сольфеджио, вокал (через запятую)"}),
+        help_text="Если нужного предмета нет в списке выше — впишите его сюда",
+    )
+
     class Meta:
         model = TeacherProfile
-        fields = ("bio", "experience_years")
+        fields = ("bio", "experience_years", "subjects")
         widgets = {
             "bio": forms.Textarea(attrs={"class": "form-control", "rows": 4}),
             "experience_years": forms.NumberInput(attrs={"class": "form-control"}),
+            "subjects": forms.CheckboxSelectMultiple(attrs={"class": "form-check-input"}),
         }
+
+    def save(self, commit=True):
+        teacher = super().save(commit=commit)
+
+        # добавляем предметы, вписанные вручную
+        new_subjects = self.cleaned_data.get("new_subjects", "")
+        for name in new_subjects.split(","):
+            name = name.strip()
+            if name:
+                subject_obj = Subject.objects.filter(name__iexact=name).first()
+                if not subject_obj:
+                    subject_obj = Subject.objects.create(
+                        name=name.lower(),
+                        slug=slugify(name, allow_unicode=True),
+                    )
+                teacher.subjects.add(subject_obj)
+
+        return teacher
 
 
 class StudentProfileForm(forms.ModelForm):

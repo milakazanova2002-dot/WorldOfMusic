@@ -1,0 +1,30 @@
+{% comment %}
+Переиспользуемый плеер произведения.
+Использование: {% include "music/_piece_player.html" with materials=materials %}
+Всегда передавайте materials явно (уже отфильтрованный по правам доступа список) —
+это не даёт случайно показать приватные материалы на страницах без такой проверки.
+{% endcomment %}
+
+{% for m in materials %}
+    {% if m.type == "video" %}
+        {% if m.file %}
+            <div class="mb-2">
+                <div class="small text-muted mb-1">{{ m.description|default:"Видео исполнения" }}</div>
+                <video controls preload="none" style="width: 100%; max-height: 360px; border-radius: 8px;">
+                    <source src="{{ m.file.url }}">
+                    Ваш браузер не поддерживает видео.
+                </video>
+            </div>
+        {% endif %}
+    {% elif m.type == "audio" or m.type == "plus" or m.type == "minus" %}
+        {% if m.file %}
+            <div class="mb-2">
+                <div class="small text-muted mb-1">{{ m.get_type_display }}{% if m.description %} — {{ m.description }}{% endif %}</div>
+                <audio controls preload="none" style="width: 100%;">
+                    <source src="{{ m.file.url }}">
+                    Ваш браузер не поддерживает аудио.
+                </audio>
+            </div>
+        {% endif %}
+    {% endif %}
+{% endfor %}

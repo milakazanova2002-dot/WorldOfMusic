@@ -100,7 +100,7 @@ class MusicalPieceForm(forms.ModelForm):
             for name in new_genres.split(","):
                 name = name.strip()
                 if name:
-                    genre_obj, _ = Genre.objects.get_or_create(name=name)
+                    genre_obj = self._get_or_create_ci(Genre, name)
                     piece.genre.add(genre_obj)
 
             # добавляем инструменты, вписанные вручную
@@ -108,7 +108,7 @@ class MusicalPieceForm(forms.ModelForm):
             for name in new_instruments.split(","):
                 name = name.strip()
                 if name:
-                    instrument_obj, _ = Instrument.objects.get_or_create(name=name)
+                    instrument_obj = self._get_or_create_ci(Instrument, name)
                     piece.instruments.add(instrument_obj)
 
             # создаём материалы из загруженных файлов (если есть)
@@ -139,6 +139,16 @@ class MusicalPieceForm(forms.ModelForm):
                 description=description,
             )
 
+    @staticmethod
+    def _get_or_create_ci(model, name):
+        """Ищет объект по имени без учёта регистра (чтобы 'Вальс' и 'вальс'
+        не создавались как два разных жанра), а при создании нового —
+        сохраняет его в нижнем регистре для единообразия."""
+        existing = model.objects.filter(name__iexact=name).first()
+        if existing:
+            return existing
+        return model.objects.create(name=name.lower())
+
 
 class ComposerForm(forms.ModelForm):
     class Meta:
@@ -159,6 +169,9 @@ class GenreForm(forms.ModelForm):
             "name": forms.TextInput(attrs={"class": "form-control", "placeholder": "Название жанра"}),
         }
 
+    def clean_name(self):
+        return self.cleaned_data["name"].strip().lower()
+
 
 class InstrumentForm(forms.ModelForm):
     class Meta:
@@ -168,6 +181,9 @@ class InstrumentForm(forms.ModelForm):
             "name": forms.TextInput(attrs={"class": "form-control", "placeholder": "Название инструмента"}),
             "description": forms.Textarea(attrs={"class": "form-control", "rows": 3, "placeholder": "Описание"}),
         }
+
+    def clean_name(self):
+        return self.cleaned_data["name"].strip().lower()
 
 
 class MusicMaterialForm(forms.ModelForm):

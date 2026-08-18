@@ -59,8 +59,16 @@
 
             <ul class="navbar-nav ms-auto align-items-center">
                 {% if request.user.is_authenticated %}
-                    <li class="nav-item me-3">
-                        <a class="nav-link user-badge" href="{% url 'accounts:role_redirect' %}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:role_redirect' %}">Кабинет</a>
+                    </li>
+                    {% if request.user.teacher_profile or request.user.student_profile %}
+                        <li class="nav-item me-2">
+                            <a href="{% url 'music:favorite_list' %}" class="circle-btn circle-btn-favorite" title="Избранное">Избранное</a>
+                        </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link user-badge" href="{% url 'accounts:account_menu' %}" title="Настройки и выход">
                             <div class="user-avatar">
                                 {% if request.user.avatar %}
                                     <img src="{{ request.user.avatar.url }}" alt="Аватар">
@@ -70,32 +78,7 @@
                                     {{ request.user.first_name|default:""|first|upper }}{{ request.user.last_name|default:""|first|upper }}
                                 {% endif %}
                             </div>
-                            <span class="user-info d-none d-lg-flex">
-                                <span class="user-name">{{ request.user.get_full_name|default:request.user.username }}</span>
-                                <span class="user-role">
-                                    {% if request.user.teacher_profile %}Педагог
-                                    {% elif request.user.student_profile %}Ученик
-                                    {% else %}Гость{% endif %}
-                                </span>
-                            </span>
                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'accounts:role_redirect' %}">Мой кабинет</a>
-                    </li>
-                    {% if request.user.teacher_profile or request.user.student_profile %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'music:favorite_list' %}">★ Избранное</a>
-                        </li>
-                    {% endif %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'accounts:profile_edit' %}">Настройки</a>
-                    </li>
-                    <li class="nav-item">
-                        <form method="post" action="{% url 'accounts:logout' %}" class="d-inline">
-                            {% csrf_token %}
-                            <button type="submit" class="nav-link btn btn-link text-light p-0" style="text-decoration:none;">Выйти</button>
-                        </form>
                     </li>
                 {% else %}
                     <li class="nav-item">

@@ -97,6 +97,14 @@ def pending_approval(request):
 
 
 @login_required
+def account_menu(request):
+    """Маленькая страница-меню: сюда ведёт кружок с инициалами в хедере.
+    Здесь только «Настройки» и «Выйти» — сам личный кабинет (дашборд)
+    открывается отдельным пунктом навигации «Кабинет»."""
+    return render(request, "accounts/account_menu.html")
+
+
+@login_required
 def role_redirect(request):
     user = request.user
 

@@ -5,6 +5,7 @@ from .views import (
     TeacherProfileEditView,
     UserLoginView,
     UserLogoutView,
+    account_menu,
     guest_register,
     pending_approval,
     role_redirect,
@@ -22,6 +23,7 @@ urlpatterns = [
     path("register/guest/", guest_register, name="guest_register"),
     path("pending/", pending_approval, name="pending_approval"),
     path("redirect/", role_redirect, name="role_redirect"),
+    path("account/", account_menu, name="account_menu"),
 
     # Редактирование профиля
     path("profile/edit/", ProfileEditView.as_view(), name="profile_edit"),

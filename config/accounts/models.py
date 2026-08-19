@@ -11,6 +11,21 @@ class User(AbstractUser):
         verbose_name="Отчество",
     )
 
+    email_notifications = models.BooleanField(
+        default=True,
+        verbose_name="Уведомления на почту",
+        help_text="Получать письма о новых уроках, заданиях и комментариях педагога",
+    )
+
+    phone = models.CharField(
+        max_length=20,
+        blank=True,
+        null=True,
+        unique=True,
+        verbose_name="Телефон",
+        help_text="Можно использовать вместо логина при входе",
+    )
+
     is_approved = models.BooleanField(default=False)
 
     avatar = models.ImageField(

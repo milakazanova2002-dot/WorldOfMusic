@@ -13,8 +13,6 @@
                     <div class="profile-avatar mx-auto">
                         {% if student.user.avatar %}
                             <img src="{{ student.user.avatar.url }}" alt="Аватар">
-                        {% elif student.user.username == 'student_petrova' %}
-                            <img src="{% static 'core/photos/petrova.avif' %}" alt="Петрова">
                         {% else %}
                             {{ student.user.first_name|default:""|first|upper }}{{ student.user.last_name|default:""|first|upper }}
                         {% endif %}
@@ -104,7 +102,7 @@
                         </a>
                     {% endif %}
                     {% if request.user.is_authenticated and request.user.student_profile.id == student.id %}
-                        <a href="{% url 'accounts:profile_edit' %}" class="btn btn-outline-primary btn-sm ms-auto">Настройки</a>
+                        <a href="{% url 'accounts:profile_edit' %}" class="btn btn-outline-primary btn-sm ms-auto">Настройки аккаунта</a>
                     {% endif %}
                 </div>
             </div>

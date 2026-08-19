@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, UserCreationForm
 from django.utils.text import slugify
 
 from accounts.models import User
@@ -26,8 +26,20 @@ class StyledFormMixin:
 
 class StyledAuthenticationForm(StyledFormMixin, AuthenticationForm):
     placeholders = {
-        "username": "Ваш логин",
+        "username": "Логин, email или телефон",
         "password": "Пароль",
+    }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["username"].label = "Логин, email или телефон"
+
+
+class StyledPasswordChangeForm(StyledFormMixin, PasswordChangeForm):
+    placeholders = {
+        "old_password": "Текущий пароль",
+        "new_password1": "Новый пароль",
+        "new_password2": "Повторите новый пароль",
     }
 
 
@@ -109,14 +121,22 @@ class UserProfileForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ("first_name", "last_name", "patronymic", "email", "avatar")
+        fields = ("first_name", "last_name", "patronymic", "email", "phone", "avatar", "email_notifications")
         widgets = {
             "first_name": forms.TextInput(attrs={"class": "form-control"}),
             "last_name": forms.TextInput(attrs={"class": "form-control"}),
             "patronymic": forms.TextInput(attrs={"class": "form-control"}),
             "email": forms.EmailInput(attrs={"class": "form-control"}),
+            "phone": forms.TextInput(attrs={"class": "form-control", "placeholder": "+7..."}),
             "avatar": forms.ClearableFileInput(attrs={"class": "form-control"}),
+            "email_notifications": forms.CheckboxInput(attrs={"class": "form-check-input"}),
         }
+
+    def clean_phone(self):
+        # Пустую строку превращаем в None — иначе у двух пользователей без
+        # телефона поле unique=True споткнётся о два одинаковых "" в базе.
+        phone = self.cleaned_data.get("phone", "").strip()
+        return phone or None
 
 
 class TeacherProfileForm(forms.ModelForm):

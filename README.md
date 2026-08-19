@@ -128,6 +128,31 @@ docker-compose down -v
    python manage.py runserver
    ```
 
+## Вход через Google (опционально)
+
+Помимо логина/пароля, сайт поддерживает вход по email, телефону и через Google.
+Вход по email/телефону работает сразу, без дополнительной настройки. Для входа
+через Google нужны собственные учётные данные — Anthropic/сторонние сервисы их
+предоставить не могут, только сама Google.
+
+1. Зайдите в [Google Cloud Console](https://console.cloud.google.com/) → создайте проект.
+2. В разделе **APIs & Services → OAuth consent screen** заполните минимальные данные (тип — External, для разработки достаточно).
+3. В разделе **Credentials** нажмите **Create Credentials → OAuth client ID**, тип приложения — **Web application**.
+4. В **Authorized redirect URIs** укажите точно:
+   ```
+   http://127.0.0.1:8000/accounts/google/callback/
+   ```
+   (для продакшена — такой же адрес, но с вашим доменом вместо 127.0.0.1:8000)
+5. Скопируйте **Client ID** и **Client Secret** и добавьте их в `.env`:
+   ```env
+   GOOGLE_OAUTH_CLIENT_ID=ваш_client_id
+   GOOGLE_OAUTH_CLIENT_SECRET=ваш_client_secret
+   GOOGLE_OAUTH_REDIRECT_URI=http://127.0.0.1:8000/accounts/google/callback/
+   ```
+
+Пока переменные не заданы — кнопка «Войти через Google» просто покажет сообщение
+«вход через Google пока не настроен», без ошибок.
+
 ## Роли пользователей
 
 | Роль | Доступ |

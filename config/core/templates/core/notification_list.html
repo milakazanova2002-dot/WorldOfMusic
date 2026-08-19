@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Уведомления — World Of Music{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Уведомления</h2>
+
+{% for n in notifications %}
+    <div class="card p-3 mb-2 {% if not n.is_read %}border-primary{% endif %}">
+        <a href="{{ n.link|default:'/' }}" class="text-decoration-none text-dark d-flex justify-content-between">
+            <span>{{ n.text }}</span>
+            <span class="text-muted small">{{ n.created_at|date:"d.m.Y H:i" }}</span>
+        </a>
+    </div>
+{% empty %}
+    <p class="text-muted">Уведомлений пока нет.</p>
+{% endfor %}
+{% endblock %}

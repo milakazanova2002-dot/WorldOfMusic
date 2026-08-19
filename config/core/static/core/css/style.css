@@ -52,6 +52,9 @@ body {
 }
 
 .brand-text {
+    font-family: "Playfair Display", Georgia, serif;
+    font-weight: 700;
+    letter-spacing: 0.3px;
     background: linear-gradient(90deg, #fff, #e8e8ea);
     -webkit-background-clip: text;
     background-clip: text;
@@ -563,4 +566,37 @@ section.py-5 {
 
 .circle-btn-logout {
     background: #2b2f36;
+}
+
+
+/* ===== Бейдж-счётчик непрочитанных уведомлений над колокольчиком ===== */
+
+.notification-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #dc3545;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 10px;
+    font-weight: 700;
+    min-width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 3px;
+}
+
+
+/* ===== Поиск в хедере ===== */
+
+.navbar input[type="search"] {
+    border-radius: 20px;
+    border: none;
+}
+
+.header-search {
+    max-width: 220px;
+    margin-top: 6px;
 }

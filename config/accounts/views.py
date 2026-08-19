@@ -1,6 +1,14 @@
+import json
+import secrets
+import urllib.parse
+import urllib.request
+
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.views import LogoutView
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView
+from django.http import HttpResponseBadRequest
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
@@ -14,6 +22,7 @@ from .forms import (
     GuestRegistrationForm,
     StudentRegistrationForm,
     StyledAuthenticationForm,
+    StyledPasswordChangeForm,
     TeacherRegistrationForm,
     UserProfileForm,
     TeacherProfileForm,
@@ -94,6 +103,118 @@ def teacher_register(request):
 
 def pending_approval(request):
     return render(request, "accounts/pending_approval.html")
+
+
+class UserPasswordChangeView(PasswordChangeView):
+    template_name = "accounts/password_change.html"
+    form_class = StyledPasswordChangeForm
+    success_url = reverse_lazy("accounts:password_change_done")
+
+
+class UserPasswordChangeDoneView(PasswordChangeDoneView):
+    template_name = "accounts/password_change_done.html"
+
+
+def google_login(request):
+    """Отправляет пользователя на экран согласия Google."""
+    if not settings.GOOGLE_OAUTH_CLIENT_ID:
+        messages.error(request, "Вход через Google пока не настроен администратором сайта.")
+        return redirect("accounts:login")
+
+    state = secrets.token_urlsafe(24)
+    request.session["google_oauth_state"] = state
+
+    params = {
+        "client_id": settings.GOOGLE_OAUTH_CLIENT_ID,
+        "redirect_uri": settings.GOOGLE_OAUTH_REDIRECT_URI,
+        "response_type": "code",
+        "scope": "openid email profile",
+        "state": state,
+        "prompt": "select_account",
+    }
+    url = "https://accounts.google.com/o/oauth2/v2/auth?" + urllib.parse.urlencode(params)
+    return redirect(url)
+
+
+def google_callback(request):
+    """Сюда Google возвращает пользователя после согласия — обмениваем код на токен и логиним."""
+    if request.GET.get("error"):
+        messages.error(request, "Вход через Google отменён.")
+        return redirect("accounts:login")
+
+    state = request.GET.get("state")
+    if not state or state != request.session.get("google_oauth_state"):
+        return HttpResponseBadRequest("Неверный state — попробуйте войти снова.")
+
+    code = request.GET.get("code")
+    if not code:
+        return HttpResponseBadRequest("Google не передал код авторизации.")
+
+    # 1. Обмениваем code на access_token
+    token_data = urllib.parse.urlencode({
+        "code": code,
+        "client_id": settings.GOOGLE_OAUTH_CLIENT_ID,
+        "client_secret": settings.GOOGLE_OAUTH_CLIENT_SECRET,
+        "redirect_uri": settings.GOOGLE_OAUTH_REDIRECT_URI,
+        "grant_type": "authorization_code",
+    }).encode()
+
+    try:
+        token_request = urllib.request.Request(
+            "https://oauth2.googleapis.com/token", data=token_data, method="POST"
+        )
+        with urllib.request.urlopen(token_request, timeout=10) as response:
+            token_response = json.loads(response.read().decode())
+    except Exception:
+        messages.error(request, "Не удалось связаться с Google. Попробуйте позже.")
+        return redirect("accounts:login")
+
+    access_token = token_response.get("access_token")
+    if not access_token:
+        messages.error(request, "Google не вернул токен доступа.")
+        return redirect("accounts:login")
+
+    # 2. Получаем данные профиля (имя, email)
+    try:
+        info_request = urllib.request.Request(
+            "https://www.googleapis.com/oauth2/v3/userinfo",
+            headers={"Authorization": f"Bearer {access_token}"},
+        )
+        with urllib.request.urlopen(info_request, timeout=10) as response:
+            profile = json.loads(response.read().decode())
+    except Exception:
+        messages.error(request, "Не удалось получить данные профиля Google.")
+        return redirect("accounts:login")
+
+    email = profile.get("email")
+    if not email:
+        messages.error(request, "Google не предоставил email.")
+        return redirect("accounts:login")
+
+    user = User.objects.filter(email__iexact=email).first()
+
+    if user is None:
+        # Новый пользователь через Google — создаём как гостя (без роли педагога/ученика).
+        # Пароль не задаём: у такого аккаунта вход возможен только через Google.
+        base_username = email.split("@")[0]
+        username = base_username
+        suffix = 1
+        while User.objects.filter(username=username).exists():
+            suffix += 1
+            username = f"{base_username}{suffix}"
+
+        user = User.objects.create(
+            username=username,
+            email=email,
+            first_name=profile.get("given_name", ""),
+            last_name=profile.get("family_name", ""),
+        )
+        user.set_unusable_password()
+        user.save()
+        messages.success(request, "Аккаунт создан через Google!")
+
+    login(request, user, backend="django.contrib.auth.backends.ModelBackend")
+    return redirect("accounts:role_redirect")
 
 
 @login_required

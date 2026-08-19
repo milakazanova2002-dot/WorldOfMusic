@@ -8,8 +8,6 @@
         <div class="user-avatar mx-auto" style="width: 64px; height: 64px; font-size: 22px;">
             {% if request.user.avatar %}
                 <img src="{{ request.user.avatar.url }}" alt="Аватар">
-            {% elif request.user.teacher_profile %}
-                {{ request.user.first_name|default:""|first|upper }}{{ request.user.patronymic|default:""|first|upper }}
             {% else %}
                 {{ request.user.first_name|default:""|first|upper }}{{ request.user.last_name|default:""|first|upper }}
             {% endif %}
@@ -24,7 +22,7 @@
 
         <div class="d-grid gap-2 mt-4">
             <a href="{% url 'accounts:role_redirect' %}" class="btn btn-outline-secondary">Личный кабинет</a>
-            <a href="{% url 'accounts:profile_edit' %}" class="btn btn-primary">Настройки</a>
+            <a href="{% url 'accounts:profile_edit' %}" class="btn btn-primary">Настройки аккаунта</a>
 
             <form method="post" action="{% url 'accounts:logout' %}">
                 {% csrf_token %}

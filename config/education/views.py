@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import AssignmentForm, LessonMaterialForm, PerformanceCommentForm, PerformanceMaterialForm
 from .models import Lesson, LessonMaterial, Performance, PerformanceComment, StudentProfile, TeacherProfile, TeachingAssignment
 from accounts.mixins import TeacherRequiredMixin, StudentRequiredMixin, teacher_required
+from core.models import Notification
 
 
 
@@ -175,7 +176,15 @@ class LessonCreateView(LoginRequiredMixin, TeacherRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.assignment = self.assignment
         form.instance.student = self.assignment.student
-        return super().form_valid(form)
+        response = super().form_valid(form)
+
+        Notification.notify(
+            self.assignment.student.user,
+            f"Новый урок: {self.object.date:%d.%m.%Y}" + (" (есть задание)" if self.object.homework else ""),
+            link=reverse("education:lesson_detail", kwargs={"pk": self.object.pk}),
+        )
+
+        return response
 
     def get_success_url(self):
         return reverse_lazy("education:lesson_list")
@@ -383,7 +392,15 @@ class PerformanceCommentCreateView(LoginRequiredMixin, TeacherRequiredMixin, Cre
     def form_valid(self, form):
         form.instance.performance = self.performance
         form.instance.teacher = self.request.user.teacher_profile
-        return super().form_valid(form)
+        response = super().form_valid(form)
+
+        Notification.notify(
+            self.performance.assignment.student.user,
+            "Педагог оставил комментарий к вашему исполнению",
+            link=reverse("education:performance_detail", kwargs={"pk": self.performance.pk}),
+        )
+
+        return response
 
     def get_success_url(self):
         return reverse_lazy("education:performance_detail", kwargs={"pk": self.performance.id})

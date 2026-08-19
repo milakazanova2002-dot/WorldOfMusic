@@ -7,6 +7,8 @@
     <title>{% block title %}World Of Music{% endblock %}</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
 
     {% block head %}{% endblock %}
@@ -55,13 +57,48 @@
                         </ul>
                     </li>
                 {% endif %}
+                <li class="nav-item d-flex align-items-center">
+                    <form method="get" action="{% url 'music:piece_list' %}" class="header-search d-flex ms-2">
+                        <input type="search" name="q" class="form-control form-control-sm" placeholder="Найти произведение..." value="{{ request.GET.q }}">
+                    </form>
+                </li>
             </ul>
 
             <ul class="navbar-nav ms-auto align-items-center">
                 {% if request.user.is_authenticated %}
+                    <li class="nav-item dropdown me-2">
+                        <a class="nav-link position-relative" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" title="Уведомления">
+                            🔔
+                            {% if unread_notifications_count %}
+                                <span class="notification-badge">{{ unread_notifications_count }}</span>
+                            {% endif %}
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end p-2" style="min-width: 300px;">
+                            {% for n in recent_notifications %}
+                                <form method="post" action="{% url 'notification_mark_read' n.pk %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="dropdown-item small {% if not n.is_read %}fw-bold{% endif %} text-wrap">
+                                        {{ n.text }}
+                                        <div class="text-muted" style="font-size: 11px;">{{ n.created_at|date:"d.m.Y H:i" }}</div>
+                                    </button>
+                                </form>
+                            {% empty %}
+                                <span class="dropdown-item-text small text-muted">Уведомлений пока нет</span>
+                            {% endfor %}
+                            <hr class="my-1">
+                            <a href="{% url 'notification_list' %}" class="dropdown-item small text-center">Все уведомления</a>
+                        </div>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'accounts:role_redirect' %}">Кабинет</a>
                     </li>
+                    {% if request.user.teacher_profile and not request.user.is_approved %}
+                        <li class="nav-item">
+                            <span class="badge bg-warning text-dark me-2" title="Ваша заявка ещё не одобрена администратором">
+                                На рассмотрении
+                            </span>
+                        </li>
+                    {% endif %}
                     {% if request.user.teacher_profile or request.user.student_profile %}
                         <li class="nav-item me-2">
                             <a href="{% url 'music:favorite_list' %}" class="circle-btn circle-btn-favorite" title="Избранное">Избранное</a>
@@ -72,8 +109,6 @@
                             <div class="user-avatar">
                                 {% if request.user.avatar %}
                                     <img src="{{ request.user.avatar.url }}" alt="Аватар">
-                                {% elif request.user.teacher_profile %}
-                                    {{ request.user.first_name|default:""|first|upper }}{{ request.user.patronymic|default:""|first|upper }}
                                 {% else %}
                                     {{ request.user.first_name|default:""|first|upper }}{{ request.user.last_name|default:""|first|upper }}
                                 {% endif %}

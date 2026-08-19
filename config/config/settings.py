@@ -70,6 +70,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'core.context_processors.notifications',
             ],
         },
     },
@@ -154,7 +155,19 @@ STATICFILES_DIRS = [
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-AUTH_USER_MODEL = "accounts.User" 
+AUTH_USER_MODEL = "accounts.User"
+
+AUTHENTICATION_BACKENDS = [
+    "accounts.backends.EmailOrPhoneBackend",
+    "django.contrib.auth.backends.ModelBackend",
+]
+
+# Вход через Google (см. README — как получить свои CLIENT_ID/SECRET)
+GOOGLE_OAUTH_CLIENT_ID = os.environ.get("GOOGLE_OAUTH_CLIENT_ID", "")
+GOOGLE_OAUTH_CLIENT_SECRET = os.environ.get("GOOGLE_OAUTH_CLIENT_SECRET", "")
+GOOGLE_OAUTH_REDIRECT_URI = os.environ.get(
+    "GOOGLE_OAUTH_REDIRECT_URI", "http://127.0.0.1:8000/accounts/google/callback/"
+) 
 
 # LOGIN_REDIRECT_URL = "home"
 LOGIN_REDIRECT_URL = "/accounts/redirect/"

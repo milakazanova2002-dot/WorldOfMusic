@@ -5,7 +5,11 @@ from .views import (
     TeacherProfileEditView,
     UserLoginView,
     UserLogoutView,
+    UserPasswordChangeView,
+    UserPasswordChangeDoneView,
     account_menu,
+    google_callback,
+    google_login,
     guest_register,
     pending_approval,
     role_redirect,
@@ -24,6 +28,10 @@ urlpatterns = [
     path("pending/", pending_approval, name="pending_approval"),
     path("redirect/", role_redirect, name="role_redirect"),
     path("account/", account_menu, name="account_menu"),
+    path("password/change/", UserPasswordChangeView.as_view(), name="password_change"),
+    path("password/change/done/", UserPasswordChangeDoneView.as_view(), name="password_change_done"),
+    path("google/login/", google_login, name="google_login"),
+    path("google/callback/", google_callback, name="google_callback"),
 
     # Редактирование профиля
     path("profile/edit/", ProfileEditView.as_view(), name="profile_edit"),

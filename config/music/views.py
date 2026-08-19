@@ -13,7 +13,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 
 from .models import Composer, Favorite, Genre, Instrument, MusicalPiece, MusicMaterial
-from .forms import MusicalPieceForm, MusicMaterialForm
+from .forms import GenreForm, InstrumentForm, MusicalPieceForm, MusicMaterialForm
 
 
 class MusicalPieceListView(ListView):
@@ -291,7 +291,7 @@ class GenreListView(TeacherOnlyMixin, LoginRequiredMixin, ListView):
 
 class GenreCreateView(TeacherOnlyMixin, LoginRequiredMixin, CreateView):
     model = Genre
-    fields = ["name"]
+    form_class = GenreForm
     template_name = "music/genre_form.html"
     success_url = reverse_lazy("music:genre_list")
 
@@ -302,7 +302,7 @@ class GenreCreateView(TeacherOnlyMixin, LoginRequiredMixin, CreateView):
 
 class GenreUpdateView(TeacherOnlyMixin, LoginRequiredMixin, UpdateView):
     model = Genre
-    fields = ["name"]
+    form_class = GenreForm
     template_name = "music/genre_form.html"
     success_url = reverse_lazy("music:genre_list")
 
@@ -329,7 +329,7 @@ class InstrumentListView(TeacherOnlyMixin, LoginRequiredMixin, ListView):
 
 class InstrumentCreateView(TeacherOnlyMixin, LoginRequiredMixin, CreateView):
     model = Instrument
-    fields = ["name", "description"]
+    form_class = InstrumentForm
     template_name = "music/instrument_form.html"
     success_url = reverse_lazy("music:instrument_list")
 
@@ -340,7 +340,7 @@ class InstrumentCreateView(TeacherOnlyMixin, LoginRequiredMixin, CreateView):
 
 class InstrumentUpdateView(TeacherOnlyMixin, LoginRequiredMixin, UpdateView):
     model = Instrument
-    fields = ["name", "description"]
+    form_class = InstrumentForm
     template_name = "music/instrument_form.html"
     success_url = reverse_lazy("music:instrument_list")
 

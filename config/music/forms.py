@@ -160,6 +160,21 @@ class ComposerForm(forms.ModelForm):
             "biography": forms.Textarea(attrs={"class": "form-control", "rows": 4, "placeholder": "Биография"}),
         }
 
+    def clean(self):
+        cleaned_data = super().clean()
+        first_name = cleaned_data.get("first_name", "").strip()
+        last_name = cleaned_data.get("last_name", "").strip()
+
+        if first_name and last_name:
+            duplicate = Composer.objects.filter(
+                first_name__iexact=first_name, last_name__iexact=last_name
+            ).exclude(pk=self.instance.pk)
+
+            if duplicate.exists():
+                raise forms.ValidationError("Такой композитор уже есть в базе.")
+
+        return cleaned_data
+
 
 class GenreForm(forms.ModelForm):
     class Meta:
@@ -170,7 +185,13 @@ class GenreForm(forms.ModelForm):
         }
 
     def clean_name(self):
-        return self.cleaned_data["name"].strip().lower()
+        name = self.cleaned_data["name"].strip().lower()
+
+        duplicate = Genre.objects.filter(name__iexact=name).exclude(pk=self.instance.pk)
+        if duplicate.exists():
+            raise forms.ValidationError("Такой жанр уже есть в базе.")
+
+        return name
 
 
 class InstrumentForm(forms.ModelForm):
@@ -183,7 +204,13 @@ class InstrumentForm(forms.ModelForm):
         }
 
     def clean_name(self):
-        return self.cleaned_data["name"].strip().lower()
+        name = self.cleaned_data["name"].strip().lower()
+
+        duplicate = Instrument.objects.filter(name__iexact=name).exclude(pk=self.instance.pk)
+        if duplicate.exists():
+            raise forms.ValidationError("Такой инструмент уже есть в базе.")
+
+        return name
 
 
 class MusicMaterialForm(forms.ModelForm):

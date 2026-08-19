@@ -27,6 +27,12 @@
                     <button type="submit" class="btn btn-primary">Сохранить</button>
                 </form>
             </div>
+
+            <div class="card p-3 shadow-sm mt-3">
+                <h5>Пароль</h5>
+                <p class="text-muted small">Периодически меняйте пароль, чтобы аккаунт оставался защищённым.</p>
+                <a href="{% url 'accounts:password_change' %}" class="btn btn-outline-secondary">Изменить пароль</a>
+            </div>
         </div>
 
         <!-- Профиль педагога / ученика -->
@@ -38,14 +44,33 @@
                     {% csrf_token %}
 
                     {% for field in teacher_form %}
+                        {% if field.name != "subjects" %}
+                        <div class="mb-3">
+                            <label class="form-label">{{ field.label }}</label>
+                            {{ field }}
+                            {% if field.errors %}
+                                <div class="text-danger small">{{ field.errors|join:", " }}</div>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+
                     <div class="mb-3">
-                        <label class="form-label">{{ field.label }}</label>
-                        {{ field }}
-                        {% if field.errors %}
-                            <div class="text-danger small">{{ field.errors|join:", " }}</div>
+                        <label class="form-label">{{ teacher_form.subjects.label }}</label>
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-outline-secondary dropdown-toggle w-100 text-start"
+                                    data-bs-toggle="dropdown" data-bs-auto-close="outside"
+                                    id="subjectsDropdownToggle" data-placeholder="Выберите предметы...">
+                                Выберите предметы...
+                            </button>
+                            <div class="dropdown-menu p-3 multi-select-panel" aria-labelledby="subjectsDropdownToggle">
+                                {{ teacher_form.subjects }}
+                            </div>
+                        </div>
+                        {% if teacher_form.subjects.errors %}
+                            <div class="text-danger small">{{ teacher_form.subjects.errors|join:", " }}</div>
                         {% endif %}
                     </div>
-                    {% endfor %}
 
                     <button type="submit" class="btn btn-primary">Сохранить</button>
                 </form>
@@ -77,4 +102,30 @@
         </div>
     </div>
 </div>
+
+<script>
+function setupMultiSelectDropdown(toggleId) {
+    const button = document.getElementById(toggleId);
+    if (!button) return;
+    const panel = button.nextElementSibling;
+    const checkboxes = panel.querySelectorAll('input[type="checkbox"]');
+    const placeholder = button.dataset.placeholder;
+
+    function updateLabel() {
+        const checkedLabels = [];
+        checkboxes.forEach(cb => {
+            if (cb.checked) {
+                const label = panel.querySelector('label[for="' + cb.id + '"]');
+                checkedLabels.push(label ? label.textContent.trim() : cb.value);
+            }
+        });
+        button.textContent = checkedLabels.length ? checkedLabels.join(', ') : placeholder;
+    }
+
+    checkboxes.forEach(cb => cb.addEventListener('change', updateLabel));
+    updateLabel();
+}
+
+setupMultiSelectDropdown('subjectsDropdownToggle');
+</script>
 {% endblock %}

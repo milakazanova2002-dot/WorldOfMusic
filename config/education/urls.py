@@ -12,6 +12,8 @@ from .views import (
     LessonCreateView,
     LessonMaterialCreateView,
     LessonUpdateView,
+    MyStudentsListView,
+    MyTeachersListView,
     PerformanceCommentCreateView,
     PerformanceDeleteView,
     PerformanceDetailView,
@@ -19,6 +21,7 @@ from .views import (
     PerformanceCreateView,
     PerformanceMaterialUpdateView,
     PerformanceUpdateView,
+    PiecePerformersView,
     StudentDashboardView,
     StudentDetailView,
     TeacherDashboardView,
@@ -26,6 +29,7 @@ from .views import (
     TeacherPublicListView,
     TeacherPublicDetailView,
     add_performance_comment,
+    remove_performer,
 )
 
 app_name = "education"
@@ -62,4 +66,8 @@ urlpatterns = [
 
     path("dashboard/student/", StudentDashboardView.as_view(), name="student_dashboard"),
     path("dashboard/teacher/", TeacherDashboardView.as_view(), name="teacher_dashboard"),
+    path("my-students/", MyStudentsListView.as_view(), name="my_students"),
+    path("my-teachers/", MyTeachersListView.as_view(), name="my_teachers"),
+    path("piece/<int:pk>/performers/", PiecePerformersView.as_view(), name="piece_performers"),
+    path("performance/<int:pk>/remove-performer/", remove_performer, name="remove_performer"),
 ]

@@ -505,32 +505,7 @@ section.py-5 {
 }
 
 
-/* ===== Выпадающая панель мультивыбора (жанры/инструменты на форме произведения) ===== */
-
-.multi-select-panel {
-    max-height: 260px;
-    overflow-y: auto;
-    min-width: 100%;
-}
-
-.multi-select-panel ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.multi-select-panel li {
-    padding: 4px 0;
-}
-
-.multi-select-panel input[type="checkbox"] {
-    margin-right: 8px;
-}
-
-.multi-select-panel label {
-    cursor: pointer;
-    font-weight: 400;
-}
+/* ===== Выпадающая панель мультивыбора — заменена на .pill-select-panel ниже ===== */
 
 
 /* ===== Круглые кнопки в хедере (Избранное, аватарка-настройки) ===== */
@@ -599,4 +574,181 @@ section.py-5 {
 .header-search {
     max-width: 220px;
     margin-top: 6px;
+}
+
+
+/* ===== "Атмосферный" хедер личного кабинета ===== */
+
+.cabinet-hero {
+    background: linear-gradient(120deg, #2b2f36 0%, #4a4f5a 55%, #6d5a8c 100%);
+    border-radius: 20px;
+    padding: 36px 40px;
+    color: #fff;
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+}
+
+.cabinet-hero::before {
+    content: "";
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 70%);
+}
+
+.cabinet-hero-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6366f1, #ec4899);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    font-weight: 700;
+    border: 3px solid rgba(255,255,255,0.3);
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.cabinet-hero-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cabinet-hero h2 {
+    margin: 0;
+    font-family: "Playfair Display", Georgia, serif;
+}
+
+.cabinet-hero .text-muted-light {
+    color: rgba(255,255,255,0.7);
+}
+
+/* ===== Карточки статистики в кабинете ===== */
+
+.stat-pill {
+    background: rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 14px 20px;
+    text-align: center;
+    min-width: 100px;
+}
+
+.stat-pill .stat-number {
+    font-size: 1.7rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.stat-pill .stat-label {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.65);
+    margin-top: 4px;
+}
+
+/* ===== Блоки-превью (последние 5) в кабинете ===== */
+
+.section-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 22px 24px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 20px;
+}
+
+.section-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.section-card-header h4 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.preview-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f2;
+    text-decoration: none;
+    color: inherit;
+}
+
+.preview-item:last-child {
+    border-bottom: none;
+}
+
+.preview-item:hover {
+    background: #fafafa;
+}
+
+.preview-item-meta {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* ===== Кнопки-пилюли для выбора жанров/инструментов/предметов ===== */
+
+.pill-select-panel {
+    max-height: 320px;
+    overflow-y: auto;
+    min-width: 100%;
+    width: max-content;
+    max-width: 480px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 8px;
+}
+
+.pill-select-panel ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+}
+
+.pill-select-panel li {
+    margin: 0;
+}
+
+.pill-select-panel input[type="checkbox"] {
+    display: none;
+}
+
+.pill-select-panel label {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: var(--bg-light);
+    border: 1.5px solid #e2e8f0;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.15s ease;
+    user-select: none;
+}
+
+.pill-select-panel label:hover {
+    border-color: var(--primary);
+}
+
+.pill-select-panel input[type="checkbox"]:checked + label,
+.pill-select-panel label:has(input[type="checkbox"]:checked) {
+    background: var(--gradient-1);
+    color: #fff;
+    border-color: transparent;
 }

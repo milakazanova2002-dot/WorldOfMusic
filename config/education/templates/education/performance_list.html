@@ -1,16 +1,35 @@
 {% extends "base.html" %}
 
+{% block title %}Исполнения — World Of Music{% endblock %}
+
 {% block content %}
-<h2>Исполнения</h2>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'accounts:role_redirect' %}">Кабинет</a></li>
+        <li class="breadcrumb-item active">Исполнения</li>
+    </ol>
+</nav>
 
-<ul>
+<h2 class="mb-4">Исполнения</h2>
+
+<div class="section-card">
     {% for p in performances %}
-        <li>
-            <a href="{% url 'education:performance_detail' p.pk %}">
-                Исполнение №{{ p.pk }} — {{ p.assignment.student }} ({{ p.assignment.subject }})
-            </a>
-        </li>
+        <a href="{% url 'education:performance_detail' p.pk %}" class="preview-item">
+            <div>
+                <div class="fw-bold">{% if p.piece %}{{ p.piece.title }}{% else %}Исполнение №{{ p.pk }}{% endif %}</div>
+                <div class="preview-item-meta">
+                    {% if request.user.teacher_profile %}
+                        {{ p.assignment.student.user.get_full_name|default:p.assignment.student.user.username }}
+                    {% else %}
+                        {{ p.assignment.teacher.user.get_full_name|default:p.assignment.teacher.user.username }}
+                    {% endif %}
+                    · {{ p.created_at|date:"d.m.Y" }}
+                    {% if p.score %} · оценка {{ p.score }}{% endif %}
+                </div>
+            </div>
+        </a>
+    {% empty %}
+        <p class="text-muted mb-0">Исполнений пока нет.</p>
     {% endfor %}
-</ul>
-
+</div>
 {% endblock %}

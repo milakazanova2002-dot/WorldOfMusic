@@ -29,6 +29,9 @@
                 <button type="submit" class="btn btn-outline-danger w-100">Выйти</button>
             </form>
         </div>
+
+        <hr class="my-4">
+        <a href="{% url 'accounts:account_delete' %}" class="text-danger small text-decoration-none">Удалить аккаунт</a>
     </div>
 </div>
 {% endblock %}

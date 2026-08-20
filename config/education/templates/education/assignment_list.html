@@ -1,18 +1,44 @@
 {% extends "base.html" %}
 
+{% block title %}Мои назначения — World Of Music{% endblock %}
+
 {% block content %}
-<h2>Мои назначения</h2>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'accounts:role_redirect' %}">Кабинет</a></li>
+        <li class="breadcrumb-item active">Назначения</li>
+    </ol>
+</nav>
 
-<a href="{% url 'education:assignment_create' %}">Создать новое назначение</a>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="mb-0">Мои назначения</h2>
+    {% if request.user.teacher_profile %}
+        <a href="{% url 'education:assignment_create' %}" class="btn btn-primary btn-sm">Прикрепить ученика</a>
+    {% endif %}
+</div>
 
-<ul>
+<div class="section-card">
     {% for a in assignments %}
-        <li>
-            {{ a.student }} — {{ a.subject }}
-            <a href="{% url 'education:assignment_edit' a.pk %}">Редактировать</a>
-            <a href="{% url 'education:assignment_delete' a.pk %}">Удалить</a>
-        </li>
+        <div class="preview-item">
+            <a href="{% url 'education:assignment_detail' a.pk %}" class="text-decoration-none text-dark flex-grow-1">
+                <div class="fw-bold">{{ a.subject }}</div>
+                <div class="preview-item-meta">
+                    {% if request.user.teacher_profile %}
+                        ученик: {{ a.student.user.get_full_name|default:a.student.user.username }}
+                    {% else %}
+                        педагог: {{ a.teacher.user.get_full_name|default:a.teacher.user.username }}
+                    {% endif %}
+                </div>
+            </a>
+            {% if request.user.teacher_profile %}
+                <div class="d-flex gap-2">
+                    <a href="{% url 'education:assignment_edit' a.pk %}" class="btn btn-outline-secondary btn-sm">Редактировать</a>
+                    <a href="{% url 'education:assignment_delete' a.pk %}" class="btn btn-outline-danger btn-sm">Удалить</a>
+                </div>
+            {% endif %}
+        </div>
+    {% empty %}
+        <p class="text-muted mb-0">Назначений пока нет.</p>
     {% endfor %}
-</ul>
-
+</div>
 {% endblock %}

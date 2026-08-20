@@ -1,70 +1,134 @@
 {% extends "base.html" %}
 
+{% block title %}Личный кабинет — World Of Music{% endblock %}
+
 {% block content %}
-<h2>Личный кабинет педагога</h2>
 
-<div class="d-flex justify-content-between align-items-center">
-    <h3 class="mb-0">Ваши ученики</h3>
-    <a href="{% url 'education:assignment_create' %}" class="btn btn-primary btn-sm">Прикрепить ученика</a>
-</div>
-<ul class="list-unstyled mt-2">
-    {% for student in students %}
-        <li class="d-flex align-items-center gap-2 mb-2">
-            <div class="user-avatar avatar-list" style="width:36px; height:36px; font-size:13px;">
-                {% if student.user.avatar %}
-                    <img src="{{ student.user.avatar.url }}" alt="Аватар">
-                {% else %}
-                    {{ student.user.first_name|default:""|first|upper }}{{ student.user.last_name|default:""|first|upper }}
-                {% endif %}
-            </div>
-            <a href="{% url 'education:student_detail' student.pk %}" class="text-decoration-none text-dark">
-                {{ student.user.get_full_name|default:student.user.username }}
-            </a>
-        </li>
-    {% empty %}
-        <li>У вас пока нет учеников.</li>
-    {% endfor %}
-</ul>
-
-<h3>Назначения</h3>
-<ul>
-    {% for assignment in assignments %}
-        <li>
-            <a href="{% url 'education:assignment_detail' assignment.pk %}">
-                {{ assignment.subject }} — {{ assignment.student.user.get_full_name|default:assignment.student.user.username }}
-            </a>
-        </li>
-    {% empty %}
-        <li>Назначений пока нет.</li>
-    {% endfor %}
-</ul>
-
-<h3>Последние уроки</h3>
-<ul>
-    {% for lesson in lessons %}
-        <li>
-            <a href="{% url 'education:lesson_detail' lesson.pk %}">{{ lesson.date|date:"d.m.Y" }}</a>
-            {% if lesson.piece %}
-                — <a href="{% url 'music:piece_detail' lesson.piece.pk %}">{{ lesson.piece.title }}</a>
+<!-- Атмосферный хедер кабинета -->
+<div class="cabinet-hero">
+    <div class="d-flex align-items-center gap-3 flex-wrap">
+        <div class="cabinet-hero-avatar">
+            {% if request.user.avatar %}
+                <img src="{{ request.user.avatar.url }}" alt="Аватар">
+            {% else %}
+                {{ request.user.first_name|default:""|first|upper }}{{ request.user.last_name|default:""|first|upper }}
             {% endif %}
-        </li>
-    {% empty %}
-        <li>Уроков пока нет.</li>
-    {% endfor %}
-</ul>
+        </div>
+        <div>
+            <h2>{{ request.user.get_full_name|default:request.user.username }}</h2>
+            <div class="text-muted-light">Личный кабинет педагога</div>
+        </div>
+    </div>
 
-<h3>Последние исполнения учеников</h3>
-<ul>
-    {% for perf in performances %}
-        <li>
-            <a href="{% url 'education:performance_detail' perf.pk %}">
-                {% if perf.piece %}{{ perf.piece.title }}{% else %}Исполнение №{{ perf.pk }}{% endif %}
-            </a>
-            — {{ perf.assignment.student.user.get_full_name|default:perf.assignment.student.user.username }}
-        </li>
-    {% empty %}
-        <li>Исполнений пока нет.</li>
-    {% endfor %}
-</ul>
+    <div class="d-flex gap-3 flex-wrap mt-4">
+        <a href="{% url 'education:my_students' %}" class="stat-pill text-decoration-none text-white">
+            <div class="stat-number">{{ students_count }}</div>
+            <div class="stat-label">учеников</div>
+        </a>
+        <a href="{% url 'education:assignment_list' %}" class="stat-pill text-decoration-none text-white">
+            <div class="stat-number">{{ assignments_count }}</div>
+            <div class="stat-label">назначений</div>
+        </a>
+        <a href="{% url 'education:lesson_list' %}" class="stat-pill text-decoration-none text-white">
+            <div class="stat-number">{{ lessons_count }}</div>
+            <div class="stat-label">уроков</div>
+        </a>
+        <a href="{% url 'education:performance_list' %}" class="stat-pill text-decoration-none text-white">
+            <div class="stat-number">{{ performances_count }}</div>
+            <div class="stat-label">исполнений</div>
+        </a>
+    </div>
+</div>
 
+<div class="row">
+    <div class="col-lg-6">
+        <div class="section-card">
+            <div class="section-card-header">
+                <h4>Ваши ученики</h4>
+                <a href="{% url 'education:assignment_create' %}" class="btn btn-primary btn-sm">Прикрепить ученика</a>
+            </div>
+            {% for student in students %}
+                <a href="{% url 'education:student_detail' student.pk %}" class="preview-item">
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="user-avatar avatar-list" style="width:36px; height:36px; font-size:13px;">
+                            {% if student.user.avatar %}
+                                <img src="{{ student.user.avatar.url }}" alt="Аватар">
+                            {% else %}
+                                {{ student.user.first_name|default:""|first|upper }}{{ student.user.last_name|default:""|first|upper }}
+                            {% endif %}
+                        </div>
+                        {{ student.user.get_full_name|default:student.user.username }}
+                    </div>
+                </a>
+            {% empty %}
+                <p class="text-muted mb-0">У вас пока нет учеников.</p>
+            {% endfor %}
+            {% if students_count > 5 %}
+                <a href="{% url 'education:my_students' %}" class="small">Показать всех ({{ students_count }}) →</a>
+            {% endif %}
+        </div>
+
+        <div class="section-card">
+            <div class="section-card-header">
+                <h4>Назначения</h4>
+            </div>
+            {% for assignment in assignments %}
+                <a href="{% url 'education:assignment_detail' assignment.pk %}" class="preview-item">
+                    <div>
+                        <div class="fw-bold">{{ assignment.subject }}</div>
+                        <div class="preview-item-meta">{{ assignment.student.user.get_full_name|default:assignment.student.user.username }}</div>
+                    </div>
+                </a>
+            {% empty %}
+                <p class="text-muted mb-0">Назначений пока нет.</p>
+            {% endfor %}
+            {% if assignments_count > 5 %}
+                <a href="{% url 'education:assignment_list' %}" class="small">Показать все ({{ assignments_count }}) →</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="section-card">
+            <div class="section-card-header">
+                <h4>Последние уроки</h4>
+            </div>
+            {% for lesson in lessons %}
+                <a href="{% url 'education:lesson_detail' lesson.pk %}" class="preview-item">
+                    <div>
+                        <div class="fw-bold">{{ lesson.date|date:"d.m.Y" }}</div>
+                        <div class="preview-item-meta">
+                            {{ lesson.assignment.student.user.get_full_name|default:lesson.assignment.student.user.username }}
+                            {% if lesson.piece %} · {{ lesson.piece.title }}{% endif %}
+                        </div>
+                    </div>
+                </a>
+            {% empty %}
+                <p class="text-muted mb-0">Уроков пока нет.</p>
+            {% endfor %}
+            {% if lessons_count > 5 %}
+                <a href="{% url 'education:lesson_list' %}" class="small">Показать все ({{ lessons_count }}) →</a>
+            {% endif %}
+        </div>
+
+        <div class="section-card">
+            <div class="section-card-header">
+                <h4>Последние исполнения учеников</h4>
+            </div>
+            {% for perf in performances %}
+                <a href="{% url 'education:performance_detail' perf.pk %}" class="preview-item">
+                    <div>
+                        <div class="fw-bold">{% if perf.piece %}{{ perf.piece.title }}{% else %}Исполнение №{{ perf.pk }}{% endif %}</div>
+                        <div class="preview-item-meta">{{ perf.assignment.student.user.get_full_name|default:perf.assignment.student.user.username }}</div>
+                    </div>
+                </a>
+            {% empty %}
+                <p class="text-muted mb-0">Исполнений пока нет.</p>
+            {% endfor %}
+            {% if performances_count > 5 %}
+                <a href="{% url 'education:performance_list' %}" class="small">Показать все ({{ performances_count }}) →</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
 {% endblock %}

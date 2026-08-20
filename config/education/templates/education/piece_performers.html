@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Исполнители — {{ piece.title }}{% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'music:piece_list' %}">Библиотека</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'music:piece_detail' piece.pk %}">{{ piece.title }}</a></li>
+        <li class="breadcrumb-item active">Наши исполнители</li>
+    </ol>
+</nav>
+
+<h2 class="mb-4">Наши исполнители «{{ piece.title }}»</h2>
+
+<div class="section-card">
+    {% for perf in performances %}
+        <div class="preview-item">
+            <div class="d-flex align-items-center gap-2">
+                <div class="user-avatar avatar-list" style="width:36px; height:36px; font-size:13px;">
+                    {% if perf.assignment.student.user.avatar %}
+                        <img src="{{ perf.assignment.student.user.avatar.url }}" alt="Аватар">
+                    {% else %}
+                        {{ perf.assignment.student.user.first_name|default:""|first|upper }}{{ perf.assignment.student.user.last_name|default:""|first|upper }}
+                    {% endif %}
+                </div>
+                <div>
+                    <a href="{% url 'education:performance_detail' perf.pk %}" class="text-decoration-none">
+                        {{ perf.assignment.student.user.get_full_name|default:perf.assignment.student.user.username }}
+                    </a>
+                    <div class="preview-item-meta">
+                        педагог {{ perf.assignment.teacher.user.get_full_name|default:perf.assignment.teacher.user.username }}
+                        · {{ perf.created_at|date:"d.m.Y" }}
+                        {% if perf.score %} · оценка {{ perf.score }}{% endif %}
+                    </div>
+                </div>
+            </div>
+
+            {% if request.user.is_authenticated and request.user.teacher_profile %}
+                <form method="post" action="{% url 'education:remove_performer' perf.pk %}"
+                      onsubmit="return confirm('Убрать этого ученика из списка исполнителей?');">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-danger btn-sm">Удалить</button>
+                </form>
+            {% endif %}
+        </div>
+    {% empty %}
+        <p class="text-muted mb-0">Пока никто из учеников не исполнял это произведение.</p>
+    {% endfor %}
+</div>
+{% endblock %}

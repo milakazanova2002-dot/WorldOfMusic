@@ -10,7 +10,7 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView
 from django.http import HttpResponseBadRequest
 from django.shortcuts import render, redirect
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import UpdateView
@@ -215,6 +215,29 @@ def google_callback(request):
 
     login(request, user, backend="django.contrib.auth.backends.ModelBackend")
     return redirect("accounts:role_redirect")
+
+
+@login_required
+def account_delete(request):
+    """Удаление аккаунта — требует подтверждения паролем, чтобы не удалить
+    случайно (например, если кто-то подошёл к незалоченному компьютеру)."""
+    if request.user.is_superuser:
+        messages.error(request, "Аккаунт администратора нельзя удалить через сайт — только через панель Django.")
+        return redirect("accounts:account_menu")
+
+    if request.method == "POST":
+        password = request.POST.get("password", "")
+        if request.user.check_password(password):
+            user = request.user
+            logout(request)
+            user.delete()
+            messages.success(request, "Аккаунт удалён.")
+            return redirect("home")
+        else:
+            messages.error(request, "Неверный пароль. Аккаунт не удалён.")
+            return redirect("accounts:account_delete")
+
+    return render(request, "accounts/account_delete.html")
 
 
 @login_required

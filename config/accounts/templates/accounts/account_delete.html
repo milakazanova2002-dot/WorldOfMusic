@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Удаление аккаунта — World Of Music{% endblock %}
+
+{% block content %}
+<div class="auth-wrapper">
+    <div class="auth-card">
+        <h2 class="text-danger">Удалить аккаунт?</h2>
+        <p class="auth-subtitle">Это действие необратимо.</p>
+
+        <div class="alert alert-warning small">
+            {% if request.user.teacher_profile %}
+                Вместе с аккаунтом удалятся: ваш профиль педагога, все назначения на учеников,
+                <strong>а также все уроки, домашние задания и исполнения ваших учеников по этим назначениям</strong>.
+                Ученики потеряют доступ к этой истории.
+            {% elif request.user.student_profile %}
+                Вместе с аккаунтом удалятся: ваш профиль ученика, история ваших уроков,
+                домашних заданий и загруженных исполнений, а также избранные произведения.
+            {% else %}
+                Вместе с аккаунтом удалятся все связанные с ним данные (избранное, уведомления).
+            {% endif %}
+        </div>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label">Введите пароль, чтобы подтвердить</label>
+                <input type="password" name="password" class="form-control" required autofocus>
+            </div>
+            <button type="submit" class="btn btn-danger w-100">Удалить аккаунт навсегда</button>
+        </form>
+
+        <p class="auth-switch">
+            <a href="{% url 'accounts:account_menu' %}">Отмена</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

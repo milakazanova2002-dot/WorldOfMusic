@@ -2,11 +2,13 @@ from django.http import HttpResponseForbidden
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, TemplateView, UpdateView
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST
 
 
-from .forms import AssignmentForm, LessonMaterialForm, PerformanceCommentForm, PerformanceMaterialForm
+from .forms import AssignmentForm, LessonForm, LessonMaterialForm, PerformanceCommentForm, PerformanceMaterialForm
 from .models import Lesson, LessonMaterial, Performance, PerformanceComment, StudentProfile, TeacherProfile, TeachingAssignment
 from accounts.mixins import TeacherRequiredMixin, StudentRequiredMixin, teacher_required
 from core.models import Notification
@@ -163,7 +165,7 @@ class LessonDetailView(LoginRequiredMixin, DetailView):
 
 class LessonCreateView(LoginRequiredMixin, TeacherRequiredMixin, CreateView):
     model = Lesson
-    fields = ["date", "instrument", "piece", "homework", "comment"]
+    form_class = LessonForm
     template_name = "education/lesson_form.html"
 
     def dispatch(self, request, *args, **kwargs):
@@ -172,6 +174,11 @@ class LessonCreateView(LoginRequiredMixin, TeacherRequiredMixin, CreateView):
             id=kwargs["assignment_id"]
         )
         return super().dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["assignment"] = self.assignment
+        return context
 
     def form_valid(self, form):
         form.instance.assignment = self.assignment
@@ -192,7 +199,7 @@ class LessonCreateView(LoginRequiredMixin, TeacherRequiredMixin, CreateView):
 
 class LessonUpdateView(LoginRequiredMixin, TeacherRequiredMixin, UpdateView):
     model = Lesson
-    fields = ["date", "instrument", "piece", "homework", "comment"]
+    form_class = LessonForm
     template_name = "education/lesson_form.html"
 
     def get_success_url(self):
@@ -229,10 +236,12 @@ class AssignmentListView(LoginRequiredMixin, ListView):
     template_name = "education/assignment_list.html"
     context_object_name = "assignments"
 
-    def get_queryset(self): 
+    def get_queryset(self):
         user = self.request.user
         if hasattr(user, "teacher_profile"):
-            return TeachingAssignment.objects.filter(teacher=user.teacher_profile)
+            return TeachingAssignment.objects.filter(teacher=user.teacher_profile).select_related("student__user", "subject")
+        if hasattr(user, "student_profile"):
+            return TeachingAssignment.objects.filter(student=user.student_profile).select_related("teacher__user", "subject")
         return TeachingAssignment.objects.none()
 
 
@@ -430,19 +439,35 @@ class StudentDashboardView(LoginRequiredMixin, StudentRequiredMixin, TemplateVie
         context = super().get_context_data(**kwargs)
         student = self.request.user.student_profile
 
-        context["lessons"] = Lesson.objects.filter(
-            assignment__student=student
-        ).order_by("-date")[:5]
+        all_lessons = Lesson.objects.filter(assignment__student=student).order_by("-date")
+        all_assignments = TeachingAssignment.objects.filter(student=student).select_related("teacher__user", "subject")
+        all_performances = Performance.objects.filter(assignment__student=student).order_by("-created_at")
 
-        context["assignments"] = TeachingAssignment.objects.filter(
-            student=student
-        )[:5]
+        context["lessons"] = all_lessons[:5]
+        context["assignments"] = all_assignments[:5]
+        context["performances"] = all_performances[:5]
 
-        context["performances"] = Performance.objects.filter(
-            assignment__student=student
-        ).order_by("-created_at")[:5]
+        context["lessons_count"] = all_lessons.count()
+        context["assignments_count"] = all_assignments.count()
+        context["performances_count"] = all_performances.count()
+
+        # Уникальные педагоги этого ученика (без повторов, даже если предметов несколько)
+        teacher_ids = all_assignments.values_list("teacher_id", flat=True).distinct()
+        context["teachers_count"] = len(set(teacher_ids))
 
         return context
+
+
+class MyTeachersListView(LoginRequiredMixin, StudentRequiredMixin, ListView):
+    """Полный список педагогов текущего ученика (без повторов по предметам)."""
+    template_name = "education/my_teachers_list.html"
+    context_object_name = "teachers"
+
+    def get_queryset(self):
+        student = self.request.user.student_profile
+        teacher_ids = TeachingAssignment.objects.filter(student=student).values_list("teacher_id", flat=True).distinct()
+        return TeacherProfile.objects.filter(id__in=teacher_ids).select_related("user")
+
 
 class TeacherDashboardView(LoginRequiredMixin, TeacherRequiredMixin, TemplateView):
     template_name = "education/teacher_dashboard.html"
@@ -451,23 +476,36 @@ class TeacherDashboardView(LoginRequiredMixin, TeacherRequiredMixin, TemplateVie
         context = super().get_context_data(**kwargs)
         teacher = self.request.user.teacher_profile
 
-        context["assignments"] = TeachingAssignment.objects.filter(
-            teacher=teacher
-        )[:5]
+        all_assignments = TeachingAssignment.objects.filter(teacher=teacher).select_related("student__user", "subject")
+        all_lessons = Lesson.objects.filter(assignment__teacher=teacher).order_by("-date")
+        all_performances = Performance.objects.filter(assignment__teacher=teacher).order_by("-created_at")
 
-        context["lessons"] = Lesson.objects.filter(
-            assignment__teacher=teacher
-        ).order_by("-date")[:5]
+        context["assignments"] = all_assignments[:5]
+        context["lessons"] = all_lessons[:5]
+        context["performances"] = all_performances[:5]
 
-        context["performances"] = Performance.objects.filter(
-            assignment__teacher=teacher
-        ).order_by("-created_at")[:5]
+        context["assignments_count"] = all_assignments.count()
+        context["lessons_count"] = all_lessons.count()
+        context["performances_count"] = all_performances.count()
 
-        context["students"] = [
-            assignment.student for assignment in TeachingAssignment.objects.filter(teacher=teacher)
-        ]
+        # Уникальные ученики этого педагога (без повторов, даже если предметов несколько)
+        student_ids = all_assignments.values_list("student_id", flat=True).distinct()
+        students = StudentProfile.objects.filter(id__in=student_ids).select_related("user")
+        context["students"] = students[:5]
+        context["students_count"] = students.count()
 
         return context
+
+
+class MyStudentsListView(LoginRequiredMixin, TeacherRequiredMixin, ListView):
+    """Полный список учеников текущего педагога (без повторов по предметам)."""
+    template_name = "education/my_students_list.html"
+    context_object_name = "students"
+
+    def get_queryset(self):
+        teacher = self.request.user.teacher_profile
+        student_ids = TeachingAssignment.objects.filter(teacher=teacher).values_list("student_id", flat=True).distinct()
+        return StudentProfile.objects.filter(id__in=student_ids).select_related("user")
 
 
 @login_required
@@ -491,6 +529,36 @@ def add_performance_comment(request, pk):
         "education/performance_comment_form.html",
         {"form": form, "performance": performance}
     )
+
+
+class PiecePerformersView(LoginRequiredMixin, TemplateView):
+    """Список учеников, исполняющих данное произведение — со страницы произведения."""
+    template_name = "education/piece_performers.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        from music.models import MusicalPiece
+
+        piece = get_object_or_404(MusicalPiece, pk=self.kwargs["pk"])
+        context["piece"] = piece
+        context["performances"] = (
+            Performance.objects.filter(piece=piece)
+            .select_related("assignment__student__user", "assignment__teacher__user")
+            .order_by("-created_at")
+        )
+        return context
+
+
+@login_required
+@teacher_required
+@require_POST
+def remove_performer(request, pk):
+    """Удаляет исполнение — тем самым убирает ученика из списка исполнителей произведения."""
+    performance = get_object_or_404(Performance, pk=pk)
+    piece_id = performance.piece_id
+    performance.delete()
+    messages.success(request, "Ученик удалён из списка исполнителей.")
+    return redirect("education:piece_performers", pk=piece_id)
 
 
 

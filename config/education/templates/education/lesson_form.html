@@ -1,7 +1,60 @@
-<h2>Создать урок</h2>
+{% extends "base.html" %}
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Сохранить</button>
-</form>
+{% block title %}{% if form.instance.pk %}Редактировать урок{% else %}Новый урок{% endif %} — World Of Music{% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'accounts:role_redirect' %}">Кабинет</a></li>
+        {% if form.instance.pk %}
+            <li class="breadcrumb-item"><a href="{% url 'education:assignment_detail' form.instance.assignment.pk %}">{{ form.instance.assignment.subject }}</a></li>
+            <li class="breadcrumb-item active">Редактировать урок</li>
+        {% else %}
+            <li class="breadcrumb-item"><a href="{% url 'education:assignment_detail' assignment.pk %}">{{ assignment.subject }}</a></li>
+            <li class="breadcrumb-item active">Новый урок</li>
+        {% endif %}
+    </ol>
+</nav>
+
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+        <div class="section-card">
+            <div class="d-flex align-items-center gap-3 mb-3">
+                <div class="cabinet-hero-avatar" style="width:48px; height:48px; font-size:18px; background: var(--gradient-1);">🎵</div>
+                <div>
+                    <h4 class="mb-0">{% if form.instance.pk %}Редактировать урок{% else %}Новый урок{% endif %}</h4>
+                    <div class="text-muted small">
+                        {% if form.instance.pk %}{{ form.instance.assignment.student.user.get_full_name }}
+                        {% else %}{{ assignment.student.user.get_full_name|default:assignment.student.user.username }}{% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <form method="post">
+                {% csrf_token %}
+
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+                {% endif %}
+
+                {% for field in form %}
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}
+                            <div class="text-danger small">{{ field.errors|join:", " }}</div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+                <div class="d-flex gap-2 mt-4">
+                    <button type="submit" class="btn btn-primary">
+                        {% if form.instance.pk %}Сохранить{% else %}Создать урок{% endif %}
+                    </button>
+                    <a href="{% url 'accounts:role_redirect' %}" class="btn btn-secondary">Отмена</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

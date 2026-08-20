@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Мои ученики — World Of Music{% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'accounts:role_redirect' %}">Кабинет</a></li>
+        <li class="breadcrumb-item active">Мои ученики</li>
+    </ol>
+</nav>
+
+<h2 class="mb-4">Мои ученики</h2>
+
+<div class="section-card">
+    {% for student in students %}
+        <a href="{% url 'education:student_detail' student.pk %}" class="preview-item">
+            <div class="d-flex align-items-center gap-3">
+                <div class="user-avatar avatar-list" style="width:44px; height:44px; font-size:16px;">
+                    {% if student.user.avatar %}
+                        <img src="{{ student.user.avatar.url }}" alt="Аватар">
+                    {% else %}
+                        {{ student.user.first_name|default:""|first|upper }}{{ student.user.last_name|default:""|first|upper }}
+                    {% endif %}
+                </div>
+                <div>
+                    <div class="fw-bold">{{ student.user.get_full_name|default:student.user.username }}</div>
+                    {% if student.level %}<div class="preview-item-meta">{{ student.level }}</div>{% endif %}
+                </div>
+            </div>
+        </a>
+    {% empty %}
+        <p class="text-muted mb-0">У вас пока нет учеников. <a href="{% url 'education:assignment_create' %}">Прикрепить ученика</a></p>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,17 +1,35 @@
 {% extends "base.html" %}
 
+{% block title %}Мои уроки — World Of Music{% endblock %}
+
 {% block content %}
-<h2>Мои уроки</h2>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'accounts:role_redirect' %}">Кабинет</a></li>
+        <li class="breadcrumb-item active">Уроки</li>
+    </ol>
+</nav>
 
-<ul>
+<h2 class="mb-4">Мои уроки</h2>
+
+<div class="section-card">
     {% for lesson in lessons %}
-        <li>
-            {{ lesson.date }} — {{ lesson.assignment.student }}
-            <a href="{% url 'education:lesson_detail' lesson.pk %}">Подробнее</a>
-        </li>
+        <a href="{% url 'education:lesson_detail' lesson.pk %}" class="preview-item">
+            <div>
+                <div class="fw-bold">{{ lesson.date|date:"d.m.Y H:i" }}</div>
+                <div class="preview-item-meta">
+                    {% if request.user.teacher_profile %}
+                        {{ lesson.assignment.student.user.get_full_name|default:lesson.assignment.student.user.username }}
+                    {% else %}
+                        {{ lesson.assignment.teacher.user.get_full_name|default:lesson.assignment.teacher.user.username }}
+                    {% endif %}
+                    {% if lesson.piece %} · {{ lesson.piece.title }}{% endif %}
+                    {% if lesson.homework %} · есть задание{% endif %}
+                </div>
+            </div>
+        </a>
     {% empty %}
-        <li>Уроков пока нет.</li>
+        <p class="text-muted mb-0">Уроков пока нет.</p>
     {% endfor %}
-</ul>
-
+</div>
 {% endblock %}

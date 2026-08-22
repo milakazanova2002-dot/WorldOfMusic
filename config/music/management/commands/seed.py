@@ -215,7 +215,7 @@ class Command(BaseCommand):
         assignment2, _ = TeachingAssignment.objects.get_or_create(
             teacher=teacher_profile, student=student2_profile, subject=subjects[1]  # фортепиано
         )
-        self.stdout.write("  ✅ Назначения: Иванова—Петрова (вокал), Иванова—Орлов (фортепиано)")
+        self.stdout.write("  ✅ Курсы: Иванова—Петрова (вокал), Иванова—Орлов (фортепиано)")
 
         # ---------- Произведения ----------
 

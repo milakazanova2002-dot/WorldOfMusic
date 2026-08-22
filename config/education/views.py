@@ -247,7 +247,7 @@ class AssignmentListView(LoginRequiredMixin, ListView):
 
 class AssignmentDetailView(LoginRequiredMixin, DetailView):
     """Страница конкретной связки педагог-ученик: показывает уроки (с домашними
-    заданиями) и исполнения произведений по этому назначению."""
+    заданиями) и исполнения произведений по этому курсу."""
     model = TeachingAssignment
     template_name = "education/assignment_detail.html"
     context_object_name = "assignment"
@@ -260,7 +260,7 @@ class AssignmentDetailView(LoginRequiredMixin, DetailView):
         is_the_student = hasattr(user, "student_profile") and assignment.student_id == user.student_profile.id
 
         if not (is_the_teacher or is_the_student):
-            return HttpResponseForbidden("У вас нет доступа к этому назначению.")
+            return HttpResponseForbidden("У вас нет доступа к этому курсу.")
 
         return super().dispatch(request, *args, **kwargs)
 

@@ -27,7 +27,7 @@
         </a>
         <a href="{% url 'education:assignment_list' %}" class="stat-pill text-decoration-none text-white">
             <div class="stat-number">{{ assignments_count }}</div>
-            <div class="stat-label">назначений</div>
+            <div class="stat-label">курсов</div>
         </a>
         <a href="{% url 'education:lesson_list' %}" class="stat-pill text-decoration-none text-white">
             <div class="stat-number">{{ lessons_count }}</div>
@@ -70,7 +70,7 @@
 
         <div class="section-card">
             <div class="section-card-header">
-                <h4>Назначения</h4>
+                <h4>Курсы</h4>
             </div>
             {% for assignment in assignments %}
                 <a href="{% url 'education:assignment_detail' assignment.pk %}" class="preview-item">
@@ -80,7 +80,7 @@
                     </div>
                 </a>
             {% empty %}
-                <p class="text-muted mb-0">Назначений пока нет.</p>
+                <p class="text-muted mb-0">Курсов пока нет.</p>
             {% endfor %}
             {% if assignments_count > 5 %}
                 <a href="{% url 'education:assignment_list' %}" class="small">Показать все ({{ assignments_count }}) →</a>

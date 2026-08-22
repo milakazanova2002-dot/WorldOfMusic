@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Удалить назначение?</h2>
+<h2>Удалить курс?</h2>
 
-<p>Вы уверены, что хотите удалить назначение №{{ object.pk }}?</p>
+<p>Вы уверены, что хотите удалить курс №{{ object.pk }}?</p>
 
 <form method="post">
     {% csrf_token %}

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>{{ view.object|default:"Создать назначение" }}</h2>
+<h2>{{ view.object|default:"Создать курс" }}</h2>
 
 <form method="post">
     {% csrf_token %}

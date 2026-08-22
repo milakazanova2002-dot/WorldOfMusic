@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.safestring import mark_safe
 
 from .models import Notification, SupportRequest
 
@@ -11,12 +12,24 @@ admin.site.index_title = "Панель управления сайтом"
 
 @admin.register(SupportRequest)
 class SupportRequestAdmin(admin.ModelAdmin):
-    list_display = ("subject", "email", "user", "is_resolved", "created_at")
+    list_display = ("subject", "email", "user", "status_badge", "is_resolved", "created_at")
     list_filter = ("is_resolved", "created_at")
     search_fields = ("subject", "message", "email")
     list_editable = ("is_resolved",)  # можно отметить решённой прямо из списка, не открывая заявку
     readonly_fields = ("user", "created_at")
     ordering = ("is_resolved", "-created_at")  # нерешённые заявки — всегда сверху
+
+    @admin.display(description="Статус")
+    def status_badge(self, obj):
+        if not obj.is_resolved:
+            return mark_safe(
+                '<span style="background:#dc3545;color:#fff;padding:4px 12px;'
+                'border-radius:10px;font-size:11px;font-weight:700;">🔴 Новая</span>'
+            )
+        return mark_safe(
+            '<span style="background:#198754;color:#fff;padding:4px 12px;'
+            'border-radius:10px;font-size:11px;">✓ Решено</span>'
+        )
 
 
 @admin.register(Notification)

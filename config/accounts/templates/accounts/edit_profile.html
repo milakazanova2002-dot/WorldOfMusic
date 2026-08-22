@@ -57,15 +57,10 @@
 
                     <div class="mb-3">
                         <label class="form-label">{{ teacher_form.subjects.label }}</label>
-                        <div class="dropdown">
-                            <button type="button" class="btn btn-outline-secondary dropdown-toggle w-100 text-start"
-                                    data-bs-toggle="dropdown" data-bs-auto-close="outside"
-                                    id="subjectsDropdownToggle" data-placeholder="Выберите предметы...">
-                                Выберите предметы...
-                            </button>
-                            <div class="dropdown-menu p-3 pill-select-panel" aria-labelledby="subjectsDropdownToggle">
-                                {{ teacher_form.subjects }}
-                            </div>
+                        <input type="text" class="form-control form-control-sm mb-2 pill-filter-input"
+                               placeholder="Начните вводить, чтобы найти предмет..." data-target="subjectsPillPanel">
+                        <div class="pill-select-panel-static" id="subjectsPillPanel">
+                            {{ teacher_form.subjects }}
                         </div>
                         {% if teacher_form.subjects.errors %}
                             <div class="text-danger small">{{ teacher_form.subjects.errors|join:", " }}</div>
@@ -104,28 +99,25 @@
 </div>
 
 <script>
-function setupMultiSelectDropdown(toggleId) {
-    const button = document.getElementById(toggleId);
-    if (!button) return;
-    const panel = button.nextElementSibling;
-    const checkboxes = panel.querySelectorAll('input[type="checkbox"]');
-    const placeholder = button.dataset.placeholder;
-
-    function updateLabel() {
-        const checkedLabels = [];
-        checkboxes.forEach(cb => {
-            if (cb.checked) {
-                const label = panel.querySelector('label[for="' + cb.id + '"]');
-                checkedLabels.push(label ? label.textContent.trim() : cb.value);
-            }
+// Живой фильтр: скрывает пилюли, не подходящие под введённый текст.
+// Уже выбранные (отмеченные) пилюли не прячутся никогда.
+function setupPillFilter(inputSelector) {
+    document.querySelectorAll(inputSelector).forEach(input => {
+        input.addEventListener('input', () => {
+            const panel = document.getElementById(input.dataset.target);
+            const query = input.value.trim().toLowerCase();
+            panel.querySelectorAll('li').forEach(li => {
+                const checkbox = li.querySelector('input[type="checkbox"]');
+                const label = li.querySelector('label');
+                const text = label ? label.textContent.toLowerCase() : '';
+                const matches = text.includes(query);
+                const isChecked = checkbox && checkbox.checked;
+                li.style.display = (matches || isChecked) ? '' : 'none';
+            });
         });
-        button.textContent = checkedLabels.length ? checkedLabels.join(', ') : placeholder;
-    }
-
-    checkboxes.forEach(cb => cb.addEventListener('change', updateLabel));
-    updateLabel();
+    });
 }
 
-setupMultiSelectDropdown('subjectsDropdownToggle');
+setupPillFilter('.pill-filter-input');
 </script>
 {% endblock %}

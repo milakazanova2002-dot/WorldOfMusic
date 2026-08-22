@@ -697,21 +697,24 @@ section.py-5 {
     color: var(--text-muted);
 }
 
-/* ===== Кнопки-пилюли для выбора жанров/инструментов/предметов ===== */
+/* ===== Кнопки-пилюли для выбора жанров/инструментов/предметов =====
+   Раньше это была выпадающая панель (dropdown) — отказались от неё:
+   неудобно на мобильных, всегда мало места, легко случайно закрыть.
+   Теперь панель всегда открыта и видна целиком, со своей рамкой и прокруткой. */
 
-.pill-select-panel {
-    max-height: 320px;
+.pill-select-panel-static {
+    max-height: 280px;
     overflow-y: auto;
-    min-width: 100%;
-    width: max-content;
-    max-width: 480px;
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    padding: 8px;
+    padding: 14px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 12px;
+    background: var(--bg-light);
 }
 
-.pill-select-panel ul {
+.pill-select-panel-static ul {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -721,19 +724,19 @@ section.py-5 {
     width: 100%;
 }
 
-.pill-select-panel li {
+.pill-select-panel-static li {
     margin: 0;
 }
 
-.pill-select-panel input[type="checkbox"] {
+.pill-select-panel-static input[type="checkbox"] {
     display: none;
 }
 
-.pill-select-panel label {
+.pill-select-panel-static label {
     display: inline-block;
     padding: 8px 16px;
     border-radius: 20px;
-    background: var(--bg-light);
+    background: #fff;
     border: 1.5px solid #e2e8f0;
     cursor: pointer;
     font-weight: 500;
@@ -742,13 +745,61 @@ section.py-5 {
     user-select: none;
 }
 
-.pill-select-panel label:hover {
+.pill-select-panel-static label:hover {
     border-color: var(--primary);
 }
 
-.pill-select-panel input[type="checkbox"]:checked + label,
-.pill-select-panel label:has(input[type="checkbox"]:checked) {
+.pill-select-panel-static label:has(input[type="checkbox"]:checked) {
     background: var(--gradient-1);
     color: #fff;
     border-color: transparent;
+}
+
+/* Поле-фильтр над панелью пилюль */
+.pill-filter-input {
+    max-width: 400px;
+}
+
+
+/* ===== Футер — в цвет хедера ===== */
+
+.site-footer {
+    background: linear-gradient(100deg, #2b2f36 0%, #3d424b 50%, #4f555f 100%);
+    color: rgba(255, 255, 255, 0.75);
+    padding: 32px 20px;
+    margin-top: 40px;
+}
+
+.footer-brand {
+    font-family: "Playfair Display", Georgia, serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #fff;
+    margin-bottom: 14px;
+}
+
+.footer-links {
+    margin-bottom: 14px;
+    font-size: 0.9rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.footer-links span {
+    color: rgba(255, 255, 255, 0.35);
+    margin: 0 8px;
+}
+
+.footer-copyright {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0;
 }

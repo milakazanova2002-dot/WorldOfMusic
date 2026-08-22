@@ -30,15 +30,10 @@
         <h5 class="mb-3">Жанры</h5>
         <div class="mb-3">
             <label class="form-label fw-bold">{{ form.genre.label }}</label>
-            <div class="dropdown">
-                <button type="button" class="btn btn-outline-secondary dropdown-toggle w-100 text-start"
-                        data-bs-toggle="dropdown" data-bs-auto-close="outside"
-                        id="genreDropdownToggle" data-placeholder="Выберите жанры...">
-                    Выберите жанры...
-                </button>
-                <div class="dropdown-menu p-3 pill-select-panel" aria-labelledby="genreDropdownToggle">
-                    {{ form.genre }}
-                </div>
+            <input type="text" class="form-control form-control-sm mb-2 pill-filter-input"
+                   placeholder="Начните вводить, чтобы найти жанр..." data-target="genrePillPanel">
+            <div class="pill-select-panel-static" id="genrePillPanel">
+                {{ form.genre }}
             </div>
         </div>
         <div class="mb-3">
@@ -51,15 +46,10 @@
         <h5 class="mb-3">Инструменты</h5>
         <div class="mb-3">
             <label class="form-label fw-bold">{{ form.instruments.label }}</label>
-            <div class="dropdown">
-                <button type="button" class="btn btn-outline-secondary dropdown-toggle w-100 text-start"
-                        data-bs-toggle="dropdown" data-bs-auto-close="outside"
-                        id="instrumentDropdownToggle" data-placeholder="Выберите инструменты...">
-                    Выберите инструменты...
-                </button>
-                <div class="dropdown-menu p-3 pill-select-panel" aria-labelledby="instrumentDropdownToggle">
-                    {{ form.instruments }}
-                </div>
+            <input type="text" class="form-control form-control-sm mb-2 pill-filter-input"
+                   placeholder="Начните вводить, чтобы найти инструмент..." data-target="instrumentPillPanel">
+            <div class="pill-select-panel-static" id="instrumentPillPanel">
+                {{ form.instruments }}
             </div>
         </div>
         <div class="mb-3">
@@ -92,30 +82,26 @@
 </div>
 
 <script>
-// Обновляет текст на кнопке выпадающей панели: сколько пунктов отмечено
-function setupMultiSelectDropdown(toggleId) {
-    const button = document.getElementById(toggleId);
-    if (!button) return;
-    const panel = button.nextElementSibling;
-    const checkboxes = panel.querySelectorAll('input[type="checkbox"]');
-    const placeholder = button.dataset.placeholder;
-
-    function updateLabel() {
-        const checkedLabels = [];
-        checkboxes.forEach(cb => {
-            if (cb.checked) {
-                const label = panel.querySelector('label[for="' + cb.id + '"]');
-                checkedLabels.push(label ? label.textContent.trim() : cb.value);
-            }
+// Живой фильтр: скрывает пилюли, не подходящие под введённый текст.
+// Уже выбранные (отмеченные) пилюли не прячутся никогда — чтобы случайно
+// не потерять выбор при вводе поискового текста.
+function setupPillFilter(inputSelector) {
+    document.querySelectorAll(inputSelector).forEach(input => {
+        input.addEventListener('input', () => {
+            const panel = document.getElementById(input.dataset.target);
+            const query = input.value.trim().toLowerCase();
+            panel.querySelectorAll('li').forEach(li => {
+                const checkbox = li.querySelector('input[type="checkbox"]');
+                const label = li.querySelector('label');
+                const text = label ? label.textContent.toLowerCase() : '';
+                const matches = text.includes(query);
+                const isChecked = checkbox && checkbox.checked;
+                li.style.display = (matches || isChecked) ? '' : 'none';
+            });
         });
-        button.textContent = checkedLabels.length ? checkedLabels.join(', ') : placeholder;
-    }
-
-    checkboxes.forEach(cb => cb.addEventListener('change', updateLabel));
-    updateLabel();
+    });
 }
 
-setupMultiSelectDropdown('genreDropdownToggle');
-setupMultiSelectDropdown('instrumentDropdownToggle');
+setupPillFilter('.pill-filter-input');
 </script>
 {% endblock %}

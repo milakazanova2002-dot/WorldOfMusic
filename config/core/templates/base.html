@@ -146,15 +146,24 @@
     {% endblock %}
 </main>
 
-<hr>
+<footer class="site-footer">
+    <div class="container text-center">
+        <div class="footer-brand">World Of Music</div>
 
-<footer>
-    <p class="text-muted mb-1">© 2026 World Of Music — Дипломный проект</p>
-    <p class="text-muted small">
-        <a href="{% url 'faq' %}" class="text-muted">Частые вопросы</a>
-        ·
-        <a href="{% url 'support' %}" class="text-muted">Написать в поддержку</a>
-    </p>
+        <div class="footer-links">
+            <a href="{% url 'music:piece_list' %}">Библиотека</a>
+            <span>·</span>
+            <a href="{% url 'education:teacher_public_list' %}">Педагоги</a>
+            <span>·</span>
+            <a href="{% url 'music:about' %}">О сайте</a>
+            <span>·</span>
+            <a href="{% url 'faq' %}">Частые вопросы</a>
+            <span>·</span>
+            <a href="{% url 'support' %}">Написать в поддержку</a>
+        </div>
+
+        <p class="footer-copyright">© 2026 World Of Music — дипломный проект. Автор: Казанова Милана Жабагиевна</p>
+    </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>

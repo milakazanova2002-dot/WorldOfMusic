@@ -64,7 +64,7 @@ def student_register(request):
         form = StudentRegistrationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)  
+            login(request, user, backend="django.contrib.auth.backends.ModelBackend")
             return redirect("education:student_dashboard")  
     else:
         form = StudentRegistrationForm()
@@ -76,7 +76,7 @@ def guest_register(request):
         form = GuestRegistrationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)
+            login(request, user, backend="django.contrib.auth.backends.ModelBackend")
             return redirect("home")
     else:
         form = GuestRegistrationForm()

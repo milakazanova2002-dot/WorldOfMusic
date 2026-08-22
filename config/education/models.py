@@ -123,7 +123,7 @@ class Lesson(models.Model):
         null=True,
         blank=True,
         related_name="lessons",
-        verbose_name="Назначение"
+        verbose_name="Курс"
     )
 
     class Meta:
@@ -193,8 +193,8 @@ class TeachingAssignment(models.Model):
     )
 
     class Meta:
-        verbose_name = "Назначение педагога"
-        verbose_name_plural = "Назначения педагогов"
+        verbose_name = "Курс (педагог-ученик)"
+        verbose_name_plural = "Курсы (педагог-ученик)"
 
     def __str__(self):
         return f"{self.teacher} → {self.student} ({self.subject})"
@@ -205,7 +205,7 @@ class Performance(models.Model):
         TeachingAssignment,
         on_delete=models.CASCADE,
         related_name="performances",
-        verbose_name="Назначение"
+        verbose_name="Курс"
     )
 
     piece = models.ForeignKey(

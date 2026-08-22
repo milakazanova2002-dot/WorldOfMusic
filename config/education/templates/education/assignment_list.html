@@ -1,17 +1,17 @@
 {% extends "base.html" %}
 
-{% block title %}Мои назначения — World Of Music{% endblock %}
+{% block title %}Мои курсы — World Of Music{% endblock %}
 
 {% block content %}
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{% url 'accounts:role_redirect' %}">Кабинет</a></li>
-        <li class="breadcrumb-item active">Назначения</li>
+        <li class="breadcrumb-item active">Курсы</li>
     </ol>
 </nav>
 
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2 class="mb-0">Мои назначения</h2>
+    <h2 class="mb-0">Мои курсы</h2>
     {% if request.user.teacher_profile %}
         <a href="{% url 'education:assignment_create' %}" class="btn btn-primary btn-sm">Прикрепить ученика</a>
     {% endif %}
@@ -38,7 +38,7 @@
             {% endif %}
         </div>
     {% empty %}
-        <p class="text-muted mb-0">Назначений пока нет.</p>
+        <p class="text-muted mb-0">Курсов пока нет.</p>
     {% endfor %}
 </div>
 {% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Поддержка — World Of Music{% endblock %}
+
+{% block content %}
+<div class="auth-wrapper">
+    <div class="auth-card">
+        <div class="auth-icon">✉️</div>
+        <h2>Написать в поддержку</h2>
+        <p class="auth-subtitle">Опишите вопрос или проблему — мы ответим на указанный email</p>
+
+        <form method="post">
+            {% csrf_token %}
+            {% include "accounts/_form_fields.html" %}
+            <button type="submit" class="btn btn-primary">Отправить</button>
+        </form>
+
+        <p class="auth-switch">
+            Возможно, ответ уже есть на <a href="{% url 'faq' %}">странице частых вопросов</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

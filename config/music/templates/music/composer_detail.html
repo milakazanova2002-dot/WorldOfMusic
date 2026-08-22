@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}{{ composer }} — World Of Music{% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'music:piece_list' %}">Библиотека</a></li>
+        <li class="breadcrumb-item active">{{ composer }}</li>
+    </ol>
+</nav>
+
+<h2 class="mb-4">{{ composer }}</h2>
+{% if composer.biography %}<p class="text-muted">{{ composer.biography }}</p>{% endif %}
+
+<div class="row">
+    <div class="col-lg-7">
+        <div class="section-card">
+            <div class="section-card-header"><h4>Произведения</h4></div>
+            {% for piece in pieces %}
+                <a href="{% url 'music:piece_detail' piece.pk %}" class="preview-item">
+                    <div class="fw-bold">{{ piece.title }}</div>
+                </a>
+            {% empty %}
+                <p class="text-muted mb-0">У этого композитора пока нет произведений в каталоге.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="col-lg-5">
+        <div class="section-card">
+            <div class="section-card-header"><h4>Исполнители</h4></div>
+            {% for perf in performances %}
+                <a href="{% url 'education:performance_detail' perf.pk %}" class="preview-item">
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="user-avatar avatar-list" style="width:32px; height:32px; font-size:12px;">
+                            {% if perf.assignment.student.user.avatar %}
+                                <img src="{{ perf.assignment.student.user.avatar.url }}" alt="Аватар">
+                            {% else %}
+                                {{ perf.assignment.student.user.first_name|default:""|first|upper }}{{ perf.assignment.student.user.last_name|default:""|first|upper }}
+                            {% endif %}
+                        </div>
+                        <div>
+                            <div>{{ perf.assignment.student.user.get_full_name|default:perf.assignment.student.user.username }}</div>
+                            <div class="preview-item-meta">{{ perf.piece.title }}</div>
+                        </div>
+                    </div>
+                </a>
+            {% empty %}
+                <p class="text-muted mb-0">Пока никто не исполнял произведения этого композитора.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

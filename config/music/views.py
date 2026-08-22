@@ -245,6 +245,45 @@ class TeacherOnlyMixin:
         return super().dispatch(request, *args, **kwargs)
 
 
+class GenreDetailView(DetailView):
+    """Публичная страница жанра: какие произведения к нему относятся
+    и какие ученики их исполняли."""
+    model = Genre
+    template_name = "music/genre_detail.html"
+    context_object_name = "genre"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        from education.models import Performance
+
+        context["pieces"] = MusicalPiece.objects.filter(genre=self.object).select_related("composer")
+        context["performances"] = (
+            Performance.objects.filter(piece__genre=self.object)
+            .select_related("assignment__student__user", "piece")
+            .distinct()
+        )
+        return context
+
+
+class ComposerDetailView(DetailView):
+    """Публичная страница композитора: его произведения и кто их исполнял."""
+    model = Composer
+    template_name = "music/composer_detail.html"
+    context_object_name = "composer"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        from education.models import Performance
+
+        context["pieces"] = MusicalPiece.objects.filter(composer=self.object)
+        context["performances"] = (
+            Performance.objects.filter(piece__composer=self.object)
+            .select_related("assignment__student__user", "piece")
+            .distinct()
+        )
+        return context
+
+
 class ComposerListView(TeacherOnlyMixin, LoginRequiredMixin, ListView):
     model = Composer
     template_name = "music/composer_list.html"

@@ -1,9 +1,12 @@
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
+from django.urls import reverse_lazy
 
+from .forms import SupportRequestForm
 from .models import Notification
 
 
@@ -36,3 +39,26 @@ def notification_mark_read(request, pk):
     notification.is_read = True
     notification.save()
     return redirect(notification.link or "home")
+
+
+class SupportRequestCreateView(CreateView):
+    """Форма «Написать в поддержку» — доступна всем, даже незалогиненным."""
+    form_class = SupportRequestForm
+    template_name = "core/support_form.html"
+    success_url = reverse_lazy("support")
+
+    def get_initial(self):
+        initial = super().get_initial()
+        if self.request.user.is_authenticated:
+            initial["email"] = self.request.user.email
+        return initial
+
+    def form_valid(self, form):
+        if self.request.user.is_authenticated:
+            form.instance.user = self.request.user
+        messages.success(self.request, "Заявка отправлена! Мы ответим на указанный email.")
+        return super().form_valid(form)
+
+
+class FAQView(TemplateView):
+    template_name = "core/faq.html"

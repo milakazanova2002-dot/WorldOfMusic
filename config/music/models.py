@@ -182,7 +182,7 @@ class MusicMaterial(models.Model):
     class MaterialType(models.TextChoices):
         VIDEO = "video", "Видео исполнения"
         AUDIO = "audio", "Аудио"
-        MINUS = "minus", "Минусовка (инструментал)"
+        MINUS = "minus", "Минусовка"
         PLUS = "plus", "Плюсовка (с мелодией)"
         SHEET = "sheet", "Ноты (PDF)"
         IMAGE = "image", "Изображение нот"

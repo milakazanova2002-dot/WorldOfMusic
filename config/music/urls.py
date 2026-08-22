@@ -3,12 +3,14 @@ from .views import (
     AboutView,
     ComposerCreateView,
     ComposerDeleteView,
+    ComposerDetailView,
     ComposerListView,
     ComposerUpdateView,
     FavoriteListView,
     FavoriteToggleView,
     GenreCreateView,
     GenreDeleteView,
+    GenreDetailView,
     GenreListView,
     GenreUpdateView,
     InstrumentCreateView,
@@ -42,13 +44,17 @@ urlpatterns = [
     path("favorites/", FavoriteListView.as_view(), name="favorite_list"),
     path("piece/<int:pk>/favorite/", FavoriteToggleView.as_view(), name="favorite_toggle"),
 
-    # Композиторы
+    # Публичные страницы жанра и композитора (произведения + исполнители)
+    path("genres/<int:pk>/view/", GenreDetailView.as_view(), name="genre_detail"),
+    path("composers/<int:pk>/view/", ComposerDetailView.as_view(), name="composer_detail"),
+
+    # Композиторы (управление, только педагоги)
     path("composers/", ComposerListView.as_view(), name="composer_list"),
     path("composers/create/", ComposerCreateView.as_view(), name="composer_create"),
     path("composers/<int:pk>/edit/", ComposerUpdateView.as_view(), name="composer_edit"),
     path("composers/<int:pk>/delete/", ComposerDeleteView.as_view(), name="composer_delete"),
 
-    # Жанры
+    # Жанры (управление, только педагоги)
     path("genres/", GenreListView.as_view(), name="genre_list"),
     path("genres/create/", GenreCreateView.as_view(), name="genre_create"),
     path("genres/<int:pk>/edit/", GenreUpdateView.as_view(), name="genre_edit"),

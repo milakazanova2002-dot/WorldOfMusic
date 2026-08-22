@@ -33,11 +33,11 @@
     </div>
 </div>
 
-<p><strong>Композитор:</strong> {{ piece.composer }}</p>
+<p><strong>Композитор:</strong> {% if piece.composer %}<a href="{% url 'music:composer_detail' piece.composer.pk %}">{{ piece.composer }}</a>{% endif %}</p>
 
 <p>
     <strong>Жанры:</strong>
-    {% for g in piece.genre.all %}{{ g.name }}{% if not forloop.last %}, {% endif %}{% empty %}—{% endfor %}
+    {% for g in piece.genre.all %}<a href="{% url 'music:genre_detail' g.pk %}">{{ g.name }}</a>{% if not forloop.last %}, {% endif %}{% empty %}—{% endfor %}
 </p>
 
 <p>

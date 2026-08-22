@@ -64,11 +64,11 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ piece.title }}</h5>
                             <p class="card-text text-muted">
-                                {% if piece.composer %}{{ piece.composer }}{% endif %}
+                                {% if piece.composer %}<a href="{% url 'music:composer_detail' piece.composer.pk %}" class="text-muted text-decoration-none">{{ piece.composer }}</a>{% endif %}
                             </p>
                             <p class="card-text">
                                 {% for g in piece.genre.all %}
-                                    <span class="badge bg-{{ g.get_badge_class }}">{{ g.name }}</span>
+                                    <a href="{% url 'music:genre_detail' g.pk %}" class="badge bg-{{ g.get_badge_class }} text-decoration-none">{{ g.name }}</a>
                                 {% endfor %}
                             </p>
                             <a href="{% url 'music:piece_detail' piece.pk %}" class="btn btn-outline-primary btn-sm w-100">

@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %}Частые вопросы — World Of Music{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Частые вопросы</h2>
+
+<div class="section-card">
+    <div class="accordion" id="faqAccordion">
+
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                    Как зарегистрироваться педагогом?
+                </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    На странице входа выберите «Я педагог» и заполните форму регистрации.
+                    После этого ваша заявка будет отправлена администратору сайта на рассмотрение.
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                    Сколько ждать одобрения заявки педагога?
+                </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Обычно рассмотрение занимает 1–2 рабочих дня. Пока заявка не одобрена,
+                    в хедере сайта у вас будет виден значок «На рассмотрении», а доступ к функциям
+                    педагога (создание уроков, работа с учениками) будет ограничен.
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                    Как загрузить исполнение произведения?
+                </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Зайдите в личный кабинет → «Назначения» → выберите нужное назначение с педагогом →
+                    кнопка «Добавить исполнение». Там же можно указать произведение и прикрепить запись.
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                    Как прикрепить ученика к педагогу?
+                </button>
+            </h2>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Это делает педагог: в личном кабинете нажмите «Прикрепить ученика», укажите
+                    ученика и предмет. После этого назначение появится в кабинетах у обеих сторон.
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                    Как добавить произведение в избранное?
+                </button>
+            </h2>
+            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    На странице произведения нажмите кнопку «В избранное». Все избранные произведения
+                    собраны на отдельной странице — ссылка «Избранное» есть в хедере сайта.
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                    Что делать, если не приходит ответ от поддержки?
+                </button>
+            </h2>
+            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Проверьте папку «Спам» в вашей почте. Если письма всё равно нет —
+                    напишите повторно через <a href="{% url 'support' %}">форму поддержки</a>,
+                    указав корректный email.
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

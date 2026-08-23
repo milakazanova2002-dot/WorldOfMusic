@@ -562,6 +562,11 @@ def parent_request_link(request):
     """Родитель ищет ученика по имени/фамилии/логину и отправляет запрос на
     привязку прямо из результатов поиска. Ученику приходит уведомление
     со ссылкой на подтверждение."""
+    # Раздел только для родителей/гостей — у педагога и ученика уже есть
+    # свой способ попасть на страницу ученика, привязка им не нужна.
+    if hasattr(request.user, "teacher_profile") or hasattr(request.user, "student_profile"):
+        return HttpResponseForbidden("Этот раздел доступен только родителям.")
+
     if request.method == "POST":
         student = get_object_or_404(StudentProfile, pk=request.POST.get("student_id"))
 

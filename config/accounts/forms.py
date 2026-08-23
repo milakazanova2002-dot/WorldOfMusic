@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, UserCreationForm
 from django.utils.text import slugify
 
+from accounts.avatars import assign_default_avatar
 from accounts.models import User
 from education.models import StudentProfile, Subject, TeacherProfile
 
@@ -73,6 +74,7 @@ class StudentRegistrationForm(StyledFormMixin, UserCreationForm):
     def save(self, commit=True):
         user = super().save(commit)
         StudentProfile.objects.create(user=user)
+        assign_default_avatar(user, "student")
         return user
 
 
@@ -106,6 +108,7 @@ class TeacherRegistrationForm(StyledFormMixin, UserCreationForm):
         user = super().save(commit)
         user.is_approved = False
         user.save()
+        assign_default_avatar(user, "teacher")
         return user
 
 
@@ -132,8 +135,38 @@ class GuestRegistrationForm(StyledFormMixin, UserCreationForm):
     class Meta:
         model = User
         fields = ("username", "email", "first_name", "last_name", "gender")
-    # save() не переопределяем — отдельный профиль гостю/родителю не нужен,
-    # привязка к ученику делается через ParentLink после регистрации
+
+    def save(self, commit=True):
+        user = super().save(commit)
+        assign_default_avatar(user, "parent")
+        return user
+
+
+class CompleteProfileForm(StyledFormMixin, forms.Form):
+    """Показывается, если у пользователя нет ни роли, ни пола — то есть он
+    зашёл через Google и не проходил обычную регистрацию. Без этого шага
+    такие аккаунты навсегда остаются гостями без доступа к функциям сайта."""
+
+    ROLE_CHOICES = [
+        ("student", "Ученик"),
+        ("teacher", "Педагог"),
+        ("parent", "Родитель"),
+    ]
+
+    role = forms.ChoiceField(label="Я —", choices=ROLE_CHOICES, widget=forms.RadioSelect)
+    gender = forms.ChoiceField(
+        label="Пол",
+        choices=[("", "Выберите пол")] + list(User.Gender.choices),
+        required=True,
+    )
+    # Нужно только педагогу — проверяем в clean()
+    patronymic = forms.CharField(label="Отчество", max_length=150, required=False)
+
+    def clean(self):
+        cleaned = super().clean()
+        if cleaned.get("role") == "teacher" and not cleaned.get("patronymic"):
+            self.add_error("patronymic", "Обязательно для педагога.")
+        return cleaned
 
 
 # ---------- Редактирование профиля ----------

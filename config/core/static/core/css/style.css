@@ -34,32 +34,26 @@ body {
     padding: 14px 0;
 }
 
-/* Логотип + название */
+/* Логотип (название сайта уже встроено в картинку) */
 .navbar-brand {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-weight: 800;
-    font-size: 1.55rem;
-    letter-spacing: -0.5px;
     color: #fff !important;
 }
 
 .brand-logo {
-    height: 44px;
+    height: 40px;
     width: auto;
+    max-width: 300px;
+    object-fit: contain;
     filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
 }
 
-.brand-text {
-    font-family: "Playfair Display", Georgia, serif;
-    font-weight: 700;
-    letter-spacing: 0.3px;
-    background: linear-gradient(90deg, #fff, #e8e8ea);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3));
+@media (max-width: 576px) {
+    .brand-logo {
+        height: 30px;
+        max-width: 220px;
+    }
 }
 
 .nav-link {

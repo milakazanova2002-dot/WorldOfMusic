@@ -19,6 +19,7 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
 
 from .forms import (
+    CompleteProfileForm,
     GuestRegistrationForm,
     StudentRegistrationForm,
     StyledAuthenticationForm,
@@ -30,6 +31,19 @@ from .forms import (
 )
 from .models import User
 from education.models import TeacherProfile, StudentProfile
+from .avatars import assign_default_avatar
+
+
+def needs_profile_setup(user):
+    """True, если у пользователя нет ни роли, ни пола — то есть аккаунт
+    создан через Google и обычную регистрацию (где пол обязателен) не проходил."""
+    has_role = (
+        hasattr(user, "teacher_profile")
+        or hasattr(user, "student_profile")
+        or user.parent_links.exists()
+    )
+    return not has_role and not user.gender
+
 
 @method_decorator(never_cache, name="dispatch")
 class UserLoginView(LoginView):
@@ -39,6 +53,11 @@ class UserLoginView(LoginView):
     def form_valid(self, form):
         user = form.get_user()
         login(self.request, user)  #  создает новую сессию
+
+        # Аккаунт без роли и без пола — пришёл через Google, роль не выбрана
+        if needs_profile_setup(user):
+            return redirect("accounts:complete_profile")
+
         # Если педагог не одобрен
         if hasattr(user, "teacher_profile") and not user.is_approved:
             return redirect("accounts:pending_approval")
@@ -107,6 +126,51 @@ def teacher_register(request):
 
 def pending_approval(request):
     return render(request, "accounts/pending_approval.html")
+
+
+@login_required
+def complete_profile(request):
+    """Просим пользователя без роли и пола (обычно — вошедшего через Google)
+    выбрать, кто он: ученик, педагог или родитель, и указать пол.
+    Без этого шага такие аккаунты навсегда оставались бы гостями."""
+    user = request.user
+
+    # Роль уже выбрана раньше — второй раз сюда заходить незачем
+    if not needs_profile_setup(user):
+        return redirect("accounts:role_redirect")
+
+    if request.method == "POST":
+        form = CompleteProfileForm(request.POST)
+        if form.is_valid():
+            role = form.cleaned_data["role"]
+            user.gender = form.cleaned_data["gender"]
+
+            if role == "teacher":
+                user.patronymic = form.cleaned_data["patronymic"]
+                user.is_approved = False
+                user.save()
+                assign_default_avatar(user, "teacher")
+                messages.success(
+                    request,
+                    "Заявка отправлена. Администратор рассмотрит её и одобрит ваш аккаунт.",
+                )
+                return redirect("accounts:pending_approval")
+
+            user.save()
+
+            if role == "student":
+                StudentProfile.objects.create(user=user)
+                assign_default_avatar(user, "student")
+                return redirect("education:student_dashboard")
+
+            # role == "parent" — отдельный профиль не нужен, привязка
+            # к ученику делается позже через ParentLink
+            assign_default_avatar(user, "parent")
+            return redirect("education:parent_request_link")
+    else:
+        form = CompleteProfileForm()
+
+    return render(request, "accounts/complete_profile.html", {"form": form})
 
 
 class UserPasswordChangeView(PasswordChangeView):
@@ -255,6 +319,10 @@ def account_menu(request):
 @login_required
 def role_redirect(request):
     user = request.user
+
+    # Аккаунт без роли и без пола — пришёл через Google, роль не выбрана
+    if needs_profile_setup(user):
+        return redirect("accounts:complete_profile")
 
     # Не одобренный педагог
     if hasattr(user, "teacher_profile") and not user.is_approved:

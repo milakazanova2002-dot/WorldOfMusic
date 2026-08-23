@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Запрос от родителя — World Of Music{% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'accounts:role_redirect' %}">Кабинет</a></li>
+        <li class="breadcrumb-item active">Запрос от родителя</li>
+    </ol>
+</nav>
+
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <div class="section-card text-center">
+            <div class="user-avatar mx-auto mb-3" style="width: 64px; height: 64px; font-size: 22px;">
+                {% if link.parent.avatar %}
+                    <img src="{{ link.parent.avatar.url }}" alt="Аватар">
+                {% else %}
+                    {{ link.parent.first_name|default:""|first|upper }}{{ link.parent.last_name|default:""|first|upper }}
+                {% endif %}
+            </div>
+
+            <h4>{{ link.parent.get_full_name|default:link.parent.username }}</h4>
+            <p class="text-muted">
+                хочет быть добавлен(а) как ваш родитель и получить доступ к вашей странице
+                (уроки, исполнения, педагог).
+            </p>
+
+            <form method="post" class="d-flex gap-2 justify-content-center mt-3">
+                {% csrf_token %}
+                <button type="submit" name="action" value="approve" class="btn btn-primary">Подтвердить</button>
+                <button type="submit" name="action" value="decline" class="btn btn-outline-danger">Отклонить</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

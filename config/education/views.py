@@ -1,4 +1,5 @@
 from django.http import HttpResponseForbidden
+from django.db.models import Q
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, TemplateView, UpdateView
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
@@ -9,7 +10,7 @@ from django.views.decorators.http import require_POST
 
 
 from .forms import AssignmentForm, LessonForm, LessonMaterialForm, PerformanceCommentForm, PerformanceMaterialForm
-from .models import Lesson, LessonMaterial, Performance, PerformanceComment, StudentProfile, TeacherProfile, TeachingAssignment
+from .models import Lesson, LessonMaterial, ParentLink, Performance, PerformanceComment, StudentProfile, TeacherProfile, TeachingAssignment
 from accounts.mixins import TeacherRequiredMixin, StudentRequiredMixin, teacher_required
 from core.models import Notification
 
@@ -57,6 +58,13 @@ class StudentDetailView(LoginRequiredMixin, DetailView):
 
             if is_my_student:
                 return super().dispatch(request, *args, **kwargs)
+
+        # Родитель с подтверждённой привязкой к этому ученику
+        is_confirmed_parent = ParentLink.objects.filter(
+            parent=user, student_id=kwargs["pk"], is_approved=True
+        ).exists()
+        if is_confirmed_parent:
+            return super().dispatch(request, *args, **kwargs)
 
         # Остальные — нет доступа
         return HttpResponseForbidden("У вас нет доступа к этому профилю.")
@@ -547,6 +555,94 @@ class PiecePerformersView(LoginRequiredMixin, TemplateView):
             .order_by("-created_at")
         )
         return context
+
+
+@login_required
+def parent_request_link(request):
+    """Родитель ищет ученика по имени/фамилии/логину и отправляет запрос на
+    привязку прямо из результатов поиска. Ученику приходит уведомление
+    со ссылкой на подтверждение."""
+    if request.method == "POST":
+        student = get_object_or_404(StudentProfile, pk=request.POST.get("student_id"))
+
+        if student.user_id == request.user.id:
+            messages.error(request, "Нельзя привязаться к самому себе.")
+            return redirect("education:parent_request_link")
+
+        link, created = ParentLink.objects.get_or_create(parent=request.user, student=student)
+
+        if created:
+            Notification.notify(
+                student.user,
+                f"{request.user.get_full_name() or request.user.username} хочет добавиться "
+                f"как родитель — подтвердите или отклоните запрос",
+                link=reverse("education:parent_link_confirm", kwargs={"pk": link.pk}),
+            )
+            messages.success(request, f"Запрос отправлен ученику {student.user.get_full_name() or student.user.username}.")
+        elif link.is_approved:
+            messages.info(request, "Вы уже подтверждены как родитель этого ученика.")
+        else:
+            messages.info(request, "Запрос уже был отправлен ранее и ожидает ответа.")
+
+        return redirect("education:parent_request_link")
+
+    query = request.GET.get("q", "").strip()
+    results = []
+
+    if query:
+        results = list(
+            StudentProfile.objects.filter(
+                Q(user__first_name__icontains=query)
+                | Q(user__last_name__icontains=query)
+                | Q(user__username__icontains=query)
+            )
+            .exclude(user=request.user)
+            .select_related("user")
+            .order_by("user__last_name", "user__first_name")[:20]
+        )
+
+        # чтобы в шаблоне сразу показать статус ("уже отправлено" / "уже подтверждено")
+        existing = {
+            link.student_id: link
+            for link in ParentLink.objects.filter(parent=request.user, student__in=results)
+        }
+        for student in results:
+            student.existing_link = existing.get(student.id)
+
+    links = (
+        ParentLink.objects.filter(parent=request.user)
+        .select_related("student__user")
+        .order_by("-is_approved", "-created_at")
+    )
+    return render(
+        request,
+        "education/parent_request_link.html",
+        {"links": links, "query": query, "results": results},
+    )
+
+
+@login_required
+def parent_link_confirm(request, pk):
+    """Ученик подтверждает или отклоняет запрос конкретного родителя."""
+    link = get_object_or_404(ParentLink, pk=pk, student__user=request.user)
+
+    if request.method == "POST":
+        action = request.POST.get("action")
+        if action == "approve":
+            link.is_approved = True
+            link.save()
+            Notification.notify(
+                link.parent,
+                f"{request.user.get_full_name() or request.user.username} подтвердил(а) вашу привязку как родителя",
+                link=reverse("education:student_detail", kwargs={"pk": link.student.id}),
+            )
+            messages.success(request, "Родитель подтверждён.")
+        else:
+            link.delete()
+            messages.info(request, "Запрос отклонён.")
+        return redirect("accounts:role_redirect")
+
+    return render(request, "education/parent_link_confirm.html", {"link": link})
 
 
 @login_required

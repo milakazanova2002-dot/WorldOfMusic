@@ -51,7 +51,11 @@ class UserLoginView(LoginView):
         if hasattr(user, "student_profile"):
             return redirect("education:student_dashboard")
 
-        # Гость (в будущем родитель)
+        # Родитель с хотя бы одной привязкой (подтверждённой или ожидающей)
+        if user.parent_links.exists():
+            return redirect("education:parent_request_link")
+
+        # Обычный гость
         return redirect("home")
 
 @method_decorator(never_cache, name="dispatch")
@@ -264,7 +268,11 @@ def role_redirect(request):
     if hasattr(user, "student_profile"):
         return redirect("education:student_dashboard")
 
-    # Гость (в будущем родитель)
+    # Родитель с хотя бы одной привязкой (подтверждённой или ожидающей)
+    if user.parent_links.exists():
+        return redirect("education:parent_request_link")
+
+    # Обычный гость
     return redirect("home")
 
 

@@ -12,6 +12,7 @@ class CustomUserAdmin(UserAdmin):
             {
                 "fields": (
                     "patronymic",
+                    "gender",
                     "phone",
                     "email_verified",
                     "is_approved",
@@ -28,6 +29,7 @@ class CustomUserAdmin(UserAdmin):
             {
                 "fields": (
                     "patronymic",
+                    "gender",
                     "phone",
                     "email_verified",
                     "is_approved",

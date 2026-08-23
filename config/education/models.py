@@ -281,6 +281,47 @@ class PerformanceComment(models.Model):
         return f"Комментарий от {self.teacher}"
 
 
+class ParentLink(models.Model):
+    """Связь родителя (обычного пользователя) с учеником.
+    Создаётся родителем как запрос, становится активной только после
+    подтверждения самим учеником — по аналогии с тем, как педагог
+    прикрепляет ученика через TeachingAssignment, но с этапом согласия."""
+
+    parent = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="parent_links",
+        verbose_name="Родитель"
+    )
+
+    student = models.ForeignKey(
+        StudentProfile,
+        on_delete=models.CASCADE,
+        related_name="parent_links",
+        verbose_name="Ученик"
+    )
+
+    is_approved = models.BooleanField(
+        default=False,
+        verbose_name="Подтверждено"
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name="Запрошено"
+    )
+
+    class Meta:
+        verbose_name = "Связь родитель-ученик"
+        verbose_name_plural = "Связи родитель-ученик"
+        unique_together = ("parent", "student")
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        status = "подтверждено" if self.is_approved else "ожидает подтверждения"
+        return f"{self.parent} → {self.student} ({status})"
+
+
 class LessonMaterial(models.Model):
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, related_name="materials")
     title = models.CharField(max_length=255)

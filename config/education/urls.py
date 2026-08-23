@@ -14,6 +14,8 @@ from .views import (
     LessonUpdateView,
     MyStudentsListView,
     MyTeachersListView,
+    parent_link_confirm,
+    parent_request_link,
     PerformanceCommentCreateView,
     PerformanceDeleteView,
     PerformanceDetailView,
@@ -70,4 +72,7 @@ urlpatterns = [
     path("my-teachers/", MyTeachersListView.as_view(), name="my_teachers"),
     path("piece/<int:pk>/performers/", PiecePerformersView.as_view(), name="piece_performers"),
     path("performance/<int:pk>/remove-performer/", remove_performer, name="remove_performer"),
+
+    path("parent/request/", parent_request_link, name="parent_request_link"),
+    path("parent/link/<int:pk>/confirm/", parent_link_confirm, name="parent_link_confirm"),
 ]

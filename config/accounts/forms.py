@@ -51,6 +51,11 @@ class StudentRegistrationForm(StyledFormMixin, UserCreationForm):
     # а не логин.
     first_name = forms.CharField(label="Имя", max_length=150, required=True)
     last_name = forms.CharField(label="Фамилия", max_length=150, required=True)
+    gender = forms.ChoiceField(
+        label="Пол",
+        choices=[("", "Выберите пол")] + list(User.Gender.choices),
+        required=True,
+    )
 
     placeholders = {
         "username": "Придумайте логин",
@@ -63,7 +68,7 @@ class StudentRegistrationForm(StyledFormMixin, UserCreationForm):
 
     class Meta:
         model = User
-        fields = ("username", "email", "first_name", "last_name")
+        fields = ("username", "email", "first_name", "last_name", "gender")
 
     def save(self, commit=True):
         user = super().save(commit)
@@ -77,6 +82,11 @@ class TeacherRegistrationForm(StyledFormMixin, UserCreationForm):
     first_name = forms.CharField(label="Имя", max_length=150, required=True)
     last_name = forms.CharField(label="Фамилия", max_length=150, required=True)
     patronymic = forms.CharField(label="Отчество", max_length=150, required=True)
+    gender = forms.ChoiceField(
+        label="Пол",
+        choices=[("", "Выберите пол")] + list(User.Gender.choices),
+        required=True,
+    )
 
     placeholders = {
         "username": "Придумайте логин",
@@ -90,7 +100,7 @@ class TeacherRegistrationForm(StyledFormMixin, UserCreationForm):
 
     class Meta:
         model = User
-        fields = ("username", "email", "first_name", "last_name", "patronymic")
+        fields = ("username", "email", "first_name", "last_name", "patronymic", "gender")
 
     def save(self, commit=True):
         user = super().save(commit)
@@ -100,17 +110,30 @@ class TeacherRegistrationForm(StyledFormMixin, UserCreationForm):
 
 
 class GuestRegistrationForm(StyledFormMixin, UserCreationForm):
+    # Имя и фамилию просим и у гостя/родителя — иначе ученик не поймёт,
+    # кто именно прислал ему запрос на привязку.
+    first_name = forms.CharField(label="Имя", max_length=150, required=True)
+    last_name = forms.CharField(label="Фамилия", max_length=150, required=True)
+    gender = forms.ChoiceField(
+        label="Пол",
+        choices=[("", "Выберите пол")] + list(User.Gender.choices),
+        required=True,
+    )
+
     placeholders = {
         "username": "Придумайте логин",
         "email": "you@example.com",
+        "first_name": "Имя",
+        "last_name": "Фамилия",
         "password1": "Придумайте пароль",
         "password2": "Повторите пароль",
     }
 
     class Meta:
         model = User
-        fields = ("username", "email")
-    # save() не переопределяем — профиль ему не нужен
+        fields = ("username", "email", "first_name", "last_name", "gender")
+    # save() не переопределяем — отдельный профиль гостю/родителю не нужен,
+    # привязка к ученику делается через ParentLink после регистрации
 
 
 # ---------- Редактирование профиля ----------
@@ -121,11 +144,12 @@ class UserProfileForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ("first_name", "last_name", "patronymic", "email", "phone", "avatar", "email_notifications")
+        fields = ("first_name", "last_name", "patronymic", "gender", "email", "phone", "avatar", "email_notifications")
         widgets = {
             "first_name": forms.TextInput(attrs={"class": "form-control"}),
             "last_name": forms.TextInput(attrs={"class": "form-control"}),
             "patronymic": forms.TextInput(attrs={"class": "form-control"}),
+            "gender": forms.Select(attrs={"class": "form-control"}),
             "email": forms.EmailInput(attrs={"class": "form-control"}),
             "phone": forms.TextInput(attrs={"class": "form-control", "placeholder": "+7..."}),
             "avatar": forms.ClearableFileInput(attrs={"class": "form-control"}),

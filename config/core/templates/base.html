@@ -92,6 +92,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'accounts:role_redirect' %}">Кабинет</a>
                     </li>
+                    {% if not request.user.teacher_profile and not request.user.student_profile %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'education:parent_request_link' %}">Мои дети</a>
+                        </li>
+                    {% endif %}
                     {% if request.user.teacher_profile and not request.user.is_approved %}
                         <li class="nav-item">
                             <span class="badge bg-warning text-dark me-2" title="Ваша заявка ещё не одобрена администратором">

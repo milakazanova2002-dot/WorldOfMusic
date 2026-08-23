@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}Мои дети — World Of Music{% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'accounts:role_redirect' %}">Кабинет</a></li>
+        <li class="breadcrumb-item active">Мои дети</li>
+    </ol>
+</nav>
+
+<h2 class="mb-4">Мои дети</h2>
+
+<div class="section-card">
+    <div class="section-card-header">
+        <h4>Найти ученика</h4>
+    </div>
+    <p class="text-muted small">
+        Введите имя, фамилию или логин ученика — ему придёт уведомление с запросом,
+        и после его подтверждения вы сможете открывать страницу этого ученика
+        (уроки, исполнения, педагог).
+    </p>
+    <form method="get" class="row g-2 align-items-start mb-3">
+        <div class="col-md-8">
+            <input type="text" name="q" value="{{ query }}" class="form-control" placeholder="Имя, фамилия или логин ученика" autofocus>
+        </div>
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-primary w-100">🔍 Найти</button>
+        </div>
+    </form>
+
+    {% if query %}
+        {% for student in results %}
+            <div class="preview-item">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="user-avatar avatar-list" style="width:40px; height:40px; font-size:14px;">
+                        {% if student.user.avatar %}
+                            <img src="{{ student.user.avatar.url }}" alt="Аватар">
+                        {% else %}
+                            {{ student.user.first_name|default:""|first|upper }}{{ student.user.last_name|default:""|first|upper }}
+                        {% endif %}
+                    </div>
+                    <div>
+                        <div class="fw-bold">{{ student.user.get_full_name|default:student.user.username }}</div>
+                        <div class="preview-item-meta">@{{ student.user.username }}{% if student.level %} · {{ student.level }}{% endif %}</div>
+                    </div>
+                </div>
+
+                {% if student.existing_link.is_approved %}
+                    <span class="badge bg-success">Уже подтверждено</span>
+                {% elif student.existing_link %}
+                    <span class="badge bg-warning text-dark">Запрос отправлен</span>
+                {% else %}
+                    <form method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="student_id" value="{{ student.id }}">
+                        <button type="submit" class="btn btn-outline-primary btn-sm">Отправить запрос</button>
+                    </form>
+                {% endif %}
+            </div>
+        {% empty %}
+            <p class="text-muted mb-0">Никого не нашлось по запросу «{{ query }}».</p>
+        {% endfor %}
+    {% endif %}
+</div>
+
+<div class="section-card">
+    <div class="section-card-header">
+        <h4>Статус привязок</h4>
+    </div>
+    {% for link in links %}
+        <div class="preview-item">
+            <div class="d-flex align-items-center gap-3">
+                <div class="user-avatar avatar-list" style="width:44px; height:44px; font-size:16px;">
+                    {% if link.student.user.avatar %}
+                        <img src="{{ link.student.user.avatar.url }}" alt="Аватар">
+                    {% else %}
+                        {{ link.student.user.first_name|default:""|first|upper }}{{ link.student.user.last_name|default:""|first|upper }}
+                    {% endif %}
+                </div>
+                <div>
+                    {% if link.is_approved %}
+                        <a href="{% url 'education:student_detail' link.student.id %}" class="fw-bold text-decoration-none">
+                            {{ link.student.user.get_full_name|default:link.student.user.username }}
+                        </a>
+                        <div class="preview-item-meta">Подтверждено {{ link.created_at|date:"d.m.Y" }}</div>
+                    {% else %}
+                        <div class="fw-bold">{{ link.student.user.get_full_name|default:link.student.user.username }}</div>
+                        <div class="preview-item-meta">Ожидает подтверждения ученика</div>
+                    {% endif %}
+                </div>
+            </div>
+            {% if link.is_approved %}
+                <span class="badge bg-success">Подтверждено</span>
+            {% else %}
+                <span class="badge bg-warning text-dark">Ожидает</span>
+            {% endif %}
+        </div>
+    {% empty %}
+        <p class="text-muted mb-0">Вы пока не отправляли запросов ни к одному ученику.</p>
+    {% endfor %}
+</div>
+{% endblock %}

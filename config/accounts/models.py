@@ -3,7 +3,19 @@ from django.db import models
 
 
 class User(AbstractUser):
+    class Gender(models.TextChoices):
+        MALE = "male", "Мужской"
+        FEMALE = "female", "Женский"
+
     email_verified = models.BooleanField(default=False)
+
+    gender = models.CharField(
+        max_length=10,
+        choices=Gender.choices,
+        blank=True,
+        verbose_name="Пол",
+        help_text="Используется для подбора аватара по умолчанию",
+    )
 
     patronymic = models.CharField(
         max_length=150,

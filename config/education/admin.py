@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import TeacherProfile, StudentProfile, Lesson, Subject, TeachingAssignment, Performance, PerformanceComment
+from .models import TeacherProfile, StudentProfile, Lesson, ParentLink, Subject, TeachingAssignment, Performance, PerformanceComment
 
 
 @admin.register(Subject)
@@ -47,6 +47,13 @@ class PerformanceAdmin(admin.ModelAdmin):
     list_filter = ("score", "piece")
     search_fields = ("assignment__student__user__last_name", "piece__title")
     date_hierarchy = "created_at"
+
+
+@admin.register(ParentLink)
+class ParentLinkAdmin(admin.ModelAdmin):
+    list_display = ("parent", "student", "is_approved", "created_at")
+    list_filter = ("is_approved",)
+    search_fields = ("parent__username", "parent__last_name", "student__user__last_name")
 
 
 @admin.register(PerformanceComment)

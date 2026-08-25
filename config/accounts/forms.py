@@ -108,6 +108,11 @@ class TeacherRegistrationForm(StyledFormMixin, UserCreationForm):
         user = super().save(commit)
         user.is_approved = False
         user.save()
+        # Профиль создаём сразу, а не после одобрения — иначе role_redirect
+        # не может отличить только что зарегистрировавшегося педагога от
+        # гостя (hasattr(user, "teacher_profile") был бы False), и человек
+        # не видел бы страницу "заявка на рассмотрении" и бейдж в хедере.
+        TeacherProfile.objects.create(user=user)
         assign_default_avatar(user, "teacher")
         return user
 

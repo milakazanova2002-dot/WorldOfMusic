@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Профиль педагога: {{ teacher.user.username }}</h2>
+
+<h3>Ученики</h3>
+<ul class="list-unstyled">
+    {% for student in students %}
+        <li class="d-flex align-items-center gap-2 mb-2">
+            <div class="user-avatar avatar-list" style="width:36px; height:36px; font-size:13px;">
+                {% if student.user.avatar %}
+                    <img src="{{ student.user.avatar.url }}" alt="Аватар">
+                {% else %}
+                    {{ student.user.first_name|default:""|first|upper }}{{ student.user.last_name|default:""|first|upper }}
+                {% endif %}
+            </div>
+            <a href="{% url 'education:student_detail' student.pk %}" class="text-decoration-none text-dark">
+                {{ student.user.get_full_name|default:student.user.username }}
+            </a>
+        </li>
+    {% empty %}
+        <li>Ученики пока не назначены.</li>
+    {% endfor %}
+</ul>
+
+<h3>Назначения</h3>
+<ul>
+    {% for assignment in assignments %}
+        <li>
+            <a href="{% url 'education:assignment_detail' assignment.pk %}">
+                {{ assignment.subject }} — {{ assignment.student.user.get_full_name|default:assignment.student.user.username }}
+            </a>
+        </li>
+    {% empty %}
+        <li>Назначений пока нет.</li>
+    {% endfor %}
+</ul>
+
+<h3>Уроки</h3>
+<ul>
+    {% for lesson in lessons %}
+        <li>
+            <a href="{% url 'education:lesson_detail' lesson.pk %}">{{ lesson.date|date:"d.m.Y" }}</a>
+            {% if lesson.piece %}
+                — <a href="{% url 'music:piece_detail' lesson.piece.pk %}">{{ lesson.piece.title }}</a>
+            {% endif %}
+        </li>
+    {% empty %}
+        <li>Уроков пока нет.</li>
+    {% endfor %}
+</ul>
+
+<h3>Исполнения учеников</h3>
+<ul>
+    {% for perf in performances %}
+        <li>
+            <a href="{% url 'education:performance_detail' perf.pk %}">
+                {% if perf.piece %}{{ perf.piece.title }}{% else %}Исполнение №{{ perf.pk }}{% endif %}
+            </a>
+            — {{ perf.assignment.student.user.get_full_name|default:perf.assignment.student.user.username }}
+        </li>
+    {% empty %}
+        <li>Исполнений пока нет.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

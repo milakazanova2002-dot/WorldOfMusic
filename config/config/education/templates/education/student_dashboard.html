@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Личный кабинет ученика</h2>
+
+<h3>Ближайшие уроки</h3>
+<ul>
+    {% for lesson in lessons %}
+        <li>
+            <a href="{% url 'education:lesson_detail' lesson.pk %}">{{ lesson.date|date:"d.m.Y H:i" }}</a>
+            {% if lesson.piece %}
+                — <a href="{% url 'music:piece_detail' lesson.piece.pk %}">{{ lesson.piece.title }}</a>
+            {% endif %}
+        </li>
+    {% empty %}
+        <li>У вас пока нет уроков.</li>
+    {% endfor %}
+</ul>
+
+<h3>Ваши предметы и педагоги</h3>
+<ul>
+    {% for assignment in assignments %}
+        <li>
+            <a href="{% url 'education:assignment_detail' assignment.pk %}">{{ assignment.subject }}</a>
+            — педагог:
+            <a href="{% url 'education:teacher_public_detail' assignment.teacher.id %}">
+                {{ assignment.teacher.user.get_full_name|default:assignment.teacher.user.username }}
+            </a>
+        </li>
+    {% empty %}
+        <li>Назначений пока нет.</li>
+    {% endfor %}
+</ul>
+
+<h3>Ваши исполнения</h3>
+<ul>
+    {% for perf in performances %}
+        <li>
+            <a href="{% url 'education:performance_detail' perf.pk %}">
+                {% if perf.piece %}{{ perf.piece.title }}{% else %}Исполнение №{{ perf.pk }}{% endif %}
+            </a>
+            — {{ perf.created_at|date:"d.m.Y" }}
+        </li>
+    {% empty %}
+        <li>Вы ещё не загружали исполнения.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

@@ -101,6 +101,25 @@ DATABASES = {
     }
 }
 
+# Кеш через Redis (сервис redis уже поднят в docker-compose.yml).
+# Если Redis по какой-то причине недоступен — сайт не должен падать,
+# поэтому IGNORE_EXCEPTIONS: страницы просто перестанут кешироваться,
+# но продолжат нормально работать напрямую из базы.
+REDIS_HOST = os.environ.get('REDIS_HOST', 'localhost')
+REDIS_PORT = os.environ.get('REDIS_PORT', '6379')
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': f'redis://{REDIS_HOST}:{REDIS_PORT}/1',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+            'IGNORE_EXCEPTIONS': True,
+        },
+        'KEY_PREFIX': 'wom',
+    }
+}
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',

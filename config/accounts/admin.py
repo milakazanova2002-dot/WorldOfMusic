@@ -1,4 +1,4 @@
-from django.contrib import admin
+from django.contrib import admin, messages
 from django.contrib.auth.admin import UserAdmin
 from django.db.models import Case, IntegerField, Value, When
 from django.utils.safestring import mark_safe
@@ -50,6 +50,29 @@ class CustomUserAdmin(UserAdmin):
 
     list_filter = ("is_approved", "is_staff", "is_active")
     search_fields = ("username", "first_name", "last_name", "email", "phone")
+    actions = ["approve_teachers"]
+
+    @admin.action(description="✅ Одобрить выбранных педагогов")
+    def approve_teachers(self, request, queryset):
+        # Одобряем только тех из выбранных, у кого действительно есть
+        # профиль педагога — остальных (учеников/гостей) молча пропускаем,
+        # чтобы случайный выбор всех подряд не наделал глупостей.
+        teachers = queryset.filter(teacher_profile__isnull=False)
+        already_approved = teachers.filter(is_approved=True).count()
+        updated = teachers.filter(is_approved=False).update(is_approved=True)
+
+        skipped = queryset.count() - teachers.count()
+
+        if updated:
+            self.message_user(request, f"Одобрено педагогов: {updated}.")
+        if already_approved:
+            self.message_user(request, f"Уже были одобрены и пропущены: {already_approved}.")
+        if skipped:
+            self.message_user(
+                request,
+                f"Пропущено (не педагоги): {skipped}.",
+                level=messages.WARNING,
+            )
 
     @admin.display(description="Имя Фамилия")
     def get_full_name(self, obj):

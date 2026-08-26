@@ -1,4 +1,5 @@
 from django.urls import reverse_lazy
+from django.core.cache import cache
 from django.db.models import Prefetch
 from django.views.generic import (
     CreateView,
@@ -42,8 +43,22 @@ class MusicalPieceListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["genres"] = Genre.objects.all()
-        context["instruments"] = Instrument.objects.all()
+
+        # Справочники меняются редко (раз в несколько дней, когда педагог
+        # добавит новый жанр/инструмент), а достаются из базы на каждой
+        # загрузке каталога — кешируем на 5 минут.
+        genres = cache.get("all_genres")
+        if genres is None:
+            genres = list(Genre.objects.all())
+            cache.set("all_genres", genres, 60 * 5)
+
+        instruments = cache.get("all_instruments")
+        if instruments is None:
+            instruments = list(Instrument.objects.all())
+            cache.set("all_instruments", instruments, 60 * 5)
+
+        context["genres"] = genres
+        context["instruments"] = instruments
         return context
 
 
@@ -412,9 +427,19 @@ class AboutView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["total_pieces"] = MusicalPiece.objects.count()
-        context["total_composers"] = Composer.objects.count()
-        context["total_genres"] = Genre.objects.count()
+
+        # COUNT() по целым таблицам — не бесплатная операция, а меняется
+        # редко (на 1-2 в течение дня), поэтому кешируем на 10 минут.
+        stats = cache.get("about_stats")
+        if stats is None:
+            stats = {
+                "total_pieces": MusicalPiece.objects.count(),
+                "total_composers": Composer.objects.count(),
+                "total_genres": Genre.objects.count(),
+            }
+            cache.set("about_stats", stats, 60 * 10)
+
+        context.update(stats)
         return context
 
 

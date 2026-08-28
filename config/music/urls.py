@@ -11,6 +11,7 @@ from .views import (
     GenreCreateView,
     GenreDeleteView,
     GenreDetailView,
+    InstrumentDetailView,
     GenreListView,
     GenreUpdateView,
     InstrumentCreateView,
@@ -47,6 +48,7 @@ urlpatterns = [
     # Публичные страницы жанра и композитора (произведения + исполнители)
     path("genres/<int:pk>/view/", GenreDetailView.as_view(), name="genre_detail"),
     path("composers/<int:pk>/view/", ComposerDetailView.as_view(), name="composer_detail"),
+    path("instruments/<int:pk>/view/", InstrumentDetailView.as_view(), name="instrument_detail"),
 
     # Композиторы (управление, только педагоги)
     path("composers/", ComposerListView.as_view(), name="composer_list"),

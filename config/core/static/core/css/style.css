@@ -694,13 +694,20 @@ section.py-5 {
 /* ===== Кнопки-пилюли для выбора жанров/инструментов/предметов =====
    Раньше это была выпадающая панель (dropdown) — отказались от неё:
    неудобно на мобильных, всегда мало места, легко случайно закрыть.
-   Теперь панель всегда открыта и видна целиком, со своей рамкой и прокруткой. */
+   Теперь панель всегда открыта и видна целиком, со своей рамкой и прокруткой.
+
+   Django сам оборачивает чекбоксы в <ul><li> — чтобы это не портило раскладку
+   и не оставляло лишних фоновых прямоугольников, "убираем" эти обёртки из
+   layout через display:contents (DOM остаётся как есть, а визуально как
+   будто их нет — пилюли лежат прямо в общем flex-контейнере панели). */
 
 .pill-select-panel-static {
     max-height: 280px;
     overflow-y: auto;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
+    align-content: flex-start;
     gap: 8px;
     padding: 14px;
     border: 1.5px solid #e2e8f0;
@@ -708,26 +715,25 @@ section.py-5 {
     background: var(--bg-light);
 }
 
-.pill-select-panel-static ul {
+.pill-select-panel-static ul,
+.pill-select-panel-static li {
+    display: contents;
     list-style: none;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    width: 100%;
-}
-
-.pill-select-panel-static li {
-    margin: 0;
 }
 
 .pill-select-panel-static input[type="checkbox"] {
-    display: none;
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
 }
 
 .pill-select-panel-static label {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     padding: 8px 16px;
     border-radius: 20px;
     background: #fff;
@@ -735,6 +741,8 @@ section.py-5 {
     cursor: pointer;
     font-weight: 500;
     font-size: 0.9rem;
+    line-height: 1.2;
+    white-space: nowrap;
     transition: all 0.15s ease;
     user-select: none;
 }

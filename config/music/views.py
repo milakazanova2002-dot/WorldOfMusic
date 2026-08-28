@@ -260,6 +260,26 @@ class TeacherOnlyMixin:
         return super().dispatch(request, *args, **kwargs)
 
 
+class InstrumentDetailView(DetailView):
+    """Публичная страница инструмента: какие произведения под него написаны
+    и какие ученики их исполняли."""
+    model = Instrument
+    template_name = "music/instrument_detail.html"
+    context_object_name = "instrument"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        from education.models import Performance
+
+        context["pieces"] = MusicalPiece.objects.filter(instruments=self.object).select_related("composer")
+        context["performances"] = (
+            Performance.objects.filter(piece__instruments=self.object)
+            .select_related("assignment__student__user", "piece")
+            .distinct()
+        )
+        return context
+
+
 class GenreDetailView(DetailView):
     """Публичная страница жанра: какие произведения к нему относятся
     и какие ученики их исполняли."""

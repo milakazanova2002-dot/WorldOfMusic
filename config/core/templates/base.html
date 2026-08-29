@@ -58,7 +58,7 @@
                 {% endif %}
                 <li class="nav-item d-flex align-items-center">
                     <form method="get" action="{% url 'music:piece_list' %}" class="header-search d-flex ms-2">
-                        <input type="search" name="q" class="form-control form-control-sm" placeholder="Найти произведение..." value="{{ request.GET.q }}">
+                        <input type="search" name="q" class="form-control form-control-sm" placeholder="Произведение или композитор..." value="{{ request.GET.q }}">
                     </form>
                 </li>
             </ul>

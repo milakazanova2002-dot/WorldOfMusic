@@ -1,6 +1,6 @@
 from django.urls import reverse_lazy
 from django.core.cache import cache
-from django.db.models import Prefetch
+from django.db.models import Prefetch, Q
 from django.views.generic import (
     CreateView,
     DeleteView,
@@ -29,7 +29,11 @@ class MusicalPieceListView(ListView):
 
         query = self.request.GET.get("q")
         if query:
-            qs = qs.filter(title__icontains=query)
+            qs = qs.filter(
+                Q(title__icontains=query)
+                | Q(composer__first_name__icontains=query)
+                | Q(composer__last_name__icontains=query)
+            )
 
         genre_id = self.request.GET.get("genre")
         if genre_id:

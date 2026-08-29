@@ -57,9 +57,9 @@
 
                     <div class="mb-3">
                         <label class="form-label">{{ teacher_form.subjects.label }}</label>
-                        <input type="text" class="form-control form-control-sm mb-2 pill-filter-input"
+                        <input type="text" class="form-control form-control-sm mb-2 chip-filter-input"
                                placeholder="Начните вводить, чтобы найти предмет..." data-target="subjectsPillPanel">
-                        <div class="pill-select-panel-static" id="subjectsPillPanel">
+                        <div class="chip-select-panel" id="subjectsPillPanel">
                             {{ teacher_form.subjects }}
                         </div>
                         {% if teacher_form.subjects.errors %}
@@ -99,25 +99,41 @@
 </div>
 
 <script>
-// Живой фильтр: скрывает пилюли, не подходящие под введённый текст.
-// Уже выбранные (отмеченные) пилюли не прячутся никогда.
+// Живой фильтр: скрывает чипы, не подходящие под введённый текст.
+// Уже выбранные (отмеченные) чипы не прячутся никогда.
 function setupPillFilter(inputSelector) {
     document.querySelectorAll(inputSelector).forEach(input => {
         input.addEventListener('input', () => {
             const panel = document.getElementById(input.dataset.target);
             const query = input.value.trim().toLowerCase();
-            panel.querySelectorAll('li').forEach(li => {
-                const checkbox = li.querySelector('input[type="checkbox"]');
-                const label = li.querySelector('label');
-                const text = label ? label.textContent.toLowerCase() : '';
+            panel.querySelectorAll('label').forEach(label => {
+                const checkbox = label.querySelector('input[type="checkbox"]');
+                const text = label.textContent.toLowerCase();
                 const matches = text.includes(query);
                 const isChecked = checkbox && checkbox.checked;
-                li.style.display = (matches || isChecked) ? '' : 'none';
+                const wrapper = label.closest("div");
+                wrapper.style.display = (matches || isChecked) ? '' : 'none';
             });
         });
     });
 }
 
-setupPillFilter('.pill-filter-input');
+// Подсветка выбранного чипа через JS-класс — работает независимо от
+// поддержки CSS :has() в браузере.
+function setupChipHighlight(panelSelector) {
+    document.querySelectorAll(panelSelector).forEach(panel => {
+        panel.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            const label = checkbox.closest('label');
+            if (!label) return;
+
+            const sync = () => label.classList.toggle('chip-checked', checkbox.checked);
+            sync();
+            checkbox.addEventListener('change', sync);
+        });
+    });
+}
+
+setupPillFilter('.chip-filter-input');
+setupChipHighlight('.chip-select-panel');
 </script>
 {% endblock %}

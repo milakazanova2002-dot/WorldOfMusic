@@ -691,76 +691,104 @@ section.py-5 {
     color: var(--text-muted);
 }
 
-/* ===== Кнопки-пилюли для выбора жанров/инструментов/предметов =====
-   Раньше это была выпадающая панель (dropdown) — отказались от неё:
-   неудобно на мобильных, всегда мало места, легко случайно закрыть.
-   Теперь панель всегда открыта и видна целиком, со своей рамкой и прокруткой.
+/* ===== Сетка-чипов для выбора жанров/инструментов/предметов =====
+   Третья версия этого компонента. Раньше это была выпадающая панель (dropdown),
+   потом статичная flex-панель с пилюлями — оба варианта давали визуальные
+   баги (просвечивающий чекбокс, слишком узко, элементы слипались).
 
-   Django сам оборачивает чекбоксы в <ul><li> — чтобы это не портило раскладку
-   и не оставляло лишних фоновых прямоугольников, "убираем" эти обёртки из
-   layout через display:contents (DOM остаётся как есть, а визуально как
-   будто их нет — пилюли лежат прямо в общем flex-контейнере панели). */
+   Новый подход:
+   1. Название класса другое (.chip-select-*) — чтобы точно не было путаницы
+      со старым закешированным CSS в браузере.
+   2. Чекбокс не просто "невидимый" (opacity/display) — он физически уведён
+      за пределы экрана (position: fixed; left: -9999px). Так его не может
+      "случайно" показать никакой сторонний стиль, который переопределит
+      display/opacity.
+   3. Сетка (grid) вместо flex-wrap — карточки ровные, одинаковой высоты,
+      с гарantированным отступом, и сама растягивается на всю ширину
+      контейнера, а не "сжимается" до содержимого. */
 
-.pill-select-panel-static {
-    max-height: 280px;
+/* ===== Сетка-чипов для выбора жанров/инструментов/предметов =====
+   Четвёртая версия. Оказалось, что реальная причина всех проблем была не
+   в стилях, а в неверном предположении о разметке: я считала, что Django
+   оборачивает чекбоксы в <ul><li> — но в Django 6 виджет CheckboxSelectMultiple
+   генерирует <div>-обёртки (см. проверку через "Просмотреть код" в браузере):
+
+       <div class="chip-select-panel">
+           <div id="id_genre" class="form-check-input">   <-- это генерирует Django
+               <div><label>...<input type="checkbox">...</label></div>
+               <div><label>...<input type="checkbox">...</label></div>
+           </div>
+       </div>
+
+   Поэтому все правила для ul/li просто ни на что не действовали. Теперь
+   стили не привязаны к конкретным тегам — только к структуре "прямой
+   потомок панели" и "чекбокс/лейбл внутри", это не сломается, даже если
+   Django в будущей версии снова поменяет обёртку. */
+
+.chip-select-panel {
+    max-height: 320px;
     overflow-y: auto;
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    gap: 8px;
-    padding: 14px;
+    box-sizing: border-box;
+    padding: 16px;
     border: 1.5px solid #e2e8f0;
-    border-radius: 12px;
+    border-radius: 14px;
     background: var(--bg-light);
 }
 
-.pill-select-panel-static ul,
-.pill-select-panel-static li {
-    display: contents;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+/* Прямой потомок панели — это и есть обёртка, которую генерирует Django
+   (id="id_genre" и т.п.) — превращаем именно её в сетку. */
+.chip-select-panel > div {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 10px;
+    width: 100%;
 }
 
-.pill-select-panel-static input[type="checkbox"] {
-    position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
-    pointer-events: none;
+.chip-select-panel input[type="checkbox"] {
+    position: fixed !important;
+    left: -9999px !important;
+    top: -9999px !important;
 }
 
-.pill-select-panel-static label {
-    display: inline-flex;
+.chip-select-panel label {
+    display: flex !important;
     align-items: center;
-    padding: 8px 16px;
-    border-radius: 20px;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    min-height: 42px;
+    padding: 10px 14px;
+    border-radius: 10px;
     background: #fff;
-    border: 1.5px solid #e2e8f0;
+    border: 1.5px solid #dde3ea;
     cursor: pointer;
     font-weight: 500;
     font-size: 0.9rem;
-    line-height: 1.2;
-    white-space: nowrap;
-    transition: all 0.15s ease;
+    line-height: 1.25;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
     user-select: none;
 }
 
-.pill-select-panel-static label:hover {
+.chip-select-panel label:hover {
     border-color: var(--primary);
 }
 
-.pill-select-panel-static label:has(input[type="checkbox"]:checked) {
-    background: var(--gradient-1);
-    color: #fff;
-    border-color: transparent;
+.chip-select-panel label:has(input[type="checkbox"]:checked),
+.chip-select-panel label.chip-checked {
+    background: var(--gradient-1) !important;
+    color: #fff !important;
+    border-color: transparent !important;
+    font-weight: 600;
 }
 
-/* Поле-фильтр над панелью пилюль */
-.pill-filter-input {
-    max-width: 400px;
+/* Поле-фильтр над сеткой чипов */
+.chip-filter-input {
+    width: 100%;
+    max-width: 100%;
 }
+
+
 
 
 /* ===== Футер — в цвет хедера ===== */

@@ -30,9 +30,9 @@
         <h5 class="mb-3">Жанры</h5>
         <div class="mb-3">
             <label class="form-label fw-bold">{{ form.genre.label }}</label>
-            <input type="text" class="form-control form-control-sm mb-2 pill-filter-input"
+            <input type="text" class="form-control form-control-sm mb-2 chip-filter-input"
                    placeholder="Начните вводить, чтобы найти жанр..." data-target="genrePillPanel">
-            <div class="pill-select-panel-static" id="genrePillPanel">
+            <div class="chip-select-panel" id="genrePillPanel">
                 {{ form.genre }}
             </div>
         </div>
@@ -46,9 +46,9 @@
         <h5 class="mb-3">Инструменты</h5>
         <div class="mb-3">
             <label class="form-label fw-bold">{{ form.instruments.label }}</label>
-            <input type="text" class="form-control form-control-sm mb-2 pill-filter-input"
+            <input type="text" class="form-control form-control-sm mb-2 chip-filter-input"
                    placeholder="Начните вводить, чтобы найти инструмент..." data-target="instrumentPillPanel">
-            <div class="pill-select-panel-static" id="instrumentPillPanel">
+            <div class="chip-select-panel" id="instrumentPillPanel">
                 {{ form.instruments }}
             </div>
         </div>
@@ -82,26 +82,45 @@
 </div>
 
 <script>
-// Живой фильтр: скрывает пилюли, не подходящие под введённый текст.
-// Уже выбранные (отмеченные) пилюли не прячутся никогда — чтобы случайно
+// Живой фильтр: скрывает чипы, не подходящие под введённый текст.
+// Уже выбранные (отмеченные) чипы не прячутся никогда — чтобы случайно
 // не потерять выбор при вводе поискового текста.
 function setupPillFilter(inputSelector) {
     document.querySelectorAll(inputSelector).forEach(input => {
         input.addEventListener('input', () => {
             const panel = document.getElementById(input.dataset.target);
             const query = input.value.trim().toLowerCase();
-            panel.querySelectorAll('li').forEach(li => {
-                const checkbox = li.querySelector('input[type="checkbox"]');
-                const label = li.querySelector('label');
-                const text = label ? label.textContent.toLowerCase() : '';
+            panel.querySelectorAll('label').forEach(label => {
+                const checkbox = label.querySelector('input[type="checkbox"]');
+                const text = label.textContent.toLowerCase();
                 const matches = text.includes(query);
                 const isChecked = checkbox && checkbox.checked;
-                li.style.display = (matches || isChecked) ? '' : 'none';
+                // прячем именно обёртку-родителя label (div, который Django
+                // генерирует на каждый вариант выбора), а не сам label —
+                // так сетка не "съезжает" при скрытии
+                const wrapper = label.closest("div");
+                wrapper.style.display = (matches || isChecked) ? '' : 'none';
             });
         });
     });
 }
 
-setupPillFilter('.pill-filter-input');
+// Подсветка выбранного чипа через JS-класс — работает независимо от
+// поддержки CSS :has() в браузере, дублирует ту же логику для надёжности.
+function setupChipHighlight(panelSelector) {
+    document.querySelectorAll(panelSelector).forEach(panel => {
+        panel.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            const label = checkbox.closest('label');
+            if (!label) return;
+
+            const sync = () => label.classList.toggle('chip-checked', checkbox.checked);
+            sync();
+            checkbox.addEventListener('change', sync);
+        });
+    });
+}
+
+setupPillFilter('.chip-filter-input');
+setupChipHighlight('.chip-select-panel');
 </script>
 {% endblock %}

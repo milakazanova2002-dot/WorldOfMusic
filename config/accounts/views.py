@@ -1,5 +1,7 @@
 import json
+import logging
 import secrets
+import urllib.error
 import urllib.parse
 import urllib.request
 
@@ -17,6 +19,8 @@ from django.views.generic import UpdateView
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
+
+logger = logging.getLogger(__name__)
 
 from .forms import (
     CompleteProfileForm,
@@ -149,14 +153,13 @@ def complete_profile(request):
                 user.patronymic = form.cleaned_data["patronymic"]
                 user.is_approved = False
                 user.save()
+                TeacherProfile.objects.create(user=user)  # без этого hasattr(user, "teacher_profile") всегда False
                 assign_default_avatar(user, "teacher")
                 messages.success(
                     request,
                     "Заявка отправлена. Администратор рассмотрит её и одобрит ваш аккаунт.",
                 )
                 return redirect("accounts:pending_approval")
-
-            user.save()
 
             if role == "student":
                 StudentProfile.objects.create(user=user)
@@ -233,7 +236,17 @@ def google_callback(request):
         )
         with urllib.request.urlopen(token_request, timeout=10) as response:
             token_response = json.loads(response.read().decode())
+    except urllib.error.HTTPError as e:
+        # Google вернул код ошибки (не 2xx) — тело ответа обычно содержит
+        # понятное описание причины (например redirect_uri_mismatch,
+        # invalid_client, invalid_grant). Печатаем в лог сервера, но
+        # пользователю показываем общее сообщение.
+        body = e.read().decode(errors="replace")
+        logger.error("Google OAuth: обмен code на token не удался (HTTP %s): %s", e.code, body)
+        messages.error(request, "Не удалось связаться с Google. Попробуйте позже.")
+        return redirect("accounts:login")
     except Exception:
+        logger.exception("Google OAuth: обмен code на token не удался (сетевая ошибка)")
         messages.error(request, "Не удалось связаться с Google. Попробуйте позже.")
         return redirect("accounts:login")
 
@@ -250,7 +263,13 @@ def google_callback(request):
         )
         with urllib.request.urlopen(info_request, timeout=10) as response:
             profile = json.loads(response.read().decode())
+    except urllib.error.HTTPError as e:
+        body = e.read().decode(errors="replace")
+        logger.error("Google OAuth: не удалось получить профиль (HTTP %s): %s", e.code, body)
+        messages.error(request, "Не удалось получить данные профиля Google.")
+        return redirect("accounts:login")
     except Exception:
+        logger.exception("Google OAuth: не удалось получить профиль (сетевая ошибка)")
         messages.error(request, "Не удалось получить данные профиля Google.")
         return redirect("accounts:login")
 
@@ -294,15 +313,23 @@ def account_delete(request):
         return redirect("accounts:account_menu")
 
     if request.method == "POST":
-        password = request.POST.get("password", "")
-        if request.user.check_password(password):
+        if request.user.has_usable_password():
+            password = request.POST.get("password", "")
+            ok = request.user.check_password(password)
+            error = "Неверный пароль. Аккаунт не удалён."
+        else:
+            confirm_email = request.POST.get("confirm_email", "").strip()
+            ok = confirm_email.lower() == request.user.email.lower()
+            error = "Email не совпадает. Аккаунт не удалён."
+
+        if ok:
             user = request.user
             logout(request)
             user.delete()
             messages.success(request, "Аккаунт удалён.")
             return redirect("home")
         else:
-            messages.error(request, "Неверный пароль. Аккаунт не удалён.")
+            messages.error(request, error)
             return redirect("accounts:account_delete")
 
     return render(request, "accounts/account_delete.html")

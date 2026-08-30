@@ -23,10 +23,17 @@
 
         <form method="post">
             {% csrf_token %}
+            {% if request.user.has_usable_password %}
             <div class="mb-3">
                 <label class="form-label">Введите пароль, чтобы подтвердить</label>
                 <input type="password" name="password" class="form-control" required autofocus>
             </div>
+            {% else %}
+            <div class="mb-3">
+                <label class="form-label">Вы вошли через Google. Введите свой email ({{ request.user.email }}), чтобы подтвердить</label>
+                <input type="email" name="confirm_email" class="form-control" required autofocus>
+            </div>
+            {% endif %}
             <button type="submit" class="btn btn-danger w-100">Удалить аккаунт навсегда</button>
         </form>
 

@@ -1,0 +1,6652 @@
+[
+{
+  "model": "admin.logentry",
+  "pk": 30,
+  "fields": {
+    "action_time": "2026-08-25T19:46:55.394Z",
+    "user": 24,
+    "content_type": 19,
+    "object_id": "7",
+    "object_repr": "Лунная соната — Аудио",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 31,
+  "fields": {
+    "action_time": "2026-08-25T19:46:55.394Z",
+    "user": 24,
+    "content_type": 19,
+    "object_id": "6",
+    "object_repr": "Аве Мария — Минусовка",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 32,
+  "fields": {
+    "action_time": "2026-08-25T19:46:55.394Z",
+    "user": 24,
+    "content_type": 19,
+    "object_id": "5",
+    "object_repr": "Аве Мария — Плюсовка (с мелодией)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 33,
+  "fields": {
+    "action_time": "2026-08-25T19:46:55.394Z",
+    "user": 24,
+    "content_type": 19,
+    "object_id": "2",
+    "object_repr": "Лебединая верность — Минусовка",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 34,
+  "fields": {
+    "action_time": "2026-08-25T19:46:55.394Z",
+    "user": 24,
+    "content_type": 19,
+    "object_id": "1",
+    "object_repr": "Лебединая верность — Ноты (PDF)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 35,
+  "fields": {
+    "action_time": "2026-08-25T19:47:12.063Z",
+    "user": 24,
+    "content_type": 18,
+    "object_id": "7",
+    "object_repr": "Прелюдия ми минор",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 36,
+  "fields": {
+    "action_time": "2026-08-25T19:47:12.063Z",
+    "user": 24,
+    "content_type": 18,
+    "object_id": "6",
+    "object_repr": "Вальс цветов",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 37,
+  "fields": {
+    "action_time": "2026-08-25T19:47:12.063Z",
+    "user": 24,
+    "content_type": 18,
+    "object_id": "5",
+    "object_repr": "Лунная соната",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 38,
+  "fields": {
+    "action_time": "2026-08-25T19:47:12.063Z",
+    "user": 24,
+    "content_type": 18,
+    "object_id": "4",
+    "object_repr": "Реквием (фрагмент)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 39,
+  "fields": {
+    "action_time": "2026-08-25T19:47:12.063Z",
+    "user": 24,
+    "content_type": 18,
+    "object_id": "3",
+    "object_repr": "Аве Мария",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 40,
+  "fields": {
+    "action_time": "2026-08-25T19:47:12.063Z",
+    "user": 24,
+    "content_type": 18,
+    "object_id": "1",
+    "object_repr": "Лебединая верность",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 41,
+  "fields": {
+    "action_time": "2026-08-25T19:47:24.188Z",
+    "user": 24,
+    "content_type": 16,
+    "object_id": "9",
+    "object_repr": "хоровая",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 42,
+  "fields": {
+    "action_time": "2026-08-25T19:47:24.188Z",
+    "user": 24,
+    "content_type": 16,
+    "object_id": "8",
+    "object_repr": "оперная",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 43,
+  "fields": {
+    "action_time": "2026-08-25T19:47:24.188Z",
+    "user": 24,
+    "content_type": 16,
+    "object_id": "7",
+    "object_repr": "народная",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 44,
+  "fields": {
+    "action_time": "2026-08-25T19:47:24.188Z",
+    "user": 24,
+    "content_type": 16,
+    "object_id": "6",
+    "object_repr": "романс",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 45,
+  "fields": {
+    "action_time": "2026-08-25T19:47:24.188Z",
+    "user": 24,
+    "content_type": 16,
+    "object_id": "5",
+    "object_repr": "классика",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 46,
+  "fields": {
+    "action_time": "2026-08-25T19:47:24.188Z",
+    "user": 24,
+    "content_type": 16,
+    "object_id": "4",
+    "object_repr": "военное",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 47,
+  "fields": {
+    "action_time": "2026-08-25T19:47:24.188Z",
+    "user": 24,
+    "content_type": 16,
+    "object_id": "3",
+    "object_repr": "эстрада",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 48,
+  "fields": {
+    "action_time": "2026-08-25T19:47:24.188Z",
+    "user": 24,
+    "content_type": 16,
+    "object_id": "2",
+    "object_repr": "лирика",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 49,
+  "fields": {
+    "action_time": "2026-08-25T19:47:37.270Z",
+    "user": 24,
+    "content_type": 17,
+    "object_id": "7",
+    "object_repr": "флейта",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 50,
+  "fields": {
+    "action_time": "2026-08-25T19:47:37.270Z",
+    "user": 24,
+    "content_type": 17,
+    "object_id": "6",
+    "object_repr": "гитара",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 51,
+  "fields": {
+    "action_time": "2026-08-25T19:47:37.270Z",
+    "user": 24,
+    "content_type": 17,
+    "object_id": "5",
+    "object_repr": "скрипка",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 52,
+  "fields": {
+    "action_time": "2026-08-25T19:47:37.270Z",
+    "user": 24,
+    "content_type": 17,
+    "object_id": "4",
+    "object_repr": "фортепиано",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 53,
+  "fields": {
+    "action_time": "2026-08-25T19:47:37.270Z",
+    "user": 24,
+    "content_type": 17,
+    "object_id": "3",
+    "object_repr": "национальная гармонь",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 54,
+  "fields": {
+    "action_time": "2026-08-25T19:47:37.271Z",
+    "user": 24,
+    "content_type": 17,
+    "object_id": "2",
+    "object_repr": "вокал",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": 1,
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": 1,
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": 1,
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 4,
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": 1,
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 5,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": 3,
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 6,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": 3,
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 7,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": 3,
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 8,
+  "fields": {
+    "name": "Can view permission",
+    "content_type": 3,
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 9,
+  "fields": {
+    "name": "Can add group",
+    "content_type": 2,
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 10,
+  "fields": {
+    "name": "Can change group",
+    "content_type": 2,
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 11,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": 2,
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 12,
+  "fields": {
+    "name": "Can view group",
+    "content_type": 2,
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": 4,
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": 4,
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": 4,
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 16,
+  "fields": {
+    "name": "Can view content type",
+    "content_type": 4,
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 17,
+  "fields": {
+    "name": "Can add session",
+    "content_type": 5,
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 18,
+  "fields": {
+    "name": "Can change session",
+    "content_type": 5,
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 19,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": 5,
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 20,
+  "fields": {
+    "name": "Can view session",
+    "content_type": 5,
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 21,
+  "fields": {
+    "name": "Can add user",
+    "content_type": 6,
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 22,
+  "fields": {
+    "name": "Can change user",
+    "content_type": 6,
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 23,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": 6,
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 24,
+  "fields": {
+    "name": "Can view user",
+    "content_type": 6,
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add Профиль педагога",
+    "content_type": 13,
+    "codename": "add_teacherprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change Профиль педагога",
+    "content_type": 13,
+    "codename": "change_teacherprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete Профиль педагога",
+    "content_type": 13,
+    "codename": "delete_teacherprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 28,
+  "fields": {
+    "name": "Can view Профиль педагога",
+    "content_type": 13,
+    "codename": "view_teacherprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 29,
+  "fields": {
+    "name": "Can add Профиль ученика",
+    "content_type": 11,
+    "codename": "add_studentprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 30,
+  "fields": {
+    "name": "Can change Профиль ученика",
+    "content_type": 11,
+    "codename": "change_studentprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 31,
+  "fields": {
+    "name": "Can delete Профиль ученика",
+    "content_type": 11,
+    "codename": "delete_studentprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 32,
+  "fields": {
+    "name": "Can view Профиль ученика",
+    "content_type": 11,
+    "codename": "view_studentprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 33,
+  "fields": {
+    "name": "Can add Урок",
+    "content_type": 7,
+    "codename": "add_lesson"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 34,
+  "fields": {
+    "name": "Can change Урок",
+    "content_type": 7,
+    "codename": "change_lesson"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 35,
+  "fields": {
+    "name": "Can delete Урок",
+    "content_type": 7,
+    "codename": "delete_lesson"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 36,
+  "fields": {
+    "name": "Can view Урок",
+    "content_type": 7,
+    "codename": "view_lesson"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 37,
+  "fields": {
+    "name": "Can add Предмет",
+    "content_type": 12,
+    "codename": "add_subject"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 38,
+  "fields": {
+    "name": "Can change Предмет",
+    "content_type": 12,
+    "codename": "change_subject"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 39,
+  "fields": {
+    "name": "Can delete Предмет",
+    "content_type": 12,
+    "codename": "delete_subject"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 40,
+  "fields": {
+    "name": "Can view Предмет",
+    "content_type": 12,
+    "codename": "view_subject"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 41,
+  "fields": {
+    "name": "Can add Назначение педагога",
+    "content_type": 14,
+    "codename": "add_teachingassignment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 42,
+  "fields": {
+    "name": "Can change Назначение педагога",
+    "content_type": 14,
+    "codename": "change_teachingassignment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 43,
+  "fields": {
+    "name": "Can delete Назначение педагога",
+    "content_type": 14,
+    "codename": "delete_teachingassignment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 44,
+  "fields": {
+    "name": "Can view Назначение педагога",
+    "content_type": 14,
+    "codename": "view_teachingassignment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 45,
+  "fields": {
+    "name": "Can add Исполнение",
+    "content_type": 9,
+    "codename": "add_performance"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 46,
+  "fields": {
+    "name": "Can change Исполнение",
+    "content_type": 9,
+    "codename": "change_performance"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 47,
+  "fields": {
+    "name": "Can delete Исполнение",
+    "content_type": 9,
+    "codename": "delete_performance"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 48,
+  "fields": {
+    "name": "Can view Исполнение",
+    "content_type": 9,
+    "codename": "view_performance"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 49,
+  "fields": {
+    "name": "Can add Комментарий к исполнению",
+    "content_type": 10,
+    "codename": "add_performancecomment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 50,
+  "fields": {
+    "name": "Can change Комментарий к исполнению",
+    "content_type": 10,
+    "codename": "change_performancecomment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 51,
+  "fields": {
+    "name": "Can delete Комментарий к исполнению",
+    "content_type": 10,
+    "codename": "delete_performancecomment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 52,
+  "fields": {
+    "name": "Can view Комментарий к исполнению",
+    "content_type": 10,
+    "codename": "view_performancecomment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 53,
+  "fields": {
+    "name": "Can add lesson material",
+    "content_type": 8,
+    "codename": "add_lessonmaterial"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 54,
+  "fields": {
+    "name": "Can change lesson material",
+    "content_type": 8,
+    "codename": "change_lessonmaterial"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 55,
+  "fields": {
+    "name": "Can delete lesson material",
+    "content_type": 8,
+    "codename": "delete_lessonmaterial"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 56,
+  "fields": {
+    "name": "Can view lesson material",
+    "content_type": 8,
+    "codename": "view_lessonmaterial"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 57,
+  "fields": {
+    "name": "Can add Композитор",
+    "content_type": 15,
+    "codename": "add_composer"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 58,
+  "fields": {
+    "name": "Can change Композитор",
+    "content_type": 15,
+    "codename": "change_composer"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 59,
+  "fields": {
+    "name": "Can delete Композитор",
+    "content_type": 15,
+    "codename": "delete_composer"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 60,
+  "fields": {
+    "name": "Can view Композитор",
+    "content_type": 15,
+    "codename": "view_composer"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 61,
+  "fields": {
+    "name": "Can add Жанр",
+    "content_type": 16,
+    "codename": "add_genre"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 62,
+  "fields": {
+    "name": "Can change Жанр",
+    "content_type": 16,
+    "codename": "change_genre"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 63,
+  "fields": {
+    "name": "Can delete Жанр",
+    "content_type": 16,
+    "codename": "delete_genre"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 64,
+  "fields": {
+    "name": "Can view Жанр",
+    "content_type": 16,
+    "codename": "view_genre"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 65,
+  "fields": {
+    "name": "Can add Инструмент",
+    "content_type": 17,
+    "codename": "add_instrument"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 66,
+  "fields": {
+    "name": "Can change Инструмент",
+    "content_type": 17,
+    "codename": "change_instrument"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 67,
+  "fields": {
+    "name": "Can delete Инструмент",
+    "content_type": 17,
+    "codename": "delete_instrument"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 68,
+  "fields": {
+    "name": "Can view Инструмент",
+    "content_type": 17,
+    "codename": "view_instrument"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 69,
+  "fields": {
+    "name": "Can add Музыкальное произведение",
+    "content_type": 18,
+    "codename": "add_musicalpiece"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 70,
+  "fields": {
+    "name": "Can change Музыкальное произведение",
+    "content_type": 18,
+    "codename": "change_musicalpiece"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 71,
+  "fields": {
+    "name": "Can delete Музыкальное произведение",
+    "content_type": 18,
+    "codename": "delete_musicalpiece"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 72,
+  "fields": {
+    "name": "Can view Музыкальное произведение",
+    "content_type": 18,
+    "codename": "view_musicalpiece"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 73,
+  "fields": {
+    "name": "Can add Материал к произведению",
+    "content_type": 19,
+    "codename": "add_musicmaterial"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 74,
+  "fields": {
+    "name": "Can change Материал к произведению",
+    "content_type": 19,
+    "codename": "change_musicmaterial"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 75,
+  "fields": {
+    "name": "Can delete Материал к произведению",
+    "content_type": 19,
+    "codename": "delete_musicmaterial"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 76,
+  "fields": {
+    "name": "Can view Материал к произведению",
+    "content_type": 19,
+    "codename": "view_musicmaterial"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 77,
+  "fields": {
+    "name": "Can add Избранное произведение",
+    "content_type": 20,
+    "codename": "add_favorite"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 78,
+  "fields": {
+    "name": "Can change Избранное произведение",
+    "content_type": 20,
+    "codename": "change_favorite"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 79,
+  "fields": {
+    "name": "Can delete Избранное произведение",
+    "content_type": 20,
+    "codename": "delete_favorite"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 80,
+  "fields": {
+    "name": "Can view Избранное произведение",
+    "content_type": 20,
+    "codename": "view_favorite"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 81,
+  "fields": {
+    "name": "Can add Уведомление",
+    "content_type": 21,
+    "codename": "add_notification"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 82,
+  "fields": {
+    "name": "Can change Уведомление",
+    "content_type": 21,
+    "codename": "change_notification"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 83,
+  "fields": {
+    "name": "Can delete Уведомление",
+    "content_type": 21,
+    "codename": "delete_notification"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 84,
+  "fields": {
+    "name": "Can view Уведомление",
+    "content_type": 21,
+    "codename": "view_notification"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 85,
+  "fields": {
+    "name": "Can add Заявка в поддержку",
+    "content_type": 22,
+    "codename": "add_supportrequest"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 86,
+  "fields": {
+    "name": "Can change Заявка в поддержку",
+    "content_type": 22,
+    "codename": "change_supportrequest"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 87,
+  "fields": {
+    "name": "Can delete Заявка в поддержку",
+    "content_type": 22,
+    "codename": "delete_supportrequest"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 88,
+  "fields": {
+    "name": "Can view Заявка в поддержку",
+    "content_type": 22,
+    "codename": "view_supportrequest"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 89,
+  "fields": {
+    "name": "Can add Связь родитель-ученик",
+    "content_type": 23,
+    "codename": "add_parentlink"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 90,
+  "fields": {
+    "name": "Can change Связь родитель-ученик",
+    "content_type": 23,
+    "codename": "change_parentlink"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 91,
+  "fields": {
+    "name": "Can delete Связь родитель-ученик",
+    "content_type": 23,
+    "codename": "delete_parentlink"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 92,
+  "fields": {
+    "name": "Can view Связь родитель-ученик",
+    "content_type": 23,
+    "codename": "view_parentlink"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 1,
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 2,
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 3,
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 4,
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 5,
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 6,
+  "fields": {
+    "app_label": "accounts",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 7,
+  "fields": {
+    "app_label": "education",
+    "model": "lesson"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 8,
+  "fields": {
+    "app_label": "education",
+    "model": "lessonmaterial"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 9,
+  "fields": {
+    "app_label": "education",
+    "model": "performance"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 10,
+  "fields": {
+    "app_label": "education",
+    "model": "performancecomment"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 11,
+  "fields": {
+    "app_label": "education",
+    "model": "studentprofile"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 12,
+  "fields": {
+    "app_label": "education",
+    "model": "subject"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 13,
+  "fields": {
+    "app_label": "education",
+    "model": "teacherprofile"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 14,
+  "fields": {
+    "app_label": "education",
+    "model": "teachingassignment"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 15,
+  "fields": {
+    "app_label": "music",
+    "model": "composer"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 16,
+  "fields": {
+    "app_label": "music",
+    "model": "genre"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 17,
+  "fields": {
+    "app_label": "music",
+    "model": "instrument"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 18,
+  "fields": {
+    "app_label": "music",
+    "model": "musicalpiece"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 19,
+  "fields": {
+    "app_label": "music",
+    "model": "musicmaterial"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 20,
+  "fields": {
+    "app_label": "music",
+    "model": "favorite"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 21,
+  "fields": {
+    "app_label": "core",
+    "model": "notification"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 22,
+  "fields": {
+    "app_label": "core",
+    "model": "supportrequest"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 23,
+  "fields": {
+    "app_label": "education",
+    "model": "parentlink"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "6ww7m9c9i0mug0gl7ah6kpeux2g9mm34",
+  "fields": {
+    "session_data": "e30:1wvK7W:jh3t5iEVowA7u5kNBUbqMzoFVj-dFfbDHLZRnTHjtcw",
+    "expire_date": "2026-08-29T19:32:42.327Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "kzrdvjecj3slksvvk61roig9m44jyncg",
+  "fields": {
+    "session_data": ".eJxVi0sKwjAQQO8yaykx_3QpdK03CDOZhBQ1haZdiXcXoQvdvs8LIu5bjXvPa5wZRpABTr-QMN1z-xpMadnb1ocD9WF64vy4rre6tHw5ur-5Yq8wggkKHQnHBmVJgknr4Ji1Y8uMrFVxRDYxqcIye2-kkFY5Ybw2BekM7w86HTc6:1wzLTT:j2eKRiTnMvfYCHvqFr9ANhYH3ZMtAtcHAUQUE3lbO14",
+    "expire_date": "2026-09-09T21:47:59.433Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "npf929gc3cig2gd6oe1yysun34cl9qh9",
+  "fields": {
+    "session_data": "e30:1wxkR9:lSzICDCrEHjiVU8HqsgPyWxRqSbX1queMZAlEg6O4qY",
+    "expire_date": "2026-09-05T12:02:59.179Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "qxbajhx69repq7z6w0qk5w2gj1l8c74l",
+  "fields": {
+    "session_data": ".eJxVjDkOwjAQAP-yNbKws8ZOSnreYHkP4wCKpRwV4u8oUgpoZ0bzhpS3taZt0TmNAgM4OP0yyvzUaRfyyNO9GW7TOo9k9sQcdjG3Jvq6Hu3foOalwgAsnT9n5b5Ya23RIMGhkETtuUTpXYykF1QKnpHQUUHqcoeMPjiyFj5fCuM4kQ:1wtRh9:QvOc-qU4qR-nTrfLEb-MsBA6QNnhCum6vBiMUzI-gkA",
+    "expire_date": "2026-08-24T15:13:43.462Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "w3zpsici9liuczo8ywjj9l1t1lpj5dbt",
+  "fields": {
+    "session_data": ".eJxVjDsOwyAQBe9CHaG1wXxSpvcZ0O6Cg5MIJGNXUe4eIblI2jcz7y0CHnsOR0tbWKO4CicuvxshP1PpID6w3KvkWvZtJdkVedIm5xrT63a6fwcZW-41R00xMQ5oDRAQg5p04tFP5JE1oDLGLM6DVmyJGQ0snrwenHVjJPH5AhI4OIo:1wvuNM:eNTgO1pD4QodgUpPKZFbC-ig1RyZa0Vrvdv_I-QCUIw",
+    "expire_date": "2026-08-31T10:15:28.970Z"
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 24,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$mICX0uYUDYGpOA8KfpztUF$1+3INv3mChOlDAdTzpvT3JIc8pKPZ5ZoH5P8eduIRDg=",
+    "last_login": "2026-08-30T20:35:21.273Z",
+    "is_superuser": true,
+    "username": "Admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "milakazanova2002@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-08-25T19:42:07.279Z",
+    "email_verified": false,
+    "gender": "",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 25,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$ODrMYVL6ZYr7IkpUUwvAZe$Ps64jJPHxE4DyGpzWmyM8qi3OXngp+7EuEe/BO5lhqA=",
+    "last_login": "2026-08-25T19:46:00.131Z",
+    "is_superuser": false,
+    "username": "Milana",
+    "first_name": "Милана",
+    "last_name": "Казанова",
+    "email": "kazanova2002@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-25T19:45:44.909Z",
+    "email_verified": false,
+    "gender": "female",
+    "patronymic": "Жабагиевна",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": true,
+    "avatar": "avatars/teacher_female_6miscEf.png",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 26,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$XCsDyGnGc9AtpOuBEUG8RP$J379i8vtzBzZwEvKOtHjyUOyr3DbBhePHnAnh4g8hNQ=",
+    "last_login": "2026-08-25T19:50:23.191Z",
+    "is_superuser": false,
+    "username": "Alena",
+    "first_name": "Алена",
+    "last_name": "Межгихова",
+    "email": "alena@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-25T19:50:22.556Z",
+    "email_verified": false,
+    "gender": "female",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "avatars/student_female.png",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 27,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$3y5fNeQcPaW7kPpScXGELW$4U8aRbemQojeQYiHEkzCdZ1pllCtNgqlEahb+GCoWQE=",
+    "last_login": "2026-08-25T19:52:21.675Z",
+    "is_superuser": false,
+    "username": "Alina",
+    "first_name": "Алина",
+    "last_name": "Межгихова",
+    "email": "alina@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-25T19:52:21.042Z",
+    "email_verified": false,
+    "gender": "female",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "avatars/parent_female.png",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 28,
+  "fields": {
+    "password": "!n8t1LhsbJUSfwciTCaXg9R1v3HLUm3sFQTLNMaAn",
+    "last_login": "2026-08-30T20:32:51.925Z",
+    "is_superuser": false,
+    "username": "mikazanova2002",
+    "first_name": "Милана",
+    "last_name": "Казанова",
+    "email": "mikazanova2002@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-25T19:53:48.866Z",
+    "email_verified": false,
+    "gender": "female",
+    "patronymic": "Жабагиевна",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "avatars/teacher_female_rsIQ28e.png",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 29,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$9X66glmhmYKepDEg5qKcM7$RtU/U7Qcj7P7ITaAETiQ1coulqhpISFUtvztOSWmTHQ=",
+    "last_login": "2026-08-30T19:52:27.046Z",
+    "is_superuser": false,
+    "username": "Mareta",
+    "first_name": "Марета",
+    "last_name": "Дикинова",
+    "email": "mareta@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-26T21:35:44.260Z",
+    "email_verified": false,
+    "gender": "female",
+    "patronymic": "Мухамедовна",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": true,
+    "avatar": "avatars/teacher_female_fLc6amj.png",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 30,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$q5Pxb38Gvyy4ZpUfEjd59T$2Ahdbz2IAecjYdwUJXnkcIJdhsaext05IDp627ciREI=",
+    "last_login": "2026-08-28T20:20:23.550Z",
+    "is_superuser": false,
+    "username": "Рустам",
+    "first_name": "Рустам",
+    "last_name": "Кармоков",
+    "email": "rust@mail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-28T20:20:22.666Z",
+    "email_verified": false,
+    "gender": "male",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "avatars/student_male.png",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 31,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$35g6B3l7x6y43fXrLG2D4T$HMByNKfDTRWD8m21yXLniXMZXihrvrwrO7wq3fYnDv8=",
+    "last_login": "2026-08-28T20:23:24.477Z",
+    "is_superuser": false,
+    "username": "Alik",
+    "first_name": "Алик",
+    "last_name": "Барагунов",
+    "email": "alik@mail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-28T20:21:43.173Z",
+    "email_verified": false,
+    "gender": "male",
+    "patronymic": "Асланович",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": true,
+    "avatar": "avatars/teacher_male.png",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 32,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$3ZSEiLdo4lJfOGoyXO5MFd$MGmLP9iqzdsHbmsYByy/UwNaI5sjMDkdKIbdCHkDKPY=",
+    "last_login": "2026-08-30T19:57:40.344Z",
+    "is_superuser": false,
+    "username": "ivan",
+    "first_name": "Иван",
+    "last_name": "Иванов",
+    "email": "ivan@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:42:55.376Z",
+    "email_verified": false,
+    "gender": "male",
+    "patronymic": "Иванович",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": true,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 33,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$TJJpeyjtZZOBytfvql49Kd$GJlYHW6YsrfbiPDyG2pw1JmYWr4gSh2jjqWHkI9bnDs=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "mariya",
+    "first_name": "Мария",
+    "last_name": "Петрова",
+    "email": "mariya@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:42:56.114Z",
+    "email_verified": false,
+    "gender": "female",
+    "patronymic": "Ивановна",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": true,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 34,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$3RVrF5Nk4TNr8deFRHFRlM$SdB0XxB/Y1fi8SomKcew9Tg4PumZlQFoOno0dSVbj0k=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "aleksei",
+    "first_name": "Алексей",
+    "last_name": "Сидоров",
+    "email": "aleksei@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:42:56.858Z",
+    "email_verified": false,
+    "gender": "male",
+    "patronymic": "Петрович",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": true,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 35,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$Q4N01ejiuLg7bAVxOsqgYm$Hqk7W2WnKCzGmpWUL99LCTzqCdvyRoMvb0Kpajwn+KM=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "olga",
+    "first_name": "Ольга",
+    "last_name": "Кузнецова",
+    "email": "olga@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:42:57.550Z",
+    "email_verified": false,
+    "gender": "female",
+    "patronymic": "Петровна",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": true,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 36,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$CworEGb75CXqsxrLjMEcU0$+Mb9dZNkxHKQIrxFyo/p3zthuKA0u9pfvIs1HsUuhEs=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "sergei",
+    "first_name": "Сергей",
+    "last_name": "Смирнов",
+    "email": "sergei@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:42:58.177Z",
+    "email_verified": false,
+    "gender": "male",
+    "patronymic": "Сергеевич",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": true,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 37,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$VsHs6rEmil8OADtz3RO395$LcbZ/W4xU1er9Mx7YKT1uU4MIsrg5D2x3u6h6ZHVqUs=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "svetlana",
+    "first_name": "Светлана",
+    "last_name": "Попова",
+    "email": "svetlana@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:42:58.808Z",
+    "email_verified": false,
+    "gender": "female",
+    "patronymic": "Сергеевна",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": true,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 38,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$As2POgmcXn6TWi7YiaG0RL$gQlLWadbK/LZnX/t4Tc7fqwyUH9GZTSwg+qHRGPliHQ=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "nikolai",
+    "first_name": "Николай",
+    "last_name": "Соколов",
+    "email": "nikolai@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:42:59.422Z",
+    "email_verified": false,
+    "gender": "male",
+    "patronymic": "Александрович",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": true,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 39,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$mnpxYKFRh6JBbocSsqNa2p$C80Aaydzb+LIghdxv7zmwSVGe2M97BBQEDEnz34oXn4=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "tatyana",
+    "first_name": "Татьяна",
+    "last_name": "Лебедева",
+    "email": "tatyana@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:00.069Z",
+    "email_verified": false,
+    "gender": "female",
+    "patronymic": "Александровна",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": true,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 40,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$PPqK33sge1ru8FEBp8Qnft$pXU7unkQJgUc/oOPKumgA9PfSVhBUhm+C1FSC7+IQ8E=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "mihail",
+    "first_name": "Михаил",
+    "last_name": "Козлов",
+    "email": "mihail@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:00.809Z",
+    "email_verified": false,
+    "gender": "male",
+    "patronymic": "Дмитриевич",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": true,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 41,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$TnoHGpPyTRH8zyzZhKhBtk$6soSOxnz1/TIcQjrafb7Q1nKBoh4UTEjFu3VRW0QdHw=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "darya",
+    "first_name": "Дарья",
+    "last_name": "Новикова",
+    "email": "darya@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:01.502Z",
+    "email_verified": false,
+    "gender": "female",
+    "patronymic": "Дмитриевна",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": true,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 42,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$OpWDc20xGTlq2BXLw2y0Fz$9HRLgErzLPWx0OMCOLcqDlFuOYArmseMbod9oFST35I=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "andrei",
+    "first_name": "Андрей",
+    "last_name": "Морозов",
+    "email": "andrei@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:02.150Z",
+    "email_verified": false,
+    "gender": "male",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 43,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$Bid7umfrcCNlY63GdCc36n$Jpm5HVScIrUUgRyVxQfMEwpVv7As9ZdQwVpq/kNHquQ=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "svetlana2",
+    "first_name": "Светлана",
+    "last_name": "Волкова",
+    "email": "svetlana2@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:02.785Z",
+    "email_verified": false,
+    "gender": "female",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 44,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$0Ii4UX5UfqKYMg4oSGblLm$0BdBPX9yE915lSX8CP/xpL+klQfzAFUDgYX3eL9lnWA=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "nikolai2",
+    "first_name": "Николай",
+    "last_name": "Алексеев",
+    "email": "nikolai2@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:03.411Z",
+    "email_verified": false,
+    "gender": "male",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 45,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$fZNxQRC3m1Jx1Z66QpeOQb$FbOgsfPXLNbMPl/nIN/DXMhbtbBr3U5d51hFkIowyhk=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "irina",
+    "first_name": "Ирина",
+    "last_name": "Лукина",
+    "email": "irina@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:04.031Z",
+    "email_verified": false,
+    "gender": "female",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 46,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$gZEt4z4RblFCZP7TvAMsgi$U2IHSb0qE4S/lyyBy4Ncp11JbsgfNzOw+f2N4wK0AZI=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "vladimir",
+    "first_name": "Владимир",
+    "last_name": "Егоров",
+    "email": "vladimir@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:04.665Z",
+    "email_verified": false,
+    "gender": "male",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 47,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$ixXfp6fpEOSJPW9Xd8W9H6$NdDomq5JYLD9eOrDSx96BgqIRxj6nOmIHt2FIqLkgvM=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "tatyana2",
+    "first_name": "Татьяна",
+    "last_name": "Павлова",
+    "email": "tatyana2@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:05.287Z",
+    "email_verified": false,
+    "gender": "female",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 48,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$yJmkrisiq41z3kXUL84JM6$iq3d/Du6sJvkgRhWrpU3HkC+Nn6j9q+Buc2cmWqXLEM=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "mihail2",
+    "first_name": "Михаил",
+    "last_name": "Семёнов",
+    "email": "mihail2@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:05.935Z",
+    "email_verified": false,
+    "gender": "male",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 49,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$fH6s0P0dODL1Bn0SnStQR3$Dp87uKOCrAJlD4WjqC6HtH3URIkvrPVuXwDK1BvAgZs=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "yuliya",
+    "first_name": "Юлия",
+    "last_name": "Голубева",
+    "email": "yuliya@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:06.556Z",
+    "email_verified": false,
+    "gender": "female",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 50,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$tnZJzvq8u6B31VBqb2Vu7t$AwrTUgyi6RGorCN0bUf+kHPSvOolWekadSlMi3iBZl8=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "maksim",
+    "first_name": "Максим",
+    "last_name": "Виноградов",
+    "email": "maksim@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:07.174Z",
+    "email_verified": false,
+    "gender": "male",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 51,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$qUaEiGU89ajRbb0yvpIQoa$7BgRCWKdqoF4YQ6OfG3xEVz9H9zUdO6Tw9hhG/EB3lw=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "darya2",
+    "first_name": "Дарья",
+    "last_name": "Богданова",
+    "email": "darya2@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:07.785Z",
+    "email_verified": false,
+    "gender": "female",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 52,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$vaFGQ91iZ6R4lmaCfhCCyP$qDnfElbzWQ+zATQ2ooSe1BIFGpYTsyih2MukxzHl31I=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "artem",
+    "first_name": "Артём",
+    "last_name": "Воробьёв",
+    "email": "artem@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:08.404Z",
+    "email_verified": false,
+    "gender": "male",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 53,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$zEShwGnCXNqLlwJCo8NAZ1$282Iem0VqtTGHuotimEOsujn4Yu2AB9K19ZVoSFPlhI=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "viktoriya",
+    "first_name": "Виктория",
+    "last_name": "Фёдорова",
+    "email": "viktoriya@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:09.021Z",
+    "email_verified": false,
+    "gender": "female",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 54,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$ORyqooqEJaqzX5a5O8oFsA$R/5n8xApPGe0Cf9DDNGqU5spgv/maMgaDQqSKl91A0g=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "kirill",
+    "first_name": "Кирилл",
+    "last_name": "Михайлов",
+    "email": "kirill@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:09.638Z",
+    "email_verified": false,
+    "gender": "male",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 55,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$hJEVNWp74tsmOuEt9dIjfs$3cmYWeEIy+RGONLfEZinKYqVSToyCaydmzygRmUNG0o=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "polina",
+    "first_name": "Полина",
+    "last_name": "Беляева",
+    "email": "polina@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:10.252Z",
+    "email_verified": false,
+    "gender": "female",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 56,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$z8neS4tYSwcxBTOSZLQfCe$B0sVfZ0wGgG7aD553rfRQNuiYCKI09pnkZsGw3QK7bY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "egor",
+    "first_name": "Егор",
+    "last_name": "Тарасов",
+    "email": "egor@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:10.863Z",
+    "email_verified": false,
+    "gender": "male",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 57,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$lYy2cxuXMXnh2j9prEzAYM$9EzZu5FHRKf82hGk1PbqrQdR1uVraCVaCKblLBaY0aY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "kseniya",
+    "first_name": "Ксения",
+    "last_name": "Белова",
+    "email": "kseniya@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:11.485Z",
+    "email_verified": false,
+    "gender": "female",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 58,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$ofdWD5AlhFyD9tH8MzgEZS$xo3BL1lZZlwH3yarPH0fxN17GcPZ7KDFhV2jitNL9B0=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "roman",
+    "first_name": "Роман",
+    "last_name": "Комаров",
+    "email": "roman@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:12.107Z",
+    "email_verified": false,
+    "gender": "male",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 59,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$RyF2xJMX2vsPSdIwLfsT6h$5FA/v55qDUqlaALo3fsswmURqVzEDHMuvlvNkQigauk=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "alina",
+    "first_name": "Алина",
+    "last_name": "Орлова",
+    "email": "alina@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:12.727Z",
+    "email_verified": false,
+    "gender": "female",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 60,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$1TktZZAUw3VXqRHaxsDtrv$1PU4jumiloEbub3dVWQivk48EgNdblFt1w35hvBo1uk=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "timur",
+    "first_name": "Тимур",
+    "last_name": "Киселёв",
+    "email": "timur@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:13.349Z",
+    "email_verified": false,
+    "gender": "male",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 61,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$qkTwk2RHTx4yeqhvdO70nT$QFPm7LOgtB3j6L+9pXKwHMcYkYzXnb4wmNQxUSCuq+Y=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "sofya",
+    "first_name": "Софья",
+    "last_name": "Макарова",
+    "email": "sofya@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:13.971Z",
+    "email_verified": false,
+    "gender": "female",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 62,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$Wfi7aRWebc98ofr9CWXdVq$3PxUJ7FiSf8wSoHH/3AZLj0cNoGM6enEgmTST3QQwPk=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "danil",
+    "first_name": "Данил",
+    "last_name": "Иванов",
+    "email": "danil@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:14.591Z",
+    "email_verified": false,
+    "gender": "male",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 63,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$ZD9vCdQT0Ev17stsoaiQOA$BrBSTs7YrLM6pBD1vDzpS2Ju0ODex40SmS/Jms2JHUw=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "ekaterina",
+    "first_name": "Екатерина",
+    "last_name": "Петрова",
+    "email": "ekaterina@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:15.203Z",
+    "email_verified": false,
+    "gender": "female",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 64,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$sbue5cfhVyzTFRL6WtqLgz$vVxQfUTjKj0jZUWwvvPd1KnlCEYtowsqWLyZ+R9gir8=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "igor",
+    "first_name": "Игорь",
+    "last_name": "Сидоров",
+    "email": "igor@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:15.820Z",
+    "email_verified": false,
+    "gender": "male",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 65,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$Y2ZeCZSxGnGhhQ7vrZ4V0D$utulpH/Ea8dWtVYXIOre6In/T7lgkx8pqRcVVcFcRBQ=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "valentina",
+    "first_name": "Валентина",
+    "last_name": "Кузнецова",
+    "email": "valentina@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:16.437Z",
+    "email_verified": false,
+    "gender": "female",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 66,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$LeHjKv9OfrNHKxjgNKL78O$wot02RWMLvuyWFBcV2qbVti0By5yNxpED2G/Jb7n7ag=",
+    "last_login": "2026-08-30T19:58:10.543Z",
+    "is_superuser": false,
+    "username": "oleg",
+    "first_name": "Олег",
+    "last_name": "Смирнов",
+    "email": "oleg@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:17.052Z",
+    "email_verified": false,
+    "gender": "male",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 67,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$J6POWOCIfJ47MKq6jOftj3$N0qpQz5/mMxau8kkB1Hne/NT/bxeiuVur2p5zswgmhM=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "lyudmila",
+    "first_name": "Людмила",
+    "last_name": "Попова",
+    "email": "lyudmila@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:17.678Z",
+    "email_verified": false,
+    "gender": "female",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 68,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$RlNYNfhhE0Ep6XPKR2jQ02$/n20QXS41xy+WGUl3HMUZgDeKK+chcSiiCe/fpoAR+Q=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "viktor",
+    "first_name": "Виктор",
+    "last_name": "Соколов",
+    "email": "viktor@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:18.298Z",
+    "email_verified": false,
+    "gender": "male",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 69,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$WrxTxcrVEjvN4IWwVIqUbZ$EXHOuoz8LVxC4uXObL3Ev7NfQx1SM5GhKSraX31GKwU=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "marina",
+    "first_name": "Марина",
+    "last_name": "Лебедева",
+    "email": "marina@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:18.913Z",
+    "email_verified": false,
+    "gender": "female",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 70,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$3XBmoVSJmIcGP5SXwITUka$ugWackGxnH63uNfFtdbrEdDQ4RMHodk6XiCVpcnyrUQ=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "grigorii",
+    "first_name": "Григорий",
+    "last_name": "Козлов",
+    "email": "grigorii@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:19.527Z",
+    "email_verified": false,
+    "gender": "male",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 71,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$160A5yoj14NH99wQsYd9VH$1lGm7fYBMGGl2EYMKRhTnJi8nlmYVbkD//Rwtu8nEkY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "alena",
+    "first_name": "Алёна",
+    "last_name": "Новикова",
+    "email": "alena@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:20.136Z",
+    "email_verified": false,
+    "gender": "female",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 72,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$n8pDOfh6s8BncTrvqCVKvI$NU265nuzSOvJnrWL1rzaMS12CQ2Hqm9iRzTU/H63MCg=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "danil2",
+    "first_name": "Данил",
+    "last_name": "Морозов",
+    "email": "danil2@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:20.762Z",
+    "email_verified": false,
+    "gender": "male",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 73,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$CeMNc9pFITc2WXHzySUxHO$qeahTYuOcfBvLNHXJT/3fH1WndLQBxuBcbxnepJKzSs=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "ekaterina2",
+    "first_name": "Екатерина",
+    "last_name": "Лукина",
+    "email": "ekaterina2@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:21.382Z",
+    "email_verified": false,
+    "gender": "female",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 74,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$cKku160K8Vn2BZD6OJgWnT$Xclbe+44X0t+k/iLcd08y/67pShWL83Vm3KvL9mX8dw=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "igor2",
+    "first_name": "Игорь",
+    "last_name": "Семёнов",
+    "email": "igor2@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:21.997Z",
+    "email_verified": false,
+    "gender": "male",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 75,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$8bU7TwvjdznFBiRsCBLni0$o08DiDoqSRaexZhiqWv4t5J5jHuZB1W/YjPDJKlbkFs=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "valentina2",
+    "first_name": "Валентина",
+    "last_name": "Богданова",
+    "email": "valentina2@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:22.610Z",
+    "email_verified": false,
+    "gender": "female",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 76,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$n4fYXYrUxnyt5AcyVODiXQ$yHHW6uMdL/TqCSFzfgyLH/sjCiMj+4LHBDzFgd1AWOk=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "oleg2",
+    "first_name": "Олег",
+    "last_name": "Михайлов",
+    "email": "oleg2@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:23.220Z",
+    "email_verified": false,
+    "gender": "male",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 77,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$At9hsG5q9TACXWMs0hPIl5$419niLyN6pANknBywDlXT8bp0eGoWQjFBiOXxs/V4Vs=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "lyudmila2",
+    "first_name": "Людмила",
+    "last_name": "Белова",
+    "email": "lyudmila2@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:23.827Z",
+    "email_verified": false,
+    "gender": "female",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 78,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$KeMUThjVsbD035khLTHdOp$w9BPza0vmzF4+RO/0ggS9IsFA6TkMCS5cunwj8GBcJE=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "viktor2",
+    "first_name": "Виктор",
+    "last_name": "Киселёв",
+    "email": "viktor2@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:24.450Z",
+    "email_verified": false,
+    "gender": "male",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 79,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$L9x8Bl7CrwAYsRUdmStjaB$eGVmL6uebLUuEE7/dpvTX61v6M0qdMTAOg3V6n4ITxk=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "marina2",
+    "first_name": "Марина",
+    "last_name": "Петрова",
+    "email": "marina2@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:25.089Z",
+    "email_verified": false,
+    "gender": "female",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 80,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$sYdJVogb6K8AW551A3Iup1$CB2NmItQ+4iUpjBROzlPNxWN0kiRQSz8it/z2OMLk7Q=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "grigorii2",
+    "first_name": "Григорий",
+    "last_name": "Смирнов",
+    "email": "grigorii2@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:25.710Z",
+    "email_verified": false,
+    "gender": "male",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 81,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$Ya2q74wii7Qu1RBYnz2Tms$F0DuHuhfClzFaoDK5UYHsq7ScRj0OxkaZCYhlF4qy4A=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "alena2",
+    "first_name": "Алёна",
+    "last_name": "Лебедева",
+    "email": "alena2@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T19:43:26.319Z",
+    "email_verified": false,
+    "gender": "female",
+    "patronymic": "",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": false,
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 83,
+  "fields": {
+    "password": "!8KpSHyRJe2hx88W9XYSqNBdLFiS2VdspZSyh8RXk",
+    "last_login": "2026-08-30T20:36:43.839Z",
+    "is_superuser": false,
+    "username": "mkax7559",
+    "first_name": "Mil",
+    "last_name": "Kax",
+    "email": "mkax7559@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-30T20:34:23.593Z",
+    "email_verified": false,
+    "gender": "female",
+    "patronymic": "Жираслановна",
+    "email_notifications": true,
+    "phone": null,
+    "is_approved": true,
+    "avatar": "avatars/teacher_female_ggT6BUB.png",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "education.teacherprofile",
+  "pk": 11,
+  "fields": {
+    "user": 25,
+    "bio": "",
+    "experience_years": 0,
+    "instruments": [],
+    "subjects": []
+  }
+},
+{
+  "model": "education.teacherprofile",
+  "pk": 12,
+  "fields": {
+    "user": 29,
+    "bio": "",
+    "experience_years": 24,
+    "instruments": [],
+    "subjects": [
+      4
+    ]
+  }
+},
+{
+  "model": "education.teacherprofile",
+  "pk": 13,
+  "fields": {
+    "user": 31,
+    "bio": "",
+    "experience_years": 0,
+    "instruments": [],
+    "subjects": []
+  }
+},
+{
+  "model": "education.teacherprofile",
+  "pk": 14,
+  "fields": {
+    "user": 32,
+    "bio": "",
+    "experience_years": 0,
+    "instruments": [
+      8
+    ],
+    "subjects": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "education.teacherprofile",
+  "pk": 15,
+  "fields": {
+    "user": 33,
+    "bio": "",
+    "experience_years": 0,
+    "instruments": [
+      10
+    ],
+    "subjects": [
+      7
+    ]
+  }
+},
+{
+  "model": "education.teacherprofile",
+  "pk": 16,
+  "fields": {
+    "user": 34,
+    "bio": "",
+    "experience_years": 0,
+    "instruments": [
+      11
+    ],
+    "subjects": [
+      8
+    ]
+  }
+},
+{
+  "model": "education.teacherprofile",
+  "pk": 17,
+  "fields": {
+    "user": 35,
+    "bio": "",
+    "experience_years": 0,
+    "instruments": [
+      12
+    ],
+    "subjects": [
+      5
+    ]
+  }
+},
+{
+  "model": "education.teacherprofile",
+  "pk": 18,
+  "fields": {
+    "user": 36,
+    "bio": "",
+    "experience_years": 0,
+    "instruments": [
+      9
+    ],
+    "subjects": [
+      4
+    ]
+  }
+},
+{
+  "model": "education.teacherprofile",
+  "pk": 19,
+  "fields": {
+    "user": 37,
+    "bio": "",
+    "experience_years": 0,
+    "instruments": [
+      13
+    ],
+    "subjects": [
+      9
+    ]
+  }
+},
+{
+  "model": "education.teacherprofile",
+  "pk": 20,
+  "fields": {
+    "user": 38,
+    "bio": "",
+    "experience_years": 0,
+    "instruments": [
+      14
+    ],
+    "subjects": [
+      10
+    ]
+  }
+},
+{
+  "model": "education.teacherprofile",
+  "pk": 21,
+  "fields": {
+    "user": 39,
+    "bio": "",
+    "experience_years": 0,
+    "instruments": [
+      15
+    ],
+    "subjects": [
+      11
+    ]
+  }
+},
+{
+  "model": "education.teacherprofile",
+  "pk": 22,
+  "fields": {
+    "user": 40,
+    "bio": "",
+    "experience_years": 0,
+    "instruments": [
+      8
+    ],
+    "subjects": [
+      1
+    ]
+  }
+},
+{
+  "model": "education.teacherprofile",
+  "pk": 23,
+  "fields": {
+    "user": 41,
+    "bio": "",
+    "experience_years": 0,
+    "instruments": [
+      10
+    ],
+    "subjects": [
+      7
+    ]
+  }
+},
+{
+  "model": "education.teacherprofile",
+  "pk": 24,
+  "fields": {
+    "user": 83,
+    "bio": "",
+    "experience_years": 0,
+    "instruments": [],
+    "subjects": []
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 9,
+  "fields": {
+    "user": 26,
+    "age": null,
+    "level": "",
+    "instruments": []
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 10,
+  "fields": {
+    "user": 30,
+    "age": null,
+    "level": "",
+    "instruments": []
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 11,
+  "fields": {
+    "user": 42,
+    "age": 7,
+    "level": "Начальный",
+    "instruments": [
+      8
+    ]
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 12,
+  "fields": {
+    "user": 43,
+    "age": 8,
+    "level": "Средний",
+    "instruments": [
+      10
+    ]
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 13,
+  "fields": {
+    "user": 44,
+    "age": 9,
+    "level": "Продвинутый",
+    "instruments": [
+      11
+    ]
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 14,
+  "fields": {
+    "user": 45,
+    "age": 10,
+    "level": "Начальный",
+    "instruments": [
+      12
+    ]
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 15,
+  "fields": {
+    "user": 46,
+    "age": 11,
+    "level": "Средний",
+    "instruments": [
+      9
+    ]
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 16,
+  "fields": {
+    "user": 47,
+    "age": 12,
+    "level": "Продвинутый",
+    "instruments": [
+      13
+    ]
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 17,
+  "fields": {
+    "user": 48,
+    "age": 13,
+    "level": "Начальный",
+    "instruments": [
+      14
+    ]
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 18,
+  "fields": {
+    "user": 49,
+    "age": 14,
+    "level": "Средний",
+    "instruments": [
+      15
+    ]
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 19,
+  "fields": {
+    "user": 50,
+    "age": 15,
+    "level": "Продвинутый",
+    "instruments": [
+      8
+    ]
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 20,
+  "fields": {
+    "user": 51,
+    "age": 16,
+    "level": "Начальный",
+    "instruments": [
+      10
+    ]
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 21,
+  "fields": {
+    "user": 52,
+    "age": 17,
+    "level": "Средний",
+    "instruments": [
+      11
+    ]
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 22,
+  "fields": {
+    "user": 53,
+    "age": 7,
+    "level": "Продвинутый",
+    "instruments": [
+      12
+    ]
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 23,
+  "fields": {
+    "user": 54,
+    "age": 8,
+    "level": "Начальный",
+    "instruments": [
+      9
+    ]
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 24,
+  "fields": {
+    "user": 55,
+    "age": 9,
+    "level": "Средний",
+    "instruments": [
+      13
+    ]
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 25,
+  "fields": {
+    "user": 56,
+    "age": 10,
+    "level": "Продвинутый",
+    "instruments": [
+      14
+    ]
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 26,
+  "fields": {
+    "user": 57,
+    "age": 11,
+    "level": "Начальный",
+    "instruments": [
+      15
+    ]
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 27,
+  "fields": {
+    "user": 58,
+    "age": 12,
+    "level": "Средний",
+    "instruments": [
+      8
+    ]
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 28,
+  "fields": {
+    "user": 59,
+    "age": 13,
+    "level": "Продвинутый",
+    "instruments": [
+      10
+    ]
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 29,
+  "fields": {
+    "user": 60,
+    "age": 14,
+    "level": "Начальный",
+    "instruments": [
+      11
+    ]
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 30,
+  "fields": {
+    "user": 61,
+    "age": 15,
+    "level": "Средний",
+    "instruments": [
+      12
+    ]
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 31,
+  "fields": {
+    "user": 62,
+    "age": 16,
+    "level": "Продвинутый",
+    "instruments": [
+      9
+    ]
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 32,
+  "fields": {
+    "user": 63,
+    "age": 17,
+    "level": "Начальный",
+    "instruments": [
+      13
+    ]
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 33,
+  "fields": {
+    "user": 64,
+    "age": 7,
+    "level": "Средний",
+    "instruments": [
+      14
+    ]
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 34,
+  "fields": {
+    "user": 65,
+    "age": 8,
+    "level": "Продвинутый",
+    "instruments": [
+      15
+    ]
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 35,
+  "fields": {
+    "user": 66,
+    "age": 9,
+    "level": "Начальный",
+    "instruments": [
+      8
+    ]
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 36,
+  "fields": {
+    "user": 67,
+    "age": 10,
+    "level": "Средний",
+    "instruments": [
+      10
+    ]
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 37,
+  "fields": {
+    "user": 68,
+    "age": 11,
+    "level": "Продвинутый",
+    "instruments": [
+      11
+    ]
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 38,
+  "fields": {
+    "user": 69,
+    "age": 12,
+    "level": "Начальный",
+    "instruments": [
+      12
+    ]
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 39,
+  "fields": {
+    "user": 70,
+    "age": 13,
+    "level": "Средний",
+    "instruments": [
+      9
+    ]
+  }
+},
+{
+  "model": "education.studentprofile",
+  "pk": 40,
+  "fields": {
+    "user": 71,
+    "age": 14,
+    "level": "Продвинутый",
+    "instruments": [
+      13
+    ]
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 5,
+  "fields": {
+    "student": 11,
+    "date": "2026-08-16T19:43:27.036Z",
+    "instrument": 8,
+    "piece": 11,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "Хороший прогресс, продолжаем в том же темпе",
+    "assignment": 6
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 6,
+  "fields": {
+    "student": 11,
+    "date": "2026-08-23T19:43:27.036Z",
+    "instrument": 8,
+    "piece": 12,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "",
+    "assignment": 6
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 7,
+  "fields": {
+    "student": 12,
+    "date": "2026-08-17T19:43:27.036Z",
+    "instrument": 10,
+    "piece": 15,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "Хороший прогресс, продолжаем в том же темпе",
+    "assignment": 7
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 8,
+  "fields": {
+    "student": 12,
+    "date": "2026-08-24T19:43:27.036Z",
+    "instrument": 10,
+    "piece": 27,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "",
+    "assignment": 7
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 9,
+  "fields": {
+    "student": 13,
+    "date": "2026-08-18T19:43:27.036Z",
+    "instrument": 11,
+    "piece": 30,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "Хороший прогресс, продолжаем в том же темпе",
+    "assignment": 8
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 10,
+  "fields": {
+    "student": 13,
+    "date": "2026-08-25T19:43:27.036Z",
+    "instrument": 11,
+    "piece": 36,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "",
+    "assignment": 8
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 11,
+  "fields": {
+    "student": 14,
+    "date": "2026-08-19T19:43:27.036Z",
+    "instrument": 12,
+    "piece": 23,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "Хороший прогресс, продолжаем в том же темпе",
+    "assignment": 9
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 12,
+  "fields": {
+    "student": 14,
+    "date": "2026-08-26T19:43:27.036Z",
+    "instrument": 12,
+    "piece": 24,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "",
+    "assignment": 9
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 13,
+  "fields": {
+    "student": 15,
+    "date": "2026-08-20T19:43:27.036Z",
+    "instrument": 9,
+    "piece": 25,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "Хороший прогресс, продолжаем в том же темпе",
+    "assignment": 10
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 14,
+  "fields": {
+    "student": 15,
+    "date": "2026-08-27T19:43:27.036Z",
+    "instrument": 9,
+    "piece": 32,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "",
+    "assignment": 10
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 15,
+  "fields": {
+    "student": 16,
+    "date": "2026-08-21T19:43:27.036Z",
+    "instrument": 13,
+    "piece": 37,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "Хороший прогресс, продолжаем в том же темпе",
+    "assignment": 11
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 16,
+  "fields": {
+    "student": 16,
+    "date": "2026-08-28T19:43:27.036Z",
+    "instrument": 13,
+    "piece": 40,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "",
+    "assignment": 11
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 17,
+  "fields": {
+    "student": 17,
+    "date": "2026-08-22T19:43:27.036Z",
+    "instrument": 14,
+    "piece": 27,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "Хороший прогресс, продолжаем в том же темпе",
+    "assignment": 12
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 18,
+  "fields": {
+    "student": 17,
+    "date": "2026-08-29T19:43:27.036Z",
+    "instrument": 14,
+    "piece": 28,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "",
+    "assignment": 12
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 19,
+  "fields": {
+    "student": 18,
+    "date": "2026-08-23T19:43:27.036Z",
+    "instrument": 15,
+    "piece": 14,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "Хороший прогресс, продолжаем в том же темпе",
+    "assignment": 13
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 20,
+  "fields": {
+    "student": 18,
+    "date": "2026-08-30T19:43:27.036Z",
+    "instrument": 15,
+    "piece": 29,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "",
+    "assignment": 13
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 21,
+  "fields": {
+    "student": 19,
+    "date": "2026-08-24T19:43:27.036Z",
+    "instrument": 8,
+    "piece": 12,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "Хороший прогресс, продолжаем в том же темпе",
+    "assignment": 14
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 22,
+  "fields": {
+    "student": 19,
+    "date": "2026-08-31T19:43:27.036Z",
+    "instrument": 8,
+    "piece": 15,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "",
+    "assignment": 14
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 23,
+  "fields": {
+    "student": 20,
+    "date": "2026-08-25T19:43:27.036Z",
+    "instrument": 10,
+    "piece": 40,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "Хороший прогресс, продолжаем в том же темпе",
+    "assignment": 15
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 24,
+  "fields": {
+    "student": 20,
+    "date": "2026-09-01T19:43:27.036Z",
+    "instrument": 10,
+    "piece": 13,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "",
+    "assignment": 15
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 25,
+  "fields": {
+    "student": 21,
+    "date": "2026-08-26T19:43:27.036Z",
+    "instrument": 11,
+    "piece": 30,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "Хороший прогресс, продолжаем в том же темпе",
+    "assignment": 16
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 26,
+  "fields": {
+    "student": 21,
+    "date": "2026-09-02T19:43:27.036Z",
+    "instrument": 11,
+    "piece": 36,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "",
+    "assignment": 16
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 27,
+  "fields": {
+    "student": 22,
+    "date": "2026-08-27T19:43:27.036Z",
+    "instrument": 12,
+    "piece": 39,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "Хороший прогресс, продолжаем в том же темпе",
+    "assignment": 17
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 28,
+  "fields": {
+    "student": 22,
+    "date": "2026-09-03T19:43:27.036Z",
+    "instrument": 12,
+    "piece": 23,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "",
+    "assignment": 17
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 29,
+  "fields": {
+    "student": 23,
+    "date": "2026-08-28T19:43:27.036Z",
+    "instrument": 9,
+    "piece": 17,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "Хороший прогресс, продолжаем в том же темпе",
+    "assignment": 18
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 30,
+  "fields": {
+    "student": 23,
+    "date": "2026-09-04T19:43:27.036Z",
+    "instrument": 9,
+    "piece": 18,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "",
+    "assignment": 18
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 31,
+  "fields": {
+    "student": 24,
+    "date": "2026-08-29T19:43:27.036Z",
+    "instrument": 13,
+    "piece": 40,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "Хороший прогресс, продолжаем в том же темпе",
+    "assignment": 19
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 32,
+  "fields": {
+    "student": 24,
+    "date": "2026-09-05T19:43:27.036Z",
+    "instrument": 13,
+    "piece": 19,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "",
+    "assignment": 19
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 33,
+  "fields": {
+    "student": 25,
+    "date": "2026-08-30T19:43:27.036Z",
+    "instrument": 14,
+    "piece": 27,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "Хороший прогресс, продолжаем в том же темпе",
+    "assignment": 20
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 34,
+  "fields": {
+    "student": 25,
+    "date": "2026-09-06T19:43:27.036Z",
+    "instrument": 14,
+    "piece": 28,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "",
+    "assignment": 20
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 35,
+  "fields": {
+    "student": 26,
+    "date": "2026-08-31T19:43:27.036Z",
+    "instrument": 15,
+    "piece": 13,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "Хороший прогресс, продолжаем в том же темпе",
+    "assignment": 21
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 36,
+  "fields": {
+    "student": 26,
+    "date": "2026-09-07T19:43:27.036Z",
+    "instrument": 15,
+    "piece": 14,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "",
+    "assignment": 21
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 37,
+  "fields": {
+    "student": 27,
+    "date": "2026-09-01T19:43:27.036Z",
+    "instrument": 8,
+    "piece": 15,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "Хороший прогресс, продолжаем в том же темпе",
+    "assignment": 22
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 38,
+  "fields": {
+    "student": 27,
+    "date": "2026-09-08T19:43:27.036Z",
+    "instrument": 8,
+    "piece": 20,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "",
+    "assignment": 22
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 39,
+  "fields": {
+    "student": 28,
+    "date": "2026-09-02T19:43:27.036Z",
+    "instrument": 10,
+    "piece": 27,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "Хороший прогресс, продолжаем в том же темпе",
+    "assignment": 23
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 40,
+  "fields": {
+    "student": 28,
+    "date": "2026-09-09T19:43:27.036Z",
+    "instrument": 10,
+    "piece": 29,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "",
+    "assignment": 23
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 41,
+  "fields": {
+    "student": 29,
+    "date": "2026-09-03T19:43:27.036Z",
+    "instrument": 11,
+    "piece": 30,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "Хороший прогресс, продолжаем в том же темпе",
+    "assignment": 24
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 42,
+  "fields": {
+    "student": 29,
+    "date": "2026-09-10T19:43:27.036Z",
+    "instrument": 11,
+    "piece": 36,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "",
+    "assignment": 24
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 43,
+  "fields": {
+    "student": 30,
+    "date": "2026-09-04T19:43:27.036Z",
+    "instrument": 12,
+    "piece": 24,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "Хороший прогресс, продолжаем в том же темпе",
+    "assignment": 25
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 44,
+  "fields": {
+    "student": 30,
+    "date": "2026-09-11T19:43:27.036Z",
+    "instrument": 12,
+    "piece": 39,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "",
+    "assignment": 25
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 45,
+  "fields": {
+    "student": 31,
+    "date": "2026-09-05T19:43:27.036Z",
+    "instrument": 9,
+    "piece": 37,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "Хороший прогресс, продолжаем в том же темпе",
+    "assignment": 26
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 46,
+  "fields": {
+    "student": 31,
+    "date": "2026-09-12T19:43:27.036Z",
+    "instrument": 9,
+    "piece": 39,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "",
+    "assignment": 26
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 47,
+  "fields": {
+    "student": 32,
+    "date": "2026-09-06T19:43:27.036Z",
+    "instrument": 13,
+    "piece": 19,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "Хороший прогресс, продолжаем в том же темпе",
+    "assignment": 27
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 48,
+  "fields": {
+    "student": 32,
+    "date": "2026-09-13T19:43:27.036Z",
+    "instrument": 13,
+    "piece": 22,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "",
+    "assignment": 27
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 49,
+  "fields": {
+    "student": 33,
+    "date": "2026-09-07T19:43:27.036Z",
+    "instrument": 14,
+    "piece": 27,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "Хороший прогресс, продолжаем в том же темпе",
+    "assignment": 28
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 50,
+  "fields": {
+    "student": 33,
+    "date": "2026-09-14T19:43:27.036Z",
+    "instrument": 14,
+    "piece": 28,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "",
+    "assignment": 28
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 51,
+  "fields": {
+    "student": 34,
+    "date": "2026-09-08T19:43:27.036Z",
+    "instrument": 15,
+    "piece": 29,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "Хороший прогресс, продолжаем в том же темпе",
+    "assignment": 29
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 52,
+  "fields": {
+    "student": 34,
+    "date": "2026-09-15T19:43:27.036Z",
+    "instrument": 15,
+    "piece": 13,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "",
+    "assignment": 29
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 53,
+  "fields": {
+    "student": 35,
+    "date": "2026-09-09T19:43:27.036Z",
+    "instrument": 8,
+    "piece": 20,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "Хороший прогресс, продолжаем в том же темпе",
+    "assignment": 30
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 54,
+  "fields": {
+    "student": 35,
+    "date": "2026-09-16T19:43:27.036Z",
+    "instrument": 8,
+    "piece": 24,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "",
+    "assignment": 30
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 55,
+  "fields": {
+    "student": 36,
+    "date": "2026-09-10T19:43:27.036Z",
+    "instrument": 10,
+    "piece": 13,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "Хороший прогресс, продолжаем в том же темпе",
+    "assignment": 31
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 56,
+  "fields": {
+    "student": 36,
+    "date": "2026-09-17T19:43:27.036Z",
+    "instrument": 10,
+    "piece": 15,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "",
+    "assignment": 31
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 57,
+  "fields": {
+    "student": 37,
+    "date": "2026-09-11T19:43:27.036Z",
+    "instrument": 11,
+    "piece": 30,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "Хороший прогресс, продолжаем в том же темпе",
+    "assignment": 32
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 58,
+  "fields": {
+    "student": 37,
+    "date": "2026-09-18T19:43:27.036Z",
+    "instrument": 11,
+    "piece": 36,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "",
+    "assignment": 32
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 59,
+  "fields": {
+    "student": 38,
+    "date": "2026-09-12T19:43:27.036Z",
+    "instrument": 12,
+    "piece": 23,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "Хороший прогресс, продолжаем в том же темпе",
+    "assignment": 33
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 60,
+  "fields": {
+    "student": 38,
+    "date": "2026-09-19T19:43:27.036Z",
+    "instrument": 12,
+    "piece": 24,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "",
+    "assignment": 33
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 61,
+  "fields": {
+    "student": 39,
+    "date": "2026-09-13T19:43:27.036Z",
+    "instrument": 9,
+    "piece": 33,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "Хороший прогресс, продолжаем в том же темпе",
+    "assignment": 34
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 62,
+  "fields": {
+    "student": 39,
+    "date": "2026-09-20T19:43:27.036Z",
+    "instrument": 9,
+    "piece": 34,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "",
+    "assignment": 34
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 63,
+  "fields": {
+    "student": 40,
+    "date": "2026-09-14T19:43:27.036Z",
+    "instrument": 13,
+    "piece": 22,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "Хороший прогресс, продолжаем в том же темпе",
+    "assignment": 35
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 64,
+  "fields": {
+    "student": 40,
+    "date": "2026-09-21T19:43:27.036Z",
+    "instrument": 13,
+    "piece": 25,
+    "homework": "Повторить произведение в медленном темпе, отработать сложные места",
+    "comment": "",
+    "assignment": 35
+  }
+},
+{
+  "model": "education.lesson",
+  "pk": 65,
+  "fields": {
+    "student": 9,
+    "date": "2026-09-02T20:39:00Z",
+    "instrument": 8,
+    "piece": 10,
+    "homework": "Выучить текст",
+    "comment": "",
+    "assignment": 40
+  }
+},
+{
+  "model": "education.subject",
+  "pk": 1,
+  "fields": {
+    "name": "Вокал",
+    "slug": "вокал"
+  }
+},
+{
+  "model": "education.subject",
+  "pk": 2,
+  "fields": {
+    "name": "сольфеджио",
+    "slug": "сольфеджио"
+  }
+},
+{
+  "model": "education.subject",
+  "pk": 4,
+  "fields": {
+    "name": "фортепиано",
+    "slug": "фортепиано"
+  }
+},
+{
+  "model": "education.subject",
+  "pk": 5,
+  "fields": {
+    "name": "гитара",
+    "slug": "гитара"
+  }
+},
+{
+  "model": "education.subject",
+  "pk": 6,
+  "fields": {
+    "name": "скрипка",
+    "slug": "скрипка"
+  }
+},
+{
+  "model": "education.subject",
+  "pk": 7,
+  "fields": {
+    "name": "национальная гармонь",
+    "slug": "национальная-гармонь"
+  }
+},
+{
+  "model": "education.subject",
+  "pk": 8,
+  "fields": {
+    "name": "хор",
+    "slug": "хор"
+  }
+},
+{
+  "model": "education.subject",
+  "pk": 9,
+  "fields": {
+    "name": "аккордеон",
+    "slug": "аккордеон"
+  }
+},
+{
+  "model": "education.subject",
+  "pk": 10,
+  "fields": {
+    "name": "шикапшина",
+    "slug": "шикапшина"
+  }
+},
+{
+  "model": "education.subject",
+  "pk": 11,
+  "fields": {
+    "name": "балалайка",
+    "slug": "балалайка"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 6,
+  "fields": {
+    "teacher": 14,
+    "student": 11,
+    "subject": 1,
+    "is_active": true,
+    "created_at": "2026-08-30T19:43:26.943Z",
+    "updated_at": "2026-08-30T19:43:26.943Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 7,
+  "fields": {
+    "teacher": 23,
+    "student": 12,
+    "subject": 7,
+    "is_active": true,
+    "created_at": "2026-08-30T19:43:26.946Z",
+    "updated_at": "2026-08-30T19:43:26.946Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 8,
+  "fields": {
+    "teacher": 16,
+    "student": 13,
+    "subject": 8,
+    "is_active": true,
+    "created_at": "2026-08-30T19:43:26.948Z",
+    "updated_at": "2026-08-30T19:43:26.948Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 9,
+  "fields": {
+    "teacher": 17,
+    "student": 14,
+    "subject": 5,
+    "is_active": true,
+    "created_at": "2026-08-30T19:43:26.950Z",
+    "updated_at": "2026-08-30T19:43:26.950Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 10,
+  "fields": {
+    "teacher": 18,
+    "student": 15,
+    "subject": 4,
+    "is_active": true,
+    "created_at": "2026-08-30T19:43:26.953Z",
+    "updated_at": "2026-08-30T19:43:26.953Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 11,
+  "fields": {
+    "teacher": 19,
+    "student": 16,
+    "subject": 9,
+    "is_active": true,
+    "created_at": "2026-08-30T19:43:26.955Z",
+    "updated_at": "2026-08-30T19:43:26.955Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 12,
+  "fields": {
+    "teacher": 20,
+    "student": 17,
+    "subject": 10,
+    "is_active": true,
+    "created_at": "2026-08-30T19:43:26.958Z",
+    "updated_at": "2026-08-30T19:43:26.958Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 13,
+  "fields": {
+    "teacher": 21,
+    "student": 18,
+    "subject": 11,
+    "is_active": true,
+    "created_at": "2026-08-30T19:43:26.960Z",
+    "updated_at": "2026-08-30T19:43:26.960Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 14,
+  "fields": {
+    "teacher": 14,
+    "student": 19,
+    "subject": 1,
+    "is_active": true,
+    "created_at": "2026-08-30T19:43:26.962Z",
+    "updated_at": "2026-08-30T19:43:26.962Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 15,
+  "fields": {
+    "teacher": 23,
+    "student": 20,
+    "subject": 7,
+    "is_active": true,
+    "created_at": "2026-08-30T19:43:26.965Z",
+    "updated_at": "2026-08-30T19:43:26.965Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 16,
+  "fields": {
+    "teacher": 16,
+    "student": 21,
+    "subject": 8,
+    "is_active": true,
+    "created_at": "2026-08-30T19:43:26.967Z",
+    "updated_at": "2026-08-30T19:43:26.967Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 17,
+  "fields": {
+    "teacher": 17,
+    "student": 22,
+    "subject": 5,
+    "is_active": true,
+    "created_at": "2026-08-30T19:43:26.969Z",
+    "updated_at": "2026-08-30T19:43:26.969Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 18,
+  "fields": {
+    "teacher": 18,
+    "student": 23,
+    "subject": 4,
+    "is_active": true,
+    "created_at": "2026-08-30T19:43:26.971Z",
+    "updated_at": "2026-08-30T19:43:26.971Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 19,
+  "fields": {
+    "teacher": 19,
+    "student": 24,
+    "subject": 9,
+    "is_active": true,
+    "created_at": "2026-08-30T19:43:26.975Z",
+    "updated_at": "2026-08-30T19:43:26.975Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 20,
+  "fields": {
+    "teacher": 20,
+    "student": 25,
+    "subject": 10,
+    "is_active": true,
+    "created_at": "2026-08-30T19:43:26.978Z",
+    "updated_at": "2026-08-30T19:43:26.978Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 21,
+  "fields": {
+    "teacher": 21,
+    "student": 26,
+    "subject": 11,
+    "is_active": true,
+    "created_at": "2026-08-30T19:43:26.980Z",
+    "updated_at": "2026-08-30T19:43:26.980Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 22,
+  "fields": {
+    "teacher": 14,
+    "student": 27,
+    "subject": 1,
+    "is_active": true,
+    "created_at": "2026-08-30T19:43:26.983Z",
+    "updated_at": "2026-08-30T19:43:26.983Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 23,
+  "fields": {
+    "teacher": 23,
+    "student": 28,
+    "subject": 7,
+    "is_active": true,
+    "created_at": "2026-08-30T19:43:26.985Z",
+    "updated_at": "2026-08-30T19:43:26.985Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 24,
+  "fields": {
+    "teacher": 16,
+    "student": 29,
+    "subject": 8,
+    "is_active": true,
+    "created_at": "2026-08-30T19:43:26.988Z",
+    "updated_at": "2026-08-30T19:43:26.988Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 25,
+  "fields": {
+    "teacher": 17,
+    "student": 30,
+    "subject": 5,
+    "is_active": true,
+    "created_at": "2026-08-30T19:43:26.990Z",
+    "updated_at": "2026-08-30T19:43:26.991Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 26,
+  "fields": {
+    "teacher": 18,
+    "student": 31,
+    "subject": 4,
+    "is_active": true,
+    "created_at": "2026-08-30T19:43:26.993Z",
+    "updated_at": "2026-08-30T19:43:26.993Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 27,
+  "fields": {
+    "teacher": 19,
+    "student": 32,
+    "subject": 9,
+    "is_active": true,
+    "created_at": "2026-08-30T19:43:26.995Z",
+    "updated_at": "2026-08-30T19:43:26.995Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 28,
+  "fields": {
+    "teacher": 20,
+    "student": 33,
+    "subject": 10,
+    "is_active": true,
+    "created_at": "2026-08-30T19:43:26.997Z",
+    "updated_at": "2026-08-30T19:43:26.997Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 29,
+  "fields": {
+    "teacher": 21,
+    "student": 34,
+    "subject": 11,
+    "is_active": true,
+    "created_at": "2026-08-30T19:43:26.999Z",
+    "updated_at": "2026-08-30T19:43:26.999Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 30,
+  "fields": {
+    "teacher": 14,
+    "student": 35,
+    "subject": 1,
+    "is_active": true,
+    "created_at": "2026-08-30T19:43:27.002Z",
+    "updated_at": "2026-08-30T19:43:27.002Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 31,
+  "fields": {
+    "teacher": 23,
+    "student": 36,
+    "subject": 7,
+    "is_active": true,
+    "created_at": "2026-08-30T19:43:27.004Z",
+    "updated_at": "2026-08-30T19:43:27.004Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 32,
+  "fields": {
+    "teacher": 16,
+    "student": 37,
+    "subject": 8,
+    "is_active": true,
+    "created_at": "2026-08-30T19:43:27.006Z",
+    "updated_at": "2026-08-30T19:43:27.006Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 33,
+  "fields": {
+    "teacher": 17,
+    "student": 38,
+    "subject": 5,
+    "is_active": true,
+    "created_at": "2026-08-30T19:43:27.009Z",
+    "updated_at": "2026-08-30T19:43:27.009Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 34,
+  "fields": {
+    "teacher": 18,
+    "student": 39,
+    "subject": 4,
+    "is_active": true,
+    "created_at": "2026-08-30T19:43:27.011Z",
+    "updated_at": "2026-08-30T19:43:27.011Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 35,
+  "fields": {
+    "teacher": 19,
+    "student": 40,
+    "subject": 9,
+    "is_active": true,
+    "created_at": "2026-08-30T19:43:27.013Z",
+    "updated_at": "2026-08-30T19:43:27.013Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 36,
+  "fields": {
+    "teacher": 12,
+    "student": 32,
+    "subject": 4,
+    "is_active": true,
+    "created_at": "2026-08-30T19:53:59.330Z",
+    "updated_at": "2026-08-30T19:53:59.330Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 37,
+  "fields": {
+    "teacher": 12,
+    "student": 18,
+    "subject": 2,
+    "is_active": true,
+    "created_at": "2026-08-30T19:54:19.417Z",
+    "updated_at": "2026-08-30T19:54:19.417Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 38,
+  "fields": {
+    "teacher": 24,
+    "student": 21,
+    "subject": 1,
+    "is_active": true,
+    "created_at": "2026-08-30T20:37:27.561Z",
+    "updated_at": "2026-08-30T20:37:27.561Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 39,
+  "fields": {
+    "teacher": 24,
+    "student": 14,
+    "subject": 1,
+    "is_active": true,
+    "created_at": "2026-08-30T20:37:46.093Z",
+    "updated_at": "2026-08-30T20:37:46.093Z"
+  }
+},
+{
+  "model": "education.teachingassignment",
+  "pk": 40,
+  "fields": {
+    "teacher": 24,
+    "student": 9,
+    "subject": 10,
+    "is_active": true,
+    "created_at": "2026-08-30T20:38:10.129Z",
+    "updated_at": "2026-08-30T20:38:10.129Z"
+  }
+},
+{
+  "model": "education.performance",
+  "pk": 3,
+  "fields": {
+    "assignment": 6,
+    "piece": 11,
+    "video": "",
+    "score": 6,
+    "created_at": "2026-08-30T19:43:27.124Z",
+    "materials": []
+  }
+},
+{
+  "model": "education.performance",
+  "pk": 4,
+  "fields": {
+    "assignment": 7,
+    "piece": 15,
+    "video": "",
+    "score": 7,
+    "created_at": "2026-08-30T19:43:27.128Z",
+    "materials": []
+  }
+},
+{
+  "model": "education.performance",
+  "pk": 5,
+  "fields": {
+    "assignment": 8,
+    "piece": 30,
+    "video": "",
+    "score": 8,
+    "created_at": "2026-08-30T19:43:27.130Z",
+    "materials": []
+  }
+},
+{
+  "model": "education.performance",
+  "pk": 6,
+  "fields": {
+    "assignment": 9,
+    "piece": 23,
+    "video": "",
+    "score": 9,
+    "created_at": "2026-08-30T19:43:27.131Z",
+    "materials": []
+  }
+},
+{
+  "model": "education.performance",
+  "pk": 7,
+  "fields": {
+    "assignment": 10,
+    "piece": 25,
+    "video": "",
+    "score": 10,
+    "created_at": "2026-08-30T19:43:27.133Z",
+    "materials": []
+  }
+},
+{
+  "model": "education.performance",
+  "pk": 8,
+  "fields": {
+    "assignment": 11,
+    "piece": 37,
+    "video": "",
+    "score": 6,
+    "created_at": "2026-08-30T19:43:27.135Z",
+    "materials": []
+  }
+},
+{
+  "model": "education.performance",
+  "pk": 9,
+  "fields": {
+    "assignment": 12,
+    "piece": 27,
+    "video": "",
+    "score": 7,
+    "created_at": "2026-08-30T19:43:27.136Z",
+    "materials": []
+  }
+},
+{
+  "model": "education.performance",
+  "pk": 10,
+  "fields": {
+    "assignment": 13,
+    "piece": 14,
+    "video": "",
+    "score": 8,
+    "created_at": "2026-08-30T19:43:27.138Z",
+    "materials": []
+  }
+},
+{
+  "model": "education.performance",
+  "pk": 11,
+  "fields": {
+    "assignment": 14,
+    "piece": 12,
+    "video": "",
+    "score": 9,
+    "created_at": "2026-08-30T19:43:27.140Z",
+    "materials": []
+  }
+},
+{
+  "model": "education.performance",
+  "pk": 12,
+  "fields": {
+    "assignment": 15,
+    "piece": 40,
+    "video": "",
+    "score": 10,
+    "created_at": "2026-08-30T19:43:27.141Z",
+    "materials": []
+  }
+},
+{
+  "model": "education.performance",
+  "pk": 13,
+  "fields": {
+    "assignment": 16,
+    "piece": 30,
+    "video": "",
+    "score": 6,
+    "created_at": "2026-08-30T19:43:27.143Z",
+    "materials": []
+  }
+},
+{
+  "model": "education.performance",
+  "pk": 14,
+  "fields": {
+    "assignment": 17,
+    "piece": 39,
+    "video": "",
+    "score": 7,
+    "created_at": "2026-08-30T19:43:27.144Z",
+    "materials": []
+  }
+},
+{
+  "model": "education.performance",
+  "pk": 15,
+  "fields": {
+    "assignment": 18,
+    "piece": 17,
+    "video": "",
+    "score": 8,
+    "created_at": "2026-08-30T19:43:27.146Z",
+    "materials": []
+  }
+},
+{
+  "model": "education.performance",
+  "pk": 16,
+  "fields": {
+    "assignment": 19,
+    "piece": 40,
+    "video": "",
+    "score": 9,
+    "created_at": "2026-08-30T19:43:27.148Z",
+    "materials": []
+  }
+},
+{
+  "model": "education.performance",
+  "pk": 17,
+  "fields": {
+    "assignment": 20,
+    "piece": 27,
+    "video": "",
+    "score": 10,
+    "created_at": "2026-08-30T19:43:27.149Z",
+    "materials": []
+  }
+},
+{
+  "model": "education.performance",
+  "pk": 18,
+  "fields": {
+    "assignment": 21,
+    "piece": 13,
+    "video": "",
+    "score": 6,
+    "created_at": "2026-08-30T19:43:27.150Z",
+    "materials": []
+  }
+},
+{
+  "model": "education.performance",
+  "pk": 19,
+  "fields": {
+    "assignment": 22,
+    "piece": 15,
+    "video": "",
+    "score": 7,
+    "created_at": "2026-08-30T19:43:27.152Z",
+    "materials": []
+  }
+},
+{
+  "model": "education.performance",
+  "pk": 20,
+  "fields": {
+    "assignment": 23,
+    "piece": 27,
+    "video": "",
+    "score": 8,
+    "created_at": "2026-08-30T19:43:27.153Z",
+    "materials": []
+  }
+},
+{
+  "model": "education.performance",
+  "pk": 21,
+  "fields": {
+    "assignment": 24,
+    "piece": 30,
+    "video": "",
+    "score": 9,
+    "created_at": "2026-08-30T19:43:27.155Z",
+    "materials": []
+  }
+},
+{
+  "model": "education.performance",
+  "pk": 22,
+  "fields": {
+    "assignment": 25,
+    "piece": 24,
+    "video": "",
+    "score": 10,
+    "created_at": "2026-08-30T19:43:27.158Z",
+    "materials": []
+  }
+},
+{
+  "model": "education.performance",
+  "pk": 23,
+  "fields": {
+    "assignment": 26,
+    "piece": 37,
+    "video": "",
+    "score": 6,
+    "created_at": "2026-08-30T19:43:27.159Z",
+    "materials": []
+  }
+},
+{
+  "model": "education.performance",
+  "pk": 24,
+  "fields": {
+    "assignment": 27,
+    "piece": 19,
+    "video": "",
+    "score": 7,
+    "created_at": "2026-08-30T19:43:27.161Z",
+    "materials": []
+  }
+},
+{
+  "model": "education.performance",
+  "pk": 25,
+  "fields": {
+    "assignment": 28,
+    "piece": 27,
+    "video": "",
+    "score": 8,
+    "created_at": "2026-08-30T19:43:27.163Z",
+    "materials": []
+  }
+},
+{
+  "model": "education.performance",
+  "pk": 26,
+  "fields": {
+    "assignment": 29,
+    "piece": 29,
+    "video": "",
+    "score": 9,
+    "created_at": "2026-08-30T19:43:27.165Z",
+    "materials": []
+  }
+},
+{
+  "model": "education.performance",
+  "pk": 27,
+  "fields": {
+    "assignment": 30,
+    "piece": 20,
+    "video": "",
+    "score": 10,
+    "created_at": "2026-08-30T19:43:27.167Z",
+    "materials": []
+  }
+},
+{
+  "model": "education.performance",
+  "pk": 28,
+  "fields": {
+    "assignment": 31,
+    "piece": 13,
+    "video": "",
+    "score": 6,
+    "created_at": "2026-08-30T19:43:27.169Z",
+    "materials": []
+  }
+},
+{
+  "model": "education.performance",
+  "pk": 29,
+  "fields": {
+    "assignment": 32,
+    "piece": 30,
+    "video": "",
+    "score": 7,
+    "created_at": "2026-08-30T19:43:27.170Z",
+    "materials": []
+  }
+},
+{
+  "model": "education.performance",
+  "pk": 30,
+  "fields": {
+    "assignment": 33,
+    "piece": 23,
+    "video": "",
+    "score": 8,
+    "created_at": "2026-08-30T19:43:27.172Z",
+    "materials": []
+  }
+},
+{
+  "model": "education.performance",
+  "pk": 31,
+  "fields": {
+    "assignment": 34,
+    "piece": 33,
+    "video": "",
+    "score": 9,
+    "created_at": "2026-08-30T19:43:27.174Z",
+    "materials": []
+  }
+},
+{
+  "model": "education.performance",
+  "pk": 32,
+  "fields": {
+    "assignment": 35,
+    "piece": 22,
+    "video": "",
+    "score": 10,
+    "created_at": "2026-08-30T19:43:27.175Z",
+    "materials": []
+  }
+},
+{
+  "model": "education.performancecomment",
+  "pk": 2,
+  "fields": {
+    "performance": 3,
+    "teacher": 14,
+    "text": "Хорошая динамика, поработай над темпом во второй части.",
+    "created_at": "2026-08-30T19:43:27.126Z"
+  }
+},
+{
+  "model": "education.performancecomment",
+  "pk": 3,
+  "fields": {
+    "performance": 6,
+    "teacher": 17,
+    "text": "Хорошая динамика, поработай над темпом во второй части.",
+    "created_at": "2026-08-30T19:43:27.132Z"
+  }
+},
+{
+  "model": "education.performancecomment",
+  "pk": 4,
+  "fields": {
+    "performance": 9,
+    "teacher": 20,
+    "text": "Хорошая динамика, поработай над темпом во второй части.",
+    "created_at": "2026-08-30T19:43:27.137Z"
+  }
+},
+{
+  "model": "education.performancecomment",
+  "pk": 5,
+  "fields": {
+    "performance": 12,
+    "teacher": 23,
+    "text": "Хорошая динамика, поработай над темпом во второй части.",
+    "created_at": "2026-08-30T19:43:27.142Z"
+  }
+},
+{
+  "model": "education.performancecomment",
+  "pk": 6,
+  "fields": {
+    "performance": 15,
+    "teacher": 18,
+    "text": "Хорошая динамика, поработай над темпом во второй части.",
+    "created_at": "2026-08-30T19:43:27.146Z"
+  }
+},
+{
+  "model": "education.performancecomment",
+  "pk": 7,
+  "fields": {
+    "performance": 18,
+    "teacher": 21,
+    "text": "Хорошая динамика, поработай над темпом во второй части.",
+    "created_at": "2026-08-30T19:43:27.151Z"
+  }
+},
+{
+  "model": "education.performancecomment",
+  "pk": 8,
+  "fields": {
+    "performance": 21,
+    "teacher": 16,
+    "text": "Хорошая динамика, поработай над темпом во второй части.",
+    "created_at": "2026-08-30T19:43:27.156Z"
+  }
+},
+{
+  "model": "education.performancecomment",
+  "pk": 9,
+  "fields": {
+    "performance": 24,
+    "teacher": 19,
+    "text": "Хорошая динамика, поработай над темпом во второй части.",
+    "created_at": "2026-08-30T19:43:27.161Z"
+  }
+},
+{
+  "model": "education.performancecomment",
+  "pk": 10,
+  "fields": {
+    "performance": 27,
+    "teacher": 14,
+    "text": "Хорошая динамика, поработай над темпом во второй части.",
+    "created_at": "2026-08-30T19:43:27.167Z"
+  }
+},
+{
+  "model": "education.performancecomment",
+  "pk": 11,
+  "fields": {
+    "performance": 30,
+    "teacher": 17,
+    "text": "Хорошая динамика, поработай над темпом во второй части.",
+    "created_at": "2026-08-30T19:43:27.172Z"
+  }
+},
+{
+  "model": "education.parentlink",
+  "pk": 2,
+  "fields": {
+    "parent": 27,
+    "student": 9,
+    "is_approved": false,
+    "created_at": "2026-08-25T19:52:36.478Z"
+  }
+},
+{
+  "model": "education.parentlink",
+  "pk": 3,
+  "fields": {
+    "parent": 72,
+    "student": 11,
+    "is_approved": true,
+    "created_at": "2026-08-30T19:43:21.379Z"
+  }
+},
+{
+  "model": "education.parentlink",
+  "pk": 4,
+  "fields": {
+    "parent": 73,
+    "student": 14,
+    "is_approved": true,
+    "created_at": "2026-08-30T19:43:21.994Z"
+  }
+},
+{
+  "model": "education.parentlink",
+  "pk": 5,
+  "fields": {
+    "parent": 74,
+    "student": 17,
+    "is_approved": true,
+    "created_at": "2026-08-30T19:43:22.607Z"
+  }
+},
+{
+  "model": "education.parentlink",
+  "pk": 6,
+  "fields": {
+    "parent": 75,
+    "student": 20,
+    "is_approved": true,
+    "created_at": "2026-08-30T19:43:23.217Z"
+  }
+},
+{
+  "model": "education.parentlink",
+  "pk": 7,
+  "fields": {
+    "parent": 76,
+    "student": 23,
+    "is_approved": true,
+    "created_at": "2026-08-30T19:43:23.824Z"
+  }
+},
+{
+  "model": "education.parentlink",
+  "pk": 8,
+  "fields": {
+    "parent": 77,
+    "student": 26,
+    "is_approved": true,
+    "created_at": "2026-08-30T19:43:24.447Z"
+  }
+},
+{
+  "model": "education.parentlink",
+  "pk": 9,
+  "fields": {
+    "parent": 78,
+    "student": 29,
+    "is_approved": true,
+    "created_at": "2026-08-30T19:43:25.087Z"
+  }
+},
+{
+  "model": "education.parentlink",
+  "pk": 10,
+  "fields": {
+    "parent": 79,
+    "student": 32,
+    "is_approved": true,
+    "created_at": "2026-08-30T19:43:25.707Z"
+  }
+},
+{
+  "model": "education.parentlink",
+  "pk": 11,
+  "fields": {
+    "parent": 80,
+    "student": 35,
+    "is_approved": true,
+    "created_at": "2026-08-30T19:43:26.317Z"
+  }
+},
+{
+  "model": "education.parentlink",
+  "pk": 12,
+  "fields": {
+    "parent": 81,
+    "student": 38,
+    "is_approved": true,
+    "created_at": "2026-08-30T19:43:26.930Z"
+  }
+},
+{
+  "model": "education.parentlink",
+  "pk": 13,
+  "fields": {
+    "parent": 28,
+    "student": 11,
+    "is_approved": false,
+    "created_at": "2026-08-30T20:04:56.595Z"
+  }
+},
+{
+  "model": "education.parentlink",
+  "pk": 14,
+  "fields": {
+    "parent": 28,
+    "student": 35,
+    "is_approved": false,
+    "created_at": "2026-08-30T20:05:11.996Z"
+  }
+},
+{
+  "model": "education.parentlink",
+  "pk": 15,
+  "fields": {
+    "parent": 28,
+    "student": 9,
+    "is_approved": false,
+    "created_at": "2026-08-30T20:05:39.492Z"
+  }
+},
+{
+  "model": "music.favorite",
+  "pk": 7,
+  "fields": {
+    "user": 31,
+    "piece": 10,
+    "created_at": "2026-08-30T13:54:40.486Z"
+  }
+},
+{
+  "model": "music.favorite",
+  "pk": 8,
+  "fields": {
+    "user": 42,
+    "piece": 11,
+    "created_at": "2026-08-30T19:43:27.180Z"
+  }
+},
+{
+  "model": "music.favorite",
+  "pk": 9,
+  "fields": {
+    "user": 43,
+    "piece": 12,
+    "created_at": "2026-08-30T19:43:27.182Z"
+  }
+},
+{
+  "model": "music.favorite",
+  "pk": 10,
+  "fields": {
+    "user": 44,
+    "piece": 13,
+    "created_at": "2026-08-30T19:43:27.184Z"
+  }
+},
+{
+  "model": "music.favorite",
+  "pk": 11,
+  "fields": {
+    "user": 45,
+    "piece": 14,
+    "created_at": "2026-08-30T19:43:27.185Z"
+  }
+},
+{
+  "model": "music.favorite",
+  "pk": 12,
+  "fields": {
+    "user": 46,
+    "piece": 15,
+    "created_at": "2026-08-30T19:43:27.186Z"
+  }
+},
+{
+  "model": "music.favorite",
+  "pk": 13,
+  "fields": {
+    "user": 47,
+    "piece": 16,
+    "created_at": "2026-08-30T19:43:27.188Z"
+  }
+},
+{
+  "model": "music.favorite",
+  "pk": 14,
+  "fields": {
+    "user": 48,
+    "piece": 17,
+    "created_at": "2026-08-30T19:43:27.189Z"
+  }
+},
+{
+  "model": "music.favorite",
+  "pk": 15,
+  "fields": {
+    "user": 49,
+    "piece": 18,
+    "created_at": "2026-08-30T19:43:27.190Z"
+  }
+},
+{
+  "model": "music.favorite",
+  "pk": 16,
+  "fields": {
+    "user": 50,
+    "piece": 19,
+    "created_at": "2026-08-30T19:43:27.192Z"
+  }
+},
+{
+  "model": "music.favorite",
+  "pk": 17,
+  "fields": {
+    "user": 51,
+    "piece": 20,
+    "created_at": "2026-08-30T19:43:27.193Z"
+  }
+},
+{
+  "model": "music.instrument",
+  "pk": 8,
+  "fields": {
+    "name": "вокал",
+    "description": ""
+  }
+},
+{
+  "model": "music.instrument",
+  "pk": 9,
+  "fields": {
+    "name": "фортепиано",
+    "description": ""
+  }
+},
+{
+  "model": "music.instrument",
+  "pk": 10,
+  "fields": {
+    "name": "национальная гармонь",
+    "description": "Народный клавишно-язычковый инструмент"
+  }
+},
+{
+  "model": "music.instrument",
+  "pk": 11,
+  "fields": {
+    "name": "хор",
+    "description": "Коллективное вокальное исполнение"
+  }
+},
+{
+  "model": "music.instrument",
+  "pk": 12,
+  "fields": {
+    "name": "гитара",
+    "description": "Щипковый струнный инструмент"
+  }
+},
+{
+  "model": "music.instrument",
+  "pk": 13,
+  "fields": {
+    "name": "аккордеон",
+    "description": "Язычковый клавишно-пневматический инструмент"
+  }
+},
+{
+  "model": "music.instrument",
+  "pk": 14,
+  "fields": {
+    "name": "шикапшина",
+    "description": "Традиционный смычковый инструмент"
+  }
+},
+{
+  "model": "music.instrument",
+  "pk": 15,
+  "fields": {
+    "name": "балалайка",
+    "description": "Народный щипковый струнный инструмент"
+  }
+},
+{
+  "model": "music.genre",
+  "pk": 13,
+  "fields": {
+    "name": "классика"
+  }
+},
+{
+  "model": "music.genre",
+  "pk": 14,
+  "fields": {
+    "name": "фортепианное"
+  }
+},
+{
+  "model": "music.genre",
+  "pk": 15,
+  "fields": {
+    "name": "военное"
+  }
+},
+{
+  "model": "music.genre",
+  "pk": 16,
+  "fields": {
+    "name": "праздничное"
+  }
+},
+{
+  "model": "music.genre",
+  "pk": 17,
+  "fields": {
+    "name": "маршевое"
+  }
+},
+{
+  "model": "music.genre",
+  "pk": 18,
+  "fields": {
+    "name": "новогоднее"
+  }
+},
+{
+  "model": "music.genre",
+  "pk": 19,
+  "fields": {
+    "name": "8 марта"
+  }
+},
+{
+  "model": "music.genre",
+  "pk": 20,
+  "fields": {
+    "name": "23 февраля"
+  }
+},
+{
+  "model": "music.genre",
+  "pk": 21,
+  "fields": {
+    "name": "день учителя"
+  }
+},
+{
+  "model": "music.genre",
+  "pk": 22,
+  "fields": {
+    "name": "про маму"
+  }
+},
+{
+  "model": "music.genre",
+  "pk": 23,
+  "fields": {
+    "name": "любовное"
+  }
+},
+{
+  "model": "music.genre",
+  "pk": 24,
+  "fields": {
+    "name": "ария"
+  }
+},
+{
+  "model": "music.genre",
+  "pk": 25,
+  "fields": {
+    "name": "романс"
+  }
+},
+{
+  "model": "music.genre",
+  "pk": 26,
+  "fields": {
+    "name": "народная"
+  }
+},
+{
+  "model": "music.genre",
+  "pk": 27,
+  "fields": {
+    "name": "оперная"
+  }
+},
+{
+  "model": "music.genre",
+  "pk": 28,
+  "fields": {
+    "name": "хоровая"
+  }
+},
+{
+  "model": "music.genre",
+  "pk": 29,
+  "fields": {
+    "name": "джаз"
+  }
+},
+{
+  "model": "music.genre",
+  "pk": 30,
+  "fields": {
+    "name": "эстрада"
+  }
+},
+{
+  "model": "music.genre",
+  "pk": 31,
+  "fields": {
+    "name": "фольклор"
+  }
+},
+{
+  "model": "music.genre",
+  "pk": 32,
+  "fields": {
+    "name": "инструментальная музыка"
+  }
+},
+{
+  "model": "music.genre",
+  "pk": 33,
+  "fields": {
+    "name": "детская музыка"
+  }
+},
+{
+  "model": "music.composer",
+  "pk": 1,
+  "fields": {
+    "first_name": "Евгений",
+    "last_name": "Григорьевич Мартынов",
+    "biography": ""
+  }
+},
+{
+  "model": "music.composer",
+  "pk": 2,
+  "fields": {
+    "first_name": "Александра",
+    "last_name": "Пахмутова",
+    "biography": ""
+  }
+},
+{
+  "model": "music.composer",
+  "pk": 3,
+  "fields": {
+    "first_name": "Александр",
+    "last_name": "Зацепин",
+    "biography": ""
+  }
+},
+{
+  "model": "music.composer",
+  "pk": 4,
+  "fields": {
+    "first_name": "Иоганн Себастьян",
+    "last_name": "Бах",
+    "biography": "Великий немецкий композитор и органист"
+  }
+},
+{
+  "model": "music.composer",
+  "pk": 5,
+  "fields": {
+    "first_name": "Вольфганг Амадей",
+    "last_name": "Моцарт",
+    "biography": "Австрийский композитор и музыкант"
+  }
+},
+{
+  "model": "music.composer",
+  "pk": 6,
+  "fields": {
+    "first_name": "Пётр Ильич",
+    "last_name": "Чайковский",
+    "biography": "Русский композитор, дирижёр и педагог"
+  }
+},
+{
+  "model": "music.composer",
+  "pk": 8,
+  "fields": {
+    "first_name": "Фридерик",
+    "last_name": "Шопен",
+    "biography": "Французско-польский композитор и пианист"
+  }
+},
+{
+  "model": "music.composer",
+  "pk": 9,
+  "fields": {
+    "first_name": "Людвиг",
+    "last_name": "ван Бетховен",
+    "biography": ""
+  }
+},
+{
+  "model": "music.composer",
+  "pk": 11,
+  "fields": {
+    "first_name": "Томмазо",
+    "last_name": "Джордани",
+    "biography": ""
+  }
+},
+{
+  "model": "music.composer",
+  "pk": 12,
+  "fields": {
+    "first_name": "Людвиг ван",
+    "last_name": "Бетховен",
+    "biography": "Немецкий композитор и пианист"
+  }
+},
+{
+  "model": "music.composer",
+  "pk": 13,
+  "fields": {
+    "first_name": "Михаил",
+    "last_name": "Глинка",
+    "biography": "Русский композитор, основоположник русской классической школы"
+  }
+},
+{
+  "model": "music.composer",
+  "pk": 14,
+  "fields": {
+    "first_name": "Арам",
+    "last_name": "Хачатурян",
+    "biography": "Советский композитор и дирижёр"
+  }
+},
+{
+  "model": "music.composer",
+  "pk": 15,
+  "fields": {
+    "first_name": "Николай",
+    "last_name": "Римский-Корсаков",
+    "biography": "Русский композитор и дирижёр"
+  }
+},
+{
+  "model": "music.composer",
+  "pk": 16,
+  "fields": {
+    "first_name": "Эдвард",
+    "last_name": "Григ",
+    "biography": "Норвежский композитор и пианист"
+  }
+},
+{
+  "model": "music.composer",
+  "pk": 17,
+  "fields": {
+    "first_name": "Александр",
+    "last_name": "Бородин",
+    "biography": "Русский композитор и учёный-химик"
+  }
+},
+{
+  "model": "music.composer",
+  "pk": 18,
+  "fields": {
+    "first_name": "Василий",
+    "last_name": "Агапкин",
+    "biography": "Русский и советский военный дирижёр и композитор"
+  }
+},
+{
+  "model": "music.composer",
+  "pk": 19,
+  "fields": {
+    "first_name": "Народное",
+    "last_name": "творчество",
+    "biography": "Автор неизвестен — произведение передавалось устно"
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 8,
+  "fields": {
+    "title": "Лунная соната",
+    "cover": "",
+    "composer": 9,
+    "year_created": 1801,
+    "description": "На самом деле это Соната для фортепиано № 14 до-диез минор, опус 27, № 2 Людвига ван Бетховена. Композитор написал её в 1800–1801 годах, а опубликовал в 1802-м. При этом сам Бетховен не называл её «Лунной». На титульном листе он указал итальянское выражение Sonata quasi una fantasia («Соната в духе фантазии»). Так он подчеркнул новаторство: в классической сонате части обычно идут по схеме «быстро — медленно — быстро», а здесь порядок иной — медленная первая часть, затем средняя по темпу и в финале очень быстрая.",
+    "genre": [
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22
+    ],
+    "instruments": []
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 10,
+  "fields": {
+    "title": "Cari mio ben",
+    "cover": "pieces_covers/i.webp",
+    "composer": 11,
+    "year_created": 1785,
+    "description": "«Caro mio ben» — это небольшая, но выразительная ариетта (каватина) XVIII века. Текст арии, как это часто бывает в старинной музыке, не сохранился. Перевод начальных строк звучит так: «Моя милая возлюбленная, поверь мне наконец, без тебя томится моё сердце. Преданный тебе вздыхает вечно; перестань же, жестокая, быть такой суровой!».",
+    "genre": [
+      13,
+      23,
+      24
+    ],
+    "instruments": [
+      8,
+      9
+    ]
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 11,
+  "fields": {
+    "title": "Соловей",
+    "cover": "",
+    "composer": 19,
+    "year_created": 1826,
+    "description": "Русский романс на народный мотив",
+    "genre": [
+      25,
+      26
+    ],
+    "instruments": [
+      8
+    ]
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 12,
+  "fields": {
+    "title": "Однозвучно гремит колокольчик",
+    "cover": "",
+    "composer": 19,
+    "year_created": 1831,
+    "description": "Один из самых известных русских романсов",
+    "genre": [
+      25
+    ],
+    "instruments": [
+      8
+    ]
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 13,
+  "fields": {
+    "title": "Калинка",
+    "cover": "",
+    "composer": 19,
+    "year_created": 1860,
+    "description": "Русская народная плясовая песня",
+    "genre": [
+      26
+    ],
+    "instruments": [
+      10,
+      15
+    ]
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 14,
+  "fields": {
+    "title": "Во саду ли, в огороде",
+    "cover": "",
+    "composer": 19,
+    "year_created": 1800,
+    "description": "Русская народная песня",
+    "genre": [
+      26
+    ],
+    "instruments": [
+      15
+    ]
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 15,
+  "fields": {
+    "title": "Ой, мороз, мороз",
+    "cover": "",
+    "composer": 19,
+    "year_created": 1954,
+    "description": "Известная русская народная песня",
+    "genre": [
+      26
+    ],
+    "instruments": [
+      8,
+      10
+    ]
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 16,
+  "fields": {
+    "title": "Лунная соната",
+    "cover": "",
+    "composer": 12,
+    "year_created": 1801,
+    "description": "Соната №14 — одно из самых известных произведений для фортепиано",
+    "genre": [
+      13
+    ],
+    "instruments": [
+      9
+    ]
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 17,
+  "fields": {
+    "title": "К Элизе",
+    "cover": "",
+    "composer": 12,
+    "year_created": 1810,
+    "description": "Багатель для фортепиано",
+    "genre": [
+      13
+    ],
+    "instruments": [
+      9
+    ]
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 18,
+  "fields": {
+    "title": "Времена года. Осень",
+    "cover": "",
+    "composer": 6,
+    "year_created": 1876,
+    "description": "Пьеса из цикла «Времена года»",
+    "genre": [
+      13
+    ],
+    "instruments": [
+      9
+    ]
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 19,
+  "fields": {
+    "title": "Вальс цветов",
+    "cover": "",
+    "composer": 6,
+    "year_created": 1892,
+    "description": "Вальс из балета «Щелкунчик»",
+    "genre": [
+      27,
+      13
+    ],
+    "instruments": [
+      9,
+      13
+    ]
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 20,
+  "fields": {
+    "title": "Аве Мария",
+    "cover": "",
+    "composer": 4,
+    "year_created": 1859,
+    "description": "Один из самых известных духовных романсов",
+    "genre": [
+      25,
+      28
+    ],
+    "instruments": [
+      8,
+      11
+    ]
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 21,
+  "fields": {
+    "title": "Реквием (Lacrimosa)",
+    "cover": "",
+    "composer": 5,
+    "year_created": 1791,
+    "description": "Фрагмент знаменитого реквиема",
+    "genre": [
+      28,
+      13
+    ],
+    "instruments": [
+      11
+    ]
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 22,
+  "fields": {
+    "title": "Танец с саблями",
+    "cover": "",
+    "composer": 14,
+    "year_created": 1942,
+    "description": "Из балета «Гаянэ»",
+    "genre": [
+      32
+    ],
+    "instruments": [
+      13
+    ]
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 23,
+  "fields": {
+    "title": "Цыганочка",
+    "cover": "",
+    "composer": 19,
+    "year_created": 1900,
+    "description": "Народная плясовая мелодия для гитары",
+    "genre": [
+      26
+    ],
+    "instruments": [
+      12
+    ]
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 24,
+  "fields": {
+    "title": "Романс о влюблённых",
+    "cover": "",
+    "composer": 19,
+    "year_created": 1974,
+    "description": "Лирический романс",
+    "genre": [
+      25
+    ],
+    "instruments": [
+      8,
+      12
+    ]
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 25,
+  "fields": {
+    "title": "Полёт шмеля",
+    "cover": "",
+    "composer": 15,
+    "year_created": 1900,
+    "description": "Виртуозная оркестровая интермедия",
+    "genre": [
+      32,
+      13
+    ],
+    "instruments": [
+      9,
+      13
+    ]
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 26,
+  "fields": {
+    "title": "Чардаш",
+    "cover": "",
+    "composer": 19,
+    "year_created": 1904,
+    "description": "Известная венгерская танцевальная пьеса",
+    "genre": [
+      32
+    ],
+    "instruments": [
+      13
+    ]
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 27,
+  "fields": {
+    "title": "Свадебный наигрыш",
+    "cover": "",
+    "composer": 19,
+    "year_created": 1900,
+    "description": "Традиционный свадебный наигрыш",
+    "genre": [
+      31
+    ],
+    "instruments": [
+      10,
+      14
+    ]
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 28,
+  "fields": {
+    "title": "Праздничный наигрыш",
+    "cover": "",
+    "composer": 19,
+    "year_created": 1900,
+    "description": "Наигрыш для народных гуляний",
+    "genre": [
+      31
+    ],
+    "instruments": [
+      14
+    ]
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 29,
+  "fields": {
+    "title": "Плясовая",
+    "cover": "",
+    "composer": 19,
+    "year_created": 1900,
+    "description": "Плясовая мелодия",
+    "genre": [
+      26,
+      31
+    ],
+    "instruments": [
+      10,
+      15
+    ]
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 30,
+  "fields": {
+    "title": "Хор из оперы «Иван Сусанин»",
+    "cover": "",
+    "composer": 13,
+    "year_created": 1836,
+    "description": "Знаменитый хор из первой русской классической оперы",
+    "genre": [
+      27,
+      28
+    ],
+    "instruments": [
+      11
+    ]
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 31,
+  "fields": {
+    "title": "Попутная песня",
+    "cover": "",
+    "composer": 13,
+    "year_created": 1840,
+    "description": "Один из первых русских романтических романсов",
+    "genre": [
+      25
+    ],
+    "instruments": [
+      8
+    ]
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 32,
+  "fields": {
+    "title": "Утро",
+    "cover": "",
+    "composer": 16,
+    "year_created": 1875,
+    "description": "Пьеса из сюиты «Пер Гюнт»",
+    "genre": [
+      13
+    ],
+    "instruments": [
+      9
+    ]
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 33,
+  "fields": {
+    "title": "Ноктюрн ми-бемоль мажор",
+    "cover": "",
+    "composer": 8,
+    "year_created": 1830,
+    "description": "Один из самых известных ноктюрнов",
+    "genre": [
+      25,
+      13
+    ],
+    "instruments": [
+      9
+    ]
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 34,
+  "fields": {
+    "title": "Прелюдия до минор",
+    "cover": "",
+    "composer": 8,
+    "year_created": 1839,
+    "description": "Лирическая фортепианная прелюдия",
+    "genre": [
+      13
+    ],
+    "instruments": [
+      9
+    ]
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 35,
+  "fields": {
+    "title": "Турецкий марш",
+    "cover": "",
+    "composer": 5,
+    "year_created": 1783,
+    "description": "Часть сонаты №11, одна из самых узнаваемых мелодий",
+    "genre": [
+      13
+    ],
+    "instruments": [
+      9,
+      13
+    ]
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 36,
+  "fields": {
+    "title": "Половецкие пляски",
+    "cover": "",
+    "composer": 17,
+    "year_created": 1890,
+    "description": "Хоровой фрагмент из оперы «Князь Игорь»",
+    "genre": [
+      27,
+      28
+    ],
+    "instruments": [
+      11
+    ]
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 37,
+  "fields": {
+    "title": "Детская полька",
+    "cover": "",
+    "composer": 19,
+    "year_created": 1900,
+    "description": "Лёгкая пьеса для начинающих",
+    "genre": [
+      33
+    ],
+    "instruments": [
+      9,
+      13
+    ]
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 38,
+  "fields": {
+    "title": "Весёлые нотки",
+    "cover": "",
+    "composer": 19,
+    "year_created": 1900,
+    "description": "Песня для детского хора",
+    "genre": [
+      33
+    ],
+    "instruments": [
+      8
+    ]
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 39,
+  "fields": {
+    "title": "Джазовая импровизация №1",
+    "cover": "",
+    "composer": 19,
+    "year_created": 1990,
+    "description": "Учебная джазовая пьеса",
+    "genre": [
+      29
+    ],
+    "instruments": [
+      9,
+      12
+    ]
+  }
+},
+{
+  "model": "music.musicalpiece",
+  "pk": 40,
+  "fields": {
+    "title": "Прощание славянки",
+    "cover": "",
+    "composer": 18,
+    "year_created": 1912,
+    "description": "Знаменитый русский марш",
+    "genre": [
+      26,
+      30
+    ],
+    "instruments": [
+      10,
+      13
+    ]
+  }
+},
+{
+  "model": "music.musicmaterial",
+  "pk": 8,
+  "fields": {
+    "piece": 10,
+    "type": "sheet",
+    "file": "materials/caromioben-let.pdf",
+    "url": null,
+    "description": "Ноты",
+    "is_public": true,
+    "created_at": "2026-08-30T13:54:18.611Z"
+  }
+},
+{
+  "model": "music.musicmaterial",
+  "pk": 9,
+  "fields": {
+    "piece": 10,
+    "type": "minus",
+    "file": "materials/Caro_Mio_Ben_оркестр_быстрее.mp3",
+    "url": null,
+    "description": "Минусовка",
+    "is_public": true,
+    "created_at": "2026-08-30T13:54:18.629Z"
+  }
+},
+{
+  "model": "music.musicmaterial",
+  "pk": 10,
+  "fields": {
+    "piece": 11,
+    "type": "minus",
+    "file": "materials/minus_11.wav",
+    "url": null,
+    "description": "Минусовка (демо-запись)",
+    "is_public": true,
+    "created_at": "2026-08-30T19:42:55.154Z"
+  }
+},
+{
+  "model": "music.musicmaterial",
+  "pk": 11,
+  "fields": {
+    "piece": 11,
+    "type": "video",
+    "file": "",
+    "url": "https://www.w3schools.com/html/mov_bbb.mp4",
+    "description": "Видео исполнения (демо-ссылка — замените на реальную запись)",
+    "is_public": true,
+    "created_at": "2026-08-30T19:42:55.157Z"
+  }
+},
+{
+  "model": "music.musicmaterial",
+  "pk": 12,
+  "fields": {
+    "piece": 15,
+    "type": "minus",
+    "file": "materials/minus_15.wav",
+    "url": null,
+    "description": "Минусовка (демо-запись)",
+    "is_public": true,
+    "created_at": "2026-08-30T19:42:55.188Z"
+  }
+},
+{
+  "model": "music.musicmaterial",
+  "pk": 13,
+  "fields": {
+    "piece": 15,
+    "type": "video",
+    "file": "",
+    "url": "https://www.w3schools.com/html/mov_bbb.mp4",
+    "description": "Видео исполнения (демо-ссылка — замените на реальную запись)",
+    "is_public": true,
+    "created_at": "2026-08-30T19:42:55.190Z"
+  }
+},
+{
+  "model": "music.musicmaterial",
+  "pk": 14,
+  "fields": {
+    "piece": 19,
+    "type": "minus",
+    "file": "materials/minus_19.wav",
+    "url": null,
+    "description": "Минусовка (демо-запись)",
+    "is_public": true,
+    "created_at": "2026-08-30T19:42:55.224Z"
+  }
+},
+{
+  "model": "music.musicmaterial",
+  "pk": 15,
+  "fields": {
+    "piece": 19,
+    "type": "video",
+    "file": "",
+    "url": "https://www.w3schools.com/html/mov_bbb.mp4",
+    "description": "Видео исполнения (демо-ссылка — замените на реальную запись)",
+    "is_public": true,
+    "created_at": "2026-08-30T19:42:55.226Z"
+  }
+},
+{
+  "model": "music.musicmaterial",
+  "pk": 16,
+  "fields": {
+    "piece": 23,
+    "type": "minus",
+    "file": "materials/minus_23.wav",
+    "url": null,
+    "description": "Минусовка (демо-запись)",
+    "is_public": true,
+    "created_at": "2026-08-30T19:42:55.254Z"
+  }
+},
+{
+  "model": "music.musicmaterial",
+  "pk": 17,
+  "fields": {
+    "piece": 23,
+    "type": "video",
+    "file": "",
+    "url": "https://www.w3schools.com/html/mov_bbb.mp4",
+    "description": "Видео исполнения (демо-ссылка — замените на реальную запись)",
+    "is_public": true,
+    "created_at": "2026-08-30T19:42:55.256Z"
+  }
+},
+{
+  "model": "music.musicmaterial",
+  "pk": 18,
+  "fields": {
+    "piece": 27,
+    "type": "minus",
+    "file": "materials/minus_27.wav",
+    "url": null,
+    "description": "Минусовка (демо-запись)",
+    "is_public": true,
+    "created_at": "2026-08-30T19:42:55.283Z"
+  }
+},
+{
+  "model": "music.musicmaterial",
+  "pk": 19,
+  "fields": {
+    "piece": 27,
+    "type": "video",
+    "file": "",
+    "url": "https://www.w3schools.com/html/mov_bbb.mp4",
+    "description": "Видео исполнения (демо-ссылка — замените на реальную запись)",
+    "is_public": true,
+    "created_at": "2026-08-30T19:42:55.284Z"
+  }
+},
+{
+  "model": "music.musicmaterial",
+  "pk": 20,
+  "fields": {
+    "piece": 31,
+    "type": "minus",
+    "file": "materials/minus_31.wav",
+    "url": null,
+    "description": "Минусовка (демо-запись)",
+    "is_public": true,
+    "created_at": "2026-08-30T19:42:55.312Z"
+  }
+},
+{
+  "model": "music.musicmaterial",
+  "pk": 21,
+  "fields": {
+    "piece": 31,
+    "type": "video",
+    "file": "",
+    "url": "https://www.w3schools.com/html/mov_bbb.mp4",
+    "description": "Видео исполнения (демо-ссылка — замените на реальную запись)",
+    "is_public": true,
+    "created_at": "2026-08-30T19:42:55.314Z"
+  }
+},
+{
+  "model": "music.musicmaterial",
+  "pk": 22,
+  "fields": {
+    "piece": 35,
+    "type": "minus",
+    "file": "materials/minus_35.wav",
+    "url": null,
+    "description": "Минусовка (демо-запись)",
+    "is_public": true,
+    "created_at": "2026-08-30T19:42:55.340Z"
+  }
+},
+{
+  "model": "music.musicmaterial",
+  "pk": 23,
+  "fields": {
+    "piece": 35,
+    "type": "video",
+    "file": "",
+    "url": "https://www.w3schools.com/html/mov_bbb.mp4",
+    "description": "Видео исполнения (демо-ссылка — замените на реальную запись)",
+    "is_public": true,
+    "created_at": "2026-08-30T19:42:55.341Z"
+  }
+},
+{
+  "model": "music.musicmaterial",
+  "pk": 24,
+  "fields": {
+    "piece": 39,
+    "type": "minus",
+    "file": "materials/minus_39.wav",
+    "url": null,
+    "description": "Минусовка (демо-запись)",
+    "is_public": true,
+    "created_at": "2026-08-30T19:42:55.368Z"
+  }
+},
+{
+  "model": "music.musicmaterial",
+  "pk": 25,
+  "fields": {
+    "piece": 39,
+    "type": "video",
+    "file": "",
+    "url": "https://www.w3schools.com/html/mov_bbb.mp4",
+    "description": "Видео исполнения (демо-ссылка — замените на реальную запись)",
+    "is_public": true,
+    "created_at": "2026-08-30T19:42:55.369Z"
+  }
+},
+{
+  "model": "core.notification",
+  "pk": 7,
+  "fields": {
+    "user": 26,
+    "text": "Алина Межгихова хочет добавиться как родитель — подтвердите или отклоните запрос",
+    "link": "/education/parent/link/2/confirm/",
+    "is_read": false,
+    "created_at": "2026-08-25T19:52:36.481Z"
+  }
+},
+{
+  "model": "core.notification",
+  "pk": 8,
+  "fields": {
+    "user": 42,
+    "text": "Милана Казанова хочет добавиться как родитель — подтвердите или отклоните запрос",
+    "link": "/education/parent/link/13/confirm/",
+    "is_read": false,
+    "created_at": "2026-08-30T20:04:56.599Z"
+  }
+},
+{
+  "model": "core.notification",
+  "pk": 9,
+  "fields": {
+    "user": 66,
+    "text": "Милана Казанова хочет добавиться как родитель — подтвердите или отклоните запрос",
+    "link": "/education/parent/link/14/confirm/",
+    "is_read": false,
+    "created_at": "2026-08-30T20:05:12.000Z"
+  }
+},
+{
+  "model": "core.notification",
+  "pk": 10,
+  "fields": {
+    "user": 26,
+    "text": "Милана Казанова хочет добавиться как родитель — подтвердите или отклоните запрос",
+    "link": "/education/parent/link/15/confirm/",
+    "is_read": false,
+    "created_at": "2026-08-30T20:05:39.496Z"
+  }
+},
+{
+  "model": "core.notification",
+  "pk": 11,
+  "fields": {
+    "user": 26,
+    "text": "Новый урок: 02.09.2026 (есть задание)",
+    "link": "/education/lesson/65/",
+    "is_read": false,
+    "created_at": "2026-08-30T20:40:46.849Z"
+  }
+}
+]

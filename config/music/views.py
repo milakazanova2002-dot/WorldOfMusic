@@ -1,6 +1,7 @@
 from django.urls import reverse_lazy
 from django.core.cache import cache
 from django.db.models import Prefetch, Q
+from django.http import JsonResponse
 from django.views.generic import (
     CreateView,
     DeleteView,
@@ -11,6 +12,7 @@ from django.views.generic import (
 )
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 from .models import Composer, Favorite, Genre, Instrument, MusicalPiece, MusicMaterial
@@ -502,3 +504,24 @@ class FavoriteToggleView(LoginRequiredMixin, View):
 
         next_url = request.POST.get("next") or reverse_lazy("music:piece_detail", kwargs={"pk": pk})
         return redirect(next_url)
+
+
+@login_required
+def composer_autocomplete(request):
+    """Подсказки при вводе имени композитора — как в поисковике: печатаешь,
+    снизу подтягиваются похожие уже существующие композиторы, можно кликнуть
+    и подставить вместо того, чтобы печатать заново (и случайно создать дубль)."""
+    query = request.GET.get("q", "").strip()
+
+    if len(query) < 2:
+        return JsonResponse({"results": []})
+
+    composers = Composer.objects.filter(
+        Q(first_name__icontains=query) | Q(last_name__icontains=query)
+    )[:8]
+
+    results = [
+        {"id": c.pk, "name": f"{c.first_name} {c.last_name}".strip()}
+        for c in composers
+    ]
+    return JsonResponse({"results": results})

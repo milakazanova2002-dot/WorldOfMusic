@@ -122,5 +122,70 @@ function setupChipHighlight(panelSelector) {
 
 setupPillFilter('.chip-filter-input');
 setupChipHighlight('.chip-select-panel');
+
+// Автодополнение композитора — как в поисковике: печатаешь, снизу
+// подтягиваются похожие уже существующие композиторы, клик подставляет имя.
+(function setupComposerAutocomplete() {
+    const input = document.getElementById('id_composer_name');
+    if (!input) return;
+
+    // Оборачиваем поле, чтобы список подсказок позиционировался точно под ним
+    const wrapper = document.createElement('div');
+    wrapper.style.position = 'relative';
+    input.parentNode.insertBefore(wrapper, input);
+    wrapper.appendChild(input);
+
+    const suggestionsBox = document.createElement('div');
+    suggestionsBox.className = 'composer-suggestions';
+    wrapper.appendChild(suggestionsBox);
+
+    let debounceTimer = null;
+
+    input.addEventListener('input', () => {
+        clearTimeout(debounceTimer);
+        const query = input.value.trim();
+
+        if (query.length < 2) {
+            suggestionsBox.style.display = 'none';
+            return;
+        }
+
+        debounceTimer = setTimeout(() => {
+            fetch(`{% url 'music:composer_autocomplete' %}?q=${encodeURIComponent(query)}`)
+                .then(response => response.json())
+                .then(data => {
+                    suggestionsBox.innerHTML = '';
+
+                    if (!data.results.length) {
+                        suggestionsBox.style.display = 'none';
+                        return;
+                    }
+
+                    data.results.forEach(composer => {
+                        const item = document.createElement('div');
+                        item.className = 'composer-suggestion-item';
+                        item.textContent = composer.name;
+                        item.addEventListener('click', () => {
+                            input.value = composer.name;
+                            suggestionsBox.style.display = 'none';
+                        });
+                        suggestionsBox.appendChild(item);
+                    });
+
+                    suggestionsBox.style.display = 'block';
+                })
+                .catch(() => {
+                    suggestionsBox.style.display = 'none';
+                });
+        }, 250); // ждём 250мс паузы в наборе текста, чтобы не слать запрос на каждую букву
+    });
+
+    // Скрываем подсказки при клике куда-либо ещё на странице
+    document.addEventListener('click', (event) => {
+        if (!wrapper.contains(event.target)) {
+            suggestionsBox.style.display = 'none';
+        }
+    });
+})();
 </script>
 {% endblock %}

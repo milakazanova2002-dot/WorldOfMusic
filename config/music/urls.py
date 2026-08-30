@@ -8,6 +8,7 @@ from .views import (
     ComposerUpdateView,
     FavoriteListView,
     FavoriteToggleView,
+    composer_autocomplete,
     GenreCreateView,
     GenreDeleteView,
     GenreDetailView,
@@ -44,6 +45,7 @@ urlpatterns = [
     # Избранное
     path("favorites/", FavoriteListView.as_view(), name="favorite_list"),
     path("piece/<int:pk>/favorite/", FavoriteToggleView.as_view(), name="favorite_toggle"),
+    path("composers/autocomplete/", composer_autocomplete, name="composer_autocomplete"),
 
     # Публичные страницы жанра и композитора (произведения + исполнители)
     path("genres/<int:pk>/view/", GenreDetailView.as_view(), name="genre_detail"),

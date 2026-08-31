@@ -5,10 +5,11 @@ from education.models import TeacherProfile
 
 
 @receiver(post_save, sender=User)
-def create_teacher_profile_after_approval(sender, instance, **kwargs):
-    # С момента исправления в TeacherRegistrationForm.save() профиль педагога
-    # создаётся сразу при регистрации, поэтому в норме этот сигнал больше не
-    # должен ничего делать. Оставлен как подстраховка для аккаунтов,
-    # зарегистрированных ДО этого исправления (у них профиля могло не быть).
+def create_teacher_profile_after_approval(sender, instance, created, raw=False, **kwargs):
+    # raw=True — сохранение идёт из loaddata (восстановление фикстуры).
+    # В этом случае TeacherProfile придёт своей строкой в самой фикстуре,
+    # сигналу вмешиваться не нужно — иначе будет дубликат по user_id.
+    if raw:
+        return
     if instance.is_approved and not hasattr(instance, "teacher_profile"):
         TeacherProfile.objects.create(user=instance)

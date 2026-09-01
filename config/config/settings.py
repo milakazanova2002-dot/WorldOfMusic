@@ -124,6 +124,8 @@ CACHES = {
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
             'IGNORE_EXCEPTIONS': True,
+            'SOCKET_CONNECT_TIMEOUT': 1,  # секунда на попытку подключения, не больше
+            'SOCKET_TIMEOUT': 1,          # и столько же на сами команды
         },
         'KEY_PREFIX': 'wom',
     }
